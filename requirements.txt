@@ -1,0 +1,6 @@
+dash>=1.19.0
+pandas
+xlrd
+dash-bootstrap-components
+openpyxl
+dash-daq
