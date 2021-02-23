@@ -1,4 +1,5 @@
 # HelloDash
+## https://hellodash.pythonanywhere.com/
 
 This app helps you create a theme for your app
 
@@ -10,11 +11,13 @@ Choose from:
  - Any background color selected from a colorpicker
 
 
-Please see the app at https://hellodash.pythonanywhere.com/
+-------------
 
 
 ![theme](https://user-images.githubusercontent.com/72614349/108897468-5f28f100-75d3-11eb-9f5f-095315cc1516.gif)
 
+--------------
+---------------
 
 These two images are the same app!  Only 5 lines are changed to set a different theme.
 

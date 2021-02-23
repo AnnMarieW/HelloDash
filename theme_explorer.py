@@ -273,13 +273,14 @@ These two images are the same app!  Only 5 lines are changed to set a different 
 The light Bootstrap themes are the easiest themes to add to your Dash app.  The Dash components have a light background color and that works well with the Bootswatch light themes.
 
 A dark theme will set the text color to white or some other light color making the text  hard  to read in some Dash components. Here are some way to change the colors:
--  Dash Core Components:  Try using the `className` or `style` parameter of the component or use the inspector in the browser to see how the colors are set and override it with custom CSS in the assets folder.    See more information [here](https://dash.plotly.com/external-resources).   See the css we used here [ github link] 
+-  Dash Core Components:  Try using the `className` or `style` parameter of the component or use the inspector in the browser to see how the colors are set and override it with custom CSS in the assets folder. 
+See more information [here](https://dash.plotly.com/external-resources).   See the css we used here [ github link](https://github.com/AnnMarieW/HelloDash/blob/main/assets/mycss.css) 
 -  Dash DataTables:  See how to set a dark theme [here](https://dash.plotly.com/datatable/style) in the Dash documentation
 -  Dash DAQ components: Use the `theme` parameter:   `theme= {'dark': True}`
 -  Figures: Use the [Graph template](https://plotly.com/python/templates/)  `plotly_dark`
 
 ## Source code
-The code for the sample app is also available in the [GitHub repository].
+The code for the sample app is also available in the [GitHub](https://github.com/AnnMarieW/HelloDash).
 
 
 """
