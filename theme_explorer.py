@@ -246,7 +246,7 @@ Markdown Text
 """
 
 
-with open("theme_explorer_sample_app.py") as f:
+with open("sample_app_1.py") as f:
     code = f.read()
 example_app_code = f"```{code}```"
 

@@ -112,7 +112,7 @@ controls = dbc.Card(
 
 app.layout = dbc.Container(
     [
-        html.H1("Theme Explorer App", className="bg-primary text-white",),
+        html.H1("Sample App 1", className="bg-primary text-white",),
         html.Hr(),
         dbc.Row(
             [
