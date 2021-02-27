@@ -76,7 +76,7 @@ images, and more. Learn more about Plotly templates and how to customize them [h
 
 Selecting the Plotly trace colors that look nice with your selected Boostrap theme can really enhance your app design.
 See the Dash documentation to learn more about [discrete colors](https://plotly.com/python/discrete-color/) and 
-[continuous colorscaless](https://plotly.com/python/colorscales/)
+[continuous colorscales](https://plotly.com/python/colorscales/)
 """
     ),
     className="m-4 p-4",

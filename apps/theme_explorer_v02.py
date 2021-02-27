@@ -188,7 +188,7 @@ header = dbc.Jumbotron(
                     "Learn more", color="primary", href="/learn_more", className="mr-2"
                 ),
                 dbc.Button(
-                    "Dash Bootstraps Components",
+                    "Dash Bootstrap Components",
                     color="primary",
                     target="_blank",
                     className="mr-2",
@@ -455,7 +455,7 @@ bootswatch = dbc.Row(
     [
         dbc.Col(
             html.Iframe(
-                id="bootswatch_page_v02", style={"width": "100%", "height": 800},
+                id="bootswatch_page_v02", style={"width": "100%", "height": 1000},
             ),
             width={"size": 10, "offset": 1},
         ),
