@@ -86,16 +86,24 @@ buttons = html.Div(
 
 controls = dbc.Card(
     [
-        dbc.FormGroup(
+        dbc.Row(
             [
-                dbc.Label("Select indicator (y-axis)"),
-                make_dropdown("indicator", ["gdpPercap", "lifeExp", "pop"]),
-            ]
-        ),
-        dbc.FormGroup(
-            [
-                dbc.Label("Select continents"),
-                make_checklist("continents", df.continent.unique()),
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Select indicator (y-axis)"),
+                            make_dropdown("indicator", ["gdpPercap", "lifeExp", "pop"]),
+                        ]
+                    )
+                ),
+                dbc.Col(
+                    dbc.FormGroup(
+                        [
+                            dbc.Label("Select continents"),
+                            make_checklist("continents", df.continent.unique()),
+                        ]
+                    )
+                ),
             ]
         ),
         dbc.FormGroup(

@@ -6,9 +6,14 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 import dash_daq as daq
 
-external_stylesheets = [dbc.themes.BOOTSTRAP]
+from app import app
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+import pathlib
+
+# set relative path
+PATH = pathlib.Path(__file__).parent
+APPS_PATH = PATH.joinpath(".").resolve()
+
 
 boostrap_themes = [
     "BOOTSTRAP",
@@ -246,7 +251,7 @@ Markdown Text
 """
 
 
-with open("sample_app_1.py") as f:
+with open(APPS_PATH.joinpath("sample_app_1.py")) as f:
     code = f.read()
 example_app_code = f"```{code}```"
 
@@ -333,7 +338,7 @@ sample_controls = dbc.Card(
 ===============================================================================
 Layout
 """
-app.layout = dbc.Container(
+layout = dbc.Container(
     [
         dbc.Row(
             [
@@ -447,6 +452,6 @@ app.clientside_callback(
     Input("themes", "value"),
 )
 
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
+#
+# if __name__ == "__main__":
+#     app.run_server(debug=True)

@@ -2,8 +2,8 @@
 ## See this app at:  https://hellodash.pythonanywhere.com/
 
 Note - this site is under active development and there will be frequent breaking changes.  If you have any suggestions
-for improvements or features to add, I'd be delighted to hear from you!  Please don't hesitate to open an issue and of course
-I accept positive feedback there too :-)
+for improvements or features to add, I'd be delighted to hear from you!  Please don't hesitate to open an issue, or
+create a pull request.  And of course I accept positive feedback too :-)
 
 The purpose of this app is to help you see how different Bootstrap and Bootswatch themes, Plotly figure templates and colors 
 will look in your Dash app.  
