@@ -442,14 +442,6 @@ sample_app = dbc.Card(
             ]
         ),
         sample_app_controls,
-        dcc.DatePickerRange(),
-        dcc.Input(),
-        dcc.Textarea(),
-        dash_table.DataTable(
-            columns=[{"name": i, "id": i} for i in df.columns],
-            data=df.to_dict('records'),
-            page_size=5,
-        )
     ],
     className="m-4 shadow-lg p-4",
     id="layout_container_v02",
