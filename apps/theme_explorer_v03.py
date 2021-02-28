@@ -7,7 +7,7 @@ import dash_bootstrap_components as dbc
 
 from app import app
 from .learn_more import app_notes2
-from .components  import layout as components_layout
+from .components import layout as components_layout
 
 
 boostrap_light_themes = [
@@ -256,8 +256,6 @@ def make_range_slider(id, slider_list, step=1):
     )
 
 
-
-
 """
 =====================================================================
 Theme Controls
@@ -431,17 +429,15 @@ sample_app_1 = dbc.Card(
     ],
     className="m-4 shadow-lg p-4",
     id="layout_container_v03",
-
 )
 
 sample_app_2 = dbc.Card(
     [
         html.H1("DBC Component Gallery", className="bg-primary text-white m-1 p-2"),
-        dbc.Row( components_layout, className='mt-4'),
+        dbc.Row(components_layout, className="mt-4"),
     ],
     className="m-4 shadow-lg p-4",
 )
-
 
 
 """
