@@ -4,10 +4,10 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
-import dash_table
 
 from app import app
 from .learn_more import app_notes2
+from .components  import layout as components_layout
 
 
 boostrap_light_themes = [
@@ -256,19 +256,6 @@ def make_range_slider(id, slider_list, step=1):
     )
 
 
-buttons = html.Div(
-    [
-        dbc.Button("Primary", color="primary", className="mr-1"),
-        dbc.Button("Secondary", color="secondary", className="mr-1"),
-        dbc.Button("Success", color="success", className="mr-1"),
-        dbc.Button("Warning", color="warning", className="mr-1"),
-        dbc.Button("Danger", color="danger", className="mr-1"),
-        dbc.Button("Info", color="info", className="mr-1"),
-        dbc.Button("Light", color="light", className="mr-1"),
-        dbc.Button("Dark", color="dark", className="mr-1"),
-        dbc.Button("Link", color="link"),
-    ]
-)
 
 
 """
@@ -288,8 +275,8 @@ boostrap_card = dbc.Card(
                         target="_blank",
                     )
                 ),
-                make_dropdown("themes_v02", boostrap_light_themes),
-                make_radio_items("light_dark_v02", ["Light Themes", "Dark Themes"]),
+                make_dropdown("themes_v03", boostrap_light_themes),
+                make_radio_items("light_dark_v03", ["Light Themes", "Dark Themes"]),
             ]
         ),
     ],
@@ -309,7 +296,7 @@ graph_template_card = dbc.Card(
                         target="_blank",
                     )
                 ),
-                make_dropdown("template_v02", plotly_template),
+                make_dropdown("template_v03", plotly_template),
             ]
         )
     ],
@@ -329,7 +316,7 @@ graph_color_sequence_card = dbc.Card(
                         target="_blank",
                     )
                 ),
-                make_dropdown("color_sequence_v02", list(discrete_colors)),
+                make_dropdown("color_sequence_v03", list(discrete_colors)),
             ]
         ),
     ],
@@ -349,9 +336,9 @@ graph_continuous_color_card = dbc.Card(
                         target="_blank",
                     )
                 ),
-                make_dropdown("color_scale_v02", list(continuous_colors)),
+                make_dropdown("color_scale_v03", list(continuous_colors)),
                 make_radio_items(
-                    "color_scale_radio_v02", ["Sequential", "Diverging", "Cyclical"]
+                    "color_scale_radio_v03", ["Sequential", "Diverging", "Cyclical"]
                 ),
             ]
         ),
@@ -367,11 +354,11 @@ background_color_card = dbc.Card(
                 dbc.Label("App Background Color", className="mt-2"),
                 dbc.Input(
                     type="color",
-                    id="bg_color_v02",
+                    id="bg_color_v03",
                     value="#DFDEE3",
                     style={"width": 100},
                 ),
-                make_radio_items("bg_default_v02", ["Use Default", "Use Colorpicker"]),
+                make_radio_items("bg_default_v03", ["Use Default", "Use Colorpicker"]),
             ]
         ),
     ],
@@ -394,7 +381,7 @@ theme_controls = dbc.CardGroup(
 
 """
 ===============================================================================
-Sample App
+Sample Apps 
 """
 
 sample_app_controls = dbc.Card(
@@ -406,7 +393,7 @@ sample_app_controls = dbc.Card(
                         [
                             dbc.Label("Select indicator (y-axis)"),
                             make_dropdown(
-                                "indicator_v02", ["gdpPercap", "lifeExp", "pop"]
+                                "indicator_v03", ["gdpPercap", "lifeExp", "pop"]
                             ),
                         ]
                     )
@@ -415,7 +402,7 @@ sample_app_controls = dbc.Card(
                     dbc.FormGroup(
                         [
                             dbc.Label("Select continents"),
-                            make_checklist("continents_v02", df.continent.unique()),
+                            make_checklist("continents_v03", df.continent.unique()),
                         ]
                     )
                 ),
@@ -424,53 +411,37 @@ sample_app_controls = dbc.Card(
         dbc.FormGroup(
             [
                 dbc.Label("Select years"),
-                make_range_slider("slider_years_v02", df.year.unique(), 5),
+                make_range_slider("slider_years_v03", df.year.unique(), 5),
             ]
         ),
-        dbc.FormGroup([dbc.Label("Sample Buttons"), buttons]),
     ],
     className="m-4 p-2",
 )
 
-sample_app = dbc.Card(
+sample_app_1 = dbc.Card(
     [
         html.H1("Sample Dash App 1", className="bg-primary text-white m-1 p-2"),
         dbc.Row(
             [
-                dbc.Col(dcc.Graph(id="line_chart_v02"), md=6),
-                dbc.Col(dcc.Graph(id="scatter_chart_v02"), md=6),
+                dbc.Col(dcc.Graph(id="line_chart_v03"), md=6),
+                dbc.Col(dcc.Graph(id="scatter_chart_v03"), md=6),
             ]
         ),
         sample_app_controls,
-        dcc.DatePickerRange(),
-        dcc.Input(),
-        dcc.Textarea(),
-        dash_table.DataTable(
-            columns=[{"name": i, "id": i} for i in df.columns],
-            data=df.to_dict('records'),
-            page_size=5,
-        )
     ],
     className="m-4 shadow-lg p-4",
-    id="layout_container_v02",
-    # fluid=True,
+    id="layout_container_v03",
+
 )
 
-"""
-==================================================
-Bootswatch Iframe
-"""
-bootswatch = dbc.Row(
+sample_app_2 = dbc.Card(
     [
-        dbc.Col(
-            html.Iframe(
-                id="bootswatch_page_v02", style={"width": "100%", "height": 1000},
-            ),
-            width={"size": 10, "offset": 1},
-        ),
+        html.H1("DBC Component Gallery", className="bg-primary text-white m-1 p-2"),
+        dbc.Row( components_layout, className='mt-4'),
     ],
-    className="m-4,",
+    className="m-4 shadow-lg p-4",
 )
+
 
 
 """
@@ -481,24 +452,24 @@ layout = dbc.Container(
     [
         header,
         theme_controls,
-        sample_app,
-        bootswatch,
+        sample_app_1,
+        sample_app_2,
         app_notes2,
-        html.Div(id="blank_output_v02"),
+        html.Div(id="blank_output_v03"),
     ],
     fluid=True,
 )
 
 
 @app.callback(
-    Output("line_chart_v02", "figure"),
-    Output("scatter_chart_v02", "figure"),
-    Input("indicator_v02", "value"),
-    Input("continents_v02", "value"),
-    Input("slider_years_v02", "value"),
-    Input("template_v02", "value"),
-    Input("color_sequence_v02", "value"),
-    Input("color_scale_v02", "value"),
+    Output("line_chart_v03", "figure"),
+    Output("scatter_chart_v03", "figure"),
+    Input("indicator_v03", "value"),
+    Input("continents_v03", "value"),
+    Input("slider_years_v03", "value"),
+    Input("template_v03", "value"),
+    Input("color_sequence_v03", "value"),
+    Input("color_scale_v03", "value"),
 )
 def update_line_chart(
     indicator, continents, years, template, color_sequence, color_scale
@@ -531,7 +502,7 @@ def update_line_chart(
     return fig, fig2
 
 
-@app.callback(Output("themes_v02", "options"), Input("light_dark_v02", "value"))
+@app.callback(Output("themes_v03", "options"), Input("light_dark_v03", "value"))
 def update(theme):
     if theme == "Light Themes":
         options = [{"label": str(i), "value": i} for i in boostrap_light_themes]
@@ -541,7 +512,7 @@ def update(theme):
 
 
 @app.callback(
-    Output("color_scale_v02", "options"), Input("color_scale_radio_v02", "value")
+    Output("color_scale_v03", "options"), Input("color_scale_radio_v03", "value")
 )
 def update(colorscale):
     if colorscale == "Sequential":
@@ -554,17 +525,17 @@ def update(colorscale):
 
 
 @app.callback(
-    Output("layout_container_v02", "style"),
-    Output("bg_default_v02", "value"),
-    Input("bg_color_v02", "value"),
-    Input("bg_default_v02", "value"),
+    Output("layout_container_v03", "style"),
+    Output("bg_default_v03", "value"),
+    Input("bg_color_v03", "value"),
+    Input("bg_default_v03", "value"),
 )
 def update_app_bg_color(color, radio):
 
     ctx = dash.callback_context
     input_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-    if input_id == "bg_color_v02":
+    if input_id == "bg_color_v03":
         radio = "Use Colorpicker"
 
     else:
@@ -573,7 +544,7 @@ def update_app_bg_color(color, radio):
 
 
 @app.callback(
-    Output("bootswatch_page_v02", "src"), Input("themes_v02", "value"),
+    Output("bootswatch_page_v03", "src"), Input("themes_v03", "value"),
 )
 def update(theme):
     theme = "default" if theme == "BOOTSTRAP" else theme
@@ -603,6 +574,6 @@ app.clientside_callback(
         document.getElementsByTagName("head")[0].appendChild(link);        
     }
     """,
-    Output("blank_output_v02", "children"),
-    Input("themes_v02", "value"),
+    Output("blank_output_v03", "children"),
+    Input("themes_v03", "value"),
 )

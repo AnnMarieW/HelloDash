@@ -26,7 +26,7 @@ example_app_code = f"```{code}```"
 app_notes1 = dcc.Markdown(
     """
 
-## These two images are the same app!  Only 5 lines are changed to set a different theme.
+## These two images are the same app!  Only 5 lines are updated to change the design.
 
 
 |Light Theme app     | Dark Theme app |
