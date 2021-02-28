@@ -4,8 +4,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/"
+DBC_HOME = "https://dash-bootstrap-components.opensource.faculty.ai/"
 DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
+DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
 
 
 from app import app
@@ -30,7 +31,7 @@ navbar = dbc.NavbarSimple(
         ),
     ],
     brand="Dash Bootstrap Components",
-    brand_href=DBC_DOCS,
+    brand_href=DBC_HOME,
     sticky="top",
 )
 
@@ -46,17 +47,39 @@ header = html.Div(
     className="mt-4",
 )
 
+
+alerts1 = html.Div(
+    [
+        dbc.Alert("This is a primary alert", color="primary"),
+        dbc.Alert("This is a secondary alert", color="secondary"),
+        dbc.Alert("This is a success alert! Well done!", color="success"),
+        dbc.Alert("This is a warning alert... be careful...", color="warning"),
+    ],
+)
+alerts2 = html.Div(
+    [
+        dbc.Alert("This is a danger alert. Scary!", color="danger"),
+        dbc.Alert("This is an info alert. Good to know!", color="info"),
+        dbc.Alert("This is a light alert", color="light"),
+        dbc.Alert("This is a dark alert", color="dark"),
+    ],
+)
+
 alerts = html.Div(
     [
-        html.H2("Alerts"),
-        dbc.Alert("This is an alert", color="primary"),
-        dbc.Alert("Danger!", color="danger"),
+        html.H2(dcc.Link("Alerts", href=DBC_DOCS + "alert/", target='_blank')),
+        dbc.Row(
+            [
+                dbc.Col(alerts1),
+                dbc.Col(alerts2)
+            ]
+        )
     ]
 )
 
 badges = html.Div(
     [
-        html.H2("Badges"),
+        html.H2(dcc.Link("Badges", href=DBC_DOCS + "badge/", target='_blank')),
         html.H3(
             [
                 "This is a heading with a badge!",
@@ -68,7 +91,7 @@ badges = html.Div(
 
 buttons = html.Div(
     [
-        html.H2("Buttons"),
+        html.H2(dcc.Link("Buttons", href=DBC_DOCS + "button/", target='_blank')),
         html.Div(
             [
                 dbc.Button("Primary", color="primary", className="mr-1"),
@@ -123,7 +146,7 @@ buttons = html.Div(
 
 cards = html.Div(
     [
-        html.H2("Cards"),
+        html.H2(dcc.Link("Cards", href=DBC_DOCS + "card/", target='_blank')),
         dbc.CardDeck(
             [
                 dbc.Card(
@@ -184,7 +207,7 @@ cards = html.Div(
 
 collapse = html.Div(
     [
-        html.H2("Collapse"),
+        html.H2(dcc.Link("Collaps", href=DBC_DOCS + "collapse/", target='_blank')),
         dbc.Button(
             "Open collapse",
             id="collapse-button",
@@ -199,7 +222,7 @@ collapse = html.Div(
 
 columns = html.Div(
     [
-        html.H2("Columns"),
+        html.H2(dcc.Link("Columns", href=DBC_DOCS + "layout/", target='_blank')),
         dbc.Row(
             [
                 dbc.Col(
@@ -225,7 +248,7 @@ columns = html.Div(
                 ),
             ]
         ),
-        html.Br(),
+        html.Hr(),
         html.H4("Row with no gutters"),
         dbc.Row(
             [
@@ -258,7 +281,7 @@ columns = html.Div(
 
 dropdownmenu = html.Div(
     [
-        html.H2("DropdownMenu"),
+        html.H2(dcc.Link("DropdownMenu", href=DBC_DOCS + "dropdown_menu/", target='_blank')),
         dbc.DropdownMenu(
             [
                 dbc.DropdownMenuItem("Heading", header=True),
@@ -274,7 +297,7 @@ dropdownmenu = html.Div(
 
 fade = html.Div(
     [
-        html.H2("Fade"),
+        html.H2(dcc.Link("Fade", href=DBC_DOCS + "fade/", target='_blank')),
         dbc.Button(
             "Toggle fade", id="fade-button", style={"margin-bottom": "1rem"}
         ),
@@ -294,7 +317,7 @@ fade = html.Div(
 
 form = html.Div(
     [
-        html.H2("Form"),
+        html.H2(dcc.Link("Form", href=DBC_DOCS + "form/", target='_blank')),
         dbc.Form(
             [
                 dbc.FormGroup(
@@ -342,7 +365,7 @@ form = html.Div(
 
 input_ = html.Div(
     [
-        html.H2("Input"),
+        html.H2(dcc.Link("Input", href=DBC_DOCS + "input/", target='_blank')),
         dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
         dbc.FormGroup(
             [
@@ -393,7 +416,7 @@ input_ = html.Div(
 
 input_group = html.Div(
     [
-        html.H2("Input groups and addons"),
+        html.H2(dcc.Link("Input groups and addons", href=DBC_DOCS + "input_group/", target='_blank')),
         dbc.InputGroup(
             [
                 dbc.InputGroupAddon(
@@ -425,7 +448,7 @@ input_group = html.Div(
 
 jumbotron = html.Div(
     [
-        html.H2("Jumbotron"),
+        html.H2(dcc.Link("Jumbotron", href=DBC_DOCS + "jumbotron/", target='_blank')),
         dbc.Jumbotron(
             [
                 html.H2("This is a jumbotron"),
@@ -438,7 +461,7 @@ jumbotron = html.Div(
 
 list_group = html.Div(
     [
-        html.H2("ListGroup"),
+        html.H2(dcc.Link("ListGroup", href=DBC_DOCS + "list_group/", target='_blank')),
         dbc.ListGroup(
             [
                 dbc.ListGroupItem("Item 1", color="primary", action=True),
@@ -455,9 +478,29 @@ list_group = html.Div(
     ]
 )
 
+
+COOKIE = "https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png"
+modal = html.Div(
+    [
+        html.H2(dcc.Link("Modal", href=DBC_DOCS + "modal/", target='_blank')),
+        html.P([
+            dbc.Button("Show the cookie monster", id="button"),
+            dbc.Modal(
+                [
+                    dbc.ModalHeader("Cookies!"),
+                    dbc.ModalBody(html.Img(src=COOKIE, style={"width": "100%"})),
+                ],
+                id="modal",
+                is_open=False,
+            ),
+        ])
+    ]
+
+)
+
 popover = html.Div(
     [
-        html.H2("Popover"),
+        html.H2(dcc.Link("Popover", href=DBC_DOCS + "popover/", target='_blank')),
         html.P(
             ["Click on the word ", html.Span("popover", id="popover-target")]
         ),
@@ -475,15 +518,35 @@ popover = html.Div(
 
 progress = html.Div(
     [
-        html.H2("Progress"),
+        html.H2(dcc.Link("Progress", href=DBC_DOCS + "progress/", target='_blank')),
         dbc.Progress(id="progress", value=0, striped=True, animated=True),
+    ]
+)
+
+spinner = html.Div(
+    [
+        html.H2(dcc.Link("Spinner", href=DBC_DOCS + "spinner/", target='_blank')),
+        html.P(),
+        html.Div(
+            [
+
+                dbc.Spinner(color="secondary"),
+                dbc.Spinner(color="danger", type="grow"),
+                dbc.Spinner(color="light", type="grow"),
+                dbc.Button(
+                    [dbc.Spinner(size="sm"), " Loading..."],
+                    color="primary",
+                    disabled=True,
+                ),
+            ]
+        )
     ]
 )
 
 
 table = html.Div(
     [
-        html.H2("Table"),
+        html.H2(dcc.Link("HTML Table", href=DBC_DOCS + "table/", target='_blank')),
         dbc.Table(
             [
                 html.Thead(
@@ -530,7 +593,7 @@ table = html.Div(
 
 tabs = html.Div(
     [
-        html.H2("Tabs"),
+        html.H2(dcc.Link("Tabs", href=DBC_DOCS + "tabs/", target='_blank')),
         dbc.Tabs(
             [
                 dbc.Tab(
@@ -558,9 +621,28 @@ tabs = html.Div(
     ]
 )
 
+toast = html.Div(
+    [
+        html.H2(dcc.Link("Toast", href=DBC_DOCS + "toast/", target='_blank')),
+        dbc.Button(
+            "Open toast",
+            id="auto-toast-toggle",
+            color="primary",
+            className="mb-3",
+        ),
+        dbc.Toast(
+            [html.P("This is the content of the toast", className="mb-0")],
+            id="auto-toast",
+            header="This is the header",
+            icon="primary",
+            duration=4000,
+        ),
+    ]
+)
+
 tooltip = html.Div(
     [
-        html.H2("Tooltip"),
+        html.H2(dcc.Link("Tooltip", href=DBC_DOCS + "tooltip/", target='_blank')),
         html.P(
             [
                 "I wonder what ",
@@ -578,24 +660,6 @@ tooltip = html.Div(
     ]
 )
 
-COOKIE = "https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png"
-modal = html.Div(
-    [
-        html.H2("Modal"),
-        html.P([
-            dbc.Button("Show the cookie monster", id="button"),
-            dbc.Modal(
-                [
-                    dbc.ModalHeader("Cookies!"),
-                    dbc.ModalBody(html.Img(src=COOKIE, style={"width": "100%"})),
-                ],
-                id="modal",
-                is_open=False,
-            ),
-        ])
-    ]
-
-)
 
 layout = html.Div(
     [
@@ -604,44 +668,49 @@ layout = html.Div(
             [
                 dcc.Interval(id="interval", interval=500, n_intervals=0),
                 header,
-                html.Br(),
+                html.Hr(),
                 alerts,
-                html.Br(),
+                html.Hr(),
                 badges,
-                html.Br(),
+                html.Hr(),
                 buttons,
-                html.Br(),
+                html.Hr(),
                 cards,
-                html.Br(),
+                html.Hr(),
                 collapse,
-                html.Br(),
+                html.Hr(),
                 columns,
-                html.Br(),
+                html.Hr(),
                 dropdownmenu,
-                html.Br(),
+                html.Hr(),
                 fade,
-                html.Br(),
+                html.Hr(),
                 form,
-                html.Br(),
+                html.Hr(),
                 input_,
-                html.Br(),
+                html.Hr(),
                 input_group,
-                html.Br(),
+                html.Hr(),
                 jumbotron,
-                html.Br(),
+                html.Hr(),
                 list_group,
-                html.Br(),
-                popover,
-                html.Br(),
-                progress,
-                html.Br(),
-                table,
-                html.Br(),
-                tabs,
-                html.Br(),
-                tooltip,
-                html.Br(),
+                html.Hr(),
                 modal,
+                html.Hr(),
+                popover,
+                html.Hr(),
+                progress,
+                html.Hr(),
+                spinner,
+                html.Hr(),
+                table,
+                html.Hr(),
+                tabs,
+                html.Hr(),
+                toast,
+                html.Hr(),
+                tooltip,
+                html.Hr(),
                 html.Div(style={"height": "200px"}),
             ]
         ),
