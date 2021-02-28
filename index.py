@@ -14,15 +14,17 @@ app.layout = html.Div(
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
     if pathname == "/apps/theme_explorer":
-        return theme_explorer_v02.layout
+        return theme_explorer_v03.layout
     elif pathname == "/v01":
         return theme_explorer.layout
+    elif pathname == "/v02":
+        return theme_explorer_v02.layout
     elif pathname == "/v03":
         return theme_explorer_v03.layout
     elif pathname == "/learn_more":
         return learn_more.layout
     else:
-        return theme_explorer_v02.layout
+        return theme_explorer_v03.layout
 
 
 if __name__ == "__main__":
