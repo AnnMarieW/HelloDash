@@ -373,7 +373,7 @@ theme_controls = dbc.CardGroup(
         graph_continuous_color_card,
         background_color_card,
     ],
-    className="m-2 p-2 mb-2",
+    className=" p-2",
 )
 
 
@@ -413,7 +413,7 @@ sample_app_controls = dbc.Card(
             ]
         ),
     ],
-    className="m-4 p-2",
+    className="mr-4 ml-4 px-2",
 )
 
 sample_app_1 = dbc.Card(
@@ -421,22 +421,27 @@ sample_app_1 = dbc.Card(
         html.H1("Sample Dash App 1", className="bg-primary text-white m-1 p-2"),
         dbc.Row(
             [
-                dbc.Col(dcc.Graph(id="line_chart_v03"), md=6),
-                dbc.Col(dcc.Graph(id="scatter_chart_v03"), md=6),
-            ]
+                dbc.Col(dcc.Graph(id="line_chart_v03"),),
+                dbc.Col(dcc.Graph(id="scatter_chart_v03"),),
+            ],
+            className="m-2",
         ),
         sample_app_controls,
     ],
-    className="m-4 shadow-lg p-4",
+    className="mx-4 shadow-lg p-2",
     id="layout_container_v03",
 )
 
 sample_app_2 = dbc.Card(
     [
         html.H1("DBC Component Gallery", className="bg-primary text-white m-1 p-2"),
-        dbc.Row(components_layout, className="mt-4"),
+        html.Div(
+            components_layout,
+            style={"height": 1200, "overflow": "scroll"},
+            className="mt-4",
+        ),
     ],
-    className="m-4 shadow-lg p-4",
+    className="mx-4 mt-2 shadow-lg p-2",
 )
 
 
@@ -483,7 +488,9 @@ def update_line_chart(
         template=template,
         color_discrete_sequence=discrete_colors[color_sequence],
         title=f'Graph Template= "{template}"  Discrete Colors ="{color_sequence}"',
+        height=350,
     )
+    fig.update_layout(margin=dict(l=75, r=20, t=50, b=20))
     dff = df[df.year == years[1]]
     fig2 = px.scatter(
         dff[dff.continent.isin(continents)],
@@ -494,7 +501,9 @@ def update_line_chart(
         color_continuous_scale=color_scale,
         hover_data=["country", "year"],
         title=f'Graph Template= "{template}"  Continuous Colorscale= "{color_scale}"',
+        height=350,
     )
+    fig2.update_layout(margin=dict(l=75, r=20, t=50, b=20))
     return fig, fig2
 
 

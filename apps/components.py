@@ -10,30 +10,6 @@ DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/compone
 
 from app import app
 
-navbar = dbc.NavbarSimple(
-    children=[
-        dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
-        dbc.DropdownMenu(
-            nav=True,
-            in_navbar=True,
-            label="Menu",
-            children=[
-                dbc.DropdownMenuItem("Entry 1", href="https://google.com"),
-                dbc.DropdownMenuItem("Entry 2", href="/test"),
-                dbc.DropdownMenuItem(divider=True),
-                dbc.DropdownMenuItem("A heading", header=True),
-                dbc.DropdownMenuItem(
-                    "Entry 3", href="/external-relative", external_link=True
-                ),
-                dbc.DropdownMenuItem("Entry 4 - does nothing"),
-            ],
-        ),
-    ],
-    brand="Dash Bootstrap Components",
-    brand_href=DBC_HOME,
-    sticky="top",
-)
-
 header = html.Div(
     [
         html.H3(
@@ -71,11 +47,32 @@ alerts = html.Div(
     ]
 )
 
+badge_colors = html.Span(
+    [
+        dbc.Badge("Primary", color="primary", className="mr-1"),
+        dbc.Badge("Secondary", color="secondary", className="mr-1"),
+        dbc.Badge("Success", color="success", className="mr-1"),
+        dbc.Badge("Warning", color="warning", className="mr-1"),
+        dbc.Badge("Danger", color="danger", className="mr-1"),
+        dbc.Badge("Info", color="info", className="mr-1"),
+        dbc.Badge("Light", color="light", className="mr-1"),
+        dbc.Badge("Dark", color="dark"),
+    ],
+)
+
 badges = html.Div(
     [
         html.H2(dcc.Link("Badges", href=DBC_DOCS + "badge/", target="_blank")),
-        html.H3(
-            ["This is a heading with a badge!", dbc.Badge("New!", color="success"),]
+        html.Div(
+            [
+                badge_colors,
+                html.Br(),
+                dbc.Button(
+                    ["Notifications", dbc.Badge("4", color="light", className="ml-1")],
+                    color="primary",
+                    className="mt-2",
+                ),
+            ]
         ),
     ]
 )
@@ -198,28 +195,29 @@ collapse = html.Div(
 columns = html.Div(
     [
         html.H2(dcc.Link("Columns", href=DBC_DOCS + "layout/", target="_blank")),
-        dbc.Row(
+        html.Div(
             [
-                dbc.Col(
-                    html.Div(
-                        "This is column 1",
-                        style={"height": "100px", "border-style": "solid"},
-                    ),
-                    md=3,
+                dbc.Row(
+                    dbc.Col(html.H4("A single column"), className="border bg-light")
                 ),
-                dbc.Col(
-                    html.Div(
-                        "This is column 2",
-                        style={"height": "100px", "border-style": "solid"},
-                    ),
-                    md=6,
-                ),
-                dbc.Col(
-                    html.Div(
-                        "This is column 3",
-                        style={"height": "100px", "border-style": "solid"},
-                    ),
-                    md=3,
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.H4(
+                                "One of three columns", className="border bg-light"
+                            ),
+                        ),
+                        dbc.Col(
+                            html.H4(
+                                "One of three columns", className="border bg-light"
+                            ),
+                        ),
+                        dbc.Col(
+                            html.H4(
+                                "One of three columns", className="border bg-light"
+                            ),
+                        ),
+                    ]
                 ),
             ]
         ),
@@ -227,27 +225,9 @@ columns = html.Div(
         html.H4("Row with no gutters"),
         dbc.Row(
             [
-                dbc.Col(
-                    html.Div(
-                        "This is column 1",
-                        style={"height": "100px", "border-style": "solid"},
-                    ),
-                    md=3,
-                ),
-                dbc.Col(
-                    html.Div(
-                        "This is column 2",
-                        style={"height": "100px", "border-style": "solid"},
-                    ),
-                    md=6,
-                ),
-                dbc.Col(
-                    html.Div(
-                        "This is column 3",
-                        style={"height": "100px", "border-style": "solid"},
-                    ),
-                    md=3,
-                ),
+                dbc.Col(html.H4("Column 1  md=3", className="border bg-light"), md=3,),
+                dbc.Col(html.H4("Column 2  md=6", className="border bg-light"), md=6,),
+                dbc.Col(html.H4("column 3  md=3", className="border bg-light"), md=3,),
             ],
             no_gutters=True,
         ),
@@ -466,6 +446,35 @@ modal = html.Div(
     ]
 )
 
+navbar = html.Div(
+    [
+        html.H2(dcc.Link("Navbar", href=DBC_DOCS + "navbar/", target="_blank")),
+        dbc.NavbarSimple(
+            children=[
+                dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
+                dbc.DropdownMenu(
+                    nav=True,
+                    in_navbar=True,
+                    label="Menu",
+                    children=[
+                        dbc.DropdownMenuItem("Entry 1", href="https://google.com"),
+                        dbc.DropdownMenuItem("Entry 2", href="/test"),
+                        dbc.DropdownMenuItem(divider=True),
+                        dbc.DropdownMenuItem("A heading", header=True),
+                        dbc.DropdownMenuItem(
+                            "Entry 3", href="/external-relative", external_link=True
+                        ),
+                        dbc.DropdownMenuItem("Entry 4 - does nothing"),
+                    ],
+                ),
+            ],
+            brand="Dash Bootstrap Components",
+            brand_href=DBC_HOME,
+            sticky="top",
+        ),
+    ]
+)
+
 popover = html.Div(
     [
         html.H2(dcc.Link("Popover", href=DBC_DOCS + "popover/", target="_blank")),
@@ -610,7 +619,6 @@ tooltip = html.Div(
 
 layout = html.Div(
     [
-        navbar,
         dbc.Container(
             [
                 dcc.Interval(id="interval", interval=500, n_intervals=0),
@@ -644,6 +652,8 @@ layout = html.Div(
                 html.Hr(),
                 modal,
                 html.Hr(),
+                navbar,
+                html.Hr(),
                 popover,
                 html.Hr(),
                 progress,
@@ -658,7 +668,7 @@ layout = html.Div(
                 html.Hr(),
                 tooltip,
                 html.Hr(),
-                html.Div(style={"height": "100px"}),
+                html.Div(style={"height": "50px"}),
             ],
             className="m-4",
         ),
@@ -716,8 +726,6 @@ def toggle_modal(n, is_open):
     return is_open
 
 
-@app.callback(
-    Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")]
-)
+@app.callback(Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")])
 def open_toast(n):
     return True
