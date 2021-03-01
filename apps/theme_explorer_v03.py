@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
 from dash.dependencies import Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
@@ -396,6 +397,16 @@ buttons = html.Div(
     ]
 )
 
+table = html.Div(
+    dash_table.DataTable(
+        id="table_v03",
+        columns=[{"name": i, "id": i} for i in df.columns],
+        data=df.to_dict("records"),
+        page_size=5,
+    ),
+    className="mx-4",
+)
+
 sample_app_controls = dbc.Card(
     [
         dbc.Row(
@@ -446,6 +457,7 @@ sample_app_1 = dbc.Card(
             ],
             className="m-2",
         ),
+        table,
         sample_app_controls,
     ],
     className="mx-4 shadow-lg p-2",
@@ -484,6 +496,7 @@ layout = dbc.Container(
 @app.callback(
     Output("line_chart_v03", "figure"),
     Output("scatter_chart_v03", "figure"),
+    Output("table_v03", "data"),
     Input("indicator_v03", "value"),
     Input("continents_v03", "value"),
     Input("slider_years_v03", "value"),
@@ -499,8 +512,10 @@ def update_line_chart(
         return {}, {}
 
     dff = df[df.year.between(years[0], years[1])]
+    dff = dff[dff.continent.isin(continents)]
+    data = dff.to_dict("records")
     fig = px.line(
-        dff[dff.continent.isin(continents)],
+        dff,
         x="year",
         y=indicator,
         color="country",
@@ -523,16 +538,32 @@ def update_line_chart(
         height=350,
     )
     fig2.update_layout(margin=dict(l=75, r=20, t=50, b=20))
-    return fig, fig2
+    return fig, fig2, data
 
 
-@app.callback(Output("themes_v03", "options"), Input("light_dark_v03", "value"))
+@app.callback(
+    Output("themes_v03", "options"),
+    Output("themes_v03", "value"),
+    Output("table_v03", "style_header"),
+    Output("table_v03", "style_cell"),
+    Output("table_v03", "css"),
+    Input("light_dark_v03", "value"),
+)
 def update(theme):
+
     if theme == "Light Themes":
         options = [{"label": str(i), "value": i} for i in boostrap_light_themes]
+        value = boostrap_light_themes[0]
+        style_header = {}
+        style_cell = {}
+        css = []
     else:
         options = [{"label": str(i), "value": i} for i in boostrap_dark_themes]
-    return options
+        value = boostrap_dark_themes[0]
+        style_header = {"backgroundColor": "transparent"}
+        style_cell = {"backgroundColor": "transparent", "color": "white"}
+        css = [{"selector": "tr:hover", "rule": "background-color: grey"}]
+    return options, value, style_header, style_cell, css
 
 
 @app.callback(
@@ -583,7 +614,7 @@ app.clientside_callback(
     function(theme) {
         // remove all stylesheets except for CSS files in assets folder
         var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');
-        for(var i=0;i<elements.length;i++){          
+        for(var i=0;i<elements.length;i++){
           elements[i].parentNode.removeChild(elements[i]);
         }
 
@@ -597,7 +628,7 @@ app.clientside_callback(
           } else {
             link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
         }
-        document.getElementsByTagName("head")[0].appendChild(link);        
+        document.getElementsByTagName("head")[0].appendChild(link);
     }
     """,
     Output("blank_output_v03", "children"),

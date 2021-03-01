@@ -181,7 +181,7 @@ collapse = html.Div(
     [
         html.H2(dcc.Link("Collapse", href=DBC_DOCS + "collapse/", target="_blank")),
         dbc.Button(
-            "Open collapse", id="collapse-button", style={"margin-bottom": "1rem"},
+            "Open collapse", id="collapse-button", style={"marginBottom": "1rem"},
         ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
@@ -253,7 +253,7 @@ dropdownmenu = html.Div(
 fade = html.Div(
     [
         html.H2(dcc.Link("Fade", href=DBC_DOCS + "fade/", target="_blank")),
-        dbc.Button("Toggle fade", id="fade-button", style={"margin-bottom": "1rem"}),
+        dbc.Button("Toggle fade", id="fade-button", style={"marginBottom": "1rem"}),
         dbc.Fade(
             dbc.Card(
                 dbc.CardBody(
@@ -282,7 +282,7 @@ form = html.Div(
                                     "Click here.",
                                     href="#",
                                     className="text-muted",
-                                    style={"text-decoration": "underline"},
+                                    style={"textDecoration": "underline"},
                                 ),
                             ]
                         ),
@@ -299,7 +299,7 @@ form = html.Div(
                                     "Click here.",
                                     href="#",
                                     className="text-muted",
-                                    style={"text-decoration": "underline"},
+                                    style={"textDecoration": "underline"},
                                 ),
                             ]
                         ),
@@ -492,7 +492,9 @@ popover = html.Div(
 progress = html.Div(
     [
         html.H2(dcc.Link("Progress", href=DBC_DOCS + "progress/", target="_blank")),
-        dbc.Progress(id="progress", value=0, striped=True, animated=True),
+        dbc.Progress("25%", value=25),
+        dbc.Progress(value=50, striped=True, className="my-2"),
+        dbc.Progress(value=75, color="success"),
     ]
 )
 
@@ -628,7 +630,6 @@ layout = html.Div(
     [
         dbc.Container(
             [
-                dcc.Interval(id="interval", interval=500, n_intervals=0),
                 header,
                 html.Hr(),
                 alerts,
@@ -715,12 +716,6 @@ def toggle_popover(n, is_open):
     if n:
         return not is_open
     return is_open
-
-
-@app.callback(Output("progress", "value"), [Input("interval", "n_intervals")])
-def advance_progress(n):
-    # advance to 100 then pause for a bit
-    return min(n % 111, 100)
 
 
 @app.callback(
