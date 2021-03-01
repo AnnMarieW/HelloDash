@@ -12,7 +12,7 @@ from app import app
 
 header = html.Div(
     [
-        html.H3(
+        html.H4(
             [
                 "Here are the components available in ",
                 html.Code("dash-bootstrap-components"),

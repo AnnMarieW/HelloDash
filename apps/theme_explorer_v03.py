@@ -418,7 +418,7 @@ sample_app_controls = dbc.Card(
 
 sample_app_1 = dbc.Card(
     [
-        html.H1("Sample Dash App 1", className="bg-primary text-white m-1 p-2"),
+        html.H2("Sample Dash App 1", className="bg-primary text-white m-1 p-2"),
         dbc.Row(
             [
                 dbc.Col(
@@ -438,7 +438,7 @@ sample_app_1 = dbc.Card(
 
 sample_app_2 = dbc.Card(
     [
-        html.H1(
+        html.H2(
             "Dash Bootstrap Component Gallery",
             className="bg-primary text-white m-1 p-2",
         ),
