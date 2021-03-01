@@ -14,28 +14,35 @@ header = html.Div(
     [
         html.H3(
             [
-                "This app demonstrates components available in ",
+                "Here are the components available in ",
                 html.Code("dash-bootstrap-components"),
             ]
         )
     ],
-    className="mt-4",
 )
 
 
 alerts1 = html.Div(
     [
         dbc.Alert("This is a primary alert", color="primary"),
-        dbc.Alert("This is a secondary alert", color="secondary"),
-        dbc.Alert("This is a success alert! Well done!", color="success"),
-        dbc.Alert("This is a warning alert... be careful...", color="warning"),
+        dbc.Alert("This is a danger alert", color="danger"),
     ],
 )
 alerts2 = html.Div(
     [
-        dbc.Alert("This is a danger alert. Scary!", color="danger"),
-        dbc.Alert("This is an info alert. Good to know!", color="info"),
+        dbc.Alert("This is a secondary alert.", color="secondary"),
+        dbc.Alert("This is an info alert.", color="info"),
+    ],
+)
+alerts3 = html.Div(
+    [
+        dbc.Alert("This is a success alert", color="success"),
         dbc.Alert("This is a light alert", color="light"),
+    ],
+)
+alerts4 = html.Div(
+    [
+        dbc.Alert("This is a warning alert. Scary!", color="warning"),
         dbc.Alert("This is a dark alert", color="dark"),
     ],
 )
@@ -43,7 +50,9 @@ alerts2 = html.Div(
 alerts = html.Div(
     [
         html.H2(dcc.Link("Alerts", href=DBC_DOCS + "alert/", target="_blank")),
-        dbc.Row([dbc.Col(alerts1), dbc.Col(alerts2)]),
+        dbc.Row(
+            [dbc.Col(alerts1), dbc.Col(alerts2), dbc.Col(alerts3), dbc.Col(alerts4)]
+        ),
     ]
 )
 
@@ -330,9 +339,9 @@ input_ = html.Div(
                 dbc.FormFeedback("That's an invalid input..."),
             ]
         ),
-        html.H4("Checklist"),
+        html.H4(dcc.Link("Checklist", href=DBC_DOCS + "input/", target="_blank")),
         dbc.Checklist(
-            options=[{"label": "Option {}".format(i), "value": i} for i in range(5)],
+            options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
             value=[],
         ),
         html.H5("Inline checklist", className="mt-3"),
@@ -341,9 +350,12 @@ input_ = html.Div(
             value=[],
             inline=True,
         ),
-        html.H4("RadioItems", className="mt-5"),
+        html.H4(
+            dcc.Link("RadioItems", href=DBC_DOCS + "input/", target="_blank"),
+            className="mt-5",
+        ),
         dbc.RadioItems(
-            options=[{"label": "Option {}".format(i), "value": i} for i in range(5)],
+            options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
             value=0,
         ),
         html.H5("Inline radioitems", className="mt-3"),
@@ -616,6 +628,12 @@ tooltip = html.Div(
     ]
 )
 
+source_code = dcc.Markdown(
+    """
+    ## See the [source code]('https://github.com/AnnMarieW/HelloDash/blob/main/apps/components.py')       
+    """
+)
+
 
 layout = html.Div(
     [
@@ -669,6 +687,7 @@ layout = html.Div(
                 tooltip,
                 html.Hr(),
                 html.Div(style={"height": "50px"}),
+                source_code,
             ],
             className="m-4",
         ),

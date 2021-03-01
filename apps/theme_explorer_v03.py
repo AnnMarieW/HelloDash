@@ -421,8 +421,12 @@ sample_app_1 = dbc.Card(
         html.H1("Sample Dash App 1", className="bg-primary text-white m-1 p-2"),
         dbc.Row(
             [
-                dbc.Col(dcc.Graph(id="line_chart_v03"),),
-                dbc.Col(dcc.Graph(id="scatter_chart_v03"),),
+                dbc.Col(
+                    dcc.Graph(id="line_chart_v03", config={"displayModeBar": False}),
+                ),
+                dbc.Col(
+                    dcc.Graph(id="scatter_chart_v03", config={"displayModeBar": False}),
+                ),
             ],
             className="m-2",
         ),
@@ -434,12 +438,11 @@ sample_app_1 = dbc.Card(
 
 sample_app_2 = dbc.Card(
     [
-        html.H1("DBC Component Gallery", className="bg-primary text-white m-1 p-2"),
-        html.Div(
-            components_layout,
-            style={"height": 1200, "overflow": "scroll"},
-            className="mt-4",
+        html.H1(
+            "Dash Bootstrap Component Gallery",
+            className="bg-primary text-white m-1 p-2",
         ),
+        html.Div(components_layout),
     ],
     className="mx-4 mt-2 shadow-lg p-2",
 )
