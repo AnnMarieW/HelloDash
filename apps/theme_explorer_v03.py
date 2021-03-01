@@ -382,6 +382,20 @@ theme_controls = dbc.CardGroup(
 Sample Apps 
 """
 
+buttons = html.Div(
+    [
+        dbc.Button("Primary", color="primary", className="mr-1"),
+        dbc.Button("Secondary", color="secondary", className="mr-1"),
+        dbc.Button("Success", color="success", className="mr-1"),
+        dbc.Button("Warning", color="warning", className="mr-1"),
+        dbc.Button("Danger", color="danger", className="mr-1"),
+        dbc.Button("Info", color="info", className="mr-1"),
+        dbc.Button("Light", color="light", className="mr-1"),
+        dbc.Button("Dark", color="dark", className="mr-1"),
+        dbc.Button("Link", color="link"),
+    ]
+)
+
 sample_app_controls = dbc.Card(
     [
         dbc.Row(
@@ -410,6 +424,8 @@ sample_app_controls = dbc.Card(
             [
                 dbc.Label("Select years"),
                 make_range_slider("slider_years_v03", df.year.unique(), 5),
+                html.Div(id="theme_colors_v03"),
+                buttons,
             ]
         ),
     ],
@@ -444,7 +460,7 @@ sample_app_2 = dbc.Card(
         ),
         html.Div(components_layout),
     ],
-    className="mx-4 mt-2 shadow-lg p-2",
+    className="m-4 shadow-lg p-2",
 )
 
 
@@ -552,12 +568,14 @@ def update_app_bg_color(color, radio):
 
 
 @app.callback(
-    Output("bootswatch_page_v03", "src"), Input("themes_v03", "value"),
+    Output("theme_colors_v03", "children"), Input("themes_v03", "value"),
 )
 def update(theme):
     theme = "default" if theme == "BOOTSTRAP" else theme
     link = f"https://bootswatch.com/{theme.lower()}/"
-    return link
+    return html.Div(
+        ["Boostrap Theme colors: ", dcc.Link(theme, href=link, target="_blank")]
+    )
 
 
 app.clientside_callback(
