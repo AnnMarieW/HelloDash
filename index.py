@@ -3,7 +3,7 @@ import dash_html_components as html
 
 from app import app
 from dash.dependencies import Input, Output
-from apps import theme_explorer, theme_explorer_v02, theme_explorer_v03, learn_more
+from apps import theme_explorer, theme_explorer_v02, theme_explorer_v03, gallery
 
 
 app.layout = html.Div(
@@ -21,8 +21,8 @@ def display_page(pathname):
         return theme_explorer_v02.layout
     elif pathname == "/v03":
         return theme_explorer_v03.layout
-    elif pathname == "/learn_more":
-        return learn_more.layout
+    elif pathname == "/gallery":
+        return gallery.layout
     else:
         return theme_explorer_v03.layout
 

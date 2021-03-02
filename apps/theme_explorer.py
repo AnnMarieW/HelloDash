@@ -251,9 +251,10 @@ Markdown Text
 """
 
 
-with open(APPS_PATH.joinpath("sample_app_1.py")) as f:
-    code = f.read()
-example_app_code = f"```{code}```"
+# with open(APPS_PATH.joinpath("theme_explorer_app.py")) as f:
+#     code = f.read()
+# example_app_code = f"```{code}```"
+example_app_code = ""
 
 
 app_notes = dcc.Markdown(

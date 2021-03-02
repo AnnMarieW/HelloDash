@@ -7,7 +7,7 @@ import dash_bootstrap_components as dbc
 import dash_table
 
 from app import app
-from .learn_more import app_notes2
+from .tutorial import tutorial
 
 
 boostrap_light_themes = [
@@ -475,7 +475,7 @@ layout = dbc.Container(
         theme_controls,
         sample_app,
         bootswatch,
-        app_notes2,
+        dcc.Markdown(tutorial),
         html.Div(id="blank_output_v02"),
     ],
     fluid=True,

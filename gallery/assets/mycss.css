@@ -1,0 +1,49 @@
+
+
+/* For dark theme apps - this changes color of dropdown input box
+.Select--single  .Select-value  {
+  background-color: #adb5bd;
+}
+*/
+
+
+/** for dark theme apps - changes color of dcc.dropdown menu **/
+.VirtualizedSelectOption {
+    background-color: white;
+    color: black;
+}
+
+.VirtualizedSelectFocusedOption {
+    background-color: grey;
+    color: white;
+}
+
+
+/** fixes dash DataTable dropdown - allows dropdown menu to be visible */
+.dash-table-container .row {
+    display : block !important;
+    margin: 0;
+}
+
+
+
+/* Resizes images in markdown */
+img[src*="#thumbnail"] {
+       width:450px;
+    }
+
+table {
+  border-collapse: collapse;
+}
+th:not(.CalendarDay),
+td:not(.CalendarDay) {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child:not(.CalendarDay),
+td:first-child:not(.CalendarDay) {
+  padding-left: 0; }
+th:last-child:not(.CalendarDay),
+td:last-child:not(.CalendarDay) {
+  padding-right: 0; }
+

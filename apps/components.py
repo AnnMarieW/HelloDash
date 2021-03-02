@@ -10,6 +10,11 @@ DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/compone
 
 from app import app
 
+about = """
+This app is part of a multi page app adapted from an [example app](https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/components.py)
+ in the dash-bootstrap-components github repo.  It is a gallery of all of the components available in the dbc library.
+"""
+
 header = html.Div(
     [
         html.H4(
@@ -621,7 +626,7 @@ tooltip = html.Div(
 
 source_code = dcc.Markdown(
     """
-    ## See the [source code]('https://github.com/AnnMarieW/HelloDash/blob/main/apps/components.py')       
+    ## See the [source code](https://github.com/AnnMarieW/HelloDash/blob/main/apps/components.py)       
     """
 )
 

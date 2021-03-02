@@ -9,7 +9,18 @@ The purpose of this app is to help you see how different Bootstrap and Bootswatc
 will look in your Dash app.  
 
 When you decide on a scheme you like, you can take note of the settings and add them into your own app, or use one of the
-sample apps to get started.  So far there is only one sample app, but I have plans to add several more.  
+sample apps to get started. 
+
+See the app gallery for more examples.  If you have an app that you would like to include in the gallery, please open
+an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
+
+1) An image of your app
+2) A short title to appear on the card in the gallery
+3) A link to the Github/GitLab ect for your code
+4) An extended description of your app.  This will be displayed in a dcc.Markdown component, so feel free to include any
+compatible Markdown formatting and links etc.
+   
+
 
 -------------
 ------------
@@ -38,7 +49,7 @@ Choose from:
 
 |Light Theme app     | Dark Theme app |
 | ----------- | ----------- |
-| ![minty](https://user-images.githubusercontent.com/72614349/108880577-aa390900-75bf-11eb-8cb2-d246b342f4b5.png#thumbnail) | ![dark](https://user-images.githubusercontent.com/72614349/108880544-a1483780-75bf-11eb-913d-09c10adbe537.png#thumbnail) |
+| ![theme_explorer_light](https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.png#thumbnail) | ![theme_explorer_dark](https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png#thumbnail) |
 | __Boostrap Theme:__ MINTY | DARKLY
 | __Graph Template:__ simple_white | plotly_dark|
 | __Graph Color Sequences:__ Pastel | Dark24|
