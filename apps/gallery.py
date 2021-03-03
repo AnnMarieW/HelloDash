@@ -15,18 +15,69 @@ card0_image = ""
 card0_title = "Coming Soon"
 card0_source_code = ""
 card0_about = ""
-
+#----------------------------------------
 card1_image = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.png"
 card1_title = "Light Theme App"
 card1_source_code = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.pn"
 card1_about = theme_explorer_app.about
-
+#----------------------------------------
 card2_image = "https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png"
 card2_title = "Dark Theme App"
 card2_source_code = (
     "https://github.com/AnnMarieW/HelloDash/blob/main/apps/sample_app_1.py"
 )
 card2_about = theme_explorer_app.about
+#------------------------------------------------
+card3= dbc.Card([
+
+    dbc.CardHeader(html.H3("New to Web Design?")),
+
+    dcc.Markdown("""
+
+Here are some great resources:
+
+- [Getting started with HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
+- [Learn CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
+- [Browser developer tools ](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)
+-  [My favorite Boostrap Cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+- [Theme Explorer](https://hellodash.pythonanywhere.com/)
+ - [Dash Bootstrap video by Charming Data](https://www.youtube.com/watch?v=0mfIK8zxUds)
+
+Have any other good references?  Please drop me a note [here](https://github.com/AnnMarieW/HelloDash/issues) and I'll add
+them to the list!
+
+""", className='p-4'),
+],)
+#------------------------------------------------
+card4_image ="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png"
+card4_title = "Great Starter app"
+card4_source_code = "https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region"
+card4_about = "This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)"
+
+#------------------------------------------------
+
+card5= dbc.Card([
+
+    dbc.CardHeader(html.H3("Add your app to the gallery!")),
+
+    dcc.Markdown("""
+
+Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
+
+ - An image of your app
+ -  A short title to appear on the card in the gallery
+ - A link to the code in GitHub, GitLab or other repo
+ - An extended description of your app (optional).  This will be displayed when the "About"
+ button is clicked.  Format: Text or Markdown.
+
+""", className='p-4'),
+],)
+
+
+
+
+
+
 
 """
 ======================================================================
@@ -35,7 +86,7 @@ card2_about = theme_explorer_app.about
 header = dbc.Jumbotron(
     [
         html.H1("Dash Bootstrap App Gallery", className="display-3"),
-        html.P("Example apps using Boostrap", className="lead",),
+        html.P("Example apps using Bootstrap", className="lead",),
         html.P(
             " Creating a beautiful design for your app starts here!", className="lead",
         ),
@@ -73,13 +124,13 @@ def make_card(id, image, text, source_code, about):
                     html.P(text, className="card-text"),
                     dbc.Button(
                         "Source Code",
-                        color="primary",
+                        color="secondary",
                         className="mr-2",
                         target="_blank",
                         href=source_code,
                     ),
                     dbc.Button(
-                        "About", id={"type": "modal_btn", "index": id}, color="primary"
+                        "About", id={"type": "modal_btn", "index": id}, color="secondary"
                     ),
                 ]
             ),
@@ -104,10 +155,19 @@ layout = dbc.Container(
                 make_card(
                     "card2_id", card2_image, card2_title, card2_source_code, card2_about
                 ),
+                card3,
+            ], className='m-4'
+        ),
+        dbc.CardDeck(
+            [
+                make_card(
+                    "card4_id", card4_image, card4_title, card4_source_code, card4_about
+                ),
+                card5,
                 make_card(
                     "card0_id", card0_image, card0_title, card0_source_code, card0_about
                 ),
-            ]
+            ],className='m-4'
         ),
     ],
     fluid=True,

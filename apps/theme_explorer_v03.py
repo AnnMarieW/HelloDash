@@ -446,7 +446,7 @@ sample_app_controls = dbc.Card(
 
 sample_app_1 = dbc.Card(
     [
-        html.H2("Theme Explorer App", className="bg-primary text-white m-1 p-2"),
+        html.H2("Sample Dash App", className="bg-primary text-white m-1 p-2"),
         dbc.Row(
             [
                 dbc.Col(
