@@ -18,13 +18,13 @@ card0_about = ""
 # ----------------------------------------
 card1_image = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.png"
 card1_title = "Light Theme App"
-card1_source_code = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.pn"
+card1_source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/theme_explorer_app.py"
 card1_about = theme_explorer_app.about
 # ----------------------------------------
 card2_image = "https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png"
 card2_title = "Dark Theme App"
 card2_source_code = (
-    "https://github.com/AnnMarieW/HelloDash/blob/main/apps/sample_app_1.py"
+    "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/theme_explorer_app.py"
 )
 card2_about = theme_explorer_app.about
 # ------------------------------------------------
@@ -96,7 +96,7 @@ card7_about = """This is one of the example apps in  [dash-bootstrap-components 
 
 # ------------------------------------------------------------
 card8_image = "https://user-images.githubusercontent.com/72614349/109827271-d0325f00-7bf8-11eb-9dc4-a24640b46690.png"
-card8_title = "Asset Allocation App"
+card8_title = "Investment Asset Allocation App"
 card8_source_code = "https://github.com/AnnMarieW/wealthdashboard"
 card8_about = """This app shows how asset allocation impacts portfolio returns over time.  See it live at [wealthdashboard.app](https://www.wealthdashboard.app/)"""
 
@@ -202,6 +202,20 @@ layout = dbc.Container(
                 ),
                 make_card(
                     "card8_id", card8_image, card8_title, card8_source_code, card8_about
+                ),
+                make_card(
+                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
+                ),
+            ],
+            className="m-4",
+        ),
+        dbc.CardDeck(
+            [
+                make_card(
+                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
+                ),
+                make_card(
+                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
                 ),
                 make_card(
                     "card0_id", card0_image, card0_title, card0_source_code, card0_about

@@ -14,8 +14,8 @@ import dash_bootstrap_components as dbc
 about = """
 ## The first two images in the app gallery are the same app!  
 
-The Theme Explorer Sample Dash App shows how different Boostrap Themes, Plotly templates and graph colors look in a 
-Dash app.  Use the [Theme Explorer](https://hellodash.pythonanywhere.com/) to try out different designs. 
+Use the [Theme Explorer](https://hellodash.pythonanywhere.com/) to see how different Boostrap Themes, Plotly templates 
+and graph colors look in a Dash app.  The design for this app is updated by changing 5 lines of code.
  
 ### Bootstrap Themes
 The Explorer app makes it easy to see how a Bootstrap or [Bootswatch theme](https://www.bootstrapcdn.com/bootswatch/)
@@ -53,7 +53,7 @@ See the Dash documentation to learn more about [discrete colors](https://plotly.
 
 """
 =====================================================================
-Change setting here to apply themes to app
+Change setting here to apply design themes to app
 """
 ## App version 1  Minty theme
 
