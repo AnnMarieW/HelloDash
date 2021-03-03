@@ -18,7 +18,9 @@ card0_about = ""
 # ----------------------------------------
 card1_image = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.png"
 card1_title = "Light Theme App"
-card1_source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/theme_explorer_app.py"
+card1_source_code = (
+    "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/theme_explorer_app.py"
+)
 card1_about = theme_explorer_app.about
 # ----------------------------------------
 card2_image = "https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png"
@@ -76,7 +78,9 @@ Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
 """,
             className="p-4",
         ),
-    ], outline=True, color='primary'
+    ],
+    outline=True,
+    color="primary",
 )
 # -----------------------------------------------------
 card6_image = "https://user-images.githubusercontent.com/72614349/109817256-f2bf7a80-7bee-11eb-9beb-dd6673e98549.png"
@@ -149,12 +153,15 @@ def make_card(id, image, text, source_code, about):
                         className="mr-2",
                         target="_blank",
                         href=source_code,
-                        size='sm', outline=True
+                        size="sm",
+                        outline=True,
                     ),
                     dbc.Button(
                         "About",
                         id={"type": "modal_btn", "index": id},
-                        color="secondary", size='sm', outline=True
+                        color="secondary",
+                        size="sm",
+                        outline=True,
                     ),
                 ]
             ),

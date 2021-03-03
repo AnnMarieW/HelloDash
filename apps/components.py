@@ -27,6 +27,13 @@ header = html.Div(
     ],
 )
 
+def make_subheading(label, link):
+    return html.H4(
+            dcc.Link(label, href=DBC_DOCS + link, target="_blank"),
+            style={"textDecoration": "underline"},
+            className='mb-2'
+        )
+
 alerts1 = html.Div(
     [
         dbc.Alert("This is a primary alert", color="primary"),
@@ -46,10 +53,7 @@ alerts2 = html.Div(
 
 alerts = html.Div(
     [
-        html.H2(
-            dcc.Link("Alerts", href=DBC_DOCS + "alert/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Alerts", "alert/"),
         dbc.Row([dbc.Col(alerts1), dbc.Col(alerts2)]),
     ]
 )
@@ -69,10 +73,7 @@ badge_colors = html.Span(
 
 badges = html.Div(
     [
-        html.H2(
-            dcc.Link("Badges", href=DBC_DOCS + "badge/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Badges", "badge/"),
         html.Div(
             [
                 badge_colors,
@@ -89,10 +90,7 @@ badges = html.Div(
 
 buttons = html.Div(
     [
-        html.H2(
-            dcc.Link("Buttons", href=DBC_DOCS + "button/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Buttons", "button/"),
         html.Div(
             [
                 dbc.Button("Primary", color="primary", className="mr-1"),
@@ -136,10 +134,7 @@ buttons = html.Div(
 
 cards = html.Div(
     [
-        html.H2(
-            dcc.Link("Cards", href=DBC_DOCS + "card/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Cards", "card/"),
         dbc.CardDeck(
             [
                 dbc.Card(
@@ -197,10 +192,7 @@ cards = html.Div(
 
 collapse = html.Div(
     [
-        html.H2(
-            dcc.Link("Collapse", href=DBC_DOCS + "collapse/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Collapse", "collapse/"),
         dbc.Button(
             "Open collapse", id="collapse-button", style={"marginBottom": "1rem"},
         ),
@@ -213,10 +205,7 @@ collapse = html.Div(
 
 columns = html.Div(
     [
-        html.H2(
-            dcc.Link("Columns", href=DBC_DOCS + "layout/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Columns", "layout/"),
         html.Div(
             [
                 dbc.Row(
@@ -258,10 +247,7 @@ columns = html.Div(
 
 dropdownmenu = html.Div(
     [
-        html.H2(
-            dcc.Link("DropdownMenu", href=DBC_DOCS + "dropdown_menu/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("DropdownMenu", "dropdown_menu/"),
         dbc.DropdownMenu(
             [
                 dbc.DropdownMenuItem("Heading", header=True),
@@ -277,10 +263,7 @@ dropdownmenu = html.Div(
 
 fade = html.Div(
     [
-        html.H2(
-            dcc.Link("Fade", href=DBC_DOCS + "fade/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Fade", "fade/"),
         dbc.Button("Toggle fade", id="fade-button", style={"marginBottom": "1rem"}),
         dbc.Fade(
             dbc.Card(
@@ -296,10 +279,7 @@ fade = html.Div(
 
 form = html.Div(
     [
-        html.H2(
-            dcc.Link("Form", href=DBC_DOCS + "form/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Form", "form/"),
         dbc.Form(
             [
                 dbc.FormGroup(
@@ -343,10 +323,7 @@ form = html.Div(
 
 input_ = html.Div(
     [
-        html.H2(
-            dcc.Link("Input", href=DBC_DOCS + "input/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Input", "input/"),
         dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
         dbc.FormGroup(
             [
@@ -362,10 +339,7 @@ input_ = html.Div(
                 dbc.FormFeedback("That's an invalid input..."),
             ]
         ),
-        html.H4(
-            dcc.Link("Checklist", href=DBC_DOCS + "input/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Checklist", "input/"),
         dbc.Checklist(
             options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
             value=[],
@@ -376,10 +350,7 @@ input_ = html.Div(
             value=[],
             inline=True,
         ),
-        html.H4(
-            dcc.Link("RadioItems", href=DBC_DOCS + "input/", target="_blank"),
-            className="mt-5",
-        ),
+        make_subheading("RadioItems", "input/"),
         dbc.RadioItems(
             options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
             value=0,
@@ -395,14 +366,7 @@ input_ = html.Div(
 
 input_group = html.Div(
     [
-        html.H2(
-            dcc.Link(
-                "Input groups and addons",
-                href=DBC_DOCS + "input_group/",
-                target="_blank",
-                style={"textDecoration": "underline"},
-            )
-        ),
+        make_subheading("Input groups and addons", "input_group/"),
         dbc.InputGroup(
             [
                 dbc.InputGroupAddon(
@@ -432,10 +396,7 @@ input_group = html.Div(
 
 jumbotron = html.Div(
     [
-        html.H2(
-            dcc.Link("Jumbotron", href=DBC_DOCS + "jumbotron/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Jumbotron","jumbotron/"),
         dbc.Jumbotron(
             [
                 html.H2("This is a jumbotron"),
@@ -448,10 +409,7 @@ jumbotron = html.Div(
 
 list_group = html.Div(
     [
-        html.H2(
-            dcc.Link("ListGroup", href=DBC_DOCS + "list_group/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("ListGroup", "list_group/"),
         dbc.ListGroup(
             [
                 dbc.ListGroupItem("Item 1", color="primary", action=True),
@@ -474,10 +432,7 @@ COOKIE = (
 )
 modal = html.Div(
     [
-        html.H2(
-            dcc.Link("Modal", href=DBC_DOCS + "modal/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Modal", "modal/"),
         html.P(
             [
                 dbc.Button("Show the cookie monster", id="button"),
@@ -496,10 +451,7 @@ modal = html.Div(
 
 navbar = html.Div(
     [
-        html.H2(
-            dcc.Link("Navbar", href=DBC_DOCS + "navbar/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Navbar",  "navbar/"),
         dbc.NavbarSimple(
             children=[
                 dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
@@ -528,10 +480,7 @@ navbar = html.Div(
 
 popover = html.Div(
     [
-        html.H2(
-            dcc.Link("Popover", href=DBC_DOCS + "popover/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Popover", "popover/"),
         html.P(["Click on the word ", html.Span("popover", id="popover-target")]),
         dbc.Popover(
             [dbc.PopoverHeader("Popover header"), dbc.PopoverBody("Popover body"),],
@@ -544,10 +493,7 @@ popover = html.Div(
 
 progress = html.Div(
     [
-        html.H2(
-            dcc.Link("Progress", href=DBC_DOCS + "progress/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Progress", "progress/"),
         dbc.Progress("25%", value=25),
         dbc.Progress(value=50, striped=True, className="my-2"),
         dbc.Progress(value=75, color="success"),
@@ -556,10 +502,7 @@ progress = html.Div(
 
 spinner = html.Div(
     [
-        html.H2(
-            dcc.Link("Spinner", href=DBC_DOCS + "spinner/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Spinner", "spinner/"),
         html.P(),
         html.Div(
             [
@@ -579,10 +522,7 @@ spinner = html.Div(
 
 table = html.Div(
     [
-        html.H2(
-            dcc.Link("HTML Table", href=DBC_DOCS + "table/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("HTML Table",  "table/"),
         dbc.Table(
             [
                 html.Thead(
@@ -625,10 +565,7 @@ table = html.Div(
 
 tabs = html.Div(
     [
-        html.H2(
-            dcc.Link("Tabs", href=DBC_DOCS + "tabs/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Tabs", "tabs/"),
         dbc.Tabs(
             [
                 dbc.Tab(
@@ -653,10 +590,7 @@ tabs = html.Div(
 
 toast = html.Div(
     [
-        html.H2(
-            dcc.Link("Toast", href=DBC_DOCS + "toast/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Toast", "toast/"),
         dbc.Button(
             "Open toast", id="auto-toast-toggle", color="primary", className="mb-3",
         ),
@@ -672,10 +606,7 @@ toast = html.Div(
 
 tooltip = html.Div(
     [
-        html.H2(
-            dcc.Link("Tooltip", href=DBC_DOCS + "tooltip/", target="_blank"),
-            style={"textDecoration": "underline"},
-        ),
+        make_subheading("Tooltip", "tooltip/"),
         html.P(
             [
                 "I wonder what ",
@@ -697,9 +628,9 @@ source_code = dcc.Markdown(
 )
 
 
-layout = html.Div(
+layout = dbc.Container(
     [
-        dbc.Container(
+        dbc.Card(
             [
                 header,
                 html.Hr(),
@@ -750,9 +681,9 @@ layout = html.Div(
                 html.Div(style={"height": "50px"}),
                 source_code,
             ],
-            className="m-4",
+            className="my-2 p-4",
         ),
-    ]
+    ], fluid=True
 )
 
 

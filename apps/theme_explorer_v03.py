@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 
 from app import app
 from .components import layout as components_layout
+from .dcc_components import layout as dcc_components_layout
 from .tutorial import tutorial
 
 
@@ -465,13 +466,23 @@ sample_app_1 = dbc.Card(
     id="layout_container_v03",
 )
 
+
 sample_app_2 = dbc.Card(
     [
         html.H2(
-            "Dash Bootstrap Component Gallery",
-            className="bg-primary text-white m-1 p-2",
+            "Dash Component Gallery",
+            className="bg-primary text-white m-1 mb-4 p-2",
         ),
-        html.Div(components_layout),
+        html.Div(
+        dbc.Tabs(
+            [
+                dbc.Tab(components_layout, label="Dash Bootstrap Components",label_style={"fontSize":25}),
+                dbc.Tab(dcc_components_layout, label="Dash Core Components",label_style={"fontSize":25}),
+                dbc.Tab( html.Div('Comming Soon'), style={'height':400},  label="DataTable",label_style={"fontSize":25}),
+                dbc.Tab( html.Div('Comming Soon') ,  style={'height':400}, label="DAQ Components",label_style={"fontSize":25})
+            ]
+        ), className='bg-light')
+
     ],
     className="m-4 shadow-lg p-2",
 )
