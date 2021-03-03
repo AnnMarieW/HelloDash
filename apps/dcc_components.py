@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-import plotly_express as px
+import plotly.express as px
 from datetime import date
 import time
 
@@ -26,12 +26,13 @@ header = html.Div(
     ],
 )
 
+
 def make_subheading(label, link):
     return html.H4(
-            dcc.Link(label, href=DCC_DOCS + link, target="_blank"),
-            style={"textDecoration": "underline"},
-            className='mb-2'
-        )
+        dcc.Link(label, href=DCC_DOCS + link, target="_blank"),
+        style={"textDecoration": "underline"},
+        className="mb-2",
+    )
 
 
 checklist = html.Div(
@@ -64,7 +65,7 @@ checklist = html.Div(
 
 datepicker_range = html.Div(
     [
-        make_subheading("DatePickerRange",  "datepickerrange/"),
+        make_subheading("DatePickerRange", "datepickerrange/"),
         html.Div(
             [
                 dcc.DatePickerRange(
@@ -80,7 +81,7 @@ datepicker_range = html.Div(
 
 datepicker_single = html.Div(
     [
-        make_subheading("DatePickerSingle","datepickersingle/"),
+        make_subheading("DatePickerSingle", "datepickersingle/"),
         html.Div(
             [
                 dcc.DatePickerSingle(
@@ -249,7 +250,7 @@ slider = html.Div(
                         7.65: "7.65 °F",
                         10: "10 °F",
                     },
-                    value=3
+                    value=3,
                 )
             ]
         ),
@@ -258,7 +259,7 @@ slider = html.Div(
 
 tabs = html.Div(
     [
-        make_subheading("Tabs",  "tabs/"),
+        make_subheading("Tabs", "tabs/"),
         dcc.Tabs(
             id="tabs-example",
             value="tab-1",
@@ -323,7 +324,8 @@ layout = dbc.Container(
             ],
             className="my-2 p-4",
         ),
-    ], fluid=True,
+    ],
+    fluid=True,
 )
 
 

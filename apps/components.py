@@ -27,12 +27,14 @@ header = html.Div(
     ],
 )
 
+
 def make_subheading(label, link):
     return html.H4(
-            dcc.Link(label, href=DBC_DOCS + link, target="_blank"),
-            style={"textDecoration": "underline"},
-            className='mb-2'
-        )
+        dcc.Link(label, href=DBC_DOCS + link, target="_blank"),
+        style={"textDecoration": "underline"},
+        className="mb-2",
+    )
+
 
 alerts1 = html.Div(
     [
@@ -396,7 +398,7 @@ input_group = html.Div(
 
 jumbotron = html.Div(
     [
-        make_subheading("Jumbotron","jumbotron/"),
+        make_subheading("Jumbotron", "jumbotron/"),
         dbc.Jumbotron(
             [
                 html.H2("This is a jumbotron"),
@@ -451,7 +453,7 @@ modal = html.Div(
 
 navbar = html.Div(
     [
-        make_subheading("Navbar",  "navbar/"),
+        make_subheading("Navbar", "navbar/"),
         dbc.NavbarSimple(
             children=[
                 dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
@@ -522,7 +524,7 @@ spinner = html.Div(
 
 table = html.Div(
     [
-        make_subheading("HTML Table",  "table/"),
+        make_subheading("HTML Table", "table/"),
         dbc.Table(
             [
                 html.Thead(
@@ -683,7 +685,8 @@ layout = dbc.Container(
             ],
             className="my-2 p-4",
         ),
-    ], fluid=True
+    ],
+    fluid=True,
 )
 
 
