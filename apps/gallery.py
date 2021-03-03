@@ -76,7 +76,7 @@ Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
 """,
             className="p-4",
         ),
-    ],
+    ], outline=True, color='primary'
 )
 # -----------------------------------------------------
 card6_image = "https://user-images.githubusercontent.com/72614349/109817256-f2bf7a80-7bee-11eb-9beb-dd6673e98549.png"
@@ -149,11 +149,12 @@ def make_card(id, image, text, source_code, about):
                         className="mr-2",
                         target="_blank",
                         href=source_code,
+                        size='sm', outline=True
                     ),
                     dbc.Button(
                         "About",
                         id={"type": "modal_btn", "index": id},
-                        color="secondary",
+                        color="secondary", size='sm', outline=True
                     ),
                 ]
             ),
