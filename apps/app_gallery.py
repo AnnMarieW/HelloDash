@@ -1,13 +1,12 @@
-import dash
+
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, MATCH
-import plotly.express as px
 import dash_bootstrap_components as dbc
 
 from gallery import theme_explorer_app
 
-from app import app
+from app import app, header
 
 # gallery content  Update info here to add apps to gallery
 
@@ -109,36 +108,6 @@ card8_about = """This app shows how asset allocation impacts portfolio returns o
 ======================================================================
 """
 
-header = dbc.Jumbotron(
-    [
-        html.H1("Dash Bootstrap App Gallery", className="display-3"),
-        html.P(
-            " Creating a beautiful design for your app starts here!", className="lead",
-        ),
-        html.Hr(className="my-2"),
-        html.Div(
-            [
-                dbc.Button(
-                    "Theme Explorer", color="primary", href="/v03", className="mr-2"
-                ),
-                dbc.Button(
-                    "Dash Bootstrap Components",
-                    color="primary",
-                    target="_blank",
-                    className="mr-2",
-                    href="https://dash-bootstrap-components.opensource.faculty.ai/",
-                ),
-                dbc.Button(
-                    "Dash Documentation",
-                    color="primary",
-                    target="_blank",
-                    href="https://dash.plotly.com/",
-                ),
-            ],
-        ),
-    ]
-)
-
 
 def make_card(id, image, text, source_code, about):
     return dbc.Card(
@@ -178,6 +147,10 @@ def make_card(id, image, text, source_code, about):
 layout = dbc.Container(
     [
         header,
+        html.H2(
+            "Dash Bootstrap App Gallery",
+            className="bg-primary text-white m-1 mb-4 p-2",
+        ),
         dbc.CardDeck(
             [
                 make_card(

@@ -13,10 +13,6 @@ DCC_DOCS = "https://dash.plotly.com/dash-core-components"
 
 from app import app
 
-about = """
-
-"""
-
 
 header = html.Div(
     [

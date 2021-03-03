@@ -2,14 +2,12 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-# import dash_table
+
 from dash.dependencies import Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-from app import app
-from .components import layout as components_layout
-from .dcc_components import layout as dcc_components_layout
+from app import app, header
 from .tutorial import tutorial
 
 
@@ -132,7 +130,7 @@ colors_squential = [
     "turbid",
 ]
 
-colors_cyclial = ["edge", "hsv", "icefire", "phase", "twilight", "mrybm", "mygbm"]
+colors_cyclical = ["edge", "hsv", "icefire", "phase", "twilight", "mrybm", "mygbm"]
 
 
 plotly_template = [
@@ -174,40 +172,6 @@ discrete_colors = {
 
 
 df = px.data.gapminder()
-
-header = dbc.Jumbotron(
-    [
-        html.H1("Dash Bootstrap Theme Explorer", className="display-3"),
-        html.P(
-            "The easy way to see different Boostrap themes and Plotly templates and colors in a Dash app.",
-            className="lead",
-        ),
-        html.P(
-            " Creating a beautiful design for your app starts here!", className="lead",
-        ),
-        html.Hr(className="my-2"),
-        html.Div(
-            [
-                dbc.Button(
-                    "App Gallery", color="primary", href="/gallery", className="mr-2"
-                ),
-                dbc.Button(
-                    "Dash Bootstrap Components",
-                    color="primary",
-                    target="_blank",
-                    className="mr-2",
-                    href="https://dash-bootstrap-components.opensource.faculty.ai/",
-                ),
-                dbc.Button(
-                    "Dash Documentation",
-                    color="primary",
-                    target="_blank",
-                    href="https://dash.plotly.com/",
-                ),
-            ],
-        ),
-    ]
-)
 
 
 """
@@ -467,45 +431,6 @@ sample_app_1 = dbc.Card(
 )
 
 
-sample_app_2 = dbc.Card(
-    [
-        html.H2(
-            "Dash Component Gallery", className="bg-primary text-white m-1 mb-4 p-2",
-        ),
-        html.Div(
-            dbc.Tabs(
-                [
-                    dbc.Tab(
-                        components_layout,
-                        label="Dash Bootstrap Components",
-                        label_style={"fontSize": 25},
-                    ),
-                    dbc.Tab(
-                        dcc_components_layout,
-                        label="Dash Core Components",
-                        label_style={"fontSize": 25},
-                    ),
-                    dbc.Tab(
-                        html.Div("Comming Soon"),
-                        style={"height": 400},
-                        label="DataTable",
-                        label_style={"fontSize": 25},
-                    ),
-                    dbc.Tab(
-                        html.Div("Comming Soon"),
-                        style={"height": 400},
-                        label="DAQ Components",
-                        label_style={"fontSize": 25},
-                    ),
-                ]
-            ),
-            className="bg-light",
-        ),
-    ],
-    className="m-4 shadow-lg p-2",
-)
-
-
 """
 ===============================================================================
 Layout
@@ -515,7 +440,7 @@ layout = dbc.Container(
         header,
         theme_controls,
         sample_app_1,
-        sample_app_2,
+        #  sample_app_2,
         dcc.Markdown(tutorial, className="m-4 p4"),
         html.Div(id="blank_output_v03"),
     ],
@@ -526,7 +451,6 @@ layout = dbc.Container(
 @app.callback(
     Output("line_chart_v03", "figure"),
     Output("scatter_chart_v03", "figure"),
-    #  Output("table_v03", "data"),
     Input("indicator_v03", "value"),
     Input("continents_v03", "value"),
     Input("slider_years_v03", "value"),
@@ -543,7 +467,6 @@ def update_line_chart(
 
     dff = df[df.year.between(years[0], years[1])]
     dff = dff[dff.continent.isin(continents)]
-    #  data = dff.to_dict("records")
     fig = px.line(
         dff,
         x="year",
@@ -584,16 +507,9 @@ def update(theme):
     if theme == "Light Themes":
         options = [{"label": str(i), "value": i} for i in boostrap_light_themes]
         value = boostrap_light_themes[0]
-    #  style_header = {}
-    #  style_cell = {}
-    #  css = []
     else:
         options = [{"label": str(i), "value": i} for i in boostrap_dark_themes]
         value = boostrap_dark_themes[0]
-    #  style_header = {"backgroundColor": "transparent"}
-    #  style_cell = {"backgroundColor": "transparent", "color": "white"}
-    #  css = [{"selector": "tr:hover", "rule": "background-color: grey"}]
-    #  return options, value, style_header, style_cell, css
     return options, value
 
 
@@ -606,7 +522,7 @@ def update(colorscale):
     elif colorscale == "Diverging":
         options = [{"label": str(i), "value": i} for i in colors_diverging]
     else:
-        options = [{"label": str(i), "value": i} for i in colors_cyclial]
+        options = [{"label": str(i), "value": i} for i in colors_cyclical]
     return options
 
 
