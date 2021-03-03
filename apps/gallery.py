@@ -15,24 +15,24 @@ card0_image = ""
 card0_title = "Coming Soon"
 card0_source_code = ""
 card0_about = ""
-#----------------------------------------
+# ----------------------------------------
 card1_image = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.png"
 card1_title = "Light Theme App"
 card1_source_code = "https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.pn"
 card1_about = theme_explorer_app.about
-#----------------------------------------
+# ----------------------------------------
 card2_image = "https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png"
 card2_title = "Dark Theme App"
 card2_source_code = (
     "https://github.com/AnnMarieW/HelloDash/blob/main/apps/sample_app_1.py"
 )
 card2_about = theme_explorer_app.about
-#------------------------------------------------
-card3= dbc.Card([
-
-    dbc.CardHeader(html.H3("New to Web Design?")),
-
-    dcc.Markdown("""
+# ------------------------------------------------
+card3 = dbc.Card(
+    [
+        dbc.CardHeader(html.H3("New to Web Design?")),
+        dcc.Markdown(
+            """
 
 Here are some great resources:
 
@@ -46,21 +46,24 @@ Here are some great resources:
 Have any other good references?  Please drop me a note [here](https://github.com/AnnMarieW/HelloDash/issues) and I'll add
 them to the list!
 
-""", className='p-4'),
-],)
-#------------------------------------------------
-card4_image ="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png"
-card4_title = "Great Starter app"
+""",
+            className="p-4",
+        ),
+    ],
+)
+# ------------------------------------------------
+card4_image = "https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png"
+card4_title = "Great quick start app   <75 lines of code! "
 card4_source_code = "https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region"
 card4_about = "This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)"
 
-#------------------------------------------------
+# ------------------------------------------------
 
-card5= dbc.Card([
-
-    dbc.CardHeader(html.H3("Add your app to the gallery!")),
-
-    dcc.Markdown("""
+card5 = dbc.Card(
+    [
+        dbc.CardHeader(html.H3("Add your app to the gallery!")),
+        dcc.Markdown(
+            """
 
 Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
 
@@ -70,13 +73,32 @@ Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
  - An extended description of your app (optional).  This will be displayed when the "About"
  button is clicked.  Format: Text or Markdown.
 
-""", className='p-4'),
-],)
+""",
+            className="p-4",
+        ),
+    ],
+)
+# -----------------------------------------------------
+card6_image = "https://user-images.githubusercontent.com/72614349/109817256-f2bf7a80-7bee-11eb-9beb-dd6673e98549.png"
+card6_title = "Example Apps in the Dash Bootstrap Components docs"
+card6_source_code = "https://dash-bootstrap-components.opensource.faculty.ai/examples/"
+card6_about = (
+    "These are some of the example apps included in the official Dash Bootstrap Components documentation and tutorial."
+    "Just click on an app to run it and see the source code"
+)
 
+# -------------------------------------------------------
+card7_image = "https://user-images.githubusercontent.com/72614349/109823988-a6c40400-7bf5-11eb-8ee3-15b91e9c170d.png"
+card7_title = "Another quick start app ~ 100 lines of code"
+card7_source_code = "https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/gallery/wordcloud/app.py"
+card7_about = """This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)  
+              Note: You may need to `pip install wordcloud`"""
 
-
-
-
+# ------------------------------------------------------------
+card8_image = "https://user-images.githubusercontent.com/72614349/109827271-d0325f00-7bf8-11eb-9dc4-a24640b46690.png"
+card8_title = "Asset Allocation App"
+card8_source_code = "https://github.com/AnnMarieW/wealthdashboard"
+card8_about = """This app shows how asset allocation impacts portfolio returns over time.  See it live at [wealthdashboard.app](https://www.wealthdashboard.app/)"""
 
 
 """
@@ -86,7 +108,6 @@ Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
 header = dbc.Jumbotron(
     [
         html.H1("Dash Bootstrap App Gallery", className="display-3"),
-        html.P("Example apps using Bootstrap", className="lead",),
         html.P(
             " Creating a beautiful design for your app starts here!", className="lead",
         ),
@@ -130,7 +151,9 @@ def make_card(id, image, text, source_code, about):
                         href=source_code,
                     ),
                     dbc.Button(
-                        "About", id={"type": "modal_btn", "index": id}, color="secondary"
+                        "About",
+                        id={"type": "modal_btn", "index": id},
+                        color="secondary",
                     ),
                 ]
             ),
@@ -156,7 +179,8 @@ layout = dbc.Container(
                     "card2_id", card2_image, card2_title, card2_source_code, card2_about
                 ),
                 card3,
-            ], className='m-4'
+            ],
+            className="m-4",
         ),
         dbc.CardDeck(
             [
@@ -165,9 +189,24 @@ layout = dbc.Container(
                 ),
                 card5,
                 make_card(
+                    "card6_id", card6_image, card6_title, card6_source_code, card6_about
+                ),
+            ],
+            className="m-4",
+        ),
+        dbc.CardDeck(
+            [
+                make_card(
+                    "card7_id", card7_image, card7_title, card7_source_code, card7_about
+                ),
+                make_card(
+                    "card8_id", card8_image, card8_title, card8_source_code, card8_about
+                ),
+                make_card(
                     "card0_id", card0_image, card0_title, card0_source_code, card0_about
                 ),
-            ],className='m-4'
+            ],
+            className="m-4",
         ),
     ],
     fluid=True,

@@ -10,13 +10,12 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-# The "about" text will display in a modal in the gallery
+# The "about" text will display in a modal in the app gallery on https://hellodash.pythonanywhere.com/
 about = """
 ## The first two images in the app gallery are the same app!  
 
-The Theme Explorer sample app shows how to apply different Boostrap Themes, Plotly templates and graph colors.
-Use the Theme Explorer to try out different designs.
- 
+The Theme Explorer Sample Dash App shows how different Boostrap Themes, Plotly templates and graph colors look in a 
+Dash app.  Use the [Theme Explorer](https://hellodash.pythonanywhere.com/) to try out different designs. 
  
 ### Bootstrap Themes
 The Explorer app makes it easy to see how a Bootstrap or [Bootswatch theme](https://www.bootstrapcdn.com/bootswatch/)
