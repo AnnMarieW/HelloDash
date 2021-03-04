@@ -16,7 +16,7 @@ header = dbc.Jumbotron(
     [
         html.H1("Dash Bootstrap Theme Explorer", className="display-3"),
         html.P(
-            "The easy way to see Boostrap themes and Plotly templates and colors in a Dash app.",
+            "The easy way to see Boostrap themes and Plotly  graph templates and colors in a Dash app.",
             className="lead",
         ),
         html.P(
@@ -33,30 +33,24 @@ header = dbc.Jumbotron(
                     className="mr-2",
                 ),
                 dbc.Button(
-                    "Component Gallery",
-                    color="primary",
-                    href="/component_gallery",
-                    className="mr-2",
-                ),
-                dbc.Button(
                     "App Gallery",
                     color="primary",
                     href="/app_gallery",
                     className="mr-2",
                 ),
-                # dbc.Button(
-                #     "Dash Bootstrap Components",
-                #     color="primary",
-                #     target="_blank",
-                #     className="mr-2",
-                #     href="https://dash-bootstrap-components.opensource.faculty.ai/",
-                # ),
-                # dbc.Button(
-                #     "Dash Documentation",
-                #     color="primary",
-                #     target="_blank",
-                #     href="https://dash.plotly.com/",
-                # ),
+                dbc.Button(
+                    "Dash Bootstrap Components",
+                    color="primary",
+                    target="_blank",
+                    className="mr-2",
+                    href="https://dash-bootstrap-components.opensource.faculty.ai/",
+                ),
+                dbc.Button(
+                    "Dash Documentation",
+                    color="primary",
+                    target="_blank",
+                    href="https://dash.plotly.com/",
+                ),
             ],
         ),
     ]

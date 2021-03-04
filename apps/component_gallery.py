@@ -1,4 +1,3 @@
-
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
@@ -9,7 +8,6 @@ from .dcc_components import layout as dcc_components_layout
 
 layout = dbc.Container(
     [
-        header,
         dbc.Card(
             [
                 html.H2(

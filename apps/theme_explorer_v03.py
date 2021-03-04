@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 
 from app import app, header
 from .tutorial import tutorial
+from .component_gallery import layout as component_layout
 
 
 boostrap_light_themes = [
@@ -185,7 +186,7 @@ def make_dropdown(id, option_list, option_val=0):
         options=[{"label": str(i), "value": i} for i in option_list],
         value=option_list[option_val],
         clearable=False,
-        persistence_type="memory",
+        persistence_type="session",
     )
 
 
@@ -363,16 +364,6 @@ buttons = html.Div(
     ]
 )
 
-# table = html.Div(
-#     dash_table.DataTable(
-#         id="table_v03",
-#         columns=[{"name": i, "id": i} for i in df.columns],
-#         data=df.to_dict("records"),
-#         page_size=5,
-#     ),
-#     className="mx-4",
-# )
-
 sample_app_controls = dbc.Card(
     [
         dbc.Row(
@@ -423,7 +414,6 @@ sample_app_1 = dbc.Card(
             ],
             className="m-2",
         ),
-        #  table,
         sample_app_controls,
     ],
     className="mx-4 shadow-lg p-2",
@@ -440,8 +430,8 @@ layout = dbc.Container(
         header,
         theme_controls,
         sample_app_1,
-        #  sample_app_2,
-        dcc.Markdown(tutorial, className="m-4 p4"),
+        component_layout,
+        dcc.Markdown(tutorial, className="m-4 p-4"),
         html.Div(id="blank_output_v03"),
     ],
     fluid=True,
@@ -497,9 +487,6 @@ def update_line_chart(
 @app.callback(
     Output("themes_v03", "options"),
     Output("themes_v03", "value"),
-    #   Output("table_v03", "style_header"),
-    #  Output("table_v03", "style_cell"),
-    # Output("table_v03", "css"),
     Input("light_dark_v03", "value"),
 )
 def update(theme):
