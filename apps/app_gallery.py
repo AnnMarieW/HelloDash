@@ -31,8 +31,9 @@ card2_about = theme_explorer_app.about
 card3 = dbc.Card(
     [
         dbc.CardHeader(html.H3("New to Web Design?")),
-        dcc.Markdown(
-            """
+        dbc.CardBody(
+            dcc.Markdown(
+                """
 
 Here are some great resources:
 
@@ -47,7 +48,8 @@ Have any other good references?  Please drop me a note [here](https://github.com
 them to the list!
 
 """,
-            className="p-4",
+                className="p-4",
+            ),
         ),
     ],
 )
@@ -62,8 +64,9 @@ card4_about = "This is one of the example apps in  [dash-bootstrap-components Gi
 card5 = dbc.Card(
     [
         dbc.CardHeader(html.H3("Add your app to the gallery!")),
-        dcc.Markdown(
-            """
+        dbc.CardBody(
+            dcc.Markdown(
+                """
 
 Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
 
@@ -74,7 +77,8 @@ Open an issue [here](https://github.com/AnnMarieW/HelloDash/issues) and include:
  button is clicked.  Format: Text or Markdown.
 
 """,
-            className="p-4",
+                className="p-4",
+            ),
         ),
     ],
     outline=True,
@@ -212,5 +216,5 @@ layout = dbc.Container(
     Input({"type": "modal_btn", "index": MATCH}, "n_clicks"),
 )
 def open_card_modal(n):
-    """ opens a model in the how-to tables"""
+    """ opens a model for the "About" button """
     return True if n else False

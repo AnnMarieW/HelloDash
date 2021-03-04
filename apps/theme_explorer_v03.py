@@ -186,29 +186,31 @@ def make_dropdown(id, option_list, option_val=0):
         options=[{"label": str(i), "value": i} for i in option_list],
         value=option_list[option_val],
         clearable=False,
-        persistence_type="session",
+        persistence_type="local",
     )
 
 
 def make_radio_items(id, option_list, option_val=0):
-    return dcc.RadioItems(
+    return dbc.RadioItems(
         id=id,
         options=[{"label": i, "value": i} for i in option_list],
-        inputClassName="mr-2 ml-2",
+        #    inputClassName="mr-2 ml-2",
+        #  labelStyle={'display': 'inline-block'},
+        inline=True,  # for dbc.RadioItems
         value=option_list[option_val],
-        persistence_type="session",
+        persistence_type="local",
         className="mt-2",
     )
 
 
 def make_checklist(id, option_list):
-    return dcc.Checklist(
+    return dbc.Checklist(
         id=id,
         options=[{"label": i, "value": i} for i in option_list],
         value=[option_list[0]],
-        labelStyle={"display": "inline-block"},
-        inputClassName="mr-2 ml-2",
-        persistence_type="session",
+        inline=True,
+        #  inputClassName="mr-2 ml-2",
+        persistence_type="local",
     )
 
 
@@ -220,7 +222,7 @@ def make_range_slider(id, slider_list, step=1):
         step=step,
         marks={int(i): str(i) for i in slider_list},
         value=[slider_list[0], slider_list[-1]],
-        persistence_type="session",
+        persistence_type="local",
     )
 
 
