@@ -33,7 +33,10 @@ header = dbc.Jumbotron(
                     className="mr-2",
                 ),
                 dbc.Button(
-                    "App Gallery",
+                    [dbc.Spinner(size="sm"), " Loading..."],
+                    #       "App Gallery",
+                    id="app_gallery_v03",
+                    disabled=True,
                     color="primary",
                     href="/app_gallery",
                     className="mr-2",

@@ -2,10 +2,11 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc
+import time
+
 
 from app import app, header
 from .tutorial import tutorial
@@ -429,12 +430,12 @@ Layout
 """
 layout = dbc.Container(
     [
-        html.Div(id="blank_output_v03"),
         header,
         theme_controls,
         sample_app_1,
         component_layout,
         dcc.Markdown(tutorial, className="m-4 p-4"),
+        html.Div(id="blank_output_v03"),
     ],
     fluid=True,
 )
@@ -545,16 +546,33 @@ def update(theme):
     )
 
 
+@app.callback(
+    Output("app_gallery_v03", "disabled"),
+    Output("app_gallery_v03", "children"),
+    Input("url", "pathname"),
+    State("app_gallery_v03", "disabled"),
+)
+def app_gallery(pathname, disabled):
+    if disabled and pathname != "/app_gallery":
+        time.sleep(4)
+    return False, "App Gallery"
+
+
 app.clientside_callback(
     """
-    function(theme) {
-        // remove all stylesheets except for CSS files in assets folder
+    function(theme) {      
+        
+        // select external stylesheets only - not custom css in the assets folder
         var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');    
-        for(var i=0; i<elements.length;i++){      
-            elements[i].remove()
+        for(var i=0; i<elements.length;i++){
+            // don't remove if it's the default - bootstsrap        
+            if (theme === 'BOOTSTRAP' && elements[i].href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
+                return    
+            }
+            elements[i].remove()      
         }
-
-        // add new stylesheet from dropdown
+     
+         // add new  stylesheet based on  dropdown 
         var name = theme.toLowerCase()
         var link = document.createElement("link")
         link.rel = "stylesheet"
@@ -563,8 +581,9 @@ app.clientside_callback(
             link.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
           } else {
             link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
-        }
-        document.getElementsByTagName("head")[0].appendChild(link);        
+        }    
+        document.getElementsByTagName("head")[0].appendChild(link);    
+         
     }
     """,
     Output("blank_output_v03", "children"),
