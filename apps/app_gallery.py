@@ -90,7 +90,8 @@ card6_title = "Example Apps in the Dash Bootstrap Components docs"
 card6_source_code = "https://dash-bootstrap-components.opensource.faculty.ai/examples/"
 card6_about = (
     "These are some of the example apps included in the official Dash Bootstrap Components documentation and tutorial."
-    "Just click on an app to run it and see the source code"
+    "Go to [this page](https://dash-bootstrap-components.opensource.faculty.ai/examples/) and just click on an app to "
+    "run it and see the source code,"
 )
 
 # -------------------------------------------------------
@@ -106,6 +107,22 @@ card8_title = "Investment Asset Allocation App"
 card8_source_code = "https://github.com/AnnMarieW/wealthdashboard"
 card8_about = """This app shows how asset allocation impacts portfolio returns over time.  See it live at [wealthdashboard.app](https://www.wealthdashboard.app/)"""
 
+# ---------------------------------------------------------------
+card9_image= "https://user-images.githubusercontent.com/72614349/110154006-fa268580-7da0-11eb-950d-d6f48de48b53.png"
+card9_title = "Oil and Gas Wells from Dash App Gallery using dbc components.  No custom CSS!"
+card9_source_code = "https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/gallery/oil_and_gas/"
+card9_about = """
+This app is based on the Dash Enterprise App Gallery "Oil & Gas Wells" example
+See: [Portal[(https://dash-gallery.plotly.host/Portal/)
+     [Live app](https://dash-gallery.plotly.host/dash-oil-and-gas/)
+     [GitHub](https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-oil-and-gas)
+
+This app is re-written using dash-bootstrap-components and standard bootstrap class names.
+No custom CSS stylesheets are needed!
+"""
+
+
+
 
 """
 ======================================================================
@@ -118,7 +135,7 @@ def make_card(id, image, text, source_code, about):
             dbc.CardImg(src=image, top=True, style={"height": 350}),
             dbc.CardBody(
                 [
-                    html.P(text, className="card-text"),
+                    html.P(text, className="card-text font-weight-bold"),
                     dbc.Button(
                         "Source Code",
                         color="secondary",
@@ -187,7 +204,7 @@ layout = dbc.Container(
                     "card8_id", card8_image, card8_title, card8_source_code, card8_about
                 ),
                 make_card(
-                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
+                    "card9_id", card9_image, card9_title, card9_source_code, card9_about
                 ),
             ],
             className="m-4",

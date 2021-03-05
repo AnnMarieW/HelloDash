@@ -4,4 +4,4 @@ xlrd
 dash-bootstrap-components
 openpyxl
 dash-daq
-plotly-express
+dash_colorscales

@@ -549,9 +549,9 @@ app.clientside_callback(
     """
     function(theme) {
         // remove all stylesheets except for CSS files in assets folder
-        var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');
-        for(var i=0;i<elements.length;i++){
-          elements[i].parentNode.removeChild(elements[i]);
+        var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');    
+        for(var i=0; i<elements.length;i++){      
+            elements[i].remove()
         }
 
         // add new stylesheet from dropdown

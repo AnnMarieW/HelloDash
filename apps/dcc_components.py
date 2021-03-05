@@ -8,7 +8,7 @@ import time
 
 DCC_HOME = "https://dash.plotly.com/dash-core-components"
 DCC_GITHUB = "https://github.com/plotly/dash-core-components"
-DCC_DOCS = "https://dash.plotly.com/dash-core-components"
+DCC_DOCS = "https://dash.plotly.com/dash-core-components/"
 
 
 from app import app
