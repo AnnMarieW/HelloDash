@@ -28,7 +28,7 @@ card2_source_code = (
 )
 card2_about = theme_explorer_app.about
 # ------------------------------------------------
-card3 = dbc.Card(
+card9 = dbc.Card(
     [
         dbc.CardHeader(html.H3("New to Web Design?")),
         dbc.CardBody(
@@ -108,25 +108,25 @@ card8_source_code = "https://github.com/AnnMarieW/wealthdashboard"
 card8_about = """This app shows how asset allocation impacts portfolio returns over time.  See it live at [wealthdashboard.app](https://www.wealthdashboard.app/)"""
 
 # ---------------------------------------------------------------
-card9_image = "https://user-images.githubusercontent.com/72614349/110154006-fa268580-7da0-11eb-950d-d6f48de48b53.png"
-card9_title = (
-    "Oil and Gas Wells from Dash App Gallery using dbc components.  No custom CSS!"
+card3_image = "https://user-images.githubusercontent.com/72614349/110154006-fa268580-7da0-11eb-950d-d6f48de48b53.png"
+card3_title = (
+    "Oil & Gas App from the Plotly Dash Gallery -- using Bootstrap and dbc components.  No custom stylesheets or CSS!"
 )
-card9_source_code = (
+card3_source_code = (
     "https://github.com/AnnMarieW/HelloDash/tree/main/gallery/oil_and_gas"
 )
-card9_about = """
-This app is based on the Dash Enterprise App Gallery "Oil & Gas Wells" example.
+card3_about = """
+This app is based on the Plotly Dash Enterprise App Gallery "Oil & Gas Wells" example.
 
 - For more information and more apps see: [Dash App Gallery](https://dash-gallery.plotly.host/Portal/)
 - See the Dash Enterprise app running [here](https://dash-gallery.plotly.host/dash-oil-and-gas/)
 - The GitHub for the original Plotly version is [here.](https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-oil-and-gas)
 
 
-This app is re-written using dash-bootstrap-components and standard bootstrap class names.
+This app is re-written using dash-bootstrap-components and standard Bootstrap class names.
 No custom CSS stylesheets are needed!
 
-- The GitHub for the Boostrap version is [here.](https://github.com/AnnMarieW/HelloDash/tree/main/gallery/oil_and_gas)
+- The GitHub for the [Boostrap version is here.](https://github.com/AnnMarieW/HelloDash/tree/main/gallery/oil_and_gas)
 """
 
 
@@ -185,7 +185,10 @@ layout = dbc.Container(
                 make_card(
                     "card2_id", card2_image, card2_title, card2_source_code, card2_about
                 ),
-                card3,
+                make_card(
+                    "card3_id", card3_image, card3_title, card3_source_code, card3_about
+                ),
+
             ],
             className="m-4",
         ),
@@ -209,9 +212,7 @@ layout = dbc.Container(
                 make_card(
                     "card8_id", card8_image, card8_title, card8_source_code, card8_about
                 ),
-                make_card(
-                    "card9_id", card9_image, card9_title, card9_source_code, card9_about
-                ),
+                card9,
             ],
             className="m-4",
         ),
