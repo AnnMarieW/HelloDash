@@ -106,14 +106,13 @@ app.layout = dbc.Container(
         dbc.Row(
             dbc.Col(
                 [
-                    html.Div(style={'height': 75}),
-                    html.H3("New York Oil and Gas", className="text-center" ),
+                    html.Div(style={"height": 75}),
+                    html.H3("New York Oil and Gas", className="text-center"),
                     html.H5("Production Overview", className="text-center"),
                 ]
             ),
             id="header",
-            className='mb-4'
-
+            className="mb-4",
         ),
         dbc.Row(
             [
@@ -249,7 +248,7 @@ app.layout = dbc.Container(
     ],
     id="mainContainer",
     fluid=True,
-    className='bg-light'
+    className="bg-light",
 )
 
 
