@@ -700,16 +700,16 @@ def toggle_collapse(n, is_open):
         return not is_open
     return is_open
 
-
-@app.callback(
-    Output("fade", "is_in"),
-    [Input("fade-button", "n_clicks")],
-    [State("fade", "is_in")],
-)
-def toggle_fade(n, is_in):
-    if n:
-        return not is_in
-    return is_in
+#
+# @app.callback(
+#     Output("fade", "is_in"),
+#     [Input("fade-button", "n_clicks")],
+#     [State("fade", "is_in")],
+# )
+# def toggle_fade(n, is_in):
+#     if n:
+#         return not is_in
+#     return is_in
 
 
 @app.callback(

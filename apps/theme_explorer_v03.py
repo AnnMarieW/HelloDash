@@ -429,12 +429,12 @@ Layout
 """
 layout = dbc.Container(
     [
+        html.Div(id="blank_output_v03"),
         header,
         theme_controls,
         sample_app_1,
         component_layout,
         dcc.Markdown(tutorial, className="m-4 p-4"),
-        html.Div(id="blank_output_v03"),
     ],
     fluid=True,
 )
@@ -564,7 +564,7 @@ app.clientside_callback(
           } else {
             link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
         }
-        document.getElementsByTagName("head")[0].appendChild(link);
+        document.getElementsByTagName("head")[0].appendChild(link);        
     }
     """,
     Output("blank_output_v03", "children"),
