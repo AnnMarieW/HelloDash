@@ -545,17 +545,17 @@ def update(theme):
         ["Boostrap Theme colors: ", dcc.Link(theme, href=link, target="_blank")]
     )
 
-
-@app.callback(
-    Output("app_gallery_v03", "disabled"),
-    Output("app_gallery_v03", "children"),
-    Input("url", "pathname"),
-    State("app_gallery_v03", "disabled"),
-)
-def app_gallery(pathname, disabled):
-    if disabled and pathname != "/app_gallery":
-        time.sleep(4)
-    return False, "App Gallery"
+#
+# @app.callback(
+#     Output("app_gallery_v03", "disabled"),
+#     Output("app_gallery_v03", "children"),
+#     Input("url", "pathname"),
+#     State("app_gallery_v03", "disabled"),
+# )
+# def app_gallery(pathname, disabled):
+#     if disabled and pathname != "/app_gallery":
+#         time.sleep(4)
+#     return False, "App Gallery"
 
 
 app.clientside_callback(
