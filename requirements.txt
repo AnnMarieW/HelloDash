@@ -4,4 +4,3 @@ xlrd
 dash-bootstrap-components
 openpyxl
 dash-daq
-dash_colorscales

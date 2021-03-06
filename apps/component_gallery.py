@@ -8,7 +8,7 @@ from .dcc_components import layout as dcc_components_layout
 layout = dbc.Card(
     [
         html.H2(
-            "Dash Component Gallery", className="bg-primary text-white m-1 mb-4 p-2",
+            "Dash Component Gallery", className="bg-secondary text-white m-1 mb-4 p-2",
         ),
         dbc.Card(
             [
@@ -39,5 +39,5 @@ layout = dbc.Card(
             ],
         ),
     ],
-    className="m-4 shadow-lg p-2",
+    className="my-4 shadow-lg p-2",
 )

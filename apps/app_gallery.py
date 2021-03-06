@@ -109,9 +109,7 @@ card8_about = """This app shows how asset allocation impacts portfolio returns o
 
 # ---------------------------------------------------------------
 card3_image = "https://user-images.githubusercontent.com/72614349/110154006-fa268580-7da0-11eb-950d-d6f48de48b53.png"
-card3_title = (
-    "Oil & Gas App from the Plotly Dash Gallery -- using Bootstrap and dbc components.  No custom stylesheets or CSS!"
-)
+card3_title = "Oil & Gas App from the Plotly Dash Gallery -- using Bootstrap and dbc components.  No custom stylesheets or CSS!"
 card3_source_code = (
     "https://github.com/AnnMarieW/HelloDash/tree/main/gallery/oil_and_gas"
 )
@@ -188,7 +186,6 @@ layout = dbc.Container(
                 make_card(
                     "card3_id", card3_image, card3_title, card3_source_code, card3_about
                 ),
-
             ],
             className="m-4",
         ),

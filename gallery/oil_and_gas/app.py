@@ -97,122 +97,112 @@ layout = dict(
     ),
 )
 
+# Create main layout sections
+header = dbc.Row(
+    dbc.Col(
+        [
+            html.Div(style={"height": 75}),
+            html.H3("New York Oil and Gas", className="text-center"),
+            html.H5("Production Overview", className="text-center"),
+        ]
+    ),
+    className="mb-4",
+)
+
+control_panel = dbc.Card(
+    [
+        html.P("Filter by construction date (or select range in histogram):",),
+        dcc.RangeSlider(id="year_slider", min=1960, max=2017, value=[1990, 2010],),
+        html.Div("Filter by well status:",),
+        dbc.RadioItems(
+            id="well_status_selector",
+            options=[
+                {"label": "All ", "value": "all"},
+                {"label": "Active only ", "value": "active"},
+                {"label": "Customize ", "value": "custom"},
+            ],
+            value="active",
+            inline=True,
+        ),
+        dcc.Dropdown(
+            id="well_statuses",
+            options=well_status_options,
+            multi=True,
+            value=list(WELL_STATUSES.keys()),
+            className="mb-4",
+        ),
+        dbc.Checklist(
+            id="lock_selector",
+            options=[{"label": "Lock camera", "value": "locked"}],
+            value=[],
+            className="mb-4",
+        ),
+        html.Div("Filter by well type:"),
+        dbc.RadioItems(
+            id="well_type_selector",
+            options=[
+                {"label": "All ", "value": "all"},
+                {"label": "Productive only ", "value": "productive",},
+                {"label": "Customize ", "value": "custom"},
+            ],
+            value="productive",
+            inline=True,
+        ),
+        dcc.Dropdown(
+            id="well_types",
+            options=well_type_options,
+            multi=True,
+            value=list(WELL_TYPES.keys()),
+        ),
+    ],
+    className="shadow-sm bg-light p-4 mb-2",
+    style={"minWidth": "250px"},
+    id="cross-filter-options",
+)
+
+info_container = dbc.CardDeck(
+    [
+        dbc.Card(
+            [html.H6(id="well_text"), html.P("No. of Wells")],
+            className="p-4 mr-2 shadow-sm bg-light",
+            id="wells",
+        ),
+        dbc.Card(
+            [html.H6(id="gasText"), html.P("Gas")],
+            className="p-4 mr-2 shadow-sm bg-light",
+            id="gas",
+        ),
+        dbc.Card(
+            [html.H6(id="oilText"), html.P("Oil")],
+            className="p-4 mr-2 shadow-sm bg-light",
+            id="oil",
+        ),
+        dbc.Card(
+            [html.H6(id="waterText"), html.P("Water")],
+            className="p-4 mr-4 shadow-sm bg-light",
+            id="water",
+        ),
+    ],
+)
+
+
 # Create app layout
 app.layout = dbc.Container(
     [
         dcc.Store(id="aggregate_data"),
         # empty Div to trigger javascript file for graph resizing
         html.Div(id="output-clientside"),
-        dbc.Row(
-            dbc.Col(
-                [
-                    html.Div(style={"height": 75}),
-                    html.H3("New York Oil and Gas", className="text-center"),
-                    html.H5("Production Overview", className="text-center"),
-                ]
-            ),
-            id="header",
-            className="mb-4",
-        ),
+        header,
         dbc.Row(
             [
-                dbc.Col(
-                    dbc.Card(
-                        [
-                            html.P(
-                                "Filter by construction date (or select range in histogram):",
-                            ),
-                            dcc.RangeSlider(
-                                id="year_slider",
-                                min=1960,
-                                max=2017,
-                                value=[1990, 2010],
-                            ),
-                            html.Div("Filter by well status:",),
-                            dbc.RadioItems(
-                                id="well_status_selector",
-                                options=[
-                                    {"label": "All ", "value": "all"},
-                                    {"label": "Active only ", "value": "active"},
-                                    {"label": "Customize ", "value": "custom"},
-                                ],
-                                value="active",
-                                inline=True,
-                            ),
-                            dcc.Dropdown(
-                                id="well_statuses",
-                                options=well_status_options,
-                                multi=True,
-                                value=list(WELL_STATUSES.keys()),
-                                className="mb-4",
-                            ),
-                            dbc.Checklist(
-                                id="lock_selector",
-                                options=[{"label": "Lock camera", "value": "locked"}],
-                                value=[],
-                                className="mb-4",
-                            ),
-                            html.Div("Filter by well type:"),
-                            dbc.RadioItems(
-                                id="well_type_selector",
-                                options=[
-                                    {"label": "All ", "value": "all"},
-                                    {
-                                        "label": "Productive only ",
-                                        "value": "productive",
-                                    },
-                                    {"label": "Customize ", "value": "custom"},
-                                ],
-                                value="productive",
-                                inline=True,
-                            ),
-                            dcc.Dropdown(
-                                id="well_types",
-                                options=well_type_options,
-                                multi=True,
-                                value=list(WELL_TYPES.keys()),
-                            ),
-                        ],
-                        className="shadow-sm bg-light p-4 mb-2",
-                        style={"minWidth": "250px"},
-                        id="cross-filter-options",
-                    ),
-                    width=4,
-                ),
+                dbc.Col(control_panel, width=4,),
                 dbc.Col(
                     [
-                        dbc.CardDeck(
-                            [
-                                dbc.Card(
-                                    [html.H6(id="well_text"), html.P("No. of Wells")],
-                                    className="p-4 mr-2 shadow-sm bg-light",
-                                    id="wells",
-                                ),
-                                dbc.Card(
-                                    [html.H6(id="gasText"), html.P("Gas")],
-                                    className="p-4 mr-2 shadow-sm bg-light",
-                                    id="gas",
-                                ),
-                                dbc.Card(
-                                    [html.H6(id="oilText"), html.P("Oil")],
-                                    className="p-4 mr-2 shadow-sm bg-light",
-                                    id="oil",
-                                ),
-                                dbc.Card(
-                                    [html.H6(id="waterText"), html.P("Water")],
-                                    className="p-4 mr-4 shadow-sm bg-light",
-                                    id="water",
-                                ),
-                            ],
-                            id="info-container",
-                        ),
+                        info_container,
                         dbc.Card(
-                            [dcc.Graph(id="count_graph")],
-                            id="countGraphContainer",
-                            className="my-4 mr-2 shadow-sm",
+                            dcc.Graph(id="count_graph"), className="my-4 mr-2 shadow-sm"
                         ),
                     ],
-                    id="right-column",
                     width=8,
                     style={"minWidth": "500px"},
                 ),
@@ -246,7 +236,6 @@ app.layout = dbc.Container(
             className="m-2 mb-4",
         ),
     ],
-    id="mainContainer",
     fluid=True,
     className="bg-light",
 )
@@ -701,3 +690,5 @@ def make_count_figure(well_statuses, well_types, year_slider):
 # Main
 if __name__ == "__main__":
     app.run_server(debug=True)
+
+

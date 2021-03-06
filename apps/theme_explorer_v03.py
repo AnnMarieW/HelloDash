@@ -40,101 +40,6 @@ boostrap_dark_themes = [
     "SUPERHERO",
 ]
 
-colors_diverging = [
-    "rdbu",
-    "armyrose",
-    "brbg",
-    "earth",
-    "fall",
-    "geyser",
-    "prgn",
-    "piyg",
-    "picnic",
-    "portland",
-    "puor",
-    "rdgy",
-    "rdylbu",
-    "rdylgn",
-    "spectral",
-    "tealrose",
-    "temps",
-    "tropic",
-    "balance",
-    "curl",
-    "delta",
-]
-
-colors_squential = [
-    "aggrnyl",
-    "agsunset",
-    "blackbody",
-    "bluered",
-    "blues",
-    "blugrn",
-    "bluyl",
-    "brwnyl",
-    "bugn",
-    "bupu",
-    "burg",
-    "burgyl",
-    "cividis",
-    "darkmint",
-    "electric",
-    "emrld",
-    "gnbu",
-    "greens",
-    "greys",
-    "hot",
-    "inferno",
-    "jet",
-    "magenta",
-    "magma",
-    "mint",
-    "orrd",
-    "oranges",
-    "oryel",
-    "peach",
-    "pinkyl",
-    "plasma",
-    "plotly3",
-    "pubu",
-    "pubugn",
-    "purd",
-    "purp",
-    "purples",
-    "purpor",
-    "rainbow",
-    "rdbu",
-    "rdpu",
-    "redor",
-    "reds",
-    "sunset",
-    "sunsetdark",
-    "teal",
-    "tealgrn",
-    "viridis",
-    "ylgn",
-    "ylgnbu",
-    "ylorbr",
-    "ylorrd",
-    "algae",
-    "amp",
-    "deep",
-    "dense",
-    "gray",
-    "haline",
-    "ice",
-    "matter",
-    "solar",
-    "speed",
-    "tempo",
-    "thermal",
-    "turbid",
-]
-
-colors_cyclical = ["edge", "hsv", "icefire", "phase", "twilight", "mrybm", "mygbm"]
-
-
 plotly_template = [
     "plotly",
     "ggplot2",
@@ -170,6 +75,7 @@ discrete_colors = {
     "Pastel": px.colors.qualitative.Pastel,
     "Safe": px.colors.qualitative.Safe,
     "Vivid": px.colors.qualitative.Vivid,
+    "Prism": px.colors.qualitative.Prism,
 }
 
 
@@ -249,7 +155,7 @@ boostrap_card = dbc.Card(
             ]
         ),
     ],
-    className="pr-2 pl-2",
+    className="px-2 mb-2",
     style={"minWidth": 200},
 )
 
@@ -257,60 +163,119 @@ graph_template_card = dbc.Card(
     [
         dbc.FormGroup(
             [
-                dbc.Label(
-                    dbc.Button(
-                        "Graph Templates",
-                        color="link",
-                        href="https://plotly.com/python/templates/",
-                        target="_blank",
-                    )
-                ),
+                dbc.Label("Graph Templates",className="mt-2"),
                 make_dropdown("template_v03", plotly_template),
             ]
         )
     ],
-    className="pr-2 pl-2",
-    style={"minWidth": 200},
+    className="px-2, mb-2",
+    style={"minWidth": 100},
 )
+
+discrete_modal = html.Div(
+    [
+        dbc.Button("Line Colors", id="discrete_modal_btn_v03", outline=True, color='dark', size='sm', className='mb-1'),
+        dbc.Modal(
+            [
+                dbc.ModalHeader(
+                    [
+                        html.H2("Click swatch to change line chart colors", className='text-center'),
+                        dbc.Alert("color selected: Plotly", id='discrete_selected_v03', color="secondary",className='text-center' ),
+                        dcc.Markdown("""
+                            Learn more about discrete color sequences [here](https://plotly.com/python/discrete-color/)
+                        """, className='ml-4'),
+                    ]
+
+                ),
+                dbc.ModalBody([
+
+                    dcc.Graph(id='discrete_swatch_v03',
+                              figure=px.colors.qualitative.swatches(),
+                              config={'displayModeBar': False},
+                              style={'height':1000},
+                      )
+                ]),
+
+            ],
+            id="discrete_modal_v03",
+            scrollable=True,
+            centered=False,
+            className='p-0 m-0'
+        ),
+    ]
+)
+
+
+
 
 graph_color_sequence_card = dbc.Card(
     [
         dbc.FormGroup(
             [
-                dbc.Label(
-                    dbc.Button(
-                        "Discrete Colors",
-                        color="link",
-                        href="https://plotly.com/python/discrete-color/#color-sequences-in-plotly-express",
-                        target="_blank",
-                    )
-                ),
-                make_dropdown("color_sequence_v03", list(discrete_colors)),
+                dbc.Label("Line Colors", className="mt-2", ),
+                discrete_modal,
+
             ]
         ),
     ],
     className="pr-2 pl-2",
-    style={"minWidth": 200},
+    style={"minWidth": 100},
 )
+
+
+continuous_modal = html.Div(
+    [
+        dbc.Button("Scatter Colors", id="continuous_modal_btn_v03", outline=True, color='dark', size="sm", ),
+        dbc.Modal(
+            [
+                dbc.ModalHeader(
+                    [
+                        html.H2("Click swatch to change scatter plot colors", className='text-center'),
+                        dbc.Alert("color selected: aggrnyl", id='continuous_selected_v03', color="secondary",className='text-center' ),
+                        dcc.Markdown("""
+                            Learn more about continuous color sequences [here](https://plotly.com/python/builtin-colorscales/)
+                        """, className='ml-4'),
+
+
+                    ]
+
+                ),
+                dbc.ModalBody([
+
+                    dcc.Graph(id='seq_swatch_v03',
+                              figure=px.colors.sequential.swatches(),
+                              config={'displayModeBar': False},
+                              style={'height':3000},
+                    ),
+                    dcc.Graph(id='div_swatch_v03',
+                              figure=px.colors.diverging.swatches(),
+                              config={'displayModeBar': False}
+                    ),
+                    dcc.Graph(id='cyc_swatch_v03',
+                              figure=px.colors.cyclical.swatches(),
+                              config={'displayModeBar': False}
+                    )
+                ]),
+
+            ],
+            id="continuous_modal_v03",
+            scrollable=True,
+            className=("p-0 m-0")
+        ),
+    ]
+)
+
+
 
 graph_continuous_color_card = dbc.Card(
     [
         dbc.FormGroup(
             [
-                dbc.Label(
-                    dbc.Button(
-                        "Continuous Colorscales",
-                        color="link",
-                        href="https://plotly.com/python/builtin-colorscales/",
-                        target="_blank",
-                    )
-                ),
-                make_dropdown("color_scale_v03", list(continuous_colors)),
-                make_radio_items(
-                    "color_scale_radio_v03", ["Sequential", "Diverging", "Cyclical"]
-                ),
+                dbc.Label("Graph Colors", className="mt-2"),
+                discrete_modal,
+                continuous_modal
             ]
-        ),
+        )
     ],
     className="pr-2 pl-2",
     style={"minWidth": 200},
@@ -331,20 +296,25 @@ background_color_card = dbc.Card(
             ]
         ),
     ],
-    className="pr-2 pl-2",
+    className="px-2 mb-2",
     style={"minWidth": 200},
 )
 
 
-theme_controls = dbc.CardGroup(
+theme_controls = dbc.Card(
     [
-        boostrap_card,
-        graph_template_card,
-        graph_color_sequence_card,
-        graph_continuous_color_card,
-        background_color_card,
+        dbc.CardHeader("App Design Selections"),
+        dbc.CardBody([
+            boostrap_card,
+            background_color_card,
+            graph_template_card,
+           # graph_color_sequence_card,
+            graph_continuous_color_card,
+        ])
+
     ],
-    className=" p-2",
+    style={"minWidth":250},
+   # className=" p-2",
 )
 
 
@@ -419,7 +389,8 @@ sample_app_1 = dbc.Card(
         ),
         sample_app_controls,
     ],
-    className="mx-4 shadow-lg p-2",
+    className="mx-2 shadow-lg p-2",
+    style={'minWidth':400},
     id="layout_container_v03",
 )
 
@@ -431,11 +402,16 @@ Layout
 layout = dbc.Container(
     [
         header,
-        theme_controls,
-        sample_app_1,
+        dbc.Row(
+            [
+                dbc.Col(theme_controls, width=3),
+                dbc.Col(sample_app_1, width=9)
+            ]
+        ),
         component_layout,
         dcc.Markdown(tutorial, className="m-4 p-4"),
         html.Div(id="blank_output_v03"),
+        dcc.Store(id="store")
     ],
     fluid=True,
 )
@@ -448,12 +424,16 @@ layout = dbc.Container(
     Input("continents_v03", "value"),
     Input("slider_years_v03", "value"),
     Input("template_v03", "value"),
-    Input("color_sequence_v03", "value"),
-    Input("color_scale_v03", "value"),
+    Input("discrete_selected_v03", "children"),
+    Input("continuous_selected_v03", "children"),
 )
 def update_line_chart(
-    indicator, continents, years, template, color_sequence, color_scale
+    indicator, continents, years, template, color_discrete, color_continuous
 ):
+
+    color_discrete = color_discrete.split(": ")[1].strip()
+    color_continuous = color_continuous.split(": ")[1].strip()
+
 
     if continents == [] or indicator is None:
         return {}, {}
@@ -466,8 +446,8 @@ def update_line_chart(
         y=indicator,
         color="country",
         template=template,
-        color_discrete_sequence=discrete_colors[color_sequence],
-        title=f'Graph Template= "{template}"  Discrete Colors ="{color_sequence}"',
+        color_discrete_sequence=discrete_colors[color_discrete],
+        title=f'Graph Template= "{template}"  Discrete Colors ="{color_discrete}"',
         height=350,
     )
     fig.update_layout(margin=dict(l=75, r=20, t=50, b=20))
@@ -478,9 +458,9 @@ def update_line_chart(
         y=indicator,
         color="lifeExp",
         template=template,
-        color_continuous_scale=color_scale,
+        color_continuous_scale=color_continuous,
         hover_data=["country", "year"],
-        title=f'Graph Template= "{template}"  Continuous Colorscale= "{color_scale}"',
+        title=f'Graph Template= "{template}"  Continuous Colorscale= "{color_continuous}"',
         height=350,
     )
     fig2.update_layout(margin=dict(l=75, r=20, t=50, b=20))
@@ -502,18 +482,18 @@ def update(theme):
         value = boostrap_dark_themes[0]
     return options, value
 
-
-@app.callback(
-    Output("color_scale_v03", "options"), Input("color_scale_radio_v03", "value")
-)
-def update(colorscale):
-    if colorscale == "Sequential":
-        options = [{"label": str(i), "value": i} for i in colors_squential]
-    elif colorscale == "Diverging":
-        options = [{"label": str(i), "value": i} for i in colors_diverging]
-    else:
-        options = [{"label": str(i), "value": i} for i in colors_cyclical]
-    return options
+#
+# @app.callback(
+#     Output("color_scale_v03", "options"), Input("color_scale_radio_v03", "value")
+# )
+# def update(colorscale):
+#     if colorscale == "Sequential":
+#         options = [{"label": str(i), "value": i} for i in colors_squential]
+#     elif colorscale == "Diverging":
+#         options = [{"label": str(i), "value": i} for i in colors_diverging]
+#     else:
+#         options = [{"label": str(i), "value": i} for i in colors_cyclical]
+#     return options
 
 
 @app.callback(
@@ -545,17 +525,58 @@ def update(theme):
         ["Boostrap Theme colors: ", dcc.Link(theme, href=link, target="_blank")]
     )
 
-#
-# @app.callback(
-#     Output("app_gallery_v03", "disabled"),
-#     Output("app_gallery_v03", "children"),
-#     Input("url", "pathname"),
-#     State("app_gallery_v03", "disabled"),
-# )
-# def app_gallery(pathname, disabled):
-#     if disabled and pathname != "/app_gallery":
-#         time.sleep(4)
-#     return False, "App Gallery"
+#  ------------ color scale modal selection ------------------
+
+@app.callback(
+    Output('discrete_selected_v03','children'),
+    Input('discrete_swatch_v03', 'clickData')
+)
+def sel_swatch(clicked):
+    return dash.no_update if clicked is None else  f"color selected:   {clicked['points'][0]['y']}"
+
+
+@app.callback(
+    Output('continuous_selected_v03','children'),
+    Input('seq_swatch_v03', 'clickData'),
+    Input('div_swatch_v03', 'clickData'),
+    Input('cyc_swatch_v03', 'clickData')
+)
+def sel_swatch(seq, div, cyc):
+    if seq is None and div is None  and cyc is None:
+        return dash.no_update
+    ctx = dash.callback_context
+    input_id = ctx.triggered[0]['prop_id'].split('.')[0]
+
+    if input_id == 'seq_swatch_v03':
+        return f"color selected:   {seq['points'][0]['y']}"
+    if input_id == 'div_swatch_v03':
+        return f"color selected:   {div['points'][0]['y']}"
+    if input_id == 'cyc_swatch_v03':
+        return f"color selected:   {cyc['points'][0]['y']}"
+
+#---------------color scale modals open close -------------------------------------------------------------
+@app.callback(
+    Output("discrete_modal_v03", "is_open"),
+    [Input("discrete_modal_btn_v03", "n_clicks")],
+    [State("discrete_modal_v03", "is_open")],
+)
+def toggle_modal(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
+
+@app.callback(
+    Output("continuous_modal_v03", "is_open"),
+    [Input("continuous_modal_btn_v03", "n_clicks")],
+    [State("continuous_modal_v03", "is_open")],
+)
+def toggle_modal(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+#----------------------------------------------------
+
 
 
 app.clientside_callback(
