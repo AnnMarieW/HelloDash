@@ -13,13 +13,14 @@ DCC_DOCS = "https://dash.plotly.com/dash-core-components/"
 
 from app import app
 
+header = dcc.Markdown(
+    """            
+    These are the components available in the `dash-core-components` library.  Click on the component names to go
+     to the official Dash documentation and to see more examples.
 
-header = html.Div(
-    [
-        html.H4(
-            ["Here are components available in ", html.Code("dash-core-components"),]
-        )
-    ],
+     Change the Boostrap theme in the App Design Selections panel to see how the components respond the different 
+     Boostrap themes.
+"""
 )
 
 

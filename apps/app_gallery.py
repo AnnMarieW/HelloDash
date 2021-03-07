@@ -3,9 +3,9 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, MATCH
 import dash_bootstrap_components as dbc
 
-from gallery import theme_explorer_app
-
+from apps import tutorial
 from app import app, header
+
 
 # gallery content  Update info here to add apps to gallery
 
@@ -19,14 +19,22 @@ card1_title = "Light Theme App"
 card1_source_code = (
     "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/theme_explorer_app.py"
 )
-card1_about = theme_explorer_app.about
+card1_about = (
+    """
+### The first two images in the app gallery are the same app!   
+
+Use the Theme Explorer to see how different Boostrap Themes, Plotly templates and graph colors look in a Dash app. 
+The design for this app is updated by changing 5 lines of code.
+"""
+    + tutorial.tutorial
+)
 # ----------------------------------------
 card2_image = "https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png"
 card2_title = "Dark Theme App"
 card2_source_code = (
     "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/theme_explorer_app.py"
 )
-card2_about = theme_explorer_app.about
+card2_about = card1_about
 # ------------------------------------------------
 card9 = dbc.Card(
     [

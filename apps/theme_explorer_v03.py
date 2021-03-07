@@ -5,12 +5,21 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc
-import time
-
 
 from app import app, header
 from .tutorial import tutorial
 from .component_gallery import layout as component_layout
+
+import pathlib
+
+# set relative path
+PATH = pathlib.Path(__file__).parent
+GALLERY_PATH = PATH.joinpath("../gallery").resolve()
+
+# be sure to include a blank line and docstring at start of source file
+with open(GALLERY_PATH.joinpath("theme_explorer_app.py")) as f:
+    code = f.read()
+code = f"```{code}```"
 
 
 boostrap_light_themes = [
@@ -166,10 +175,10 @@ graph_template_card = dbc.Card(
                 dbc.Label("Graph Templates", className="mt-2"),
                 make_dropdown("template_v03", plotly_template),
             ],
-            className="px-2 mb-2",
             style={"minWidth": 100},
         )
     ],
+    className="px-2 mb-2",
 )
 
 discrete_modal = html.Div(
@@ -199,6 +208,7 @@ discrete_modal = html.Div(
                         dcc.Markdown(
                             """
                             Learn more about discrete color sequences [here](https://plotly.com/python/discrete-color/)
+                            
                         """,
                             className="ml-4",
                         ),
@@ -206,12 +216,15 @@ discrete_modal = html.Div(
                 ),
                 dbc.ModalBody(
                     [
+                        html.Div(
+                            "Use these colorscales for data that has distinct groups and a non-meaningful order."
+                        ),
                         dcc.Graph(
                             id="discrete_swatch_v03",
                             figure=px.colors.qualitative.swatches(),
                             config={"displayModeBar": False},
                             style={"height": 1000},
-                        )
+                        ),
                     ]
                 ),
             ],
@@ -257,16 +270,29 @@ continuous_modal = html.Div(
                 ),
                 dbc.ModalBody(
                     [
+                        html.Div(
+                            "Use sequential colorscales for data that smoothly changes value and has meaningful order."
+                        ),
                         dcc.Graph(
                             id="seq_swatch_v03",
                             figure=px.colors.sequential.swatches(),
                             config={"displayModeBar": False},
                             style={"height": 3000},
                         ),
+                        html.Hr(),
+                        html.Div(
+                            "Use divergent colorscales for data that smoothly changes around a centerpoint (such as zero)."
+                        ),
                         dcc.Graph(
                             id="div_swatch_v03",
                             figure=px.colors.diverging.swatches(),
                             config={"displayModeBar": False},
+                        ),
+                        html.Hr(),
+                        html.Div(
+                            "Cyclical color scales are appropriate for continuous data that has a natural cyclical "
+                            "structure, such as temporal data (hour of day, day of week, day of year, seasons) or "
+                            "complex numbers or other phase or angular data."
                         ),
                         dcc.Graph(
                             id="cyc_swatch_v03",
@@ -294,7 +320,7 @@ graph_continuous_color_card = dbc.Card(
             ]
         )
     ],
-    className="pr-2 pl-2",
+    className="px-2 mb-2",
     style={"minWidth": 200},
 )
 
@@ -331,6 +357,35 @@ theme_controls = dbc.Card(
         ),
     ],
     style={"minWidth": 250},
+)
+
+source_code_modal = dbc.Card(
+    [
+        dbc.CardBody(
+            [
+                html.Div(" See the Sample Dash App"),
+                dbc.Button("Source Code", id="code_modal_btn_v03", color="primary",),
+            ]
+        ),
+        dbc.Modal(
+            [
+                dbc.ModalHeader(
+                    [
+                        html.H3(
+                            "Source code for the Sample Dash App",
+                            className="text-center",
+                        ),
+                        html.H5("See more apps in the App Gallery!"),
+                    ]
+                ),
+                dbc.ModalBody([dcc.Markdown(code)]),
+            ],
+            id="code_modal_v03",
+            scrollable=True,
+            size="xl",
+        ),
+    ],
+    className="my-4",
 )
 
 
@@ -395,10 +450,12 @@ sample_app_1 = dbc.Card(
         dbc.Row(
             [
                 dbc.Col(
-                    dcc.Graph(id="line_chart_v03", config={"displayModeBar": False}),width=6,
+                    dcc.Graph(id="line_chart_v03", config={"displayModeBar": False}),
+                    width=6,
                 ),
                 dbc.Col(
-                    dcc.Graph(id="scatter_chart_v03", config={"displayModeBar": False}),width=6
+                    dcc.Graph(id="scatter_chart_v03", config={"displayModeBar": False}),
+                    width=6,
                 ),
             ],
             className="m-2",
@@ -417,7 +474,12 @@ Layout
 layout = dbc.Container(
     [
         header,
-        dbc.Row([dbc.Col(theme_controls, width=3), dbc.Col(sample_app_1, width=9)]),
+        dbc.Row(
+            [
+                dbc.Col([theme_controls, source_code_modal,], width=3),
+                dbc.Col(sample_app_1, width=9),
+            ]
+        ),
         component_layout,
         dcc.Markdown(tutorial, className="m-4 p-4"),
         html.Div(id="blank_output_v03"),
@@ -557,7 +619,7 @@ def sel_swatch(seq, div, cyc):
         return f"color selected:   {cyc['points'][0]['y']}"
 
 
-# ---------------color scale modals open close -------------------------------------------------------------
+# --------------- modals open close -------------------------------------------------------------
 @app.callback(
     Output("discrete_modal_v03", "is_open"),
     [Input("discrete_modal_btn_v03", "n_clicks")],
@@ -573,6 +635,17 @@ def toggle_modal(n, is_open):
     Output("continuous_modal_v03", "is_open"),
     [Input("continuous_modal_btn_v03", "n_clicks")],
     [State("continuous_modal_v03", "is_open")],
+)
+def toggle_modal(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
+
+@app.callback(
+    Output("code_modal_v03", "is_open"),
+    [Input("code_modal_btn_v03", "n_clicks")],
+    [State("code_modal_v03", "is_open")],
 )
 def toggle_modal(n, is_open):
     if n:

@@ -16,15 +16,14 @@ This app is part of a multi page app adapted from an [example app](https://githu
 """
 
 
-header = html.Div(
-    [
-        html.H4(
-            [
-                "Here are the components available in ",
-                html.Code("dash-bootstrap-components"),
-            ]
-        )
-    ],
+header = dcc.Markdown(
+    """            
+    These are the components available in the `dash-bootstrap-components` library.  Click on the component names to go
+     to the official documentation and to see more examples.
+     
+     Change the Boostrap theme in the App Design Selections panel to see how the components respond the different 
+     Boostrap themes.
+"""
 )
 
 
