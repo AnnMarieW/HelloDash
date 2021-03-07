@@ -22,8 +22,7 @@ Change setting here to apply design themes to app
 # graph_continous_colorscale = "darkmint"
 # background_color = "#F3F6F3"
 
-# -------- App version 2 Dark theme     -------------
-# --- See github repo /assets/ for additional CSS for Dark themes
+# -------- App version 2 Darkly theme     -------------
 
 external_stylesheets = [dbc.themes.DARKLY]
 graph_template = "plotly_dark"

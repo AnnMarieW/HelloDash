@@ -1,5 +1,3 @@
-
-
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
@@ -33,18 +31,17 @@ themes_list = [
     "SPACELAB",
     "UNITED",
     "YETI",
-
 ]
 
 
 dropdown = dcc.Dropdown(
-        id="themes",
-        options=[{"label": str(i), "value": i} for i in themes_list],
-        value="BOOTSTRAP",
-        clearable=False,
-        className='m-4',
-        style={"width": 200}
-    )
+    id="themes",
+    options=[{"label": str(i), "value": i} for i in themes_list],
+    value="BOOTSTRAP",
+    clearable=False,
+    className="m-4",
+    style={"width": 200},
+)
 
 buttons = html.Div(
     [
@@ -76,9 +73,9 @@ Layout
 app.layout = dbc.Container(
     [
         dropdown,
-        dbc.Col(buttons,width={"size": 9,  "offset": 2}),
-        dbc.Col(alerts,width={"size": 3,  "offset": 2}),
-        html.Div(id="blank_output")
+        dbc.Col(buttons, width={"size": 9, "offset": 2}),
+        dbc.Col(alerts, width={"size": 3, "offset": 2}),
+        html.Div(id="blank_output"),
     ],
     fluid=True,
 )
@@ -120,5 +117,4 @@ app.clientside_callback(
 
 
 if __name__ == "__main__":
-     app.run_server(debug=True)
-
+    app.run_server(debug=True)

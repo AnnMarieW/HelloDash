@@ -375,7 +375,7 @@ source_code_modal = dbc.Card(
                             "Source code for the Sample Dash App",
                             className="text-center",
                         ),
-                        html.H5("See more apps in the App Gallery!"),
+                        html.H5("See this app and more in the App Gallery!"),
                     ]
                 ),
                 dbc.ModalBody([dcc.Markdown(code)]),
