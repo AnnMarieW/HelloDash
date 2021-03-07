@@ -661,14 +661,7 @@ app.clientside_callback(
     function(theme) {      
 
         // select external stylesheets only - not custom css in the assets folder
-        var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');    
-        for(var i=0; i<elements.length;i++){
-            // don't remove if it's the default - bootstsrap        
-            if (theme === 'BOOTSTRAP' && elements[i].href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
-                return    
-            }
-            elements[i].remove()      
-        }
+        var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');            
 
          // add new  stylesheet based on  dropdown 
         var name = theme.toLowerCase()
@@ -680,7 +673,16 @@ app.clientside_callback(
           } else {
             link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
         }    
-        document.getElementsByTagName("head")[0].appendChild(link);    
+        document.getElementsByTagName("head")[0].appendChild(link);   
+        
+        // delete old stylesheets
+        for(var i=0; i<elements.length;i++){
+            // don't remove if it's the default - bootstsrap        
+            if (theme === 'BOOTSTRAP' && elements[i].href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
+                return    
+            }
+            elements[i].remove()      
+        } 
 
     }
     """,
