@@ -395,10 +395,10 @@ sample_app_1 = dbc.Card(
         dbc.Row(
             [
                 dbc.Col(
-                    dcc.Graph(id="line_chart_v03", config={"displayModeBar": False}),
+                    dcc.Graph(id="line_chart_v03", config={"displayModeBar": False}),width=6,
                 ),
                 dbc.Col(
-                    dcc.Graph(id="scatter_chart_v03", config={"displayModeBar": False}),
+                    dcc.Graph(id="scatter_chart_v03", config={"displayModeBar": False}),width=6
                 ),
             ],
             className="m-2",
