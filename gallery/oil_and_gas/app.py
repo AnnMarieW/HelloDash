@@ -690,5 +690,3 @@ def make_count_figure(well_statuses, well_types, year_slider):
 # Main
 if __name__ == "__main__":
     app.run_server(debug=True)
-
-

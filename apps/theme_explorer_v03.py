@@ -163,7 +163,7 @@ graph_template_card = dbc.Card(
     [
         dbc.FormGroup(
             [
-                dbc.Label("Graph Templates",className="mt-2"),
+                dbc.Label("Graph Templates", className="mt-2"),
                 make_dropdown("template_v03", plotly_template),
             ]
         )
@@ -174,97 +174,114 @@ graph_template_card = dbc.Card(
 
 discrete_modal = html.Div(
     [
-        dbc.Button("Line Colors", id="discrete_modal_btn_v03", outline=True, color='dark', size='sm', className='mb-1'),
+        dbc.Button(
+            "Line Colors",
+            id="discrete_modal_btn_v03",
+            outline=True,
+            color="primary",
+            size="sm",
+            className="mb-1",
+        ),
         dbc.Modal(
             [
                 dbc.ModalHeader(
                     [
-                        html.H2("Click swatch to change line chart colors", className='text-center'),
-                        dbc.Alert("color selected: Plotly", id='discrete_selected_v03', color="secondary",className='text-center' ),
-                        dcc.Markdown("""
+                        html.H2(
+                            "Click swatch to change line chart colors",
+                            className="text-center",
+                        ),
+                        dbc.Alert(
+                            "color selected: Plotly",
+                            id="discrete_selected_v03",
+                            color="secondary",
+                            className="text-center",
+                        ),
+                        dcc.Markdown(
+                            """
                             Learn more about discrete color sequences [here](https://plotly.com/python/discrete-color/)
-                        """, className='ml-4'),
+                        """,
+                            className="ml-4",
+                        ),
                     ]
-
                 ),
-                dbc.ModalBody([
-
-                    dcc.Graph(id='discrete_swatch_v03',
-                              figure=px.colors.qualitative.swatches(),
-                              config={'displayModeBar': False},
-                              style={'height':1000},
-                      )
-                ]),
-
+                dbc.ModalBody(
+                    [
+                        dcc.Graph(
+                            id="discrete_swatch_v03",
+                            figure=px.colors.qualitative.swatches(),
+                            config={"displayModeBar": False},
+                            style={"height": 1000},
+                        )
+                    ]
+                ),
             ],
             id="discrete_modal_v03",
             scrollable=True,
             centered=False,
-            className='p-0 m-0'
+            className="p-0 m-0",
         ),
     ]
-)
-
-
-
-
-graph_color_sequence_card = dbc.Card(
-    [
-        dbc.FormGroup(
-            [
-                dbc.Label("Line Colors", className="mt-2", ),
-                discrete_modal,
-
-            ]
-        ),
-    ],
-    className="pr-2 pl-2",
-    style={"minWidth": 100},
 )
 
 
 continuous_modal = html.Div(
     [
-        dbc.Button("Scatter Colors", id="continuous_modal_btn_v03", outline=True, color='dark', size="sm", ),
+        dbc.Button(
+            "Scatter Colors",
+            id="continuous_modal_btn_v03",
+            outline=True,
+            color="primary",
+            size="sm",
+        ),
         dbc.Modal(
             [
                 dbc.ModalHeader(
                     [
-                        html.H2("Click swatch to change scatter plot colors", className='text-center'),
-                        dbc.Alert("color selected: aggrnyl", id='continuous_selected_v03', color="secondary",className='text-center' ),
-                        dcc.Markdown("""
+                        html.H2(
+                            "Click swatch to change scatter plot colors",
+                            className="text-center",
+                        ),
+                        dbc.Alert(
+                            "color selected: aggrnyl",
+                            id="continuous_selected_v03",
+                            color="secondary",
+                            className="text-center",
+                        ),
+                        dcc.Markdown(
+                            """
                             Learn more about continuous color sequences [here](https://plotly.com/python/builtin-colorscales/)
-                        """, className='ml-4'),
-
-
+                        """,
+                            className="ml-4",
+                        ),
                     ]
-
                 ),
-                dbc.ModalBody([
-
-                    dcc.Graph(id='seq_swatch_v03',
-                              figure=px.colors.sequential.swatches(),
-                              config={'displayModeBar': False},
-                              style={'height':3000},
-                    ),
-                    dcc.Graph(id='div_swatch_v03',
-                              figure=px.colors.diverging.swatches(),
-                              config={'displayModeBar': False}
-                    ),
-                    dcc.Graph(id='cyc_swatch_v03',
-                              figure=px.colors.cyclical.swatches(),
-                              config={'displayModeBar': False}
-                    )
-                ]),
-
+                dbc.ModalBody(
+                    [
+                        dcc.Graph(
+                            id="seq_swatch_v03",
+                            figure=px.colors.sequential.swatches(),
+                            config={"displayModeBar": False},
+                            style={"height": 3000},
+                        ),
+                        dcc.Graph(
+                            id="div_swatch_v03",
+                            figure=px.colors.diverging.swatches(),
+                            config={"displayModeBar": False},
+                        ),
+                        dcc.Graph(
+                            id="cyc_swatch_v03",
+                            figure=px.colors.cyclical.swatches(),
+                            config={"displayModeBar": False},
+                        ),
+                    ]
+                ),
             ],
             id="continuous_modal_v03",
             scrollable=True,
-            className=("p-0 m-0")
+            className=("p-0 m-0"),
         ),
     ]
 )
-
 
 
 graph_continuous_color_card = dbc.Card(
@@ -273,7 +290,7 @@ graph_continuous_color_card = dbc.Card(
             [
                 dbc.Label("Graph Colors", className="mt-2"),
                 discrete_modal,
-                continuous_modal
+                continuous_modal,
             ]
         )
     ],
@@ -304,17 +321,16 @@ background_color_card = dbc.Card(
 theme_controls = dbc.Card(
     [
         dbc.CardHeader("App Design Selections"),
-        dbc.CardBody([
-            boostrap_card,
-            background_color_card,
-            graph_template_card,
-           # graph_color_sequence_card,
-            graph_continuous_color_card,
-        ])
-
+        dbc.CardBody(
+            [
+                boostrap_card,
+                graph_template_card,
+                graph_continuous_color_card,
+                background_color_card,
+            ]
+        ),
     ],
-    style={"minWidth":250},
-   # className=" p-2",
+    style={"minWidth": 250},
 )
 
 
@@ -390,7 +406,7 @@ sample_app_1 = dbc.Card(
         sample_app_controls,
     ],
     className="mx-2 shadow-lg p-2",
-    style={'minWidth':400},
+    style={"minWidth": 400},
     id="layout_container_v03",
 )
 
@@ -402,16 +418,11 @@ Layout
 layout = dbc.Container(
     [
         header,
-        dbc.Row(
-            [
-                dbc.Col(theme_controls, width=3),
-                dbc.Col(sample_app_1, width=9)
-            ]
-        ),
+        dbc.Row([dbc.Col(theme_controls, width=3), dbc.Col(sample_app_1, width=9)]),
         component_layout,
         dcc.Markdown(tutorial, className="m-4 p-4"),
         html.Div(id="blank_output_v03"),
-        dcc.Store(id="store")
+        dcc.Store(id="store"),
     ],
     fluid=True,
 )
@@ -433,7 +444,6 @@ def update_line_chart(
 
     color_discrete = color_discrete.split(": ")[1].strip()
     color_continuous = color_continuous.split(": ")[1].strip()
-
 
     if continents == [] or indicator is None:
         return {}, {}
@@ -482,6 +492,7 @@ def update(theme):
         value = boostrap_dark_themes[0]
     return options, value
 
+
 #
 # @app.callback(
 #     Output("color_scale_v03", "options"), Input("color_scale_radio_v03", "value")
@@ -525,36 +536,43 @@ def update(theme):
         ["Boostrap Theme colors: ", dcc.Link(theme, href=link, target="_blank")]
     )
 
+
 #  ------------ color scale modal selection ------------------
 
+
 @app.callback(
-    Output('discrete_selected_v03','children'),
-    Input('discrete_swatch_v03', 'clickData')
+    Output("discrete_selected_v03", "children"),
+    Input("discrete_swatch_v03", "clickData"),
 )
 def sel_swatch(clicked):
-    return dash.no_update if clicked is None else  f"color selected:   {clicked['points'][0]['y']}"
+    return (
+        dash.no_update
+        if clicked is None
+        else f"color selected:   {clicked['points'][0]['y']}"
+    )
 
 
 @app.callback(
-    Output('continuous_selected_v03','children'),
-    Input('seq_swatch_v03', 'clickData'),
-    Input('div_swatch_v03', 'clickData'),
-    Input('cyc_swatch_v03', 'clickData')
+    Output("continuous_selected_v03", "children"),
+    Input("seq_swatch_v03", "clickData"),
+    Input("div_swatch_v03", "clickData"),
+    Input("cyc_swatch_v03", "clickData"),
 )
 def sel_swatch(seq, div, cyc):
-    if seq is None and div is None  and cyc is None:
+    if seq is None and div is None and cyc is None:
         return dash.no_update
     ctx = dash.callback_context
-    input_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    input_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-    if input_id == 'seq_swatch_v03':
+    if input_id == "seq_swatch_v03":
         return f"color selected:   {seq['points'][0]['y']}"
-    if input_id == 'div_swatch_v03':
+    if input_id == "div_swatch_v03":
         return f"color selected:   {div['points'][0]['y']}"
-    if input_id == 'cyc_swatch_v03':
+    if input_id == "cyc_swatch_v03":
         return f"color selected:   {cyc['points'][0]['y']}"
 
-#---------------color scale modals open close -------------------------------------------------------------
+
+# ---------------color scale modals open close -------------------------------------------------------------
 @app.callback(
     Output("discrete_modal_v03", "is_open"),
     [Input("discrete_modal_btn_v03", "n_clicks")],
@@ -575,8 +593,9 @@ def toggle_modal(n, is_open):
     if n:
         return not is_open
     return is_open
-#----------------------------------------------------
 
+
+# ----------------------------------------------------
 
 
 app.clientside_callback(
