@@ -165,11 +165,11 @@ graph_template_card = dbc.Card(
             [
                 dbc.Label("Graph Templates", className="mt-2"),
                 make_dropdown("template_v03", plotly_template),
-            ]
+            ],
+            className="px-2 mb-2",
+            style={"minWidth": 100},
         )
     ],
-    className="px-2, mb-2",
-    style={"minWidth": 100},
 )
 
 discrete_modal = html.Div(
@@ -406,7 +406,6 @@ sample_app_1 = dbc.Card(
         sample_app_controls,
     ],
     className="mx-2 shadow-lg p-2",
-    style={"minWidth": 400},
     id="layout_container_v03",
 )
 
@@ -457,10 +456,10 @@ def update_line_chart(
         color="country",
         template=template,
         color_discrete_sequence=discrete_colors[color_discrete],
-        title=f'Graph Template= "{template}"  Discrete Colors ="{color_discrete}"',
+        title=f"template= {template}<br>color_discrete_sequence={color_discrete}",
         height=350,
     )
-    fig.update_layout(margin=dict(l=75, r=20, t=50, b=20))
+    fig.update_layout(margin=dict(l=75, r=20, t=50, b=20), title_x=0.5)
     dff = df[df.year == years[1]]
     fig2 = px.scatter(
         dff[dff.continent.isin(continents)],
@@ -470,10 +469,10 @@ def update_line_chart(
         template=template,
         color_continuous_scale=color_continuous,
         hover_data=["country", "year"],
-        title=f'Graph Template= "{template}"  Continuous Colorscale= "{color_continuous}"',
+        title=f"template= {template}<br>color_continuous_scale= {color_continuous}",
         height=350,
     )
-    fig2.update_layout(margin=dict(l=75, r=20, t=50, b=20))
+    fig2.update_layout(margin=dict(l=75, r=20, t=50, b=20), title_x=0.5)
     return fig, fig2
 
 
@@ -491,20 +490,6 @@ def update(theme):
         options = [{"label": str(i), "value": i} for i in boostrap_dark_themes]
         value = boostrap_dark_themes[0]
     return options, value
-
-
-#
-# @app.callback(
-#     Output("color_scale_v03", "options"), Input("color_scale_radio_v03", "value")
-# )
-# def update(colorscale):
-#     if colorscale == "Sequential":
-#         options = [{"label": str(i), "value": i} for i in colors_squential]
-#     elif colorscale == "Diverging":
-#         options = [{"label": str(i), "value": i} for i in colors_diverging]
-#     else:
-#         options = [{"label": str(i), "value": i} for i in colors_cyclical]
-#     return options
 
 
 @app.callback(
@@ -601,7 +586,7 @@ def toggle_modal(n, is_open):
 app.clientside_callback(
     """
     function(theme) {      
-        
+
         // select external stylesheets only - not custom css in the assets folder
         var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');    
         for(var i=0; i<elements.length;i++){
@@ -611,7 +596,7 @@ app.clientside_callback(
             }
             elements[i].remove()      
         }
-     
+
          // add new  stylesheet based on  dropdown 
         var name = theme.toLowerCase()
         var link = document.createElement("link")
@@ -623,7 +608,7 @@ app.clientside_callback(
             link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
         }    
         document.getElementsByTagName("head")[0].appendChild(link);    
-         
+
     }
     """,
     Output("blank_output_v03", "children"),

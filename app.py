@@ -29,21 +29,19 @@ header = dbc.Jumbotron(
                 dbc.Button(
                     "Theme Explorer",
                     color="primary",
-                    outline=True,
+                    #  outline=True,
                     href="/theme_explorer",
                     className="mr-2",
-                    size='sm',
+                    size="sm",
                 ),
                 dbc.Button(
-                    #  [dbc.Spinner(size="sm"), " Loading..."],
                     "App Gallery",
                     id="app_gallery_v03",
-                    #  disabled=True,
                     color="primary",
-                    outline=True,
+                    #    outline=True,
                     href="/app_gallery",
                     className="mr-2",
-                    size='sm',
+                    size="sm",
                 ),
                 dbc.Button(
                     "Dash Bootstrap Components",
@@ -52,7 +50,7 @@ header = dbc.Jumbotron(
                     target="_blank",
                     className="mr-2",
                     href="https://dash-bootstrap-components.opensource.faculty.ai/",
-                    size='sm',
+                    size="sm",
                 ),
                 dbc.Button(
                     "Dash Documentation",
@@ -60,9 +58,10 @@ header = dbc.Jumbotron(
                     outline=True,
                     target="_blank",
                     href="https://dash.plotly.com/",
-                    size='sm',
+                    size="sm",
                 ),
-            ], className='mt-2'
+            ],
+            className="mt-2",
         ),
     ]
 )
