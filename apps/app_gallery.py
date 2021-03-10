@@ -138,13 +138,31 @@ No custom CSS stylesheets are needed!
 card4_image = "https://user-images.githubusercontent.com/72614349/110656159-ed2cdc00-817c-11eb-988d-88f19edaa19b.png"
 
 card4_title = "How to style a Dash DataTable"
-card4_source_code = (
-    "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/light_dark_datatable.py"
-)
+card4_source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/datatable_theme_explorer.py"
 card4_about = """
-### The two images in this image are the same app.  Only one line is changed to use a different theme!   
+### The two DataTables in this image are the same app.  Only one line is changed to use a different theme!   
 """
 
+card11_image = "https://user-images.githubusercontent.com/72614349/110704339-1025b300-81b2-11eb-9b26-7a8815e722ce.png"
+card11_title = "Layout template #1"
+card11_source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/layout_template_1.py"
+card11_about = """ This is a simple template for the app layout.  See larger image
+[here](https://user-images.githubusercontent.com/72614349/110704339-1025b300-81b2-11eb-9b26-7a8815e722ce.png)
+
+"""
+
+card13_image = "https://user-images.githubusercontent.com/72614349/110704060-bb823800-81b1-11eb-8ac3-e866944beee6.png"
+card13_title = "Layout template  #3"
+card13_source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/layout_template_3.py"
+card13_about =""" This is a simple template for the app layout.  See larger image
+[here](https://user-images.githubusercontent.com/72614349/110704060-bb823800-81b1-11eb-8ac3-e866944beee6.png)
+"""
+
+card12_image = "https://user-images.githubusercontent.com/72614349/110702548-e79cb980-81af-11eb-96b0-d89a36d3fcb9.png"
+card12_title = "Layout template  #2"
+card12_source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/layout_template_2.py"
+card12_about ="""  This is a simple template for the app layout.  See larger image 
+[here](https://user-images.githubusercontent.com/72614349/110702548-e79cb980-81af-11eb-96b0-d89a36d3fcb9.png)"""
 
 """
 ======================================================================
@@ -241,10 +259,44 @@ layout = dbc.Container(
                     card10_about,
                 ),
                 make_card(
-                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
+                    "card11_id",
+                    card11_image,
+                    card11_title,
+                    card11_source_code,
+                    card11_about,
                 ),
                 make_card(
-                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
+                    "card12_id",
+                    card12_image,
+                    card12_title,
+                    card12_source_code,
+                    card12_about,
+                ),
+            ],
+            className="m-4",
+        ),
+dbc.CardDeck(
+            [
+                make_card(
+                    "card13_id",
+                    card13_image,
+                    card13_title,
+                    card13_source_code,
+                    card13_about,
+                ),
+                make_card(
+                    "card0_id",
+                    card0_image,
+                    card0_title,
+                    card0_source_code,
+                    card0_about,
+                ),
+                make_card(
+                    "card0_id",
+                    card0_image,
+                    card0_title,
+                    card0_source_code,
+                    card0_about,
                 ),
             ],
             className="m-4",

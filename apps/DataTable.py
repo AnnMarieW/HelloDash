@@ -81,7 +81,7 @@ header = dcc.Markdown(
      This is the Dash `DataTable`.  Change the Boostrap theme in the App Design Selections panel to see how the 
      DataTable responds to  different Boostrap themes. See more on how to style the DataTable [here](https://dash.plotly.com/datatable/style)
      
-     See the code for Dash DataTables with different themes in the App Gallery
+     Select cells in each table to see more style differences.  The code for Dash DataTables with different themes is in the App Gallery.
 """
 )
 
