@@ -19,7 +19,7 @@ header = dbc.Jumbotron(
             "The easy way to see Boostrap themes and Plotly  graph templates and colors in a Dash app.",
             className="lead",
         ),
-        html.P(" App design starts here!", className=" font-italic",),
+        html.P("Your app design starts here!", className=" font-italic",),
         html.Hr(className="my-2"),
         html.Div(
             [

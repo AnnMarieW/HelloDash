@@ -20,7 +20,8 @@ header = dcc.Markdown(
 
      Change the Boostrap theme in the App Design Selections panel to see how the components respond the different 
      Boostrap themes.
-"""
+""",
+    id="dcc",
 )
 
 
@@ -35,6 +36,10 @@ def make_subheading(label, link):
 checklist = html.Div(
     [
         make_subheading("Checklist", "checklist/"),
+        dcc.Markdown(
+            "Note:  `dbc.checklist()` responds better to Bootstrap themes",
+            className="my-1",
+        ),
         html.Div(
             [
                 dcc.Checklist(
@@ -182,6 +187,10 @@ loading = html.Div(
 radioitems = html.Div(
     [
         make_subheading("RadioItems", "radioitems/"),
+        dcc.Markdown(
+            "Note:  `dbc.RadioItems()` responds better to Bootstrap themes",
+            className="my-1",
+        ),
         html.Div(
             [
                 dcc.RadioItems(

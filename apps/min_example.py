@@ -39,8 +39,6 @@ dropdown = dcc.Dropdown(
     options=[{"label": str(i), "value": i} for i in themes_list],
     value="BOOTSTRAP",
     clearable=False,
-    className="m-4",
-    style={"width": 200},
 )
 
 buttons = html.Div(
@@ -71,12 +69,14 @@ alerts = html.Div(
 Layout
 """
 app.layout = dbc.Container(
-    [
-        dropdown,
-        dbc.Col(buttons, width={"size": 9, "offset": 2}),
-        dbc.Col(alerts, width={"size": 3, "offset": 2}),
-        html.Div(id="blank_output"),
-    ],
+    dbc.Row(
+        [
+            dbc.Col(["Select Theme", dropdown], width=3),
+            dbc.Col([buttons, alerts]),
+            html.Div(id="blank_output"),
+        ],
+    ),
+    className="m-4",
     fluid=True,
 )
 
@@ -84,31 +84,14 @@ app.layout = dbc.Container(
 app.clientside_callback(
     """
     function(theme) {
-
-        // select external stylesheets only - not custom css in the assets folder
-        var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');
-
-         // add new  stylesheet based on  dropdown
+        var stylesheet = document.querySelector('link[rel=stylesheet][href^="https://stackpath"]')
         var name = theme.toLowerCase()
-        var link = document.createElement("link")
-        link.rel = "stylesheet"
-        link.type = "text/css"
         if (name === 'bootstrap') {
-            link.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
+            var link = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
           } else {
-            link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
+            var link = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
         }
-        document.getElementsByTagName("head")[0].appendChild(link);
-
-        // delete old stylesheets
-        for(var i=0; i<elements.length;i++){
-            // don't remove if it's the default - bootstsrap
-            if (theme === 'BOOTSTRAP' && elements[i].href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
-                return
-            }
-            elements[i].remove()
-        }
-
+        stylesheet.href = link
     }
     """,
     Output("blank_output", "children"),

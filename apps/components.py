@@ -1,3 +1,8 @@
+"""
+This module is imported in the component_gallery.py
+"""
+
+
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html

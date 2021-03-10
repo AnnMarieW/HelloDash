@@ -450,11 +450,25 @@ sample_app_1 = dbc.Card(
         dbc.Row(
             [
                 dbc.Col(
-                    dcc.Graph(id="line_chart_v03", config={"displayModeBar": False}),
+                    [
+                        dcc.Markdown(
+                            id="line_chart_title_v03", className="text-center"
+                        ),
+                        dcc.Graph(
+                            id="line_chart_v03", config={"displayModeBar": False}
+                        ),
+                    ],
                     width=6,
                 ),
                 dbc.Col(
-                    dcc.Graph(id="scatter_chart_v03", config={"displayModeBar": False}),
+                    [
+                        dcc.Markdown(
+                            id="scatter_chart_title_v03", className="text-center"
+                        ),
+                        dcc.Graph(
+                            id="scatter_chart_v03", config={"displayModeBar": False}
+                        ),
+                    ],
                     width=6,
                 ),
             ],
@@ -492,6 +506,8 @@ layout = dbc.Container(
 @app.callback(
     Output("line_chart_v03", "figure"),
     Output("scatter_chart_v03", "figure"),
+    Output("line_chart_title_v03", "children"),
+    Output("scatter_chart_title_v03", "children"),
     Input("indicator_v03", "value"),
     Input("continents_v03", "value"),
     Input("slider_years_v03", "value"),
@@ -511,6 +527,10 @@ def update_line_chart(
 
     dff = df[df.year.between(years[0], years[1])]
     dff = dff[dff.continent.isin(continents)]
+
+    title = """template= {}  \ncolor_discrete_sequence=px.colors.qualitative.{}""".format(
+        template, color_discrete
+    )
     fig = px.line(
         dff,
         x="year",
@@ -518,11 +538,13 @@ def update_line_chart(
         color="country",
         template=template,
         color_discrete_sequence=discrete_colors[color_discrete],
-        title=f"template= {template}<br>color_discrete_sequence={color_discrete}",
         height=350,
     )
-    fig.update_layout(margin=dict(l=75, r=20, t=50, b=20), title_x=0.5)
+    fig.update_layout(margin=dict(l=75, r=20, t=00, b=20))
     dff = df[df.year == years[1]]
+    title2 = """template= {}  \n  color_continuous_scale= {}""".format(
+        template, color_continuous
+    )
     fig2 = px.scatter(
         dff[dff.continent.isin(continents)],
         x="lifeExp",
@@ -531,11 +553,10 @@ def update_line_chart(
         template=template,
         color_continuous_scale=color_continuous,
         hover_data=["country", "year"],
-        title=f"template= {template}<br>color_continuous_scale= {color_continuous}",
         height=350,
     )
-    fig2.update_layout(margin=dict(l=75, r=20, t=50, b=20), title_x=0.5)
-    return fig, fig2
+    fig2.update_layout(margin=dict(l=75, r=20, t=0, b=20))
+    return fig, fig2, title, title2
 
 
 @app.callback(
@@ -655,35 +676,20 @@ def toggle_modal(n, is_open):
 
 # ----------------------------------------------------
 
-
 app.clientside_callback(
     """
-    function(theme) {      
-
-        // select external stylesheets only - not custom css in the assets folder
-        var elements = document.querySelectorAll('link[rel=stylesheet][href^="https"]');            
-
-         // add new  stylesheet based on  dropdown 
+    function(theme) {
+        var stylesheet = document.querySelector('link[rel=stylesheet][href^="https://stackpath"]')
         var name = theme.toLowerCase()
-        var link = document.createElement("link")
-        link.rel = "stylesheet"
-        link.type = "text/css"
         if (name === 'bootstrap') {
-            link.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
+            var link = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
           } else {
-            link.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
-        }    
-        document.getElementsByTagName("head")[0].appendChild(link);   
-        
-        // delete old stylesheets
-        for(var i=0; i<elements.length;i++){
-            // don't remove if it's the default - bootstsrap        
-            if (theme === 'BOOTSTRAP' && elements[i].href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
-                return    
-            }
-            elements[i].remove()      
-        } 
-
+            var link = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
+        }
+        if (theme === 'BOOTSTRAP' && stylesheet.href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
+                 return
+             }
+        stylesheet.href = link
     }
     """,
     Output("blank_output_v03", "children"),

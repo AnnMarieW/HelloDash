@@ -1,0 +1,259 @@
+/**
+
+This file is for gathering info on how to modify Plotly and Dash
+components
+--------------------
+
+
+
+
+Dropdown  with some of my notes
+––––––––––––––––––––––––––––––––––––––––––––––––––
+.Select-value {
+    cursor: pointer;
+}
+
+/* seems to have no effect
+.Select-control {
+    color: yellow !important;
+}
+
+/* text of dropdown options
+.Select {
+    color: green !important;
+}
+
+/* dropdown menu  - note .Select div will override selections here
+.Select-menu-outer {
+    background-color: lime !important;
+   /* border: 5px solid pink !important;
+}
+
+/* input and dropdown container
+.Select div {
+    background-color: grey !important;
+}
+
+
+
+/* dropdown hover
+.Select-menu-outer div:hover {
+    background-color: yellow !important;
+    cursor: pointer;
+}
+
+/* text of input box
+.Select-value-label {
+    color: orange !important;
+}
+
+.Select--single > .Select-control .Select-value, .Select-placeholder {
+    border: 1px solid  !important;
+    border-radius: 4px !important;
+}
+---------------------------------------------------------------
+
+
+
+
+/****From https://github.com/plotly/dash-sample-apps/blob/master/apps/dash-opioid-epidemic/assets/opioid.css****/
+
+/* Slider
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+#252e3f is the dark navey blue
+#1d2731  almost black (slightly blue)
+#7fafdf - green highlights  - text color
+
+#slider-container {
+    background-color: #252e3f;
+    padding: 2rem 6rem 4rem 4rem;
+    height: 8rem;
+}
+
+.rc-slider-dot-active, .rc-slider-handle {
+    border-color: #2cfec1 !important;
+}
+
+.rc-slider-track {
+    background-color: #2cfec1 !important
+}
+
+.rc-slider-rail {
+    background-color: #1d2731 !important
+}
+
+
+/* Dropdown
+––––––––––––––––––––––––––––––––––––––––––––––––––
+.Select-value {
+    cursor: pointer;
+}
+
+.Select-control {
+    color: #7fafdf !important;
+}
+
+.Select {
+    color: #7fafdf !important;
+}
+
+.Select-menu-outer {
+    background-color: #252e3f !important;
+    border: 1px solid #7fafdf !important;
+}
+
+.Select div {
+    background-color: #252e3f !important;
+}
+
+.Select-menu-outer div:hover {
+    background-color: rgba(255, 255, 255, 0.01) !important;
+    cursor: pointer;
+}
+
+.Select-value-label {
+    color: #7fafdf !important;
+}
+
+.Select--single > .Select-control .Select-value, .Select-placeholder {
+    border: 1px solid #7fafdf !important;
+    border-radius: 4px !important;
+}
+
+
+/***************  From  https://github.com/plotly/dash-sample-apps/blob/master/apps/dash-svm/assets/custom-styles.css*/
+/* Dropdowns
+––––––––––––––––––––––––––––––––––––––––––––––––––
+.Select-control {
+    color: #a5b1cd;
+}
+
+.Select {
+    color: #a5b1cd;
+}
+
+.Select-menu-outer {
+    background-color: #2f3445;
+    border: 1px solid gray;
+}
+
+.Select div {
+    background-color: #2f3445;
+}
+
+.Select-menu-outer div:hover {
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.Select-value-label {
+    color: #a5b1cd !important;
+}
+
+.Select--single > .Select-control .Select-value, .Select-placeholder {
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+
+
+-----------------------------------------------------------------------------------------------
+From https://github.com/tcbegley/dash-bootstrap-css/blob/main/scss/components/slider.scss
+
+.dash-bootstrap {
+  .rc-slider {
+    height: $custom-range-track-height;
+    padding: 0;
+  }
+
+  .rc-slider-handle {
+    border: $custom-range-thumb-border;
+
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+
+    margin-top: calc(
+      (#{$custom-range-track-height} - #{$custom-range-thumb-height}) / 2
+    );
+    margin-left: -$custom-range-thumb-width / 2;
+    @include gradient-bg($custom-range-thumb-bg);
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
+
+    &:focus {
+      outline: 0;
+      box-shadow: $custom-range-thumb-focus-box-shadow;
+    }
+  }
+
+  .rc-slider-rail {
+    background-color: $custom-range-track-bg;
+    height: $custom-range-track-height;
+
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  .rc-slider-track {
+    background-color: theme-color-level("primary", -5);
+    height: $custom-range-track-height;
+
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  .rc-slider-step {
+    height: $custom-range-track-height;
+  }
+
+  .rc-slider-dot {
+    border: 0;
+    background-color: $custom-range-track-bg;
+    bottom: calc(
+      (#{$custom-range-track-height} - #{$custom-range-thumb-height}) / 2 + 2px
+    );
+    margin-left: -$custom-range-thumb-width / 2;
+    height: calc(#{$custom-range-thumb-height} - 4px);
+    width: calc(#{$custom-range-thumb-width} - 4px);
+
+    &.rc-slider-dot-active {
+      background-color: theme-color-level("primary", -5);
+    }
+  }
+
+  .rc-slider-mark-text {
+    color: gray("600");
+
+    &.rc-slider-mark-text-active {
+      color: color-yiq($body-bg, gray("800"), gray("400"));
+    }
+  }
+}
+
+
+
+
+
+/**  Removes the half round border on the color picker.
+.hAbAwM  .chrome-picker {
+  border: none !important;
+  border-radius: 0% !important
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**/

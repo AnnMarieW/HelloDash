@@ -12,26 +12,36 @@ import dash_bootstrap_components as dbc
 
 """
 =====================================================================
-Change setting here to apply design themes to app
+Set details for your selected theme here
 """
-# ------  App version 1  Minty theme   ------------
 
-# external_stylesheets = [dbc.themes.MINTY]
-# graph_template = "simple_white"
-# graph_color_sequence = px.colors.qualitative.Pastel
-# graph_continous_colorscale = "darkmint"
-# background_color = "#F3F6F3"
+# ------  App version 1  Minty theme   ------------
+MINTY = {
+    "external_stylesheets": [dbc.themes.MINTY],
+    "graph_template": "simple_white",
+    "color_discrete_sequence": px.colors.qualitative.Pastel,
+    "color_continuous_scale": "darkmint",
+    "app_background_color": "#F3F6F3",
+}
 
 # -------- App version 2 Darkly theme     -------------
+DARKLY = {
+    "external_stylesheets": [dbc.themes.DARKLY],
+    "graph_template": "plotly_dark",
+    "color_discrete_sequence": px.colors.qualitative.Dark24,
+    "color_continuous_scale": "ice",
+    "app_background_color": "",
+}
 
-external_stylesheets = [dbc.themes.DARKLY]
-graph_template = "plotly_dark"
-graph_color_sequence = px.colors.qualitative.Dark24
-graph_continous_colorscale = "ice"
-background_color = ""
-# =====================================================================
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+"""
+=====================================================================
+Change THEME  to apply design themes to app
+"""
+# THEME = MINTY
+THEME = DARKLY
+
+app = dash.Dash(__name__, external_stylesheets=THEME["external_stylesheets"])
 df = px.data.gapminder()
 
 
@@ -132,7 +142,7 @@ app.layout = dbc.Container(
     ],
     id="layout_container",
     fluid=True,
-    style={"backgroundColor": background_color},
+    style={"backgroundColor": THEME["app_background_color"]},
 )
 
 
@@ -143,7 +153,7 @@ app.layout = dbc.Container(
     Input("continents", "value"),
     Input("slider_years", "value"),
 )
-def update_line_chart(indicator, continents, years):
+def update_charts(indicator, continents, years):
     if continents == [] or indicator is None:
         return {}, {}
 
@@ -153,8 +163,8 @@ def update_line_chart(indicator, continents, years):
         x="year",
         y=indicator,
         color="country",
-        template=graph_template,
-        color_discrete_sequence=graph_color_sequence,
+        template=THEME["graph_template"],
+        color_discrete_sequence=THEME["color_discrete_sequence"],
     )
     dff = df[df.year == years[1]]
     fig2 = px.scatter(
@@ -162,8 +172,8 @@ def update_line_chart(indicator, continents, years):
         x="lifeExp",
         y=indicator,
         color="lifeExp",
-        template=graph_template,
-        color_continuous_scale=graph_continous_colorscale,
+        template=THEME["graph_template"],
+        color_continuous_scale=THEME["color_continuous_scale"],
         hover_data=["country", "year"],
     )
     return fig, fig2
@@ -171,3 +181,22 @@ def update_line_chart(indicator, continents, years):
 
 if __name__ == "__main__":
     app.run_server(debug=True)
+
+
+"""
+Note:  For dark themed apps, add the following the css file in the assets folder.  This 
+       styles the dropdown menu items to make them visible in both light and dark theme apps.
+       See more info here: https://dash.plotly.com/external-resources
+       
+       
+.VirtualizedSelectOption {
+    background-color: white;
+    color: black;
+}
+
+.VirtualizedSelectFocusedOption {
+    background-color: lightgrey;
+    color: black;
+}
+
+"""
