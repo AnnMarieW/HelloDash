@@ -82,7 +82,7 @@ table = dash_table.DataTable(
 
 app.layout = dbc.Container(
     [
-        html.H1("Theme Explorer App", className="bg-primary text-white"),
+        html.H1("DataTable Theme Explorer", className="bg-primary text-white"),
         html.Hr(),
         dbc.Row(
             dbc.Col(

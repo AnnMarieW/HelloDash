@@ -62,10 +62,10 @@ them to the list!
     ],
 )
 # ------------------------------------------------
-card4_image = "https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png"
-card4_title = "Great quick start app   <75 lines of code! "
-card4_source_code = "https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region"
-card4_about = "This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)"
+card10_image = "https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png"
+card10_title = "Great quick start app   <75 lines of code! "
+card10_source_code = "https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region"
+card10_about = "This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)"
 
 # ------------------------------------------------
 
@@ -133,6 +133,16 @@ This app is re-written using dash-bootstrap-components and standard Bootstrap cl
 No custom CSS stylesheets are needed!
 
 - The GitHub for the [Boostrap version is here.](https://github.com/AnnMarieW/HelloDash/tree/main/gallery/oil_and_gas)
+"""
+
+card4_image = "https://user-images.githubusercontent.com/72614349/110656159-ed2cdc00-817c-11eb-988d-88f19edaa19b.png"
+
+card4_title = "How to style a Dash DataTable"
+card4_source_code = (
+    "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/light_dark_datatable.py"
+)
+card4_about = """
+### The two images in this image are the same app.  Only one line is changed to use a different theme!   
 """
 
 
@@ -224,7 +234,11 @@ layout = dbc.Container(
         dbc.CardDeck(
             [
                 make_card(
-                    "card0_id", card0_image, card0_title, card0_source_code, card0_about
+                    "card10_id",
+                    card10_image,
+                    card10_title,
+                    card10_source_code,
+                    card10_about,
                 ),
                 make_card(
                     "card0_id", card0_image, card0_title, card0_source_code, card0_about
