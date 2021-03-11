@@ -172,7 +172,7 @@ card12_about ="""  This is a simple template for the app layout.  See larger ima
 def make_card(id, image, text, source_code, about):
     return dbc.Card(
         [
-            dbc.CardImg(src=image, top=True, style={"height": 350}),
+            dbc.CardImg(src=image, top=True, style={"height": 'auto', 'width': '100%'}),
             dbc.CardBody(
                 [
                     html.P(text, className="card-text font-weight-bold"),
