@@ -212,6 +212,17 @@ gallery.append(
     )
 )
 
+
+# 9
+gallery.append(
+    Card(
+        image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
+        title="Great quick start app   <75 lines of code! ",
+        source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",
+        about="This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)",
+    )
+)
+
 """
 ======================================================================
 Gallery Helper Functions

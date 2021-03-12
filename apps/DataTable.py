@@ -203,6 +203,7 @@ def make_table(theme):
                 {"selector": "tr:hover", "rule": "background-color:transparent"},
                 {"selector": ".dash-table-tooltip", "rule": "color:black"},
             ],
+            style_table={'maxwidth': 800},
             style_cell={"backgroundColor": "transparent", "fontFamily": theme["font"]},
             style_data_conditional=[
                 {
@@ -227,7 +228,7 @@ layout = (
         dbc.Card(
             [
                 default_table_text,
-                dbc.Card(
+                html.Div(dbc.Card(
                     [
                         dbc.CardHeader(html.H4("Dash DataTable - default style")),
                         dbc.CardBody(
@@ -235,11 +236,12 @@ layout = (
                                 columns=[{"name": i, "id": i} for i in df.columns],
                                 data=df.to_dict("records"),
                                 page_size=4,
-                            )
+                                style_table={'maxwidth':800}
+                            ),
                         ),
                     ],
-                    className="m-4",
-                ),
+                    className="m-4 w-100",
+                ),style={"maxWidth": 900}),
                 html.Hr(),
                 light_theme_text,
                 dbc.Card(
@@ -250,6 +252,7 @@ layout = (
                         dbc.CardBody(make_table(THEMES["BOOTSTRAP"])),
                     ],
                     className="mx-4",
+                    style={"maxWidth": 900},
                 ),
                 light_theme_code,
                 html.Hr(),
