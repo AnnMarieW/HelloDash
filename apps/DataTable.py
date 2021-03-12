@@ -1,5 +1,6 @@
 """
-This module is imported in the component_gallery.py
+This module is imported in the component_gallery.py and demonstrates how to style a
+Dash DataTable to look better with Bootstrap themes.
 """
 
 
@@ -76,22 +77,118 @@ THEMES = {
 
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
 
-header = dcc.Markdown(
+default_table_text = dcc.Markdown(
     """ 
-     This is the Dash `DataTable`.  Change the Boostrap theme in the App Design Selections panel to see how the 
-     DataTable responds to  different Boostrap themes. See more on how to style the DataTable [here](https://dash.plotly.com/datatable/style)
+     The Dash `DataTable` does not respond to Bootstrap themes automatically.  The first table shows the default style.
+     Try changing the Bootstrap theme in the 
+      App Design Selections panel to see how the DataTable responds to  different Bootstrap themes. See more on how to style the DataTable 
+     [here](https://dash.plotly.com/datatable/style).    
      
-     Select cells in each table to see more style differences.  The code for Dash DataTables with different themes is in the App Gallery.
 """
 )
 
+light_theme_text = dcc.Markdown(
+    """
+    #### DataTable with Bootstrap light themes
+    
+    As you can see in the table above, the default style for the Dash table works fine with Bootstrap light themes - but not
+    with dark themes.  To make the table look even better with light themes you can:  
+    
+    -  Change the font to be the same font as in your selected theme.
+    -  Change the active and selected cells to colors from the Bootstrap theme rather than the default "hotpink". 
+    
+    Try selecting cells in this table and in the default table above to see the style difference.
+""",
+    className="my-4",
+)
 
-def make_subheading(label, link):
-    return html.H4(
-        dcc.Link(label, href=TABLE_DOCS + link, target="_blank"),
-        style={"textDecoration": "underline"},
-        className="mb-2",
-    )
+light_theme_code = dcc.Markdown(
+    """
+    You can find the details of the colors and fonts in the link for the stylesheet .
+
+    ```   
+        # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css
+        font = "sans-serif"
+        primary = "#007bff"
+        secondary = "#6c757d"
+        selected = "rgba(0, 0, 0, 0.075)"
+
+        datatable = dash_table.DataTable(
+            columns=[{"name": i, "id": i} for i in df.columns],
+            data=df.to_dict("records"),
+            style_cell={"fontFamily": font},
+            style_data_conditional=[
+                {
+                    "if": {"state": "active"},
+                    "backgroundColor": selected,
+                    "border": "1px solid " + primary,
+                },
+                {
+                    "if": {"state": "selected"},
+                    "backgroundColor": selected,
+                    "border": "1px solid" + secondary,
+                },
+            ],
+        )
+    ```   
+""",
+    className="mb-4",
+)
+
+dark_theme_text = dcc.Markdown(
+    """
+    #### DataTable with Bootstrap dark themes
+    
+    When you change to a dark theme, you will need to make more changes to the DataTable style.
+    
+    -  Set the table background color to transparent to make it the same as the Bootstrap background color.
+    -  Set the font color to white to make text visible when cells are selected or the table is editable.
+    -  Use the CSS parameter to remove the hover color. The default is white which looks bad and makes the text disappear.
+    -  Use the CSS parameter to change the text color of tooltips (if used).
+    
+    #### Be sure to change to a Dark theme to see the table with the CYBORG style.
+"""
+)
+
+dark_theme_code = dcc.Markdown(
+    """
+    ```        
+    # https://bootswatch.com/4/cyborg/bootstrap.css    
+    primary = "#2a9fd6"
+    secondary = "#555"
+    selected = "rgba(255, 255, 255, 0.075)"
+    font_color = "white"
+    font = "Roboto"    
+    
+    datatable =dash_table.DataTable(
+        columns=[{"name": i, "id": i} for i in df.columns],
+        data=df.to_dict("records"),
+        editable=True,
+        page_size=4,
+        css=[
+            {"selector": "input", "rule": f"color:{font_color}"},
+            {"selector": "tr:hover", "rule": "background-color:transparent"},
+            {"selector": ".dash-table-tooltip", "rule": "color:black"},
+        ],
+        style_cell={"backgroundColor": "transparent", "fontFamily": font},
+        style_data_conditional=[
+            {
+                "if": {"state": "active"},
+                "backgroundColor": selected,
+                "border": "1px solid " + primary,
+                "color": font_color,
+            },
+            {
+                "if": {"state": "selected"},
+                "backgroundColor": "selected",
+                "border": "1px solid" + secondary,
+                "color": font_color,
+            },
+        ],
+    ),
+    ```
+    """
+)
 
 
 def make_table(theme):
@@ -100,6 +197,7 @@ def make_table(theme):
             columns=[{"name": i, "id": i} for i in df.columns],
             data=df.to_dict("records"),
             editable=True,
+            page_size=4,
             css=[
                 {"selector": "input", "rule": f"color:{theme['font_color']}"},
                 {"selector": "tr:hover", "rule": "background-color:transparent"},
@@ -128,46 +226,47 @@ layout = (
     dbc.Container(
         dbc.Card(
             [
-                header,
-                html.Hr(),
+                default_table_text,
                 dbc.Card(
                     [
-                        dbc.CardHeader(html.H4(id="theme_table_title_v03")),
-                        dbc.CardBody(id="theme_table_v03"),
-                    ],
-                    className="my-4",
-                ),
-                dbc.Card(
-                    [
-                        dbc.CardHeader(html.H4("Dash Default Table style")),
+                        dbc.CardHeader(html.H4("Dash DataTable - default style")),
                         dbc.CardBody(
                             dash_table.DataTable(
                                 columns=[{"name": i, "id": i} for i in df.columns],
                                 data=df.to_dict("records"),
+                                page_size=4,
                             )
                         ),
                     ],
+                    className="m-4",
                 ),
+                html.Hr(),
+                light_theme_text,
+                dbc.Card(
+                    [
+                        dbc.CardHeader(
+                            html.H4("Dash DataTable - styled for light BOOTSTRAP theme")
+                        ),
+                        dbc.CardBody(make_table(THEMES["BOOTSTRAP"])),
+                    ],
+                    className="mx-4",
+                ),
+                light_theme_code,
+                html.Hr(),
+                dark_theme_text,
+                dbc.Card(
+                    [
+                        dbc.CardHeader(
+                            html.H4("Dash DataTable - styled for dark CYBORG theme")
+                        ),
+                        dbc.CardBody(make_table(THEMES["CYBORG"])),
+                    ],
+                    className="my-4",
+                ),
+                dark_theme_code,
             ],
             className="my-2 p-4",
         ),
         fluid=True,
     ),
 )
-
-
-@app.callback(
-    Output("theme_table_v03", "children"),
-    Output("theme_table_title_v03", "children"),
-    Input("themes_v03", "value"),
-    Input("light_dark_v03", "value"),
-)
-def update_theme_table(theme, light):
-    if theme in ["SUPERHERO", "CERULEAN", "JOURNAL"]:
-        table = make_table(THEMES[theme]), f"Table Styled for {theme} theme"
-    else:
-        if light == "Light Themes":
-            table = make_table(THEMES["BOOTSTRAP"]), "Table Styled for BOOTSTRAP theme"
-        else:
-            table = make_table(THEMES["CYBORG"]), "Table Styled for CYBORG theme"
-    return table

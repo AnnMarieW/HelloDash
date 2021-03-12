@@ -13,10 +13,7 @@ LOGO = "https://user-images.githubusercontent.com/72614349/110689028-7523dd80-81
 search_bar = dbc.Row(
     [
         dbc.Col(dbc.Input(type="search", placeholder="Search")),
-        dbc.Col(
-            dbc.Button("Search", color="primary", className="ml-2"),
-            width="auto",
-        ),
+        dbc.Col(dbc.Button("Search", color="primary", className="ml-2"), width="auto",),
     ],
     no_gutters=True,
     className="ml-auto flex-nowrap mt-3 mt-md-0",
@@ -42,26 +39,21 @@ navbar = dbc.Navbar(
     ],
     color="dark",
     dark=True,
-    className='mb-4'
+    className="mb-4",
 )
 
-controls = dbc.Card(
-    [
-         dcc.Slider(),
-        dcc.Dropdown(),
-    ], className='my-4 p-4'
-)
+controls = dbc.Card([dcc.Slider(), dcc.Dropdown(),], className="my-4 p-4")
 
 card = dbc.Card(
-    [dbc.CardHeader("Header"), dbc.CardBody("Body", style={'height':250})],
+    [dbc.CardHeader("Header"), dbc.CardBody("Body", style={"height": 250})],
 )
 
 graph_card = dbc.Card(
-     dbc.CardBody([ html.H4("$1,000,000"), dcc.Graph(style={'height':200})]  )
+    dbc.CardBody([html.H4("$1,000,000"), dcc.Graph(style={"height": 200})])
 )
 
 graph_card2 = dbc.Card(
-     dbc.CardBody([ dcc.Graph(style={'height':400})]), className='my-4'
+    dbc.CardBody([dcc.Graph(style={"height": 400})]), className="my-4"
 )
 
 app.layout = dbc.Container(
@@ -79,11 +71,10 @@ app.layout = dbc.Container(
                     width=8,
                 ),
             ],
-        )
+        ),
     ],
     fluid=True,
 )
-
 
 
 # add callback for toggling the collapse on small screens
@@ -100,4 +91,3 @@ def toggle_navbar_collapse(n, is_open):
 
 if __name__ == "__main__":
     app.run_server(debug=True)
-

@@ -495,7 +495,7 @@ layout = dbc.Container(
             ]
         ),
         component_layout,
-        dcc.Markdown(tutorial, className="m-4 p-4"),
+        #   dcc.Markdown(tutorial, className="m-4 p-4"),
         html.Div(id="blank_output_v03"),
         dcc.Store(id="store"),
     ],

@@ -7,12 +7,11 @@ import dash_html_components as html
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 card = dbc.Card(
-    [dbc.CardHeader("Header"), dbc.CardBody("Body", style={'height':250})], className="h-100 mt-4"
+    [dbc.CardHeader("Header"), dbc.CardBody("Body", style={"height": 250})],
+    className="h-100 mt-4",
 )
 
-graph_card = dbc.Card(
-     dbc.CardBody([ dcc.Graph(style={'height':200})] *2 )
-)
+graph_card = dbc.Card(dbc.CardBody([dcc.Graph(style={"height": 200})] * 2))
 
 app.layout = dbc.Container(
     dbc.Row(
@@ -20,8 +19,8 @@ app.layout = dbc.Container(
             dbc.Col(card, width=2),
             dbc.Col(
                 [
-                    dbc.CardDeck([card] * 3, ),
-                    dbc.CardGroup([graph_card] * 2, className='mt-4'),
+                    dbc.CardDeck([card] * 3,),
+                    dbc.CardGroup([graph_card] * 2, className="mt-4"),
                 ],
                 width=8,
             ),
@@ -29,9 +28,7 @@ app.layout = dbc.Container(
         ],
     ),
     fluid=True,
-
 )
 
 if __name__ == "__main__":
     app.run_server(debug=True)
-
