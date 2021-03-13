@@ -20,6 +20,14 @@ from app import app
 =====================================================================
 Change the Bootstrap style details
 """
+codebox = {
+    "backgroundColor": "transparent",
+    "borderStyle": "double",
+    "borderRadius": 15,
+    "maxWidth": 900,
+    "marginTop": 10,
+    "marginBottom":20,
+}
 
 # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css
 BOOTSTRAP = {
@@ -102,12 +110,13 @@ light_theme_text = dcc.Markdown(
     className="my-4",
 )
 
-light_theme_code = dcc.Markdown(
-    """
-    You can find the details of the colors and fonts in the link for the stylesheet .
-
-    ```   
+light_theme_code = html.Div(
+    html.Pre(
+        html.Code(
+            """ 
+        #You can find the details of the colors and fonts here:
         # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css
+        
         font = "sans-serif"
         primary = "#007bff"
         secondary = "#6c757d"
@@ -129,10 +138,11 @@ light_theme_code = dcc.Markdown(
                     "border": "1px solid" + secondary,
                 },
             ],
-        )
-    ```   
+        )   
 """,
-    className="mb-4",
+        )
+    ),
+    style=codebox,
 )
 
 dark_theme_text = dcc.Markdown(
@@ -150,9 +160,10 @@ dark_theme_text = dcc.Markdown(
 """
 )
 
-dark_theme_code = dcc.Markdown(
-    """
-    ```        
+dark_theme_code = html.Div(
+    html.Pre(
+        html.Code(
+            """       
     # https://bootswatch.com/4/cyborg/bootstrap.css    
     primary = "#2a9fd6"
     secondary = "#555"
@@ -185,9 +196,11 @@ dark_theme_code = dcc.Markdown(
                 "color": font_color,
             },
         ],
+    ),    
+    """,
+        )
     ),
-    ```
-    """
+    style=codebox,
 )
 
 
@@ -203,7 +216,7 @@ def make_table(theme):
                 {"selector": "tr:hover", "rule": "background-color:transparent"},
                 {"selector": ".dash-table-tooltip", "rule": "color:black"},
             ],
-            style_table={'maxwidth': 800},
+            style_table={"maxwidth": 800},
             style_cell={"backgroundColor": "transparent", "fontFamily": theme["font"]},
             style_data_conditional=[
                 {
@@ -228,20 +241,22 @@ layout = (
         dbc.Card(
             [
                 default_table_text,
-                html.Div(dbc.Card(
-                    [
-                        dbc.CardHeader(html.H4("Dash DataTable - default style")),
-                        dbc.CardBody(
-                            dash_table.DataTable(
-                                columns=[{"name": i, "id": i} for i in df.columns],
-                                data=df.to_dict("records"),
-                                page_size=4,
-                                style_table={'maxwidth':800}
+                html.Div(
+                    dbc.Card(
+                        [
+                            dbc.CardHeader(html.H4("Dash DataTable - default style")),
+                            dbc.CardBody(
+                                dash_table.DataTable(
+                                    columns=[{"name": i, "id": i} for i in df.columns],
+                                    data=df.to_dict("records"),
+                                    page_size=4,
+                                    style_table={"maxwidth": 800},
+                                ),
                             ),
-                        ),
-                    ],
-                    className="m-4 w-100",
-                ),style={"maxWidth": 900}),
+                        ],
+                    ),
+                    style={"maxWidth": 900},
+                ),
                 html.Hr(),
                 light_theme_text,
                 dbc.Card(
@@ -251,7 +266,6 @@ layout = (
                         ),
                         dbc.CardBody(make_table(THEMES["BOOTSTRAP"])),
                     ],
-                    className="mx-4",
                     style={"maxWidth": 900},
                 ),
                 light_theme_code,
@@ -264,11 +278,12 @@ layout = (
                         ),
                         dbc.CardBody(make_table(THEMES["CYBORG"])),
                     ],
-                    className="my-4",
+                    style={"maxWidth": 900},
                 ),
                 dark_theme_code,
             ],
             className="my-2 p-4",
+
         ),
         fluid=True,
     ),

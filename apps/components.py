@@ -29,7 +29,7 @@ header = dcc.Markdown(
      All `dash-boostrap-components` are styled according to the Boostrap theme selected without additional CSS.  See this
      in action by changing the Bootstrap theme in the App Design Selections panel above.
      
-     Note that most Dash components (such as `dash-core-components`, `DataTable` and DAQ components) and Plotly figures do not automatically
+     Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and DAQ components) and Plotly figures do not automatically
      respond to  changes to Bootstrap themes.  These Dash components work nicely with the default BOOTSTRAP theme, 
      however if you want  to use a different theme, then you will have to manually update each component using the `style`,
      and/or `className` parameters or add custom CSS to the assets folder.  Click on the different tabs to see examples.

@@ -245,7 +245,12 @@ def make_card(id, image, text, source_code, about):
     )
     return dbc.Card(
         [
-            dbc.CardImg(src=image, top=True, style={"height": "auto", "width": "100%"}, className='p-2'),
+            dbc.CardImg(
+                src=image,
+                top=True,
+                style={"height": "auto", "width": "100%"},
+                className="p-2",
+            ),
             dbc.CardBody(
                 [
                     dcc.Markdown(text, className=className_title),
@@ -266,7 +271,8 @@ def make_card(id, image, text, source_code, about):
                         outline=True,
                         className=className_about,
                     ),
-                ], className='p-'
+                ],
+                className="p-",
             ),
             dbc.Modal(
                 dbc.ModalBody(dcc.Markdown(about, className="p-4")),
