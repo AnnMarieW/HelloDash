@@ -26,7 +26,7 @@ codebox = {
     "borderRadius": 15,
     "maxWidth": 900,
     "marginTop": 10,
-    "marginBottom":20,
+    "marginBottom": 20,
 }
 
 # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css
@@ -89,9 +89,7 @@ default_table_text = dcc.Markdown(
     """ 
      The Dash `DataTable` does not respond to Bootstrap themes automatically.  The first table shows the default style.
      Try changing the Bootstrap theme in the 
-      App Design Selections panel to see how the DataTable responds to  different Bootstrap themes. See more on how to style the DataTable 
-     [here](https://dash.plotly.com/datatable/style).    
-     
+      App Design Selections panel to see how the DataTable responds to  different Bootstrap themes.      
 """
 )
 
@@ -143,6 +141,7 @@ light_theme_code = html.Div(
         )
     ),
     style=codebox,
+    #  className='codebox'
 )
 
 dark_theme_text = dcc.Markdown(
@@ -201,6 +200,10 @@ dark_theme_code = html.Div(
         )
     ),
     style=codebox,
+)
+
+more_text = dcc.Markdown(
+    """ #### See more information on styling the DataTable in the [Dash Documentation](https://dash.plotly.com/datatable/style). """,
 )
 
 
@@ -281,9 +284,9 @@ layout = (
                     style={"maxWidth": 900},
                 ),
                 dark_theme_code,
+                more_text,
             ],
             className="my-2 p-4",
-
         ),
         fluid=True,
     ),

@@ -1,5 +1,6 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+import dash_core_components as dcc
 
 from app import app
 from .components import layout as components_layout
@@ -8,29 +9,46 @@ from .DataTable import layout as table_layout
 
 layout = dbc.Card(
     [
-        html.H2(
-            "Dash Component Gallery", className="bg-secondary text-white m-1 mb-4 p-2",
+        dbc.Jumbotron(
+            dcc.Markdown(
+                """
+            ## Dash Component Gallery     
+             *A design guide*   
+            """
+            ),
+            className="m-1 mb-4 p-2",
         ),
         dbc.Card(
             [
                 dbc.Card(
-                    dbc.Tabs(
+                    dcc.Tabs(
                         [
-                            dbc.Tab(
+                            dcc.Tab(
                                 children=components_layout,
                                 label="Dash Bootstrap Components",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
                             ),
-                            dbc.Tab(
+                            dcc.Tab(
                                 children=dcc_components_layout,
                                 label="Dash Core Components",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
                             ),
-                            dbc.Tab(children=table_layout, label="DataTable",),
-                            dbc.Tab(
+                            dcc.Tab(
+                                children=table_layout,
+                                label="DataTable",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
+                            ),
+                            dcc.Tab(
                                 children="Coming Soon",
-                                style={"height": 400},
                                 label="DAQ Components",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
                             ),
                         ],
+                        vertical=True,
                     ),
                 ),
             ],

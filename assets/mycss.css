@@ -48,3 +48,17 @@ td:first-child:not(.CalendarDay) {
 th:last-child:not(.CalendarDay),
 td:last-child:not(.CalendarDay) {
   padding-right: 0; }
+
+
+
+/* for code boxes in the app.  The transparent background works well for both light
+   and dark themed apps
+*/
+.codebox  {
+    background-color: transparent,
+    border-style: double,
+    border-radius: 15px,
+    max-width: 900px,
+    margin-top: 10px,
+    margin-bottom:20px,
+}

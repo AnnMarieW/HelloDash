@@ -22,17 +22,16 @@ This app is part of a multi page app adapted from an [example app](https://githu
 
 
 header = dcc.Markdown(
-    """            
-    These are the components available in the `dash-bootstrap-components` library.  Click on the component names to go
-     to the official documentation and to see more examples.
+    """  
+    All `dash-boostrap-components` are styled by the selected Boostrap theme -- no custom CSS is required!
+    See this in action by changing the Bootstrap theme in the App Design Selections panel above.  
+    
+    Click on the link with the component name to see more examples and official documentation.  See an overview
+    of Boostrap themes available with dbc components [here](https://www.bootstrapcdn.com/bootswatch/)
      
-     All `dash-boostrap-components` are styled according to the Boostrap theme selected without additional CSS.  See this
-     in action by changing the Bootstrap theme in the App Design Selections panel above.
-     
-     Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and DAQ components) and Plotly figures do not automatically
-     respond to  changes to Bootstrap themes.  These Dash components work nicely with the default BOOTSTRAP theme, 
-     however if you want  to use a different theme, then you will have to manually update each component using the `style`,
-     and/or `className` parameters or add custom CSS to the assets folder.  Click on the different tabs to see examples.
+    Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and `DAQ` components) and 
+    Plotly figures do not automatically respond to changes to Bootstrap themes.  See more information on how to style
+    these components in each section.
 """
 )
 
@@ -492,7 +491,7 @@ navbar = html.Div(
 popover = html.Div(
     [
         make_subheading("Popover", "popover/"),
-        html.P(["Click on the word ", html.Span("popover", id="popover-target")]),
+        dbc.Button("Click to toggle popover", id="popover-target", color="danger"),
         dbc.Popover(
             [dbc.PopoverHeader("Popover header"), dbc.PopoverBody("Popover body"),],
             id="popover",
