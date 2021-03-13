@@ -23,11 +23,16 @@ This app is part of a multi page app adapted from an [example app](https://githu
 
 header = dcc.Markdown(
     """  
-    All `dash-boostrap-components` are styled by the selected Boostrap theme -- no custom CSS is required!
-    See this in action by changing the Bootstrap theme in the App Design Selections panel above.  
+    `dash-bootstrap-components` is a library of Bootstrap components for Plotly Dash that makes it easier to build 
+    consistently styled apps with complex, responsive layouts. It's provided open source by Faculty AI - see the 
+    full documentation [here](https://dash-bootstrap-components.opensource.faculty.ai/).  Click on the link with the 
+    component name to go directly to the component's docs for more great examples.  
     
-    Click on the link with the component name to see more examples and official documentation.  See an overview
+    All dash-boostrap-components are automatically styled based on your selected Boostrap theme -- no custom CSS is required!
+    See this in action by changing the Bootstrap theme in the App Design Selections panel above.  See an overview
     of Boostrap themes available with dbc components [here](https://www.bootstrapcdn.com/bootswatch/)
+    
+      
      
     Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and `DAQ` components) and 
     Plotly figures do not automatically respond to changes to Bootstrap themes.  See more information on how to style

@@ -54,5 +54,5 @@ layout = dbc.Card(
             ],
         ),
     ],
-    className="my-4 shadow-lg p-2",
+    className="my-4 shadow p-2",
 )

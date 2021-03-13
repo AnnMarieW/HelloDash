@@ -476,7 +476,7 @@ sample_app_1 = dbc.Card(
         ),
         sample_app_controls,
     ],
-    className="mx-2 shadow-lg p-2",
+    className="mx-2 shadow p-2",
     id="layout_container_v03",
 )
 

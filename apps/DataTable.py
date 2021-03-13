@@ -22,10 +22,10 @@ Change the Bootstrap style details
 """
 codebox = {
     "backgroundColor": "transparent",
-    "borderStyle": "double",
+    "borderStyle": "groove",
     "borderRadius": 15,
     "maxWidth": 900,
-    "marginTop": 10,
+    "marginTop": 0,
     "marginBottom": 20,
 }
 
@@ -87,9 +87,17 @@ df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar
 
 default_table_text = dcc.Markdown(
     """ 
-     The Dash `DataTable` does not respond to Bootstrap themes automatically.  The first table shows the default style.
-     Try changing the Bootstrap theme in the 
-      App Design Selections panel to see how the DataTable responds to  different Bootstrap themes.      
+    Dash DataTable is an interactive table component designed for viewing, editing, and exploring large datasets. See
+    the full documentation [here](https://dash.plotly.com/datatable)
+
+     Unlike a standard HTML table, the Dash DataTable does not respond to Bootstrap themes automatically.  The first table shows 
+     the default style for the DataTable.  Try changing the Bootstrap theme in the App Design Selections panel to see how 
+     the DataTable responds to  different themes.    
+     
+     As you will see, the default style for the DataTable functions well with light themes. However, with 
+     dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The 
+     good news is that the DashTable is highly customizable so you can make it look great with any of the Boostrap themes.  
+          
 """
 )
 
@@ -97,13 +105,11 @@ light_theme_text = dcc.Markdown(
     """
     #### DataTable with Bootstrap light themes
     
-    As you can see in the table above, the default style for the Dash table works fine with Bootstrap light themes - but not
-    with dark themes.  To make the table look even better with light themes you can:  
+    With two simple style changes, the DataTable will look even better in your app with Bootstrap light themes:  
     
-    -  Change the font to be the same font as in your selected theme.
-    -  Change the active and selected cells to colors from the Bootstrap theme rather than the default "hotpink". 
-    
-    Try selecting cells in this table and in the default table above to see the style difference.
+    -  Change the font to be the same font as your selected theme.
+    -  Change the active and selected cells to Bootstrap theme colors rather than the Dash default of "hotpink". Try 
+    selecting cells in this table and in the default table above to see the style difference.
 """,
     className="my-4",
 )
@@ -112,9 +118,8 @@ light_theme_code = html.Div(
     html.Pre(
         html.Code(
             """ 
-        #You can find the details of the colors and fonts here:
-        # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css
-        
+        # DashTable updated with font and colors from the bootstrap theme:        
+        # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css        
         font = "sans-serif"
         primary = "#007bff"
         secondary = "#6c757d"
@@ -148,12 +153,15 @@ dark_theme_text = dcc.Markdown(
     """
     #### DataTable with Bootstrap dark themes
     
-    When you change to a dark theme, you will need to make more changes to the DataTable style.
+    When you use a dark theme, you will need to do a few more things to make the DataTable look nice.  The next table 
+    has the following style changes:
     
-    -  Set the table background color to transparent to make it the same as the Bootstrap background color.
-    -  Set the font color to white to make text visible when cells are selected or the table is editable.
-    -  Use the CSS parameter to remove the hover color. The default is white which looks bad and makes the text disappear.
-    -  Use the CSS parameter to change the text color of tooltips (if used).
+    -  The table background color is transparent to make it the same as the Bootstrap background color.
+    -  The font color is white when cells are selected or the table is editable. This makes text visible in a dark background.
+    -  The hover color is changed to transparent.  This is done because the default hover background color is white 
+    which looks bad and makes the text disappear.
+    -  The text color of tooltips is changed to black.  The default background color is grey, which isn't bad -- but note
+     that you can also use this same selector to change the background color and/or add other style changes to tooltips.
     
     #### Be sure to change to a Dark theme to see the table with the CYBORG style.
 """
@@ -176,9 +184,9 @@ dark_theme_code = html.Div(
         editable=True,
         page_size=4,
         css=[
-            {"selector": "input", "rule": f"color:{font_color}"},
-            {"selector": "tr:hover", "rule": "background-color:transparent"},
-            {"selector": ".dash-table-tooltip", "rule": "color:black"},
+            {"selector": "input", "rule": f"color:{font_color}"},                # fixes text color for editable columns
+            {"selector": "tr:hover", "rule": "background-color:transparent"},    # fixes hover bg color 
+            {"selector": ".dash-table-tooltip", "rule": "color:black"},          # fixes text color of tooltip data
         ],
         style_cell={"backgroundColor": "transparent", "fontFamily": font},
         style_data_conditional=[
@@ -247,7 +255,7 @@ layout = (
                 html.Div(
                     dbc.Card(
                         [
-                            dbc.CardHeader(html.H4("Dash DataTable - default style")),
+                            dbc.CardHeader(html.H5("Dash DataTable - default style")),
                             dbc.CardBody(
                                 dash_table.DataTable(
                                     columns=[{"name": i, "id": i} for i in df.columns],
@@ -265,7 +273,7 @@ layout = (
                 dbc.Card(
                     [
                         dbc.CardHeader(
-                            html.H4("Dash DataTable - styled for light BOOTSTRAP theme")
+                            html.H5("Dash DataTable - styled for light BOOTSTRAP theme")
                         ),
                         dbc.CardBody(make_table(THEMES["BOOTSTRAP"])),
                     ],
@@ -277,7 +285,7 @@ layout = (
                 dbc.Card(
                     [
                         dbc.CardHeader(
-                            html.H4("Dash DataTable - styled for dark CYBORG theme")
+                            html.H5("Dash DataTable - styled for dark CYBORG theme")
                         ),
                         dbc.CardBody(make_table(THEMES["CYBORG"])),
                     ],
