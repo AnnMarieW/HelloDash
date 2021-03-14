@@ -6,6 +6,7 @@ from app import app
 from .components import layout as components_layout
 from .dcc_components import layout as dcc_components_layout
 from .DataTable import layout as table_layout
+from .html_components import layout as html_layout
 
 layout = dbc.Card(
     [
@@ -30,14 +31,20 @@ layout = dbc.Card(
                                 selected_className="bg-light text-dark border-primary",
                             ),
                             dcc.Tab(
-                                children=dcc_components_layout,
-                                label="Dash Core Components",
+                                children=html_layout,
+                                label="Dash HTML Components",
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),
                             dcc.Tab(
                                 children=table_layout,
                                 label="DataTable",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
+                            ),
+                            dcc.Tab(
+                                children=dcc_components_layout,
+                                label="Dash Core Components",
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),

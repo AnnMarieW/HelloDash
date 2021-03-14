@@ -62,7 +62,6 @@ def make_checklist(id, option_list):
         value=[option_list[0]],
         labelStyle={"display": "inline-block"},
         inputClassName="mr-2 ml-2",
-        persistence_type="session",
     )
 
 
@@ -74,7 +73,6 @@ def make_range_slider(id, slider_list, step=1):
         step=step,
         marks={int(i): str(i) for i in slider_list},
         value=[slider_list[0], slider_list[-1]],
-        persistence_type="session",
     )
 
 
@@ -119,7 +117,6 @@ controls = dbc.Card(
             [
                 dbc.Label("Select years"),
                 make_range_slider("slider_years", df.year.unique(), 5),
-                html.Div(id="theme_colors_v03"),
                 buttons,
             ]
         ),
