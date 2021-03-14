@@ -103,7 +103,7 @@ badges = html.Div(
     ]
 )
 
-buttons = html.Div(
+buttons1 = html.Div(
     [
         make_subheading("Buttons", "button/"),
         html.Div(
@@ -116,8 +116,6 @@ buttons = html.Div(
                 dbc.Button("Info", color="info"),
             ]
         ),
-        html.Br(),
-        html.H4("Outline buttons"),
         html.Div(
             [
                 dbc.Button("Primary", outline=True, color="primary", className="mr-1"),
@@ -128,24 +126,62 @@ buttons = html.Div(
                 dbc.Button("Warning", outline=True, color="warning", className="mr-1"),
                 dbc.Button("Danger", outline=True, color="danger", className="mr-1"),
                 dbc.Button("Info", outline=True, color="info"),
-            ]
+            ],
+            className="my-2",
         ),
-        html.Br(),
-        html.H4("Button group"),
         html.Div(
-            dbc.ButtonGroup(
-                [
-                    dbc.Button("Primary", color="primary"),
-                    dbc.Button("Secondary", color="secondary"),
-                    dbc.Button("Success", color="success"),
-                    dbc.Button("Warning", color="warning"),
-                    dbc.Button("Danger", color="danger"),
-                    dbc.Button("Info", color="info"),
-                ]
-            )
+            [
+                dbc.Button("Regular", color="primary", className="mr-1"),
+                dbc.Button("Active", color="primary", active=True, className="mr-1"),
+                dbc.Button(
+                    "Disabled", color="primary", disabled=True, className="mr-1"
+                ),
+                dbc.Button("Large button", size="lg", className="mr-1"),
+                dbc.Button("Regular button", className="mr-1"),
+                dbc.Button("Small button", size="sm"),
+            ]
         ),
     ]
 )
+
+
+buttons2 = html.Div(
+    [
+        make_subheading("Button Groups", "buttongroups/"),
+        html.Div(
+            [
+                dbc.ButtonGroup(
+                    [
+                        dbc.Button("Primary", color="primary"),
+                        dbc.Button("Secondary", color="secondary"),
+                        dbc.Button("Success", color="success"),
+                        dbc.Button("Warning", color="warning"),
+                        dbc.Button("Danger", color="danger"),
+                        dbc.Button("Info", color="info"),
+                    ]
+                ),
+                html.Br(),
+                dbc.ButtonGroup(
+                    [
+                        dbc.Button("First"),
+                        dbc.Button("Second"),
+                        dbc.DropdownMenu(
+                            [
+                                dbc.DropdownMenuItem("Item 1"),
+                                dbc.DropdownMenuItem("Item 2"),
+                            ],
+                            label="Dropdown",
+                            group=True,
+                        ),
+                    ],
+                    vertical=True,
+                ),
+            ],
+        ),
+    ]
+)
+buttons = dbc.Row([dbc.Col(buttons1), dbc.Col(buttons2)])
+
 
 cards = html.Div(
     [
@@ -292,6 +328,7 @@ fade = html.Div(
     ]
 )
 
+# ---------  start forms row ------------------
 form = html.Div(
     [
         make_subheading("Form", "form/"),
@@ -354,6 +391,11 @@ input_ = html.Div(
                 dbc.FormFeedback("That's an invalid input..."),
             ]
         ),
+    ]
+)
+
+checklist_items = html.Div(
+    [
         make_subheading("Checklist", "input/"),
         dbc.Checklist(
             options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
@@ -365,6 +407,11 @@ input_ = html.Div(
             value=[],
             inline=True,
         ),
+    ]
+)
+
+radio_items = html.Div(
+    [
         make_subheading("RadioItems", "input/"),
         dbc.RadioItems(
             options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
@@ -408,6 +455,9 @@ input_group = html.Div(
         ),
     ]
 )
+
+
+# ----- end forms row  --------------------------------------------
 
 jumbotron = html.Div(
     [
@@ -489,6 +539,8 @@ navbar = html.Div(
             brand="Dash Bootstrap Components",
             brand_href=DBC_HOME,
             sticky="top",
+            color="primary",
+            dark=True,
         ),
     ]
 )
@@ -616,7 +668,8 @@ toast = html.Div(
             icon="primary",
             duration=4000,
         ),
-    ]
+    ],
+    className="my-2",
 )
 
 tooltip = html.Div(
@@ -649,49 +702,40 @@ layout = dbc.Container(
             [
                 header,
                 html.Hr(),
+                navbar,
+                html.Hr(),
                 alerts,
                 html.Hr(),
                 badges,
                 html.Hr(),
                 buttons,
                 html.Hr(),
-                cards,
-                html.Hr(),
-                collapse,
-                html.Hr(),
-                columns,
-                html.Hr(),
                 dropdownmenu,
-                html.Hr(),
-                fade,
-                html.Hr(),
-                form,
-                html.Hr(),
-                input_,
-                html.Hr(),
-                input_group,
-                html.Hr(),
-                jumbotron,
-                html.Hr(),
-                list_group,
-                html.Hr(),
-                modal,
-                html.Hr(),
-                navbar,
-                html.Hr(),
-                popover,
-                html.Hr(),
-                progress,
-                html.Hr(),
-                spinner,
-                html.Hr(),
-                table,
                 html.Hr(),
                 tabs,
                 html.Hr(),
-                toast,
+                cards,
                 html.Hr(),
-                tooltip,
+                dbc.Row([dbc.Col([form, input_group,]), dbc.Col([input_])]),
+                html.Hr(),
+                dbc.Row([dbc.Col([checklist_items]), dbc.Col([radio_items])]),
+                html.Hr(),
+                jumbotron,
+                html.Hr(),
+                columns,
+                html.Hr(),
+                list_group,
+                html.Hr(),
+                table,
+                html.Hr(),
+                dbc.Row([dbc.Col([progress]), dbc.Col([spinner])]),
+                html.Hr(),
+                dbc.Row(
+                    [
+                        dbc.Col([modal, fade, collapse,]),
+                        dbc.Col([popover, toast, tooltip]),
+                    ]
+                ),
                 html.Hr(),
                 html.Div(style={"height": "50px"}),
                 source_code,

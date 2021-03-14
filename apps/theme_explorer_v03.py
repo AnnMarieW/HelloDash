@@ -7,7 +7,7 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 
 from app import app, header
-from .tutorial import tutorial
+from .text import tutorial
 from .component_gallery import layout as component_layout
 
 import pathlib

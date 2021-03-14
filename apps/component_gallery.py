@@ -54,6 +54,12 @@ layout = dbc.Card(
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),
+                            dcc.Tab(
+                                children="Coming Soon",
+                                label="Cheatsheet",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
+                            ),
                         ],
                         vertical=True,
                     ),

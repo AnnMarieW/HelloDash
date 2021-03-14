@@ -11,7 +11,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, MATCH
 import dash_bootstrap_components as dbc
 
-from apps import tutorial
+from apps import text
 from app import app, header
 
 from dataclasses import dataclass
@@ -43,7 +43,7 @@ gallery.append(
 ### The first two images in the app gallery are the same app!  
 Use the Theme Explorer to see how different Boostrap Themes, Plotly templates and graph colors look in a Dash app. 
 The design for this app is updated by changing 1 line of code. """
-        + tutorial.tutorial,
+        + text.tutorial,
     )
 )
 
