@@ -702,8 +702,7 @@ layout = dbc.Container(
             [
                 header,
                 html.Hr(),
-                navbar,
-                html.Hr(),
+
                 alerts,
                 html.Hr(),
                 badges,
@@ -719,6 +718,8 @@ layout = dbc.Container(
                 dbc.Row([dbc.Col([form, input_group,]), dbc.Col([input_])]),
                 html.Hr(),
                 dbc.Row([dbc.Col([checklist_items]), dbc.Col([radio_items])]),
+                html.Hr(),
+                navbar,
                 html.Hr(),
                 jumbotron,
                 html.Hr(),
