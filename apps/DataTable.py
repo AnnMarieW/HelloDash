@@ -161,9 +161,8 @@ dark_theme_text = dcc.Markdown(
     -  The hover color is changed to transparent.  This is done because the default hover background color is white 
     which looks bad and makes the text disappear.
     -  The text color of tooltips is changed to black.  The default background color is grey, which isn't bad -- but note
-     that you can also use this same selector to change the background color and/or add other style changes to tooltips.
-    
-    #### Be sure to change to a Dark theme to see the table with the CYBORG style.
+     that you can also use this same selector to change the background color and/or add other style changes to tooltips.    
+
 """
 )
 
@@ -228,7 +227,11 @@ def make_table(theme):
                 {"selector": ".dash-table-tooltip", "rule": "color:black"},
             ],
             style_table={"maxwidth": 800},
-            style_cell={"backgroundColor": "transparent", "fontFamily": theme["font"]},
+            style_cell={
+                "backgroundColor": "transparent",
+                "fontFamily": theme["font"],
+                "color": theme["font_color"],
+            },
             style_data_conditional=[
                 {
                     "if": {"state": "active"},
@@ -269,29 +272,45 @@ layout = (
                     style={"maxWidth": 900},
                 ),
                 html.Hr(),
-                light_theme_text,
-                dbc.Card(
+                html.Div(
                     [
-                        dbc.CardHeader(
-                            html.H5("Dash DataTable - styled for light BOOTSTRAP theme")
+                        light_theme_text,
+                        dbc.Card(
+                            [
+                                dbc.CardHeader(
+                                    html.H5(
+                                        "Dash DataTable - styled for light BOOTSTRAP theme"
+                                    )
+                                ),
+                                dbc.CardBody(make_table(THEMES["BOOTSTRAP"])),
+                            ],
+                            style={"maxWidth": 900},
                         ),
-                        dbc.CardBody(make_table(THEMES["BOOTSTRAP"])),
+                        light_theme_code,
+                        "Change to a dark theme to see more about styling the table for a dark theme",
                     ],
-                    style={"maxWidth": 900},
+                    id="light_theme_table_v03",
                 ),
-                light_theme_code,
                 html.Hr(),
-                dark_theme_text,
-                dbc.Card(
+                html.Div(
                     [
-                        dbc.CardHeader(
-                            html.H5("Dash DataTable - styled for dark CYBORG theme")
+                        dark_theme_text,
+                        dbc.Card(
+                            [
+                                dbc.CardHeader(
+                                    html.H5(
+                                        "Dash DataTable - styled for dark CYBORG theme"
+                                    )
+                                ),
+                                dbc.CardBody(make_table(THEMES["CYBORG"])),
+                            ],
+                            style={"maxWidth": 900},
                         ),
-                        dbc.CardBody(make_table(THEMES["CYBORG"])),
+                        dark_theme_code,
+                        "Change to a light theme to see more about styling the table for a light theme",
                     ],
-                    style={"maxWidth": 900},
+                    id="dark_theme_table_v03",
                 ),
-                dark_theme_code,
                 more_text,
             ],
             className="my-2 p-4",
@@ -299,3 +318,12 @@ layout = (
         fluid=True,
     ),
 )
+
+
+@app.callback(
+    Output("light_theme_table_v03", "className"),
+    Output("dark_theme_table_v03", "className"),
+    Input("light_dark_v03", "value"),
+)
+def hide_show_table(theme):
+    return ("", "d-none") if theme == "Light Themes" else ("d-none", "")

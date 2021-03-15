@@ -124,9 +124,11 @@ html_intro_text = dcc.Markdown(
 """
 )
 
-overview_text = dcc.Markdown("""
+overview_text = dcc.Markdown(
+    """
 
-""")
+"""
+)
 
 typography_text = dcc.Markdown(
     "This shows the use of html.H1 - "
@@ -238,7 +240,8 @@ typography = html.Div(
                             "Text with className='text-info'", className="text-info"
                         ),
                         html.P(
-                            "Text with className='bg-primary text-white'", className="bg-primary text-white"
+                            "Text with className='bg-primary text-white'",
+                            className="bg-primary text-white",
                         ),
                     ],
                     className="p-4",

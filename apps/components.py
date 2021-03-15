@@ -697,7 +697,7 @@ source_code = dcc.Markdown(
 
 layout = dbc.Container(
     [
-        dbc.Card(
+        html.Div(
             [
                 header,
                 html.Hr(),
