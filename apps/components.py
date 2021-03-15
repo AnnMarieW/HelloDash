@@ -108,38 +108,36 @@ buttons1 = html.Div(
         make_subheading("Buttons", "button/"),
         html.Div(
             [
-                dbc.Button("Primary", color="primary", className="mr-1"),
-                dbc.Button("Secondary", color="secondary", className="mr-1"),
-                dbc.Button("Success", color="success", className="mr-1"),
-                dbc.Button("Warning", color="warning", className="mr-1"),
-                dbc.Button("Danger", color="danger", className="mr-1"),
-                dbc.Button("Info", color="info"),
+                dbc.Button("Primary", color="primary", className="m-1"),
+                dbc.Button("Secondary", color="secondary", className="m-1"),
+                dbc.Button("Success", color="success", className="m-1"),
+                dbc.Button("Warning", color="warning", className="m-1"),
+                dbc.Button("Danger", color="danger", className="m-1"),
+                dbc.Button("Info", color="info", className="m-1"),
             ]
         ),
         html.Div(
             [
-                dbc.Button("Primary", outline=True, color="primary", className="mr-1"),
+                dbc.Button("Primary", outline=True, color="primary", className="m-1"),
                 dbc.Button(
-                    "Secondary", outline=True, color="secondary", className="mr-1",
+                    "Secondary", outline=True, color="secondary", className="m-1",
                 ),
-                dbc.Button("Success", outline=True, color="success", className="mr-1"),
-                dbc.Button("Warning", outline=True, color="warning", className="mr-1"),
-                dbc.Button("Danger", outline=True, color="danger", className="mr-1"),
-                dbc.Button("Info", outline=True, color="info"),
+                dbc.Button("Success", outline=True, color="success", className="m-1"),
+                dbc.Button("Warning", outline=True, color="warning", className="m-1"),
+                dbc.Button("Danger", outline=True, color="danger", className="m-1"),
+                dbc.Button("Info", outline=True, color="info", className="m-1"),
             ],
             className="my-2",
         ),
         html.Div(
             [
-                dbc.Button("Regular", color="primary", className="mr-1"),
-                dbc.Button("Active", color="primary", active=True, className="mr-1"),
-                dbc.Button(
-                    "Disabled", color="primary", disabled=True, className="mr-1"
-                ),
-                dbc.Button("Large button", size="lg", className="mr-1"),
-                dbc.Button("Regular button", className="mr-1"),
-                dbc.Button("Small button", size="sm"),
-            ]
+                dbc.Button("Regular", color="primary", className="m-1"),
+                dbc.Button("Active", color="primary", active=True, className="m-1"),
+                dbc.Button("Disabled", color="primary", disabled=True, className="m-1"),
+                dbc.Button("Large button", size="lg", className="m-1"),
+                dbc.Button("Regular button", className="m-1"),
+                dbc.Button("Small button", size="sm", className="m-1"),
+            ],
         ),
     ]
 )
@@ -158,7 +156,8 @@ buttons2 = html.Div(
                         dbc.Button("Warning", color="warning"),
                         dbc.Button("Danger", color="danger"),
                         dbc.Button("Info", color="info"),
-                    ]
+                    ],
+                    className="mb-2",
                 ),
                 html.Br(),
                 dbc.ButtonGroup(
@@ -428,7 +427,7 @@ radio_items = html.Div(
 
 input_group = html.Div(
     [
-        make_subheading("Input groups and addons", "input_group/"),
+        make_subheading("InputGroup and addons", "input_group/"),
         dbc.InputGroup(
             [
                 dbc.InputGroupAddon(
@@ -702,7 +701,6 @@ layout = dbc.Container(
             [
                 header,
                 html.Hr(),
-
                 alerts,
                 html.Hr(),
                 badges,

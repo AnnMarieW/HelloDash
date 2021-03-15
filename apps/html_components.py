@@ -7,10 +7,16 @@ Dash html components with standard Bootstrap classnames.
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
 from apps import text
+import pandas as pd
+
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/AnnMarieW/HelloDash/main/assets/html.csv"
+)
 
 
-HTML_DOCS = "https://dash.plotly.com/dash-html-components"
+HTML_DOCS = "https://dash.plotly.com/dash-html-components/"
 
 
 """
@@ -38,6 +44,28 @@ def make_subheading(label, link):
         dcc.Link(label, href=HTML_DOCS + link, target="_blank"),
         style={"textDecoration": "underline"},
         className="mb-2",
+    )
+
+
+def make_links(tags):
+    return ", ".join(
+        f"[{tag}]({HTML_DOCS + tag.split('.')[1].lower()})" for tag in tags
+    )
+
+
+def make_html_table():
+    return dash_table.DataTable(
+        columns=[
+            {"name": "Component", "id": "Component", "presentation": "markdown"},
+            {"name": "Description", "id": "Description"},
+        ],
+        data=df.to_dict("records"),
+        style_table={
+            "overflowY": "scroll",
+            "border": "thin lightgrey solid",
+            "maxHeight": "425px",
+        },
+        style_cell={"textAlign": "right", "font-family": "arial"},
     )
 
 
@@ -82,14 +110,40 @@ html_intro_text = dcc.Markdown(
     parameter, so you can use standard Bootstrap classes.  This makes dash-html-components  compatible with any 
     Bootstrap theme.  You can also customize them with CSS using the `style` property.
 
-    All dash-htm-components are automatically styled based on your selected Boostrap theme -- no custom CSS is required!
+    All dash-html-components are automatically styled based on your selected Bootstrap theme -- no custom CSS is required!
     See this in action by changing the Bootstrap theme in the App Design Selections panel above.  Notice that the font
     and the colors change according to the theme selected.
+    
+    Note - it's often easier to use dbc or dcc components rather than dash-html-components.  See dcc.Markdown for an easy 
+    way to format text - including code blocks, lists, simple tables and more.  See also dbc.Table and 
+    Dash DataTable for formatting tables, and other dbc components for lists and forms. 
 
     - See the  full documentation for [dash-html-components](https://dash.plotly.com/dash-html-components) 
-    - Learn more about [Boostrap classes](https://getbootstrap.com/docs/3.4/css/)
+    - Learn more about [Bootstrap classes](https://getbootstrap.com/docs/3.4/css/)
     - This is my favorite Bootstrap classes [cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)   
 """
+)
+
+overview_text = dcc.Markdown("""
+
+""")
+
+typography_text = dcc.Markdown(
+    "This shows the use of html.H1 - "
+    + make_links(
+        [
+            "html.H6",
+            "html.P",
+            "html.Div",
+            "html.Small",
+            "html.A",
+            "html.Strong",
+            "html.Em",
+            "html.Abbr",
+        ]
+    )
+    + ".",
+    className="ml-4",
 )
 
 typography = html.Div(
@@ -107,12 +161,14 @@ typography = html.Div(
                         html.H6("Heading 6"),
                         html.H3(
                             [
-                                "This heading has ",
-                                html.Small("some muted text", className="text-muted"),
+                                "This html.H3 heading has ",
+                                html.Small(
+                                    "some muted html.Small text", className="text-muted"
+                                ),
                             ]
                         ),
                         html.P(
-                            "The lead class in Bootstrap is used to add emphasis to a paragraph.",
+                            "The className=`lead`adds emphasis to this html.P paragraph.",
                             className="lead",
                         ),
                     ],
@@ -123,9 +179,8 @@ typography = html.Div(
                         html.H2("Example of body text"),
                         html.P(
                             [
-                                "This is some text",
-                                html.A("with an embedded link", href="#"),
-                                html.P(" and some more text"),
+                                "This is some text with an embedded link using ",
+                                html.A("html.A", href="#"),
                             ]
                         ),
                         html.P(
@@ -135,7 +190,7 @@ typography = html.Div(
                         ),
                         html.P(
                             [
-                                "The following is rendered in bold text",
+                                "The following is rendered in bold text ",
                                 html.Strong("using html.Strong"),
                             ]
                         ),
@@ -182,16 +237,26 @@ typography = html.Div(
                         html.P(
                             "Text with className='text-info'", className="text-info"
                         ),
+                        html.P(
+                            "Text with className='bg-primary text-white'", className="bg-primary text-white"
+                        ),
                     ],
                     className="p-4",
                 ),
             ]
         ),
+        dbc.Row(typography_text),
     ]
 )
 typography_code = html.Div(html.Pre(html.Code(text.typography_code,)), style=codebox,)
 
 
+blockquotes_text = dcc.Markdown(
+    "This shows the default Bootstrap style for Blockquotes and the use of "
+    + make_links(["html.H2", "html.P", "html.Blockquote", "html.Footer", "html.Cite"])
+    + ".",
+    className="ml-4",
+)
 blockquotes = html.Div(
     [
         html.H2("Blockquotes and text alignment"),
@@ -260,9 +325,95 @@ blockquotes = html.Div(
                 ),
             ]
         ),
+        dbc.Row(blockquotes_text),
     ]
 )
 blockquotes_code = html.Div(html.Pre(html.Code(text.blockquotes_code,)), style=codebox,)
+
+
+blockquotes_text2 = dcc.Markdown(
+    """
+    This shows how to format blockquotes with the left border color, which is a common Blockquote style.  This is done 
+    with Bootstrap classes in `className` plus CSS in the `style` parameters. Alternately, you can add custom CSS to the 
+    assets folder.  This will format blockquotes when used with the dcc.Markdown component as well. See the code for details,
+    """,
+    className="ml-4",
+)
+blockquotes2 = html.Div(
+    [
+        html.H4("Blockquotes using className and style parameters"),
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        html.Blockquote(
+                            [
+                                html.P(
+                                    "We dine well here in Camelot. We eat ham and jam and spam a lot.",
+                                    className="mb-0",
+                                ),
+                                html.Footer(
+                                    html.Cite(
+                                        "Knights of Camelot",
+                                        title="Camelot the Musical",
+                                    ),
+                                    className="blockquote-footer",
+                                ),
+                            ],
+                            className="blockquote text-left pl-4 border-light",
+                            style={"borderLeft": "solid", "borderLeftWidth": 15},
+                        ),
+                    ],
+                    className="p-4",
+                    width="md-4",
+                ),
+                dbc.Col(
+                    [
+                        html.Blockquote(
+                            [
+                                html.P(
+                                    "Always code as if the guy who ends up maintaining your code will be a violent "
+                                    "psychopath who knows where you live.",
+                                    className="mb-0",
+                                ),
+                                html.Footer(
+                                    "Martin Golding ", className="blockquote-footer"
+                                ),
+                            ],
+                            className="blockquote text-left pl-4 border-primary",
+                            style={"borderLeft": "solid", "borderLeftWidth": 5},
+                        ),
+                    ],
+                    className="p-4",
+                    width="md-4",
+                ),
+                dbc.Col(
+                    [
+                        html.Blockquote(
+                            [
+                                html.P(
+                                    "There are only two industries that refer to their customers as ‘users’.",
+                                    className="mb-0",
+                                ),
+                                html.Footer(
+                                    "Edward Tufte ", className="blockquote-footer",
+                                ),
+                            ],
+                            className="blockquote text-left pl-4 border-secondary",
+                            style={"borderLeft": "solid", "borderLeftWidth": 10},
+                        ),
+                    ],
+                    className="p-4",
+                    width="md-4",
+                ),
+            ]
+        ),
+        dbc.Row(blockquotes_text2),
+    ]
+)
+blockquotes_code2 = html.Div(
+    html.Pre(html.Code(text.blockquotes_code2,)), style=codebox,
+)
 
 
 layout = dbc.Container(
@@ -281,13 +432,16 @@ layout = dbc.Container(
                 ),
                 make_card("typography", typography, typography_code),
                 make_card("blockquotes", blockquotes, blockquotes_code),
+                make_card("blockquotes2", blockquotes2, blockquotes_code2),
+                dbc.Card(
+                    "Coming Soon:  More examples and a list of all dash-html-components"
+                ),
             ],
             className="my-2 p-4",
         ),
     ],
     fluid=True,
 )
-
 
 
 """

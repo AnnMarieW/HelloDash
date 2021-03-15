@@ -24,7 +24,7 @@ See more information [here](https://dash.plotly.com/external-resources).   See t
 ### Graph Templates
 
 Setting the Plotly graph template is a quick way to set the style of the figure  in your app.  Try selecting one of 
-the 11 standard templates to see how they look with your  Boostrap themes.  Note that the  "plotly_dark" template 
+the 11 standard templates to see how they look with your  Bootstrap themes.  Note that the  "plotly_dark" template 
 works well with Bootstrap  dark themes.
 
 The templates  can also be used to  can pre-populate a figure with visual elements like annotations, shapes,
@@ -32,7 +32,7 @@ images, and more. Learn more about Plotly templates and how to customize them [h
 
 ### Discrete Colors & Continuous Colorscales
 
-Selecting the Plotly trace colors that look nice with your selected Boostrap theme can really enhance your app design.
+Selecting the Plotly trace colors that look nice with your selected Bootstrap theme can really enhance your app design.
 See the Dash documentation to learn more about [discrete colors](https://plotly.com/python/discrete-color/) and 
 [continuous colorscales](https://plotly.com/python/colorscales/)
 """
@@ -43,75 +43,107 @@ Source code examples in html.components.py
 """
 
 typography_code = """
-typography = dbc.Row(
+typography = html.Div(
     [
-        dbc.Col(
+        html.H2("Typography"),
+        dbc.Row(
             [
-                html.H1("Heading 1"),
-                html.H2("Heading 2"),
-                html.H3("Heading 3"),
-                html.H4("Heading 4"),
-                html.H5("Heading 5"),
-                html.H6("Heading 6"),
-                html.H3(
+                dbc.Col(
                     [
-                        "This heading has ",
-                        html.Small("some muted text", className="text-muted"),
-                    ]
+                        html.H1("Heading 1"),
+                        html.H2("Heading 2"),
+                        html.H3("Heading 3"),
+                        html.H4("Heading 4"),
+                        html.H5("Heading 5"),
+                        html.H6("Heading 6"),
+                        html.H3(
+                            [
+                                "This html.H3 heading has ",
+                                html.Small("some muted html.Small text", className="text-muted"),
+                            ]
+                        ),
+                        html.P(
+                            "The className=`lead`adds emphasis to this html.P paragraph.",
+                            className="lead",
+                        ),
+                    ],
+                    className="p-4",
                 ),
-                html.P(
-                    "The lead class in Bootstrap is used to add emphasis to a paragraph.",
-                    className="lead",
-                ),
-            ],
-            className="p-4",
-        ),
-        dbc.Col(
-            [
-                html.H2("Example of body text"),
-                html.P(
+                dbc.Col(
                     [
-                        "This is some text",
-                        html.A("with an embedded link", href="#"),
-                        html.P(" and some more text"),
-                    ]
+                        html.H2("Example of body text"),
+                        html.P(
+                            [
+                                "This is some text with an embedded link using ",
+                                html.A("html.A", href="#"),
+
+                            ]
+                        ),
+                        html.P(
+                            html.Small(
+                                "This is html.Small - use this for the fine print"
+                            )
+                        ),
+                        html.P(
+                            [
+                                "The following is rendered in bold text ",
+                                html.Strong("using html.Strong"),
+                            ]
+                        ),
+                        html.P(
+                            [
+                                "The following is rendered in italics ",
+                                html.Em("using html.Em"),
+                            ]
+                        ),
+                        html.P(
+                            [
+                                "html.Abbr represents an abbreviation or acronym like this:",
+                                html.Abbr("abbr", title="abbreviation"),
+                            ]
+                        ),
+                    ],
+                    className="p-4",
                 ),
-                html.P(html.Small("This is html.Small - use this for the fine print")),
-                html.P(
+                dbc.Col(
                     [
-                        "The following is rendered in bold text",
-                        html.Strong("using html.Strong"),
-                    ]
+                        html.H2("Emphasis classes"),
+                        html.P(
+                            "text with className='text-muted'", className="text-muted"
+                        ),
+                        html.P(
+                            "Text with className='text-primary'",
+                            className="text-primary",
+                        ),
+                        html.P(
+                            "Text with className='text-secondary'",
+                            className="text-secondary",
+                        ),
+                        html.P(
+                            "Text with className='text-warning'",
+                            className="text-warning",
+                        ),
+                        html.P(
+                            "Text with className='text-danger'", className="text-danger"
+                        ),
+                        html.P(
+                            "Text with className='text-success'",
+                            className="text-success",
+                        ),
+                        html.P(
+                            "Text with className='text-info'", className="text-info"
+                        ),
+                        html.P(
+                            "Text with className='bg-primary text-white'", className="bg-primary text-white"
+                        ),
+                    ],
+                    className="p-4",
                 ),
-                html.P(
-                    ["The following is rendered in italics ", html.Em("using html.Em")]
-                ),
-                html.P(
-                    [
-                        "html.Abbr represents an abbreviation or acronym like this:",
-                        html.Abbr("abbr", title="abbreviation"),
-                    ]
-                ),
-            ],
-            className="p-4",
-        ),
-        dbc.Col(
-            [
-                html.H2("Emphasis classes"),
-                html.P("text with className='text-muted'", className="text-muted"),
-                html.P("Text with className='text-primary'", className="text-primary"),
-                html.P(
-                    "Text with className='text-secondary'", className="text-secondary"
-                ),
-                html.P("Text with className='text-warning'", className="text-warning"),
-                html.P("Text with className='text-danger'", className="text-danger"),
-                html.P("Text with className='text-success'", className="text-success"),
-                html.P("Text with className='text-info'", className="text-info"),
-            ],
-            className="p-4",
+                typography_text
+            ]
         ),
     ]
-)   
+)
 """
 
 blockquotes_code = """
@@ -190,5 +222,96 @@ blockquotes = html.Div(
         ),
     ]
 )
+
+"""
+
+blockquotes_code2 = """
+blockquotes2 = html.Div(
+    [
+        html.H4("Blockquotes using className and style parameters"),
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        html.Blockquote(
+                            [
+                                html.P(
+                                    "We dine well here in Camelot. We eat ham and jam and spam a lot.",
+                                    className="mb-0",
+                                ),
+                                html.Footer(
+                                    html.Cite(
+                                        "Knights of Camelot",
+                                        title="Camelot the Musical",
+                                    ),
+                                    className="blockquote-footer",
+                                ),
+                            ],
+                            className="blockquote text-left pl-4 border-light",
+                            style={"borderLeft": "solid", "borderLeftWidth": 15},
+                        ),
+                    ],
+                    className="p-4",
+                    width="md-4",
+                ),
+                dbc.Col(
+                    [
+                        html.Blockquote(
+                            [
+                                html.P(
+                                    "Always code as if the guy who ends up maintaining your code will be a violent "
+                                    "psychopath who knows where you live.",
+                                    className="mb-0",
+                                ),
+                                html.Footer(
+                                    "Martin Golding ", className="blockquote-footer"
+                                ),
+                            ],
+                            className="blockquote text-left pl-4 border-primary",
+                            style={"borderLeft": "solid", "borderLeftWidth": 5},
+                        ),
+                    ],
+                    className="p-4",
+                    width="md-4",
+                ),
+                dbc.Col(
+                    [
+                        html.Blockquote(
+                            [
+                                html.P(
+                                    "There are only two industries that refer to their customers as ‘users’.",
+                                    className="mb-0",
+                                ),
+                                html.Footer(
+                                    "Edward Tufte ", className="blockquote-footer",
+                                ),
+                            ],
+                            className="blockquote text-left pl-4 border-secondary",
+                            style={"borderLeft": "solid", "borderLeftWidth": 10},
+                        ),
+                    ],
+                    className="p-4",
+                    width="md-4",
+                ),
+            ]
+        ),    
+    ]
+)
+
+# =============================================================================================================
+
+#  Here is another way to format blockquotes.  Put the following in a css file in the assets folder.  Change the
+#  border-left color to one that works well with your selected Bootstrap theme.
+
+
+/* When using Bootstrap, this will add the left border style to blockquotes in dcc.Markdown and html.Blockquote */
+blockquote {
+  border-left: 4px lightgrey solid;
+  padding-left: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0rem;
+}
+
 
 """

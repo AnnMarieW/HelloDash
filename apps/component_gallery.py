@@ -55,7 +55,12 @@ layout = dbc.Card(
                                 selected_className="bg-light text-dark border-primary",
                             ),
                             dcc.Tab(
-                                children="Coming Soon",
+                                children=dcc.Markdown(
+                                    """
+                                Coming Soon a Bootstrap cheatsheet like [this one](https://hackerthemes.com/bootstrap-cheatsheet/)
+                                but for Dash!""",
+                                    className="m-4 p-4",
+                                ),
                                 label="Cheatsheet",
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
