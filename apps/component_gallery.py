@@ -3,10 +3,11 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 
 from app import app
-from .components import layout as components_layout
+from .dbc_components import layout as components_layout
 from .dcc_components import layout as dcc_components_layout
 from .DataTable import layout as table_layout
 from .html_components import layout as html_layout
+from .cheatsheet import layout as cheastsheet_layout
 
 layout = dbc.Card(
     [
@@ -55,12 +56,7 @@ layout = dbc.Card(
                                 selected_className="bg-light text-dark border-primary",
                             ),
                             dcc.Tab(
-                                children=dcc.Markdown(
-                                    """
-                                Coming Soon a Bootstrap cheatsheet like [this one](https://hackerthemes.com/bootstrap-cheatsheet/)
-                                but for Dash!""",
-                                    className="m-4 p-4",
-                                ),
+                                children=cheastsheet_layout,
                                 label="Cheatsheet",
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",

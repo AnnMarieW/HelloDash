@@ -55,13 +55,14 @@ td:last-child:not(.CalendarDay) {
    and dark themed apps.  Doesn't work???
 */
 .codebox  {
-    background-color: transparent,
-    border-style: double,
-    border-radius: 15px,
-    max-width: 900px,
-    margin-top: 10px,
-    margin-bottom:20px,
+    background-color: transparent;
+    border-style: double;
+    border-radius: 15px;
+    max-width: 900px;
+    margin-top: 10px;
+    margin-bottom:20px;
 }
+
 
 /* The styles the Export and Toggle button for the DataTable
 .export {

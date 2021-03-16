@@ -27,13 +27,33 @@ header = dcc.Markdown(
 )
 
 
+info_icon = "https://user-images.githubusercontent.com/72614349/111378853-a6008880-865f-11eb-87f3-b978518102a4.png"
 def make_subheading(label, link):
-    return html.H4(
-        dcc.Link(label, href=DCC_DOCS + link, target="_blank"),
-        style={"textDecoration": "underline"},
+    return html.Div(
+        [
+            dbc.Button(
+                [
+                    html.H4(
+                        [
+                            label,
+                            html.Img(
+                                src=info_icon,
+                                height="15px",
+                                className="mb-1 ml-2",
+                                id="tooltip_target",
+                            ),
+                        ],
+                    )
+                ],
+                href=DCC_DOCS + link,
+                target="_blank",
+                color="light",
+
+            ),
+            dbc.Tooltip("Go to official documentation ", target="tooltip_target",),
+        ],
         className="mb-2",
     )
-
 
 checklist = html.Div(
     [

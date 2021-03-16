@@ -333,7 +333,7 @@ background_color_card = dbc.Card(
                     type="color",
                     id="bg_color_v03",
                     value="#DFDEE3",
-                    style={"width": 100},
+                    style={"width": 75, "height": 50},
                 ),
                 make_radio_items("bg_default_v03", ["Use Default", "Use Colorpicker"]),
             ]
@@ -495,7 +495,6 @@ layout = dbc.Container(
             ]
         ),
         component_layout,
-        #   dcc.Markdown(tutorial, className="m-4 p-4"),
         html.Div(id="blank_output_v03"),
         dcc.Store(id="store"),
     ],

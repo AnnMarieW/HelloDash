@@ -39,7 +39,7 @@ See the Dash documentation to learn more about [discrete colors](https://plotly.
 
 """
 =====================================================================
-Source code examples in html.components.py
+Source code examples in html.dbc_components.py
 """
 
 typography_code = """
@@ -313,5 +313,74 @@ blockquote {
   margin-left: 0rem;
 }
 
+"""
 
+
+"""
+===========================================================================
+Cheatsheet text 
+"""
+
+
+cheatsheet_advanced_callback = """
+
+|What to use||When to use it |  
+| :----|:----| :----|  
+|```  PreventUpdate ```| |Prevents _all_ outputs of a callback from updating| 
+|`dash.no_update`|| Prevents _certain_ outputs of a callback from updating|
+|`prevent_initial_call=True`|| Prevents initial call of a  _certain_ callback|
+|`prevent_initial_callbacks=True` || Prevents _all_ initial calls|
+| `dash.callback_context`|| Determine which Input triggered a callback|
+
+
+---
+#### Code snippets:
+
+```  PreventUpdate ```
+```
+    from dash.exceptions import PreventUpdate    
+    ...   
+    def update_output(n_clicks):
+        if n_clicks is None:
+            raise PreventUpdate
+```
+
+---
+`dash.no_update`    
+```
+        # first  Output not updated
+        return dash.no_update, figure
+```
+
+
+---
+`prevent_initial_call=True`
+```
+    @app.callback(Output('container', 'children'),
+                   Input('btn-1', 'n_clicks'),
+                   Input('btn-2', 'n_clicks'),
+                   prevent_initial_call=True
+    )
+```
+---
+`prevent_initial_callbacks=True`
+```
+    app = Dash(name=__name__, prevent_initial_callbacks=True)
+```
+
+
+---
+
+`dash.callback_context`    
+```
+    @app.callback(Output('container', 'children'),
+                   Input('btn-1', 'n_clicks'),
+                   Input('btn-2', 'n_clicks'))
+    def display(btn1, btn2):
+        ctx = dash.callback_context
+        input_id = ctx.triggered[0]['prop_id'].split('.')[0]
+
+        if input_id == 'btn-1':
+            # do something...
+```
 """

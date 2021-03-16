@@ -31,8 +31,6 @@ header = dcc.Markdown(
     All dash-boostrap-components are automatically styled based on your selected Boostrap theme -- no custom CSS is required!
     See this in action by changing the Bootstrap theme in the App Design Selections panel above.  See an overview
     of Boostrap themes available with dbc components [here](https://www.bootstrapcdn.com/bootswatch/)
-    
-      
      
     Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and `DAQ` components) and 
     Plotly figures do not automatically respond to changes to Bootstrap themes.  See more information on how to style
@@ -40,11 +38,31 @@ header = dcc.Markdown(
 """
 )
 
-
+info_icon = "https://user-images.githubusercontent.com/72614349/111378853-a6008880-865f-11eb-87f3-b978518102a4.png"
 def make_subheading(label, link):
-    return html.H4(
-        dcc.Link(label, href=DBC_DOCS + link, target="_blank"),
-        style={"textDecoration": "underline"},
+    return html.Div(
+        [
+            dbc.Button(
+                [
+                    html.H4(
+                        [
+                            label,
+                            html.Img(
+                                src=info_icon,
+                                height="15px",
+                                className="mb-1 ml-2",
+                                id="tooltip_target",
+                            ),
+                        ],
+                    )
+                ],
+                href=DBC_DOCS + link,
+                target="_blank",
+                color="light",
+
+            ),
+            dbc.Tooltip("Go to official documentation ", target="tooltip_target",),
+        ],
         className="mb-2",
     )
 
@@ -390,8 +408,17 @@ input_ = html.Div(
                 dbc.FormFeedback("That's an invalid input..."),
             ]
         ),
+        dbc.FormGroup(
+            [
+                dbc.Label("Color Picker"),
+                dbc.Input(
+                    type="color", value="#afc1e4", style={"width": 100, "height": 75}
+                ),
+            ]
+        ),
     ]
 )
+
 
 checklist_items = html.Div(
     [
