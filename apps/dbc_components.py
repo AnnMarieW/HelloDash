@@ -39,6 +39,8 @@ header = dcc.Markdown(
 )
 
 info_icon = "https://user-images.githubusercontent.com/72614349/111378853-a6008880-865f-11eb-87f3-b978518102a4.png"
+
+
 def make_subheading(label, link):
     return html.Div(
         [
@@ -47,23 +49,27 @@ def make_subheading(label, link):
                     html.H4(
                         [
                             label,
-                            html.Img(
-                                src=info_icon,
-                                height="15px",
-                                className="mb-1 ml-2",
+                            html.I(
+                                className="fa fa-question-circle ml-2",
+                                style={"fontSize": 20},
                                 id="tooltip_target",
                             ),
+                            # html.Img(
+                            #     src=info_icon,
+                            #     height="20px",
+                            #     className="mb-1 ml-2",
+                            #     style="font-size:20px"
+                            #
+                            # ),
                         ],
                     )
                 ],
                 href=DBC_DOCS + link,
                 target="_blank",
-                color="light",
-
+                color="link",
             ),
             dbc.Tooltip("Go to official documentation ", target="tooltip_target",),
         ],
-        className="mb-2",
     )
 
 
@@ -84,11 +90,12 @@ alerts2 = html.Div(
     ]
 )
 
-alerts = html.Div(
+alerts = dbc.Card(
     [
-        make_subheading("Alerts", "alert/"),
-        dbc.Row([dbc.Col(alerts1), dbc.Col(alerts2)]),
-    ]
+        dbc.CardHeader(make_subheading("Alerts", "alert/")),
+        dbc.CardBody(dbc.Row([dbc.Col(alerts1), dbc.Col(alerts2)])),
+    ],
+    className="mb-4",
 )
 
 badge_colors = html.Span(
@@ -104,10 +111,10 @@ badge_colors = html.Span(
     ],
 )
 
-badges = html.Div(
+badges = dbc.Card(
     [
-        make_subheading("Badges", "badge/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Badges", "badge/")),
+        dbc.CardBody(
             [
                 badge_colors,
                 html.Br(),
@@ -118,13 +125,14 @@ badges = html.Div(
                 ),
             ]
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
-buttons1 = html.Div(
+buttons1 = dbc.Card(
     [
-        make_subheading("Buttons", "button/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Buttons", "button/")),
+        dbc.CardBody(
             [
                 dbc.Button("Primary", color="primary", className="m-1"),
                 dbc.Button("Secondary", color="secondary", className="m-1"),
@@ -157,14 +165,15 @@ buttons1 = html.Div(
                 dbc.Button("Small button", size="sm", className="m-1"),
             ],
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
 
-buttons2 = html.Div(
+buttons2 = dbc.Card(
     [
-        make_subheading("Button Groups", "buttongroups/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Button Groups", "buttongroups/")),
+        dbc.CardBody(
             [
                 dbc.ButtonGroup(
                     [
@@ -175,7 +184,7 @@ buttons2 = html.Div(
                         dbc.Button("Danger", color="danger"),
                         dbc.Button("Info", color="info"),
                     ],
-                    className="mb-2",
+                    className="mb-4",
                 ),
                 html.Br(),
                 dbc.ButtonGroup(
@@ -195,86 +204,97 @@ buttons2 = html.Div(
                 ),
             ],
         ),
-    ]
+    ],
+    className="mb-4",
 )
 buttons = dbc.Row([dbc.Col(buttons1), dbc.Col(buttons2)])
 
 
-cards = html.Div(
+cards = dbc.Card(
     [
-        make_subheading("Cards", "card/"),
-        dbc.CardDeck(
-            [
-                dbc.Card(
-                    [
-                        dbc.CardHeader("Header"),
-                        dbc.CardBody(
-                            [
-                                html.H5(
-                                    "This card has a title", className="card-title",
-                                ),
-                                html.P("And some text", className="card-text"),
-                            ]
-                        ),
-                    ]
-                ),
-                dbc.Card(
-                    [
-                        dbc.CardBody(
-                            [
-                                html.H5(
-                                    "This card has a title", className="card-title",
-                                ),
-                                html.P(
-                                    "and some text, but no header",
-                                    className="card-text",
-                                ),
-                            ]
-                        )
-                    ],
-                    outline=True,
-                    color="primary",
-                ),
-                dbc.Card(
-                    [
-                        dbc.CardBody(
-                            [
-                                html.H5(
-                                    "This card has a title", className="card-title",
-                                ),
-                                html.P(
-                                    "and some text, and a footer!",
-                                    className="card-text",
-                                ),
-                            ]
-                        ),
-                        dbc.CardFooter("Footer"),
-                    ],
-                    outline=True,
-                    color="dark",
-                ),
-            ]
+        dbc.CardHeader(make_subheading("Cards", "card/")),
+        dbc.CardBody(
+            dbc.CardDeck(
+                [
+                    dbc.Card(
+                        [
+                            dbc.CardHeader("Header"),
+                            dbc.CardBody(
+                                [
+                                    html.H5(
+                                        "This card has a title", className="card-title",
+                                    ),
+                                    html.P("And some text", className="card-text"),
+                                ]
+                            ),
+                        ]
+                    ),
+                    dbc.Card(
+                        [
+                            dbc.CardBody(
+                                [
+                                    html.H5(
+                                        "This card has a title", className="card-title",
+                                    ),
+                                    html.P(
+                                        "and some text, but no header",
+                                        className="card-text",
+                                    ),
+                                ]
+                            )
+                        ],
+                        outline=True,
+                        color="primary",
+                    ),
+                    dbc.Card(
+                        [
+                            dbc.CardBody(
+                                [
+                                    html.H5(
+                                        "This card has a title", className="card-title",
+                                    ),
+                                    html.P(
+                                        "and some text, and a footer!",
+                                        className="card-text",
+                                    ),
+                                ]
+                            ),
+                            dbc.CardFooter("Footer"),
+                        ],
+                        outline=True,
+                        color="dark",
+                    ),
+                ]
+            )
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
 collapse = html.Div(
     [
         make_subheading("Collapse", "collapse/"),
-        dbc.Button(
-            "Open collapse", id="collapse-button", style={"marginBottom": "1rem"},
+        html.Div(
+            [
+                dbc.Button(
+                    "Open collapse",
+                    id="collapse-button",
+                    style={"marginBottom": "1rem"},
+                ),
+                dbc.Collapse(
+                    dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
+                    id="collapse",
+                ),
+            ]
         ),
-        dbc.Collapse(
-            dbc.Card(dbc.CardBody("This content is hidden in the collapse")),
-            id="collapse",
-        ),
-    ]
+    ],
+    className="mb-4",
 )
 
-columns = html.Div(
+columns = dbc.Card(
     [
-        make_subheading("Columns", "layout/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Columns", "layout/")),
+        dbc.CardBody(
             [
                 dbc.Row(
                     dbc.Col(html.H4("A single column"), className="border bg-light")
@@ -310,78 +330,116 @@ columns = html.Div(
             ],
             no_gutters=True,
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
-dropdownmenu = html.Div(
-    [
-        make_subheading("DropdownMenu", "dropdown_menu/"),
-        dbc.DropdownMenu(
-            [
-                dbc.DropdownMenuItem("Heading", header=True),
-                dbc.DropdownMenuItem("Item 1", href=DBC_GITHUB),
-                dbc.DropdownMenuItem(divider=True),
-                dbc.DropdownMenuItem("Another heading", header=True),
-                dbc.DropdownMenuItem("Item 2"),
-            ],
-            label="Open DropdownMenu",
-        ),
-    ]
-)
 
 fade = html.Div(
     [
         make_subheading("Fade", "fade/"),
-        dbc.Button("Toggle fade", id="fade-button", style={"marginBottom": "1rem"}),
-        dbc.Fade(
-            dbc.Card(
-                dbc.CardBody(
-                    html.P("This content fades in and out", className="card-text")
-                )
-            ),
-            id="fade",
-            is_in=True,
+        html.Div(
+            [
+                dbc.Button(
+                    "Toggle fade", id="fade-button", style={"marginBottom": "1rem"}
+                ),
+                dbc.Fade(
+                    dbc.Card(
+                        dbc.CardBody(
+                            html.P(
+                                "This content fades in and out", className="card-text"
+                            )
+                        )
+                    ),
+                    id="fade",
+                    is_in=True,
+                ),
+            ]
         ),
-    ]
+    ],
 )
 
 # ---------  start forms row ------------------
-form = html.Div(
+form = dbc.Card(
     [
-        make_subheading("Form", "form/"),
-        dbc.Form(
+        dbc.CardHeader(make_subheading("Form", "form/")),
+        dbc.CardBody(
             [
-                dbc.FormGroup(
+                dbc.Form(
                     [
-                        dbc.Label("Username"),
-                        dbc.Input(placeholder="Enter your username", type="text"),
-                        dbc.FormText(
+                        dbc.FormGroup(
                             [
-                                "Can't remember your username? ",
-                                html.A(
-                                    "Click here.",
-                                    href="#",
-                                    className="text-muted",
-                                    style={"textDecoration": "underline"},
+                                dbc.Label("Username"),
+                                dbc.Input(
+                                    placeholder="Enter your username", type="text"
+                                ),
+                                dbc.FormText(
+                                    [
+                                        "Can't remember your username? ",
+                                        html.A(
+                                            "Click here.",
+                                            href="#",
+                                            className="text-muted",
+                                            style={"textDecoration": "underline"},
+                                        ),
+                                    ]
+                                ),
+                            ]
+                        ),
+                        dbc.FormGroup(
+                            [
+                                dbc.Label("Username"),
+                                dbc.Input(
+                                    placeholder="Enter your password", type="password"
+                                ),
+                                dbc.FormText(
+                                    [
+                                        "Can't remember your password? ",
+                                        html.A(
+                                            "Click here.",
+                                            href="#",
+                                            className="text-muted",
+                                            style={"textDecoration": "underline"},
+                                        ),
+                                    ]
                                 ),
                             ]
                         ),
                     ]
                 ),
+            ]
+        ),
+    ],
+    className="mb-4",
+)
+
+input_ = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("Input", "input/")),
+        dbc.CardBody(
+            [
+                dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
                 dbc.FormGroup(
                     [
-                        dbc.Label("Username"),
-                        dbc.Input(placeholder="Enter your password", type="password"),
-                        dbc.FormText(
-                            [
-                                "Can't remember your password? ",
-                                html.A(
-                                    "Click here.",
-                                    href="#",
-                                    className="text-muted",
-                                    style={"textDecoration": "underline"},
-                                ),
-                            ]
+                        dbc.Label("Valid text input"),
+                        dbc.Input(type="text", valid=True),
+                        dbc.FormFeedback("That's a valid input!", valid=True),
+                    ]
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Invalid text input"),
+                        dbc.Input(type="text", invalid=True),
+                        dbc.FormFeedback("That's an invalid input..."),
+                    ]
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Color Picker"),
+                        dbc.Input(
+                            type="color",
+                            value="#afc1e4",
+                            style={"width": 100, "height": 75},
                         ),
                     ]
                 ),
@@ -390,102 +448,97 @@ form = html.Div(
     ]
 )
 
-input_ = html.Div(
+
+checklist_items = dbc.Card(
     [
-        make_subheading("Input", "input/"),
-        dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
-        dbc.FormGroup(
+        dbc.CardHeader(make_subheading("Checklist", "input/"),),
+        dbc.CardBody(
             [
-                dbc.Label("Valid text input"),
-                dbc.Input(type="text", valid=True),
-                dbc.FormFeedback("That's a valid input!", valid=True),
+                dbc.Checklist(
+                    options=[
+                        {"label": "Option {}".format(i), "value": i} for i in range(3)
+                    ],
+                    value=[],
+                ),
+                html.H5("Inline checklist", className="mt-3"),
+                dbc.Checklist(
+                    options=[
+                        {"label": "Option {}".format(i), "value": i} for i in range(5)
+                    ],
+                    value=[],
+                    inline=True,
+                ),
             ]
         ),
-        dbc.FormGroup(
+    ],
+    className="mb-4",
+)
+
+radio_items = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("RadioItems", "input/"),),
+        dbc.CardBody(
             [
-                dbc.Label("Invalid text input"),
-                dbc.Input(type="text", invalid=True),
-                dbc.FormFeedback("That's an invalid input..."),
-            ]
-        ),
-        dbc.FormGroup(
-            [
-                dbc.Label("Color Picker"),
-                dbc.Input(
-                    type="color", value="#afc1e4", style={"width": 100, "height": 75}
+                dbc.RadioItems(
+                    options=[
+                        {"label": "Option {}".format(i), "value": i} for i in range(3)
+                    ],
+                    value=0,
+                ),
+                html.H5("Inline radioitems", className="mt-3"),
+                dbc.RadioItems(
+                    options=[
+                        {"label": "Option {}".format(i), "value": i} for i in range(5)
+                    ],
+                    value=0,
+                    inline=True,
                 ),
             ]
         ),
     ]
 )
 
-
-checklist_items = html.Div(
+input_group = dbc.Card(
     [
-        make_subheading("Checklist", "input/"),
-        dbc.Checklist(
-            options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
-            value=[],
-        ),
-        html.H5("Inline checklist", className="mt-3"),
-        dbc.Checklist(
-            options=[{"label": "Option {}".format(i), "value": i} for i in range(5)],
-            value=[],
-            inline=True,
-        ),
-    ]
-)
-
-radio_items = html.Div(
-    [
-        make_subheading("RadioItems", "input/"),
-        dbc.RadioItems(
-            options=[{"label": "Option {}".format(i), "value": i} for i in range(3)],
-            value=0,
-        ),
-        html.H5("Inline radioitems", className="mt-3"),
-        dbc.RadioItems(
-            options=[{"label": "Option {}".format(i), "value": i} for i in range(5)],
-            value=0,
-            inline=True,
-        ),
-    ]
-)
-
-input_group = html.Div(
-    [
-        make_subheading("InputGroup and addons", "input_group/"),
-        dbc.InputGroup(
+        dbc.CardHeader(make_subheading("InputGroup and addons", "input_group/")),
+        dbc.CardBody(
             [
-                dbc.InputGroupAddon(
-                    dbc.Button("To the left!", color="danger"), addon_type="prepend",
+                dbc.InputGroup(
+                    [
+                        dbc.InputGroupAddon(
+                            dbc.Button("To the left!", color="danger"),
+                            addon_type="prepend",
+                        ),
+                        dbc.Input(type="text"),
+                    ]
                 ),
-                dbc.Input(type="text"),
-            ]
-        ),
-        html.Br(),
-        dbc.InputGroup(
-            [
-                dbc.Input(type="text"),
-                dbc.InputGroupAddon(
-                    dbc.Button("To the right!", color="success"), addon_type="append",
+                html.Br(),
+                dbc.InputGroup(
+                    [
+                        dbc.Input(type="text"),
+                        dbc.InputGroupAddon(
+                            dbc.Button("To the right!", color="success"),
+                            addon_type="append",
+                        ),
+                    ]
+                ),
+                html.Br(),
+                dbc.InputGroup(
+                    [
+                        dbc.InputGroupAddon("@", addon_type="prepend"),
+                        dbc.Input(type="text", placeholder="Enter username"),
+                    ]
                 ),
             ]
         ),
-        html.Br(),
-        dbc.InputGroup(
-            [
-                dbc.InputGroupAddon("@", addon_type="prepend"),
-                dbc.Input(type="text", placeholder="Enter username"),
-            ]
-        ),
-    ]
+    ],
+    className="mb-4",
 )
 
 
 # ----- end forms row  --------------------------------------------
 
-jumbotron = html.Div(
+jumbotron = dbc.Card(
     [
         make_subheading("Jumbotron", "jumbotron/"),
         dbc.Jumbotron(
@@ -495,26 +548,32 @@ jumbotron = html.Div(
                 dbc.Button("Click here", color="danger"),
             ]
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
-list_group = html.Div(
+list_group = dbc.Card(
     [
-        make_subheading("ListGroup", "list_group/"),
-        dbc.ListGroup(
+        dbc.CardHeader(make_subheading("ListGroup", "list_group/")),
+        dbc.CardBody(
             [
-                dbc.ListGroupItem("Item 1", color="primary", action=True),
-                dbc.ListGroupItem("Item 2"),
-                dbc.ListGroupItem("Item 3"),
-                dbc.ListGroupItem(
+                dbc.ListGroup(
                     [
-                        dbc.ListGroupItemHeading("Item 4 heading"),
-                        dbc.ListGroupItemText("Item 4 text"),
+                        dbc.ListGroupItem("Item 1", color="primary", action=True),
+                        dbc.ListGroupItem("Item 2"),
+                        dbc.ListGroupItem("Item 3"),
+                        dbc.ListGroupItem(
+                            [
+                                dbc.ListGroupItemHeading("Item 4 heading"),
+                                dbc.ListGroupItemText("Item 4 text"),
+                            ]
+                        ),
                     ]
                 ),
             ]
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
 
@@ -542,7 +601,12 @@ modal = html.Div(
 
 navbar = html.Div(
     [
-        make_subheading("Navbar", "navbar/"),
+        dbc.Row(
+            [
+                make_subheading("Navbar", "navbar/"),
+                make_subheading("DropdownMenu", "dropdown_menu/"),
+            ]
+        ),
         dbc.NavbarSimple(
             children=[
                 dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
@@ -613,47 +677,50 @@ spinner = html.Div(
 )
 
 
-table = html.Div(
+table = dbc.Card(
     [
-        make_subheading("HTML Table", "table/"),
-        dbc.Table(
-            [
-                html.Thead(
-                    html.Tr(
-                        [html.Th("#"), html.Th("First name"), html.Th("Last name"),]
-                    )
-                ),
-                html.Tbody(
-                    [
+        dbc.CardHeader(make_subheading("HTML Table", "table/"),),
+        dbc.CardBody(
+            dbc.Table(
+                [
+                    html.Thead(
                         html.Tr(
-                            [
-                                html.Th("1", scope="row"),
-                                html.Td("Tom"),
-                                html.Td("Cruise"),
-                            ]
-                        ),
-                        html.Tr(
-                            [
-                                html.Th("2", scope="row"),
-                                html.Td("Jodie"),
-                                html.Td("Foster"),
-                            ]
-                        ),
-                        html.Tr(
-                            [
-                                html.Th("3", scope="row"),
-                                html.Td("Chadwick"),
-                                html.Td("Boseman"),
-                            ]
-                        ),
-                    ]
-                ),
-            ],
-            responsive=True,
-            striped=True,
-            hover=True,
+                            [html.Th("#"), html.Th("First name"), html.Th("Last name"),]
+                        )
+                    ),
+                    html.Tbody(
+                        [
+                            html.Tr(
+                                [
+                                    html.Th("1", scope="row"),
+                                    html.Td("Tom"),
+                                    html.Td("Cruise"),
+                                ]
+                            ),
+                            html.Tr(
+                                [
+                                    html.Th("2", scope="row"),
+                                    html.Td("Jodie"),
+                                    html.Td("Foster"),
+                                ]
+                            ),
+                            html.Tr(
+                                [
+                                    html.Th("3", scope="row"),
+                                    html.Td("Chadwick"),
+                                    html.Td("Boseman"),
+                                ]
+                            ),
+                        ]
+                    ),
+                ],
+                responsive=True,
+                striped=True,
+                hover=True,
+            ),
         ),
-    ]
+    ],
+    className="mb-4",
 )
 
 tabs = html.Div(
@@ -678,7 +745,8 @@ tabs = html.Div(
                 ),
             ]
         ),
-    ]
+    ],
+    className="my-4",
 )
 
 toast = html.Div(
@@ -727,42 +795,40 @@ layout = dbc.Container(
         html.Div(
             [
                 header,
-                html.Hr(),
                 alerts,
-                html.Hr(),
                 badges,
-                html.Hr(),
                 buttons,
-                html.Hr(),
-                dropdownmenu,
-                html.Hr(),
-                tabs,
-                html.Hr(),
                 cards,
-                html.Hr(),
                 dbc.Row([dbc.Col([form, input_group,]), dbc.Col([input_])]),
-                html.Hr(),
                 dbc.Row([dbc.Col([checklist_items]), dbc.Col([radio_items])]),
-                html.Hr(),
-                navbar,
-                html.Hr(),
-                jumbotron,
-                html.Hr(),
-                columns,
-                html.Hr(),
-                list_group,
-                html.Hr(),
-                table,
-                html.Hr(),
-                dbc.Row([dbc.Col([progress]), dbc.Col([spinner])]),
-                html.Hr(),
-                dbc.Row(
+                dbc.Card(
                     [
-                        dbc.Col([modal, fade, collapse,]),
-                        dbc.Col([popover, toast, tooltip]),
+                        dbc.CardHeader(html.H4("Navigation")),
+                        dbc.CardBody([navbar, tabs,], className="mb-4"),
+                    ],
+                    className="mb-4",
+                ),
+                jumbotron,
+                columns,
+                list_group,
+                table,
+                dbc.Card(
+                    [dbc.Row([dbc.Col([progress]), dbc.Col([spinner])]),],
+                    className="mb-4",
+                ),
+                dbc.Card(
+                    [
+                        dbc.CardHeader(html.H4("Dialogs")),
+                        dbc.CardBody(
+                            dbc.Row(
+                                [
+                                    dbc.Col([modal, fade, collapse,]),
+                                    dbc.Col([popover, toast, tooltip]),
+                                ]
+                            ),
+                        ),
                     ]
                 ),
-                html.Hr(),
                 html.Div(style={"height": "50px"}),
                 source_code,
             ],
