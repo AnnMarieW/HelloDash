@@ -97,36 +97,6 @@ def make_html_table():
     )
 
 
-def make_card(id, content, source_code):
-    className_btn = "d-none" if source_code == "" else ""
-    return dbc.Card(
-        [
-            dbc.CardBody(
-                [
-                    content,
-                    dbc.Button(
-                        "see code",
-                        id={"type": "modal_btn", "index": id},
-                        color="secondary",
-                        outline=True,
-                        size="sm",
-                        className=className_btn,
-                    ),
-                ],
-                className="p-2",
-            ),
-            # Note:  The callback for this modal is in app_gallery.py
-            dbc.Modal(
-                dbc.ModalBody(source_code),
-                id={"type": "modal", "index": id},
-                scrollable=True,
-                size="lg",
-            ),
-        ],
-        className="mb-4",
-    )
-
-
 """
 =====================================================================
 Content
@@ -370,6 +340,7 @@ blockquotes_card = dbc.Card(
                         ),
                     ]
                 ),
+                blockquotes_text,
                 dbc.Row(
                     make_btn_with_modal(
                         "blockquotes_code",
@@ -473,6 +444,7 @@ blockquotes2_card = dbc.Card(
                         ),
                     ]
                 ),
+                blockquotes_text2,
                 dbc.Row(
                     make_btn_with_modal(
                         "blockquotes_code2",

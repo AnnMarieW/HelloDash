@@ -197,7 +197,7 @@ getting_started_links = dbc.Card(
 
 how_to_datatable = dbc.Card(
     [
-        dbc.CardHeader(html.H4("How to: DataTable")),
+        dbc.CardHeader(html.H4("DataTable How To:")),
         dbc.CardBody(
             dbc.ListGroup(
                 [
