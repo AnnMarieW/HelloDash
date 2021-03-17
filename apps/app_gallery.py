@@ -3,6 +3,7 @@ This module creates the app gallery
 
 Enter details for new cards in the order you want them to appear in the gallery
 
+
 """
 
 
@@ -111,6 +112,18 @@ gallery.append(
 # 5
 gallery.append(
     Card(
+        image="https://user-images.githubusercontent.com/72614349/111547777-e7179c00-8736-11eb-8a9b-9635b9712628.png",
+        title="The easiest starter app! Simply Two graphs, side by side.  Only about 25 lines of code.",
+        source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/quickstart1.py",
+        about= "One of the most popular questions on the Dash Community forum!"
+    )
+)
+
+
+
+# 6
+gallery.append(
+    Card(
         image="https://user-images.githubusercontent.com/72614349/109817256-f2bf7a80-7bee-11eb-9beb-dd6673e98549.png",
         title="Example Apps in the Dash Bootstrap Components docs",
         source_code="https://dash-bootstrap-components.opensource.faculty.ai/examples/",
@@ -121,7 +134,7 @@ gallery.append(
     )
 )
 
-# 6
+# 7
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/109823988-a6c40400-7bf5-11eb-8ee3-15b91e9c170d.png",
@@ -132,7 +145,7 @@ gallery.append(
     )
 )
 
-# 7
+# 8
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/109827271-d0325f00-7bf8-11eb-9dc4-a24640b46690.png",
@@ -144,7 +157,7 @@ gallery.append(
 )
 
 
-# 8
+# 9
 gallery.append(
     Card(
         title="""
@@ -166,7 +179,7 @@ gallery.append(
     )
 )
 
-# 9
+# 10
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
@@ -176,7 +189,7 @@ gallery.append(
     )
 )
 
-# 10
+# 11
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/110704339-1025b300-81b2-11eb-9b26-7a8815e722ce.png",
@@ -188,7 +201,7 @@ gallery.append(
     )
 )
 
-# 11
+# 12
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/110702548-e79cb980-81af-11eb-96b0-d89a36d3fcb9.png",
@@ -200,7 +213,7 @@ gallery.append(
     )
 )
 
-# 12
+# 13
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/110704060-bb823800-81b1-11eb-8ac3-e866944beee6.png",
@@ -212,16 +225,6 @@ gallery.append(
     )
 )
 
-
-# 9
-gallery.append(
-    Card(
-        image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
-        title="Great quick start app   <75 lines of code! ",
-        source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",
-        about="This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)",
-    )
-)
 
 """
 ======================================================================

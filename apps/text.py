@@ -38,6 +38,7 @@ See the Dash documentation to learn more about [discrete colors](https://plotly.
 [continuous colorscales](https://plotly.com/python/colorscales/)
 """
 
+
 """
 =====================================================================
 Source code examples in html.dbc_components.py
