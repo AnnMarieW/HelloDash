@@ -159,8 +159,8 @@ boostrap_card = dbc.Card(
                         target="_blank",
                     )
                 ),
-                make_dropdown("themes_v03", boostrap_light_themes),
-                make_radio_items("light_dark_v03", ["Light Themes", "Dark Themes"]),
+                make_dropdown("themes", boostrap_light_themes),
+                make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),
             ]
         ),
     ],
@@ -173,7 +173,7 @@ graph_template_card = dbc.Card(
         dbc.FormGroup(
             [
                 dbc.Label("Graph Templates", className="mt-2"),
-                make_dropdown("template_v03", plotly_template),
+                make_dropdown("template", plotly_template),
             ],
             style={"minWidth": 100},
         )
@@ -185,7 +185,7 @@ discrete_modal = html.Div(
     [
         dbc.Button(
             "Line Colors",
-            id="discrete_modal_btn_v03",
+            id="discrete_modal_btn",
             outline=True,
             color="primary",
             size="sm",
@@ -201,7 +201,7 @@ discrete_modal = html.Div(
                         ),
                         dbc.Alert(
                             "color selected: Plotly",
-                            id="discrete_selected_v03",
+                            id="discrete_selected",
                             color="secondary",
                             className="text-center",
                         ),
@@ -220,7 +220,7 @@ discrete_modal = html.Div(
                             "Use these colorscales for data that has distinct groups and a non-meaningful order."
                         ),
                         dcc.Graph(
-                            id="discrete_swatch_v03",
+                            id="discrete_swatch",
                             figure=px.colors.qualitative.swatches(),
                             config={"displayModeBar": False},
                             style={"height": 1000},
@@ -228,7 +228,7 @@ discrete_modal = html.Div(
                     ]
                 ),
             ],
-            id="discrete_modal_v03",
+            id="discrete_modal",
             scrollable=True,
             centered=False,
             className="p-0 m-0",
@@ -241,7 +241,7 @@ continuous_modal = html.Div(
     [
         dbc.Button(
             "Scatter Colors",
-            id="continuous_modal_btn_v03",
+            id="continuous_modal_btn",
             outline=True,
             color="primary",
             size="sm",
@@ -256,7 +256,7 @@ continuous_modal = html.Div(
                         ),
                         dbc.Alert(
                             "color selected: aggrnyl",
-                            id="continuous_selected_v03",
+                            id="continuous_selected",
                             color="secondary",
                             className="text-center",
                         ),
@@ -274,7 +274,7 @@ continuous_modal = html.Div(
                             "Use sequential colorscales for data that smoothly changes value and has meaningful order."
                         ),
                         dcc.Graph(
-                            id="seq_swatch_v03",
+                            id="seq_swatch",
                             figure=px.colors.sequential.swatches(),
                             config={"displayModeBar": False},
                             style={"height": 3000},
@@ -284,7 +284,7 @@ continuous_modal = html.Div(
                             "Use divergent colorscales for data that smoothly changes around a centerpoint (such as zero)."
                         ),
                         dcc.Graph(
-                            id="div_swatch_v03",
+                            id="div_swatch",
                             figure=px.colors.diverging.swatches(),
                             config={"displayModeBar": False},
                         ),
@@ -295,14 +295,14 @@ continuous_modal = html.Div(
                             "complex numbers or other phase or angular data."
                         ),
                         dcc.Graph(
-                            id="cyc_swatch_v03",
+                            id="cyc_swatch",
                             figure=px.colors.cyclical.swatches(),
                             config={"displayModeBar": False},
                         ),
                     ]
                 ),
             ],
-            id="continuous_modal_v03",
+            id="continuous_modal",
             scrollable=True,
             className=("p-0 m-0"),
         ),
@@ -331,11 +331,11 @@ background_color_card = dbc.Card(
                 dbc.Label("App Background Color", className="mt-2"),
                 dbc.Input(
                     type="color",
-                    id="bg_color_v03",
+                    id="bg_color",
                     value="#DFDEE3",
                     style={"width": 75, "height": 50},
                 ),
-                make_radio_items("bg_default_v03", ["Use Default", "Use Colorpicker"]),
+                make_radio_items("bg_default", ["Use Default", "Use Colorpicker"]),
             ]
         ),
     ],
@@ -364,7 +364,7 @@ source_code_modal = dbc.Card(
         dbc.CardBody(
             [
                 html.Div(" See the Sample Dash App"),
-                dbc.Button("Source Code", id="code_modal_btn_v03", color="primary",),
+                dbc.Button("Source Code", id="code_modal_btn", color="primary",),
             ]
         ),
         dbc.Modal(
@@ -380,7 +380,7 @@ source_code_modal = dbc.Card(
                 ),
                 dbc.ModalBody([dcc.Markdown(code)]),
             ],
-            id="code_modal_v03",
+            id="code_modal",
             scrollable=True,
             size="xl",
         ),
@@ -416,9 +416,7 @@ sample_app_controls = dbc.Card(
                     dbc.FormGroup(
                         [
                             dbc.Label("Select indicator (y-axis)"),
-                            make_dropdown(
-                                "indicator_v03", ["gdpPercap", "lifeExp", "pop"]
-                            ),
+                            make_dropdown("indicator", ["gdpPercap", "lifeExp", "pop"]),
                         ]
                     )
                 ),
@@ -426,7 +424,7 @@ sample_app_controls = dbc.Card(
                     dbc.FormGroup(
                         [
                             dbc.Label("Select continents"),
-                            make_checklist("continents_v03", df.continent.unique()),
+                            make_checklist("continents", df.continent.unique()),
                         ]
                     )
                 ),
@@ -435,8 +433,8 @@ sample_app_controls = dbc.Card(
         dbc.FormGroup(
             [
                 dbc.Label("Select years"),
-                make_range_slider("slider_years_v03", df.year.unique(), 5),
-                html.Div(id="theme_colors_v03"),
+                make_range_slider("slider_years", df.year.unique(), 5),
+                html.Div(id="theme_colors"),
                 buttons,
             ]
         ),
@@ -451,23 +449,15 @@ sample_app_1 = dbc.Card(
             [
                 dbc.Col(
                     [
-                        dcc.Markdown(
-                            id="line_chart_title_v03", className="text-center"
-                        ),
-                        dcc.Graph(
-                            id="line_chart_v03", config={"displayModeBar": False}
-                        ),
+                        dcc.Markdown(id="line_chart_title", className="text-center"),
+                        dcc.Graph(id="line_chart", config={"displayModeBar": False}),
                     ],
                     width=6,
                 ),
                 dbc.Col(
                     [
-                        dcc.Markdown(
-                            id="scatter_chart_title_v03", className="text-center"
-                        ),
-                        dcc.Graph(
-                            id="scatter_chart_v03", config={"displayModeBar": False}
-                        ),
+                        dcc.Markdown(id="scatter_chart_title", className="text-center"),
+                        dcc.Graph(id="scatter_chart", config={"displayModeBar": False}),
                     ],
                     width=6,
                 ),
@@ -477,7 +467,7 @@ sample_app_1 = dbc.Card(
         sample_app_controls,
     ],
     className="mx-2 shadow p-2",
-    id="layout_container_v03",
+    id="layout_container",
 )
 
 
@@ -495,7 +485,7 @@ layout = dbc.Container(
             ]
         ),
         component_layout,
-        html.Div(id="blank_output_v03"),
+        html.Div(id="blank_output"),
         dcc.Store(id="store"),
     ],
     fluid=True,
@@ -503,16 +493,16 @@ layout = dbc.Container(
 
 
 @app.callback(
-    Output("line_chart_v03", "figure"),
-    Output("scatter_chart_v03", "figure"),
-    Output("line_chart_title_v03", "children"),
-    Output("scatter_chart_title_v03", "children"),
-    Input("indicator_v03", "value"),
-    Input("continents_v03", "value"),
-    Input("slider_years_v03", "value"),
-    Input("template_v03", "value"),
-    Input("discrete_selected_v03", "children"),
-    Input("continuous_selected_v03", "children"),
+    Output("line_chart", "figure"),
+    Output("scatter_chart", "figure"),
+    Output("line_chart_title", "children"),
+    Output("scatter_chart_title", "children"),
+    Input("indicator", "value"),
+    Input("continents", "value"),
+    Input("slider_years", "value"),
+    Input("template", "value"),
+    Input("discrete_selected", "children"),
+    Input("continuous_selected", "children"),
 )
 def update_line_chart(
     indicator, continents, years, template, color_discrete, color_continuous
@@ -559,9 +549,9 @@ def update_line_chart(
 
 
 @app.callback(
-    Output("themes_v03", "options"),
-    Output("themes_v03", "value"),
-    Input("light_dark_v03", "value"),
+    Output("themes", "options"),
+    Output("themes", "value"),
+    Input("light_dark", "value"),
 )
 def update(theme):
 
@@ -575,17 +565,17 @@ def update(theme):
 
 
 @app.callback(
-    Output("layout_container_v03", "style"),
-    Output("bg_default_v03", "value"),
-    Input("bg_color_v03", "value"),
-    Input("bg_default_v03", "value"),
+    Output("layout_container", "style"),
+    Output("bg_default", "value"),
+    Input("bg_color", "value"),
+    Input("bg_default", "value"),
 )
 def update_app_bg_color(color, radio):
 
     ctx = dash.callback_context
     input_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-    if input_id == "bg_color_v03":
+    if input_id == "bg_color":
         radio = "Use Colorpicker"
 
     else:
@@ -594,7 +584,7 @@ def update_app_bg_color(color, radio):
 
 
 @app.callback(
-    Output("theme_colors_v03", "children"), Input("themes_v03", "value"),
+    Output("theme_colors", "children"), Input("themes", "value"),
 )
 def update(theme):
     theme = "default" if theme == "BOOTSTRAP" else theme
@@ -608,8 +598,7 @@ def update(theme):
 
 
 @app.callback(
-    Output("discrete_selected_v03", "children"),
-    Input("discrete_swatch_v03", "clickData"),
+    Output("discrete_selected", "children"), Input("discrete_swatch", "clickData"),
 )
 def sel_swatch(clicked):
     return (
@@ -620,10 +609,10 @@ def sel_swatch(clicked):
 
 
 @app.callback(
-    Output("continuous_selected_v03", "children"),
-    Input("seq_swatch_v03", "clickData"),
-    Input("div_swatch_v03", "clickData"),
-    Input("cyc_swatch_v03", "clickData"),
+    Output("continuous_selected", "children"),
+    Input("seq_swatch", "clickData"),
+    Input("div_swatch", "clickData"),
+    Input("cyc_swatch", "clickData"),
 )
 def sel_swatch(seq, div, cyc):
     if seq is None and div is None and cyc is None:
@@ -631,19 +620,19 @@ def sel_swatch(seq, div, cyc):
     ctx = dash.callback_context
     input_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
-    if input_id == "seq_swatch_v03":
+    if input_id == "seq_swatch":
         return f"color selected:   {seq['points'][0]['y']}"
-    if input_id == "div_swatch_v03":
+    if input_id == "div_swatch":
         return f"color selected:   {div['points'][0]['y']}"
-    if input_id == "cyc_swatch_v03":
+    if input_id == "cyc_swatch":
         return f"color selected:   {cyc['points'][0]['y']}"
 
 
 # --------------- modals open close -------------------------------------------------------------
 @app.callback(
-    Output("discrete_modal_v03", "is_open"),
-    [Input("discrete_modal_btn_v03", "n_clicks")],
-    [State("discrete_modal_v03", "is_open")],
+    Output("discrete_modal", "is_open"),
+    [Input("discrete_modal_btn", "n_clicks")],
+    [State("discrete_modal", "is_open")],
 )
 def toggle_modal(n, is_open):
     if n:
@@ -652,9 +641,9 @@ def toggle_modal(n, is_open):
 
 
 @app.callback(
-    Output("continuous_modal_v03", "is_open"),
-    [Input("continuous_modal_btn_v03", "n_clicks")],
-    [State("continuous_modal_v03", "is_open")],
+    Output("continuous_modal", "is_open"),
+    [Input("continuous_modal_btn", "n_clicks")],
+    [State("continuous_modal", "is_open")],
 )
 def toggle_modal(n, is_open):
     if n:
@@ -663,9 +652,9 @@ def toggle_modal(n, is_open):
 
 
 @app.callback(
-    Output("code_modal_v03", "is_open"),
-    [Input("code_modal_btn_v03", "n_clicks")],
-    [State("code_modal_v03", "is_open")],
+    Output("code_modal", "is_open"),
+    [Input("code_modal_btn", "n_clicks")],
+    [State("code_modal", "is_open")],
 )
 def toggle_modal(n, is_open):
     if n:
@@ -691,6 +680,6 @@ app.clientside_callback(
         stylesheet.href = link
     }
     """,
-    Output("blank_output_v03", "children"),
-    Input("themes_v03", "value"),
+    Output("blank_output", "children"),
+    Input("themes", "value"),
 )

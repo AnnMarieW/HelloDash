@@ -172,7 +172,7 @@ graph_card = dbc.Card(
                 html.Div(
                     [
                         dcc.Graph(
-                            id="dcc_graph_v03",
+                            id="dcc_graph",
                             figure=px.scatter(
                                 px.data.iris(), x="sepal_width", y="sepal_length"
                             ),

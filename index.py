@@ -4,7 +4,7 @@ import dash_html_components as html
 from app import app
 from dash.dependencies import Input, Output
 from apps import (
-    theme_explorer_v03,
+    theme_explorer,
     app_gallery,
 )
 
@@ -17,11 +17,11 @@ app.layout = html.Div(
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
     if pathname == "/theme_explorer":
-        return theme_explorer_v03.layout
+        return theme_explorer.layout
     elif pathname == "/app_gallery":
         return app_gallery.layout
     else:
-        return theme_explorer_v03.layout
+        return theme_explorer.layout
 
 
 if __name__ == "__main__":

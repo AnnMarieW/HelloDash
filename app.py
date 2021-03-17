@@ -36,7 +36,7 @@ header = dbc.Jumbotron(
                 ),
                 dbc.Button(
                     "App Gallery",
-                    id="app_gallery_v03",
+                    id="app_gallery",
                     color="primary",
                     #    outline=True,
                     href="/app_gallery",

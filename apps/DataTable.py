@@ -203,7 +203,7 @@ light_theme_card = dbc.Card(
             ]
         ),
     ],
-    id="light_theme_table_v03",
+    id="light_theme_table",
     className="m-4",
 )
 
@@ -226,7 +226,7 @@ dark_theme_card = dbc.Card(
             ]
         ),
     ],
-    id="dark_theme_table_v03",
+    id="dark_theme_table",
     className="m-4",
 )
 
@@ -251,9 +251,9 @@ layout = (
 
 
 @app.callback(
-    Output("light_theme_table_v03", "className"),
-    Output("dark_theme_table_v03", "className"),
-    Input("light_dark_v03", "value"),
+    Output("light_theme_table", "className"),
+    Output("dark_theme_table", "className"),
+    Input("light_dark", "value"),
 )
 def hide_show_table(theme):
     return ("m-4", "m-4 d-none") if theme == "Light Themes" else ("m-4 d-none", "m-4")
