@@ -40,8 +40,44 @@ Helper functions
 
 
 def make_links(tags):
+    """
+    This formats  the list html tags shown in a card
+    """
     return ", ".join(
         f"[{tag}]({HTML_DOCS + tag.split('.')[1].lower()})" for tag in tags
+    )
+
+
+def make_btn_with_modal(id, title, content):
+    """
+     This makes a button that opens a modal for content
+     note: The modal callback is located in the app_galery.py
+
+     id:  unique identifier
+     title:  what appears on the button
+     content:
+        To display text, use dcc.Markdown("my text")
+        To display a codebox:
+          html.Div(html.Pre(html.Code(" enter code here" )), style=codebox,)
+
+    """
+    return html.Div(
+        [
+            dbc.Button(
+                title,
+                id={"type": "modal_btn", "index": id},
+                color="secondary",
+                size="sm",
+                outline=True,
+                className="my-2",
+            ),
+            dbc.Modal(
+                dbc.ModalBody(content),
+                id={"type": "modal", "index": id},
+                scrollable=True,
+                size="lg",
+            ),
+        ]
     )
 
 
@@ -87,7 +123,7 @@ def make_card(id, content, source_code):
                 size="lg",
             ),
         ],
-        className="mb-4 shadow",
+        className="mb-4",
     )
 
 
@@ -116,12 +152,6 @@ html_intro_text = dcc.Markdown(
 """
 )
 
-overview_text = dcc.Markdown(
-    """
-
-"""
-)
-
 typography_text = dcc.Markdown(
     "This shows the use of html.H1 - "
     + make_links(
@@ -139,111 +169,125 @@ typography_text = dcc.Markdown(
     + ".",
     className="ml-4",
 )
-
-typography = html.Div(
+typography_card = dbc.Card(
     [
-        html.H2("Typography"),
-        dbc.Row(
+        dbc.CardHeader(html.H2("Typography")),
+        dbc.CardBody(
             [
-                dbc.Col(
+                dbc.Row(
                     [
-                        html.H1("Heading 1"),
-                        html.H2("Heading 2"),
-                        html.H3("Heading 3"),
-                        html.H4("Heading 4"),
-                        html.H5("Heading 5"),
-                        html.H6("Heading 6"),
-                        html.H3(
+                        dbc.Col(
                             [
-                                "This html.H3 heading has ",
-                                html.Small(
-                                    "some muted html.Small text", className="text-muted"
+                                html.H1("Heading 1"),
+                                html.H2("Heading 2"),
+                                html.H3("Heading 3"),
+                                html.H4("Heading 4"),
+                                html.H5("Heading 5"),
+                                html.H6("Heading 6"),
+                                html.H3(
+                                    [
+                                        "This html.H3 heading has ",
+                                        html.Small(
+                                            "some muted html.Small text",
+                                            className="text-muted",
+                                        ),
+                                    ]
                                 ),
-                            ]
+                                html.P(
+                                    "The className=`lead`adds emphasis to this html.P paragraph.",
+                                    className="lead",
+                                ),
+                            ],
+                            className="p-4",
                         ),
-                        html.P(
-                            "The className=`lead`adds emphasis to this html.P paragraph.",
-                            className="lead",
+                        dbc.Col(
+                            [
+                                html.H2("Example of body text"),
+                                html.P(
+                                    [
+                                        "This is some text with an embedded link using ",
+                                        html.A("html.A", href="#"),
+                                    ]
+                                ),
+                                html.P(
+                                    html.Small(
+                                        "This is html.Small - use this for the fine print"
+                                    )
+                                ),
+                                html.P(
+                                    [
+                                        "The following is rendered in bold text ",
+                                        html.Strong("using html.Strong"),
+                                    ]
+                                ),
+                                html.P(
+                                    [
+                                        "The following is rendered in italics ",
+                                        html.Em("using html.Em"),
+                                    ]
+                                ),
+                                html.P(
+                                    [
+                                        "html.Abbr represents an abbreviation or acronym like this:",
+                                        html.Abbr("abbr", title="abbreviation"),
+                                    ]
+                                ),
+                            ],
+                            className="p-4",
                         ),
-                    ],
-                    className="p-4",
+                        dbc.Col(
+                            [
+                                html.H2("Emphasis classes"),
+                                html.P(
+                                    "text with className='text-muted'",
+                                    className="text-muted",
+                                ),
+                                html.P(
+                                    "Text with className='text-primary'",
+                                    className="text-primary",
+                                ),
+                                html.P(
+                                    "Text with className='text-secondary'",
+                                    className="text-secondary",
+                                ),
+                                html.P(
+                                    "Text with className='text-warning'",
+                                    className="text-warning",
+                                ),
+                                html.P(
+                                    "Text with className='text-danger'",
+                                    className="text-danger",
+                                ),
+                                html.P(
+                                    "Text with className='text-success'",
+                                    className="text-success",
+                                ),
+                                html.P(
+                                    "Text with className='text-info'",
+                                    className="text-info",
+                                ),
+                                html.P(
+                                    "Text with className='bg-primary text-white'",
+                                    className="bg-primary text-white",
+                                ),
+                            ],
+                            className="p-4",
+                        ),
+                    ]
                 ),
-                dbc.Col(
-                    [
-                        html.H2("Example of body text"),
-                        html.P(
-                            [
-                                "This is some text with an embedded link using ",
-                                html.A("html.A", href="#"),
-                            ]
-                        ),
-                        html.P(
-                            html.Small(
-                                "This is html.Small - use this for the fine print"
-                            )
-                        ),
-                        html.P(
-                            [
-                                "The following is rendered in bold text ",
-                                html.Strong("using html.Strong"),
-                            ]
-                        ),
-                        html.P(
-                            [
-                                "The following is rendered in italics ",
-                                html.Em("using html.Em"),
-                            ]
-                        ),
-                        html.P(
-                            [
-                                "html.Abbr represents an abbreviation or acronym like this:",
-                                html.Abbr("abbr", title="abbreviation"),
-                            ]
-                        ),
-                    ],
-                    className="p-4",
-                ),
-                dbc.Col(
-                    [
-                        html.H2("Emphasis classes"),
-                        html.P(
-                            "text with className='text-muted'", className="text-muted"
-                        ),
-                        html.P(
-                            "Text with className='text-primary'",
-                            className="text-primary",
-                        ),
-                        html.P(
-                            "Text with className='text-secondary'",
-                            className="text-secondary",
-                        ),
-                        html.P(
-                            "Text with className='text-warning'",
-                            className="text-warning",
-                        ),
-                        html.P(
-                            "Text with className='text-danger'", className="text-danger"
-                        ),
-                        html.P(
-                            "Text with className='text-success'",
-                            className="text-success",
-                        ),
-                        html.P(
-                            "Text with className='text-info'", className="text-info"
-                        ),
-                        html.P(
-                            "Text with className='bg-primary text-white'",
-                            className="bg-primary text-white",
-                        ),
-                    ],
-                    className="p-4",
+                dbc.Row(typography_text),
+                make_btn_with_modal(
+                    "typograhy_code",
+                    "see code",
+                    html.Div(
+                        html.Pre(html.Code(text.typography_code,)), style=codebox,
+                    ),
                 ),
             ]
         ),
-        dbc.Row(typography_text),
-    ]
+    ],
+    className="my-2",
 )
-typography_code = html.Div(html.Pre(html.Code(text.typography_code,)), style=codebox,)
 
 
 blockquotes_text = dcc.Markdown(
@@ -252,78 +296,94 @@ blockquotes_text = dcc.Markdown(
     + ".",
     className="ml-4",
 )
-blockquotes = html.Div(
+blockquotes_card = dbc.Card(
     [
-        html.H2("Blockquotes and text alignment"),
-        dbc.Row(
+        dbc.CardHeader(html.H2("Blockquotes and text alignment")),
+        dbc.CardBody(
             [
-                dbc.Col(
+                dbc.Row(
                     [
-                        html.Blockquote(
+                        dbc.Col(
                             [
-                                html.P(
-                                    "We interrupt this program to annoy you and make things generally more irritating.",
-                                    className="mb-0",
-                                ),
-                                html.Footer(
-                                    html.Cite(
-                                        "Monty Python and the Holy Grail",
-                                        title="Source Title",
-                                    ),
-                                    className="blockquote-footer",
-                                ),
-                            ],
-                            className="blockquote text-left",
-                        ),
-                    ],
-                    className="p-4",
-                    width="md-4",
-                ),
-                dbc.Col(
-                    [
-                        html.Blockquote(
-                            [
-                                html.P("Where is the 'any' key?", className="mb-0",),
-                                html.Footer(
+                                html.Blockquote(
                                     [
-                                        "Homer Simpson ",
-                                        html.Cite(
-                                            "The Simpson's", title="The Simpson's"
+                                        html.P(
+                                            "We interrupt this program to annoy you and make things generally more irritating.",
+                                            className="mb-0",
+                                        ),
+                                        html.Footer(
+                                            html.Cite(
+                                                "Monty Python and the Holy Grail",
+                                                title="Source Title",
+                                            ),
+                                            className="blockquote-footer",
                                         ),
                                     ],
-                                    className="blockquote-footer",
+                                    className="blockquote text-left",
                                 ),
                             ],
-                            className="blockquote text-center",
+                            className="p-4",
+                            width="md-4",
                         ),
-                    ],
-                    className="p-4",
-                    width="md-4",
-                ),
-                dbc.Col(
-                    [
-                        html.Blockquote(
+                        dbc.Col(
                             [
-                                html.P(
-                                    "A computer once beat me at chess, but it was no match for me at kick boxing.",
-                                    className="mb-0",
-                                ),
-                                html.Footer(
-                                    "Emo Philips ", className="blockquote-footer",
+                                html.Blockquote(
+                                    [
+                                        html.P(
+                                            "Where is the 'any' key?", className="mb-0",
+                                        ),
+                                        html.Footer(
+                                            [
+                                                "Homer Simpson ",
+                                                html.Cite(
+                                                    "The Simpson's",
+                                                    title="The Simpson's",
+                                                ),
+                                            ],
+                                            className="blockquote-footer",
+                                        ),
+                                    ],
+                                    className="blockquote text-center",
                                 ),
                             ],
-                            className="blockquote text-right",
+                            className="p-4",
+                            width="md-4",
                         ),
-                    ],
-                    className="p-4",
-                    width="md-4",
+                        dbc.Col(
+                            [
+                                html.Blockquote(
+                                    [
+                                        html.P(
+                                            "A computer once beat me at chess, but it was no match for me at kick boxing.",
+                                            className="mb-0",
+                                        ),
+                                        html.Footer(
+                                            "Emo Philips ",
+                                            className="blockquote-footer",
+                                        ),
+                                    ],
+                                    className="blockquote text-right",
+                                ),
+                            ],
+                            className="p-4",
+                            width="md-4",
+                        ),
+                    ]
+                ),
+                dbc.Row(
+                    make_btn_with_modal(
+                        "blockquotes_code",
+                        "see_code",
+                        html.Div(
+                            html.Pre(html.Code(text.blockquotes_code,)), style=codebox,
+                        ),
+                    )
                 ),
             ]
         ),
-        dbc.Row(blockquotes_text),
-    ]
+    ],
+    className="my-2",
 )
-blockquotes_code = html.Div(html.Pre(html.Code(text.blockquotes_code,)), style=codebox,)
 
 
 blockquotes_text2 = dcc.Markdown(
@@ -334,80 +394,98 @@ blockquotes_text2 = dcc.Markdown(
     """,
     className="ml-4",
 )
-blockquotes2 = html.Div(
+blockquotes2_card = dbc.Card(
     [
-        html.H4("Blockquotes using className and style parameters"),
-        dbc.Row(
+        dbc.CardHeader(html.H4("Blockquotes using className and style parameters")),
+        dbc.CardBody(
             [
-                dbc.Col(
+                dbc.Row(
                     [
-                        html.Blockquote(
+                        dbc.Col(
                             [
-                                html.P(
-                                    "We dine well here in Camelot. We eat ham and jam and spam a lot.",
-                                    className="mb-0",
-                                ),
-                                html.Footer(
-                                    html.Cite(
-                                        "Knights of Camelot",
-                                        title="Camelot the Musical",
-                                    ),
-                                    className="blockquote-footer",
+                                html.Blockquote(
+                                    [
+                                        html.P(
+                                            "We dine well here in Camelot. We eat ham and jam and spam a lot.",
+                                            className="mb-0",
+                                        ),
+                                        html.Footer(
+                                            html.Cite(
+                                                "Knights of Camelot",
+                                                title="Camelot the Musical",
+                                            ),
+                                            className="blockquote-footer",
+                                        ),
+                                    ],
+                                    className="blockquote text-left pl-4 border-light",
+                                    style={
+                                        "borderLeft": "solid",
+                                        "borderLeftWidth": 15,
+                                    },
                                 ),
                             ],
-                            className="blockquote text-left pl-4 border-light",
-                            style={"borderLeft": "solid", "borderLeftWidth": 15},
+                            className="p-4",
+                            width="md-4",
                         ),
-                    ],
-                    className="p-4",
-                    width="md-4",
+                        dbc.Col(
+                            [
+                                html.Blockquote(
+                                    [
+                                        html.P(
+                                            "Always code as if the guy who ends up maintaining your code will be a violent "
+                                            "psychopath who knows where you live.",
+                                            className="mb-0",
+                                        ),
+                                        html.Footer(
+                                            "Martin Golding ",
+                                            className="blockquote-footer",
+                                        ),
+                                    ],
+                                    className="blockquote text-left pl-4 border-primary",
+                                    style={"borderLeft": "solid", "borderLeftWidth": 5},
+                                ),
+                            ],
+                            className="p-4",
+                            width="md-4",
+                        ),
+                        dbc.Col(
+                            [
+                                html.Blockquote(
+                                    [
+                                        html.P(
+                                            "There are only two industries that refer to their customers as ‘users’.",
+                                            className="mb-0",
+                                        ),
+                                        html.Footer(
+                                            "Edward Tufte ",
+                                            className="blockquote-footer",
+                                        ),
+                                    ],
+                                    className="blockquote text-left pl-4 border-secondary",
+                                    style={
+                                        "borderLeft": "solid",
+                                        "borderLeftWidth": 10,
+                                    },
+                                ),
+                            ],
+                            className="p-4",
+                            width="md-4",
+                        ),
+                    ]
                 ),
-                dbc.Col(
-                    [
-                        html.Blockquote(
-                            [
-                                html.P(
-                                    "Always code as if the guy who ends up maintaining your code will be a violent "
-                                    "psychopath who knows where you live.",
-                                    className="mb-0",
-                                ),
-                                html.Footer(
-                                    "Martin Golding ", className="blockquote-footer"
-                                ),
-                            ],
-                            className="blockquote text-left pl-4 border-primary",
-                            style={"borderLeft": "solid", "borderLeftWidth": 5},
+                dbc.Row(
+                    make_btn_with_modal(
+                        "blockquotes_code2",
+                        "see code",
+                        html.Div(
+                            html.Pre(html.Code(text.blockquotes_code2,)), style=codebox,
                         ),
-                    ],
-                    className="p-4",
-                    width="md-4",
-                ),
-                dbc.Col(
-                    [
-                        html.Blockquote(
-                            [
-                                html.P(
-                                    "There are only two industries that refer to their customers as ‘users’.",
-                                    className="mb-0",
-                                ),
-                                html.Footer(
-                                    "Edward Tufte ", className="blockquote-footer",
-                                ),
-                            ],
-                            className="blockquote text-left pl-4 border-secondary",
-                            style={"borderLeft": "solid", "borderLeftWidth": 10},
-                        ),
-                    ],
-                    className="p-4",
-                    width="md-4",
+                    )
                 ),
             ]
         ),
-        dbc.Row(blockquotes_text2),
-    ]
-)
-blockquotes_code2 = html.Div(
-    html.Pre(html.Code(text.blockquotes_code2,)), style=codebox,
+    ],
+    className="my-2",
 )
 
 
@@ -417,18 +495,10 @@ layout = dbc.Container(
             [
                 html_intro_text,
                 html.Hr(),
-                dbc.Jumbotron(
-                    dcc.Markdown(
-                        """
-                    ## dash-html-components Overview            
-                    """
-                    ),
-                    className="m-1 mb-4 p-2",
-                ),
-                make_card("typography", typography, typography_code),
-                make_card("blockquotes", blockquotes, blockquotes_code),
-                make_card("blockquotes2", blockquotes2, blockquotes_code2),
-                dbc.Card(
+                typography_card,
+                blockquotes_card,
+                blockquotes2_card,
+                html.H5(
                     "Coming Soon:  More examples and a list of all dash-html-components"
                 ),
             ],

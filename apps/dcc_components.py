@@ -27,9 +27,6 @@ header = dcc.Markdown(
 )
 
 
-info_icon = "https://user-images.githubusercontent.com/72614349/111378853-a6008880-865f-11eb-87f3-b978518102a4.png"
-
-
 def make_subheading(label, link):
     return html.Div(
         [
@@ -38,10 +35,9 @@ def make_subheading(label, link):
                     html.H4(
                         [
                             label,
-                            html.Img(
-                                src=info_icon,
-                                height="15px",
-                                className="mb-1 ml-2",
+                            html.I(
+                                className="far fa-question-circle ml-2 mb-2",
+                                style={"fontSize": 18},
                                 id="tooltip_target",
                             ),
                         ],
@@ -49,113 +45,142 @@ def make_subheading(label, link):
                 ],
                 href=DCC_DOCS + link,
                 target="_blank",
-                color="light",
+                color="link",
             ),
             dbc.Tooltip("Go to official documentation ", target="tooltip_target",),
         ],
-        className="mb-2",
     )
 
 
-checklist = html.Div(
+checklist_card = dbc.Card(
     [
-        make_subheading("Checklist", "checklist/"),
-        dcc.Markdown(
-            "Note:  `dbc.checklist()` responds better to Bootstrap themes",
-            className="my-1",
-        ),
-        html.Div(
+        dbc.CardHeader(make_subheading("Checklist", "checklist/")),
+        dbc.CardBody(
             [
-                dcc.Checklist(
-                    options=[
-                        {"label": "New York City", "value": "NYC"},
-                        {"label": "Montréal", "value": "MTL"},
-                        {"label": "San Francisco", "value": "SF"},
-                    ],
-                    value=["NYC", "MTL"],
+                dcc.Markdown(
+                    "Note:  `dbc.checklist()` responds better to Bootstrap themes",
+                    className="my-1",
                 ),
-                html.Br(),
-                dcc.Checklist(
-                    options=[
-                        {"label": "New York City", "value": "NYC"},
-                        {"label": "Montréal", "value": "MTL"},
-                        {"label": "San Francisco", "value": "SF"},
-                    ],
-                    value=["NYC", "MTL"],
-                    labelStyle={"display": "inline-block"},
+                html.Div(
+                    [
+                        dcc.Checklist(
+                            options=[
+                                {"label": "New York City", "value": "NYC"},
+                                {"label": "Montréal", "value": "MTL"},
+                                {"label": "San Francisco", "value": "SF"},
+                            ],
+                            value=["NYC", "MTL"],
+                        ),
+                        html.Br(),
+                        dcc.Checklist(
+                            options=[
+                                {"label": "New York City", "value": "NYC"},
+                                {"label": "Montréal", "value": "MTL"},
+                                {"label": "San Francisco", "value": "SF"},
+                            ],
+                            value=["NYC", "MTL"],
+                            labelStyle={"display": "inline-block"},
+                        ),
+                    ]
+                ),
+            ]
+        ),
+    ],
+    className="my-2",
+)
+
+datepicker_range_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("DatePickerRange", "datepickerrange/"),),
+        dbc.CardBody(
+            [
+                html.Div(
+                    [
+                        dcc.DatePickerRange(
+                            min_date_allowed=date(1995, 8, 5),
+                            max_date_allowed=date(2021, 9, 19),
+                            initial_visible_month=date(2021, 8, 5),
+                            end_date=date(2021, 8, 25),
+                        ),
+                    ]
+                ),
+            ]
+        ),
+    ],
+    className="my-2",
+)
+
+datepicker_single_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("DatePickerSingle", "datepickersingle/")),
+        dbc.CardBody(
+            [
+                html.Div(
+                    [
+                        dcc.DatePickerSingle(
+                            min_date_allowed=date(1995, 8, 5),
+                            max_date_allowed=date(2021, 9, 19),
+                            initial_visible_month=date(2021, 8, 5),
+                            date=date(2021, 8, 25),
+                        ),
+                    ]
                 ),
             ]
         ),
     ]
 )
 
-datepicker_range = html.Div(
+
+dropdown_card = dbc.Card(
     [
-        make_subheading("DatePickerRange", "datepickerrange/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Dropdown", "dropdown/")),
+        dbc.CardBody(
             [
-                dcc.DatePickerRange(
-                    min_date_allowed=date(1995, 8, 5),
-                    max_date_allowed=date(2021, 9, 19),
-                    initial_visible_month=date(2021, 8, 5),
-                    end_date=date(2021, 8, 25),
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            options=[
+                                {"label": "New York City", "value": "NYC"},
+                                {"label": "Montréal", "value": "MTL"},
+                                {"label": "San Francisco", "value": "SF"},
+                            ],
+                            value="NYC",
+                        ),
+                        html.Br(),
+                        dcc.Dropdown(
+                            options=[
+                                {"label": "New York City", "value": "NYC"},
+                                {"label": "Montréal", "value": "MTL"},
+                                {"label": "San Francisco", "value": "SF"},
+                            ],
+                            value=["NYC", "MTL"],
+                            multi=True,
+                        ),
+                    ]
                 ),
             ]
         ),
     ]
 )
 
-datepicker_single = html.Div(
+
+graph_card = dbc.Card(
     [
-        make_subheading("DatePickerSingle", "datepickersingle/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Graph", "graph/")),
+        dbc.CardBody(
             [
-                dcc.DatePickerSingle(
-                    min_date_allowed=date(1995, 8, 5),
-                    max_date_allowed=date(2021, 9, 19),
-                    initial_visible_month=date(2021, 8, 5),
-                    date=date(2021, 8, 25),
+                html.Div(
+                    [
+                        dcc.Graph(
+                            id="dcc_graph_v03",
+                            figure=px.scatter(
+                                px.data.iris(), x="sepal_width", y="sepal_length"
+                            ),
+                        ),
+                    ]
                 ),
             ]
         ),
-    ]
-)
-
-
-dropdown = html.Div(
-    [
-        make_subheading("Dropdown", "dropdown/"),
-        html.Div(
-            [
-                dcc.Dropdown(
-                    options=[
-                        {"label": "New York City", "value": "NYC"},
-                        {"label": "Montréal", "value": "MTL"},
-                        {"label": "San Francisco", "value": "SF"},
-                    ],
-                    value="NYC",
-                ),
-                html.Br(),
-                dcc.Dropdown(
-                    options=[
-                        {"label": "New York City", "value": "NYC"},
-                        {"label": "Montréal", "value": "MTL"},
-                        {"label": "San Francisco", "value": "SF"},
-                    ],
-                    value=["NYC", "MTL"],
-                    multi=True,
-                ),
-            ]
-        ),
-    ]
-)
-
-dcc_df = px.data.iris()  # iris is a pandas DataFrame
-dcc_fig = px.scatter(dcc_df, x="sepal_width", y="sepal_length")
-graph = html.Div(
-    [
-        make_subheading("Graph", "graph/"),
-        html.Div([dcc.Graph(id="dcc_graph_v03", figure=dcc_fig,),]),
     ]
 )
 
@@ -170,144 +195,176 @@ ALLOWED_TYPES = (
     "range",
     "hidden",
 )
-input = html.Div(
+input_card = dbc.Card(
     [
-        make_subheading("Input", "input/"),
-        html.Div(
+        dbc.CardHeader(make_subheading("Input", "input/"),),
+        dbc.CardBody(
             [
-                dcc.Input(
-                    id="input_{}".format(_),
-                    type=_,
-                    placeholder="input type {}".format(_),
-                )
-                for _ in ALLOWED_TYPES
+                html.Div(
+                    [
+                        dcc.Input(
+                            id="input_{}".format(_),
+                            type=_,
+                            placeholder="input type {}".format(_),
+                        )
+                        for _ in ALLOWED_TYPES
+                    ]
+                    + [html.Div(id="out-all-types")]
+                ),
             ]
-            + [html.Div(id="out-all-types")]
         ),
     ]
 )
 
-loading = html.Div(
+loading_card = dbc.Card(
     [
-        make_subheading("Loading", "loading/"),
-        html.H3("Edit text input to see loading state"),
-        dcc.Input(id="loading-input-1", value="Input triggers local spinner"),
-        dcc.Loading(
-            id="loading-1", type="default", children=html.Div(id="loading-output-1")
-        ),
-        html.Div(
+        dbc.CardHeader(make_subheading("Loading", "loading/"),),
+        dbc.CardBody(
             [
-                dcc.Input(id="loading-input-2", value="Input triggers nested spinner"),
+                html.H3("Edit text input to see loading state"),
+                dcc.Input(id="loading-input-1", value="Input triggers local spinner"),
                 dcc.Loading(
-                    id="loading-2",
-                    children=[html.Div([html.Div(id="loading-output-2")])],
-                    type="circle",
+                    id="loading-1",
+                    type="default",
+                    children=html.Div(id="loading-output-1"),
                 ),
-            ]
-        ),
-    ],
-)
-
-radioitems = html.Div(
-    [
-        make_subheading("RadioItems", "radioitems/"),
-        dcc.Markdown(
-            "Note:  `dbc.RadioItems()` responds better to Bootstrap themes",
-            className="my-1",
-        ),
-        html.Div(
-            [
-                dcc.RadioItems(
-                    options=[
-                        {"label": "New York City", "value": "NYC"},
-                        {"label": "Montréal", "value": "MTL"},
-                        {"label": "San Francisco", "value": "SF"},
-                    ],
-                    value="MTL",
+                html.Div(
+                    [
+                        dcc.Input(
+                            id="loading-input-2", value="Input triggers nested spinner"
+                        ),
+                        dcc.Loading(
+                            id="loading-2",
+                            children=[html.Div([html.Div(id="loading-output-2")])],
+                            type="circle",
+                        ),
+                    ]
                 ),
-                html.Br(),
-                dcc.RadioItems(
-                    options=[
-                        {"label": "New York City", "value": "NYC"},
-                        {"label": "Montréal", "value": "MTL"},
-                        {"label": "San Francisco", "value": "SF"},
-                    ],
-                    value="MTL",
-                    labelStyle={"display": "inline-block"},
-                ),
-            ]
-        ),
-    ]
-)
-
-
-rangeslider = html.Div(
-    [
-        make_subheading("RangeSlider", "rangeslider/"),
-        html.Div(
-            [
-                dcc.RangeSlider(
-                    min=0,
-                    max=10,
-                    step=None,
-                    marks={
-                        0: "0 °F",
-                        3: "3 °F",
-                        5: "5 °F",
-                        7.65: "7.65 °F",
-                        10: "10 °F",
-                    },
-                    value=[3, 7.65],
-                )
-            ]
-        ),
-    ]
-)
-
-slider = html.Div(
-    [
-        make_subheading("Slider", "slider/"),
-        html.Div(
-            [
-                dcc.Slider(
-                    min=0,
-                    max=10,
-                    step=None,
-                    marks={
-                        0: "0 °F",
-                        3: "3 °F",
-                        5: "5 °F",
-                        7.65: "7.65 °F",
-                        10: "10 °F",
-                    },
-                    value=3,
-                )
-            ]
-        ),
-    ]
-)
-
-tabs = html.Div(
-    [
-        make_subheading("Tabs", "tabs/"),
-        dcc.Tabs(
-            id="tabs-example",
-            value="tab-1",
-            children=[
-                dcc.Tab(label="Tab one", value="tab-1"),
-                dcc.Tab(label="Tab two", value="tab-2"),
             ],
         ),
-        html.Div(id="tabs-example-content"),
+    ]
+)
+
+radioitems_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("RadioItems", "radioitems/")),
+        dbc.CardBody(
+            [
+                dcc.Markdown(
+                    "Note:  `dbc.RadioItems()` responds better to Bootstrap themes",
+                    className="my-1",
+                ),
+                html.Div(
+                    [
+                        dcc.RadioItems(
+                            options=[
+                                {"label": "New York City", "value": "NYC"},
+                                {"label": "Montréal", "value": "MTL"},
+                                {"label": "San Francisco", "value": "SF"},
+                            ],
+                            value="MTL",
+                        ),
+                        html.Br(),
+                        dcc.RadioItems(
+                            options=[
+                                {"label": "New York City", "value": "NYC"},
+                                {"label": "Montréal", "value": "MTL"},
+                                {"label": "San Francisco", "value": "SF"},
+                            ],
+                            value="MTL",
+                            labelStyle={"display": "inline-block"},
+                        ),
+                    ]
+                ),
+            ]
+        ),
     ]
 )
 
 
-textarea = html.Div(
+rangeslider_card = dbc.Card(
     [
-        make_subheading("Textarea", "textarea/"),
-        dcc.Textarea(
-            value="Textarea content initialized\nwith multiple lines of text",
+        dbc.CardHeader(make_subheading("RangeSlider", "rangeslider/")),
+        dbc.CardBody(
+            [
+                html.Div(
+                    [
+                        dcc.RangeSlider(
+                            min=0,
+                            max=10,
+                            step=None,
+                            marks={
+                                0: "0 °F",
+                                3: "3 °F",
+                                5: "5 °F",
+                                7.65: "7.65 °F",
+                                10: "10 °F",
+                            },
+                            value=[3, 7.65],
+                        )
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+slider_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("Slider", "slider/")),
+        dbc.CardBody(
+            [
+                html.Div(
+                    [
+                        dcc.Slider(
+                            min=0,
+                            max=10,
+                            step=None,
+                            marks={
+                                0: "0 °F",
+                                3: "3 °F",
+                                5: "5 °F",
+                                7.65: "7.65 °F",
+                                10: "10 °F",
+                            },
+                            value=3,
+                        )
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+tabs_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("Tabs", "tabs/")),
+        dbc.CardBody(
+            [
+                dcc.Tabs(
+                    id="tabs-example",
+                    value="tab-1",
+                    children=[
+                        dcc.Tab(label="Tab one", value="tab-1"),
+                        dcc.Tab(label="Tab two", value="tab-2"),
+                    ],
+                ),
+                html.Div(id="tabs-example-content"),
+            ]
+        ),
+    ]
+)
+
+
+textarea_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("Textarea", "textarea/")),
+        dbc.CardBody(
+            [
+                dcc.Textarea(
+                    value="Textarea content initialized\nwith multiple lines of text",
+                ),
+            ]
         ),
     ]
 )
@@ -325,30 +382,18 @@ layout = dbc.Container(
             [
                 header,
                 html.Hr(),
-                checklist,
-                html.Hr(),
-                datepicker_range,
-                html.Hr(),
-                datepicker_single,
-                html.Hr(),
-                dropdown,
-                html.Hr(),
-                graph,
-                html.Hr(),
-                input,
-                html.Hr(),
-                loading,
-                html.Hr(),
-                radioitems,
-                html.Hr(),
-                rangeslider,
-                html.Hr(),
-                slider,
-                html.Hr(),
-                tabs,
-                html.Hr(),
-                textarea,
-                html.Hr(),
+                checklist_card,
+                datepicker_range_card,
+                datepicker_single_card,
+                dropdown_card,
+                graph_card,
+                input_card,
+                loading_card,
+                radioitems_card,
+                rangeslider_card,
+                slider_card,
+                tabs_card,
+                textarea_card,
                 html.Div(style={"height": "50px"}),
                 source_code,
             ],

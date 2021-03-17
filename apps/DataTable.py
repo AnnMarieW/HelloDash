@@ -240,7 +240,7 @@ layout = (
                     default_table_card,
                     light_theme_card,
                     dark_theme_card,
-                    html.Div(cheatsheet.how_to_datatable, className='mx-4'),
+                    html.Div(cheatsheet.how_to_datatable, className="mx-4"),
                 ],
                 className="my-2 p-4",
             ),

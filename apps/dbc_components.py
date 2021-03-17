@@ -38,8 +38,6 @@ header = dcc.Markdown(
 """
 )
 
-info_icon = "https://user-images.githubusercontent.com/72614349/111378853-a6008880-865f-11eb-87f3-b978518102a4.png"
-
 
 def make_subheading(label, link):
     return html.Div(
@@ -54,13 +52,6 @@ def make_subheading(label, link):
                                 style={"fontSize": 18},
                                 id="tooltip_target",
                             ),
-                            # html.Img(
-                            #     src=info_icon,
-                            #     height="20px",
-                            #     className="mb-1 ml-2",
-                            #     style="font-size:20px"
-                            #
-                            # ),
                         ],
                     )
                 ],

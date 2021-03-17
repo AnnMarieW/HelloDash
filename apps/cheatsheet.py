@@ -268,12 +268,7 @@ layout = dbc.Container(
         dbc.Row(
             [dbc.Col(bootstrap_links), dbc.Col(dash_links), dbc.Col(plotly_links),]
         ),
-        dbc.Row(
-            [
-                dbc.Col(getting_started_links),
-                dbc.Col(how_to_general),
-            ]
-        ),
+        dbc.Row([dbc.Col(getting_started_links), dbc.Col(how_to_general),]),
     ],
     fluid=True,
     className="m-4",
