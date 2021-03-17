@@ -35,15 +35,14 @@ Choose from:
  - Any background color selected from a colorpicker
 
 
--------------
+------------
 
-
-![theme](https://user-images.githubusercontent.com/72614349/108897468-5f28f100-75d3-11eb-9f5f-095315cc1516.gif)
+![Peek 2021-03-17 06-57](https://user-images.githubusercontent.com/72614349/111480344-228e7800-86ef-11eb-9ac9-32740c1fab1e.gif)
 
 --------------
 ---------------
 
-### These two images are the same app!  Only 5 lines are changed to set a different theme.
+### These two images are the same app!  Only 1 line of code is changed to set a different theme.
 
 
 

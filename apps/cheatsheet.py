@@ -1,10 +1,40 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
+from apps import text
 
+"""
+=====================================================================
+Helper functions to make links
+"""
 
 def make_link(title, link):
     return dbc.ListGroupItem(title, href=link, target="_blank")
+
+
+# note modal callback is located in the app_galery.py
+def make_link_with_modal(title,  text):
+    return dbc.ListGroupItem(
+            [
+                dbc.Button(
+                    title,
+                    id={"type": "modal_btn", "index": title},
+                    color="link",
+                ),
+                dbc.Modal(
+                    dbc.ModalBody(dcc.Markdown(text)),
+                    id={"type": "modal", "index": title},
+                    scrollable=True,
+                    size="lg",
+                ),
+            ]
+    )
+
+
+"""
+=====================================================================
+Add links to the appropriate section here
+"""
 
 
 dash_links = dbc.ListGroup(
@@ -21,10 +51,10 @@ dash_links = dbc.ListGroup(
 )
 
 
-boostrap_links = dbc.ListGroup(
+bootstrap_links = dbc.ListGroup(
     [
         make_link(
-            "dash-boostrap-components Documentation",
+            "dash-bootstrap-components Documentation",
             "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/alert/",
         ),
         make_link(
@@ -32,6 +62,12 @@ boostrap_links = dbc.ListGroup(
         ),
         make_link(
             "Bootstrap Bootswatch Themes", "https://www.bootstrapcdn.com/bootswatch/"
+        ),
+        make_link(
+            "Theme Explorer App Glallery", "https://hellodash.pythonanywhere.com/app_gallery"
+        ),
+        make_link(
+            "GitHub:  Theme Explorer", "https://github.com/AnnMarieW/HelloDash"
         ),
     ]
 )
@@ -98,6 +134,7 @@ how_to_links = dbc.ListGroup(
             "How to do pattern matching callback",
             "https://community.plotly.com/t/pattern-call-backs-regarding-adding-dynamic-graphs/40724",
         ),
+        make_link_with_modal("How to deploy your app on PythonAnywhere", text.pythonanywhere_quickstart),
         make_link(
             "How to deploy your app on Heroku",
             "https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723",
@@ -113,7 +150,7 @@ layout = dbc.Container(
                     dbc.Card(
                         [
                             dbc.CardHeader(html.H4("Bootstrap Links")),
-                            dbc.CardBody(boostrap_links),
+                            dbc.CardBody(bootstrap_links),
                         ],
                         className="m-2",
                     )

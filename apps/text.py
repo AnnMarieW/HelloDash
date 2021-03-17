@@ -1,5 +1,6 @@
 """
 This is text for the tutorial and help text for the theme_explorer
+
 """
 
 tutorial = """
@@ -320,6 +321,51 @@ blockquote {
 ===========================================================================
 Cheatsheet text 
 """
+
+pythonanywhere_quickstart = """
+# Pythonanywhere Quickstart Guide
+
+Your free PythonAnywhere account comes with a website at http://your-username.pythonanywhere.com/. 
+
+### Setting up a page
+You can create an app to run there by going to the Web tab of your account. From there you click on the 
+"Add a new web app" button, which will pop up a wizard where you can  select a web application framework.
+ Use the "quickstart" options for Flask.
+
+
+### Uploading files
+Follow [these instructions](https://help.pythonanywhere.com/pages/UploadingAndDownloadingFiles/) for getting your 
+app files uploaded.  
+
+If this is your first time, you can even skip this step for now.  Just copy the code for the Dash Hello World app 
+from the [Dash tutorial](https://dash.plotly.com/layout) and paste it into the app that was set up when you did 
+the Flask quickstart called "flask_app.py".
+
+
+### Configure WSGI file
+If you just copied and pasted into "flask_app.py" you can skip this step.  The WSGI file is already configured. 
+ If you want to run a different app, follow [these instructions](https://help.pythonanywhere.com/pages/DashWSGIConfig/)
+
+### Error Log
+If you click on reload webpage and go to your app, you will get an error message.  You will find details if 
+you click on the link for the error log.  This is because Dash needs to be installed.   More info on debugging 
+this and other errors [here](https://help.pythonanywhere.com/pages/)
+
+
+### Install Dash
+
+Many modules are already included, but you will need to install Dash.  Here's how:
+Click on the Console tab and open a Bash console.
+
+`pip3.8 install --user dash`    
+
+Please note, the command line option before the module name is quite literally `--user`, you don't need to 
+replace it with your username, or to add your username to the command line. More in installing dependencies and using  a virtual environment [here](https://help.pythonanywhere.com/pages/InstallingNewModules/)
+
+Go back to the Web tab, reload the page.  That's it!  Your first app is live!!
+
+"""
+
 
 
 cheatsheet_advanced_callback = """
