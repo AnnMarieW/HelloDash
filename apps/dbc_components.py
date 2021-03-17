@@ -50,11 +50,9 @@ def make_subheading(label, link):
                         [
                             label,
                             html.I(
-
                                 className="far fa-question-circle ml-2 mb-2",
                                 style={"fontSize": 18},
                                 id="tooltip_target",
-
                             ),
                             # html.Img(
                             #     src=info_icon,

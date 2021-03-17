@@ -39,14 +39,6 @@ Helper functions
 """
 
 
-def make_subheading(label, link):
-    return html.H4(
-        dcc.Link(label, href=HTML_DOCS + link, target="_blank"),
-        style={"textDecoration": "underline"},
-        className="mb-2",
-    )
-
-
 def make_links(tags):
     return ", ".join(
         f"[{tag}]({HTML_DOCS + tag.split('.')[1].lower()})" for tag in tags

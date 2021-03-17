@@ -367,7 +367,6 @@ Go back to the Web tab, reload the page.  That's it!  Your first app is live!!
 """
 
 
-
 cheatsheet_advanced_callback = """
 
 |What to use||When to use it |  
@@ -430,3 +429,128 @@ cheatsheet_advanced_callback = """
             # do something...
 ```
 """
+
+
+"""
+=========================================================================
+DataTable.py Text
+"""
+
+
+datatable_light_text = """   
+
+    With two simple style changes, the DataTable will look even better in your app with Bootstrap light themes:
+
+    -  Change the font to be the same font as your selected theme.
+    -  Change the active and selected cells to Bootstrap theme colors rather than the Dash default of "hotpink". Try
+    selecting cells in this table and in the default table above to see the style difference.
+"""
+
+
+datatable_light_code = """ 
+        Styling a Dash Datatable with a Light theme
+    
+        # DashTable updated with font and colors from this bootstrap theme:        
+        # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css 
+               
+        font = "sans-serif"
+        primary = "#007bff"
+        secondary = "#6c757d"
+        selected = "rgba(0, 0, 0, 0.075)"
+
+        datatable = dash_table.DataTable(
+            columns=[{"name": i, "id": i} for i in df.columns],
+            data=df.to_dict("records"),
+            style_cell={"fontFamily": font},
+            style_data_conditional=[
+                {
+                    "if": {"state": "active"},
+                    "backgroundColor": selected,
+                    "border": "1px solid " + primary,
+                },
+                {
+                    "if": {"state": "selected"},
+                    "backgroundColor": selected,
+                    "border": "1px solid" + secondary,
+                },
+            ],
+        )   
+"""
+
+
+datatable_dark_text = """    
+
+    When you use a dark theme, you will need to do a few more things to make the DataTable look nice.  The next table
+    has the following style changes:
+
+    -  The table background color is transparent to make it the same as the Bootstrap background color.
+    -  The font color is white when cells are selected or the table is editable. This makes text visible in a dark background.
+    -  The hover color is changed to transparent.  This is done because the default hover background color is white
+    which looks bad and makes the text disappear.
+    -  The text color of tooltips is changed to black.  The default background color is grey, which isn't bad -- but note
+     that you can also use this same selector to change the background color and/or add other style changes to tooltips.
+
+"""
+
+
+datatable_dark_code = """
+    Styling a Dash Datatable with a Light theme
+    
+    # DashTable updated with font and colors from this bootstrap theme:    
+    # https://bootswatch.com/4/cyborg/bootstrap.css   
+     
+    primary = "#2a9fd6"
+    secondary = "#555"
+    selected = "rgba(255, 255, 255, 0.075)"
+    font_color = "white"
+    font = "Roboto"    
+
+    datatable =dash_table.DataTable(
+        columns=[{"name": i, "id": i} for i in df.columns],
+        data=df.to_dict("records"),
+        editable=True,
+        page_size=4,
+        css=[
+            {"selector": "input", "rule": f"color:{font_color}"},                # fixes text color for editable columns
+            {"selector": "tr:hover", "rule": "background-color:transparent"},    # fixes hover bg color 
+            {"selector": ".dash-table-tooltip", "rule": "color:black"},          # fixes text color of tooltip data
+        ],
+        style_cell={"backgroundColor": "transparent", "fontFamily": font},
+        style_data_conditional=[
+            {
+                "if": {"state": "active"},
+                "backgroundColor": selected,
+                "border": "1px solid " + primary,
+                "color": font_color,
+            },
+            {
+                "if": {"state": "selected"},
+                "backgroundColor": "selected",
+                "border": "1px solid" + secondary,
+                "color": font_color,
+            },
+        ],
+    )  
+    """
+
+# this is used in cheatsheet.py
+datatable_markdown = """
+    Add the following to the css file in the assets folder:
+    
+    /*  when using Bootstrap, this will style the table in dcc.Markdown */
+    
+    table {
+      border-collapse: collapse;
+    }
+    th:not(.CalendarDay),
+    td:not(.CalendarDay) {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #E1E1E1; }
+    th:first-child:not(.CalendarDay),
+    td:first-child:not(.CalendarDay) {
+      padding-left: 0; }
+    th:last-child:not(.CalendarDay),
+    td:last-child:not(.CalendarDay) {
+      padding-right: 0; }
+      """

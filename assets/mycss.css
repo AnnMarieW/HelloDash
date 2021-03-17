@@ -90,7 +90,7 @@ td:last-child:not(.CalendarDay) {
 /* This is for the cyborg
  * To style the
  *
- */
+
 .show-hide, .export {
   display: inline-block;
   font-weight: 400;
@@ -111,13 +111,13 @@ td:last-child:not(.CalendarDay) {
 }
 
 /* to select the color find the .btn
-/* .btn-primary */
+/* .btn-primary
 .show-hide, .export {
   color: #fff;
   background-color: #2a9fd6;
   border-color: #2a9fd6;
 }
-
+*/
 /*
  * To move the export button on the DataTable to the bottom left side of table
 *
@@ -128,10 +128,10 @@ td:last-child:not(.CalendarDay) {
 
 /*
  * To move both the export and toggle button to the DataTable to the bottom left side of table
-*/
+
 .dash-spreadsheet-menu {
   position:absolute; left: 0px; bottom:-40px
 }
 
-
+*/
 
