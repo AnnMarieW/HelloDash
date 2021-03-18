@@ -512,7 +512,7 @@ def update_line_chart(
     color_continuous = color_continuous.split(": ")[1].strip()
 
     if continents == [] or indicator is None:
-        return {}, {}
+        return {}, {}, "", ""
 
     dff = df[df.year.between(years[0], years[1])]
     dff = dff[dff.continent.isin(continents)]

@@ -114,11 +114,10 @@ gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/111547777-e7179c00-8736-11eb-8a9b-9635b9712628.png",
         title="The easiest starter app! Simply Two graphs, side by side.  Only about 25 lines of code.",
-        source_code = "https://github.com/AnnMarieW/HelloDash/blob/main/gallery/quickstart1.py",
-        about= "One of the most popular questions on the Dash Community forum!"
+        source_code="https://github.com/AnnMarieW/HelloDash/blob/main/gallery/quickstart1.py",
+        about="One of the most popular questions on the Dash Community forum!",
     )
 )
-
 
 
 # 6

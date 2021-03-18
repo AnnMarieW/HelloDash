@@ -1,3 +1,12 @@
+"""
+This app creates the  cheatsheets and how-to card.
+
+To maintain:  add extended text and code snippets to text.py
+              add links or new cards in the Add Topics section
+              add the card to the layout on this page or any other page
+"""
+
+
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
@@ -57,7 +66,7 @@ def make_link_with_modal(title, content):
 
 """
 =====================================================================
-Add links to the appropriate section here
+Add Topics  here
 """
 
 dash_links = dbc.Card(
@@ -231,6 +240,13 @@ how_to_datatable = dbc.Card(
                             html.Pre(html.Code(text.datatable_markdown)), style=codebox
                         ),
                     ),
+                    make_link_with_modal(
+                        "How to move the Export and Toggle Columns button",
+                        html.Div(
+                            html.Pre(html.Code(text.datatable_move_export_btn)),
+                            style=codebox,
+                        ),
+                    ),
                 ]
             )
         ),
@@ -262,6 +278,11 @@ how_to_general = dbc.Card(
     ],
     className="m-2",
 )
+
+"""
+=====================================================================
+Add card name to the Layout for the cheatsheet page here
+"""
 
 layout = dbc.Container(
     [

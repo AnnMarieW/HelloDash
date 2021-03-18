@@ -1,6 +1,11 @@
 """
-This is text for the tutorial and help text for the theme_explorer
+This is for longer text and code blocks used throughout this app.
 
+"""
+
+"""
+=====================================================================
+Used in: app_gallery.py
 """
 
 tutorial = """
@@ -41,7 +46,7 @@ See the Dash documentation to learn more about [discrete colors](https://plotly.
 
 """
 =====================================================================
-Source code examples in html.dbc_components.py
+Used in: html.dbc_components.py
 """
 
 typography_code = """
@@ -300,13 +305,17 @@ blockquotes2 = html.Div(
     ]
 )
 
-# =============================================================================================================
+# -------------------------------------------------------------------
 
-#  Here is another way to format blockquotes.  Put the following in a css file in the assets folder.  Change the
-#  border-left color to one that works well with your selected Bootstrap theme.
+#  Here is another way to format blockquotes.  Put the following in a 
+#  css file in the assets folder.  Change the #  border-left color to one
+#  that works well with your selected Bootstrap theme.
 
 
-/* When using Bootstrap, this will add the left border style to blockquotes in dcc.Markdown and html.Blockquote */
+/* 
+ * When using Bootstrap, this will add the left border style to blockquotes 
+ * in dcc.Markdown and html.Blockquote 
+ */
 blockquote {
   border-left: 4px lightgrey solid;
   padding-left: 1rem;
@@ -320,7 +329,7 @@ blockquote {
 
 """
 ===========================================================================
-Cheatsheet text 
+Used in:  cheatsheet.py 
 """
 
 pythonanywhere_quickstart = """
@@ -431,10 +440,67 @@ cheatsheet_advanced_callback = """
 ```
 """
 
+# this is created in  cheatsheet.py and displayed in datatable.py
+datatable_markdown = """
+    Add the following to the css file in the assets folder:
+
+    /*  when using Bootstrap, this will style the table in dcc.Markdown */
+
+    table {
+      border-collapse: collapse;
+    }
+    th:not(.CalendarDay),
+    td:not(.CalendarDay) {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #E1E1E1; }
+    th:first-child:not(.CalendarDay),
+    td:first-child:not(.CalendarDay) {
+      padding-left: 0; }
+    th:last-child:not(.CalendarDay),
+    td:last-child:not(.CalendarDay) {
+      padding-right: 0; }
+      """
+
+datatable_move_export_btn = """
+
+    # This moves the Export and/or Toggle Columns button to the bottom left 
+    # side of the DataTable
+
+    import dash
+    import dash_table
+    import pandas as pd
+    
+    df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
+    
+    app = dash.Dash(__name__)
+    
+    app.layout = dash_table.DataTable(
+        id="table",
+        columns=[{"name": i, "id": i, "hideable": True} for i in df.columns],
+        export_format="xlsx",
+        css=[
+            # If export button only,  use this:
+            #{"selector": ".export", "rule": "position:absolute; left: 0px; bottom:-30px"},
+    
+            # If both export button and toggle columns button,  use this:
+            {
+                "selector": ".dash-spreadsheet-menu",
+                "rule": "position:absolute; left:0px; bottom:-30px",
+            },
+        ],
+        data=df.to_dict("records"),
+    )
+    
+    if __name__ == "__main__":
+        app.run_server(debug=True)
+    
+
+"""
 
 """
 =========================================================================
-DataTable.py Text
+Used in: DataTable.py 
 """
 
 
@@ -449,10 +515,12 @@ datatable_light_text = """
 
 
 datatable_light_code = """ 
-        Styling a Dash Datatable with a Light theme
+        Styling a Dash Datatable with a Light theme.  Note:  To see how to format
+        the tooltip, switch to a dark theme to see more info and example.
     
         # DashTable updated with font and colors from this bootstrap theme:        
         # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css 
+        
                
         font = "sans-serif"
         primary = "#007bff"
@@ -534,24 +602,87 @@ datatable_dark_code = """
     )  
     """
 
-# this is used in cheatsheet.py
-datatable_markdown = """
-    Add the following to the css file in the assets folder:
-    
-    /*  when using Bootstrap, this will style the table in dcc.Markdown */
-    
-    table {
-      border-collapse: collapse;
-    }
-    th:not(.CalendarDay),
-    td:not(.CalendarDay) {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #E1E1E1; }
-    th:first-child:not(.CalendarDay),
-    td:first-child:not(.CalendarDay) {
-      padding-left: 0; }
-    th:last-child:not(.CalendarDay),
-    td:last-child:not(.CalendarDay) {
-      padding-right: 0; }
-      """
+"""
+=====================================================================
+Used in: dcc_components.py
+"""
+
+dcc_checklist_radio = """
+#### Styling dcc.RadioItems and dcc.Checklist
+The first row of Checklist and radioItems above shows the default style for these dash-core-components.
+It's also possible to adjust the margins and style of the text label using the `inputStyle, InputClassName, labelStyle, labelClassName` parameters.
+   However,  there is no easy way to change the color of the radio and checkbox icons.  Label style of selected items can be updated in a callback.  See an example [here]( https://community.plotly.com/t/dcc-radioitems-and-label-style/26358/2)
+
+
+Improve your app design by using `dash-bootstrap-components`  dbc.Checklist and dbc.RadioItems. 
+
+- The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color.  See this in action by changing the theme in the App Design Selections panel. 
+- You can also customize the selected label and icons color in dbc components using `labelCheckedStyle` and `labelCheckedStyle` parameters.
+- by default there is nice spacing between the icon and the label, so there is no need to define this manually.
+-  The dbc.Checklist can be displayed as toggle switches by setting `switch=True`.  See the dash-boostrap-components gallery for an example.
+
+"""
+
+dcc_tabs = """
+#### Styling dcc.Tabs
+
+ If you switch to a dark theme you will see that the default style for dcc.Tabs shown here does not work well. However,
+ the dcc.Tabs are very easy to customize using the `style` and `selected_className` parameters. 
+The tabs on the left in this app use dcc.Tabs and are styled so that they work well with both light and
+dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  Change 
+the theme to see how it looks! See the code for the Tabs [here](https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py)  
+"""
+
+dcc_dropdown = """
+
+#### Styling dcc.Dropdown
+
+The dcc.Dropdown default style works well with many Bootstrap light themes.  However with dark themes, the
+font color makes the dropdown options text is very hard to read. 
+
+We fix it in this app by using the following CSS in the asset folder:
+```
+/** This styles the dropdown menu items so they are visible in both light and dark theme apps **/
+.VirtualizedSelectOption {
+    background-color: white;
+    color: black;
+}
+
+.VirtualizedSelectFocusedOption {
+    background-color: lightgrey;
+    color: black;
+}
+```
+Coming soon: more custom CSS for styling dropdowns
+
+"""
+
+dcc_graph = """
+
+#### Styling dcc.Graph
+
+The Plotly figures are highly customizable.  The options shown in this app are only *a few* of the many choices 
+available.  See the Plotly card in the Cheatsheet tab to see some of my favorite Plotly resources and tutorials.
+
+Here is one more way to make charts better in dark themes.  By making the background transparent, the figure
+it will automatically look better with many of the Bootstrap dark themes. 
+
+Here is how the figure is defined:
+
+```
+df = px.data.gapminder()
+fig = px.scatter(
+    df.query("year==2007"),
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    size_max=60,
+    template="plotly_dark",
+)
+fig.update_layout(
+    {"plot_bgcolor": "rgba(0, 0, 0, 0)", "paper_bgcolor": "rgba(0, 0, 0, 0)"}
+)
+
+
+"""

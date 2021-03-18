@@ -83,7 +83,7 @@ alerts2 = html.Div(
 
 alerts = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Alerts", "alert/")),
+        dbc.CardHeader(make_subheading("dbc.Alert", "alert/")),
         dbc.CardBody(dbc.Row([dbc.Col(alerts1), dbc.Col(alerts2)])),
     ],
     className="mb-4",
@@ -104,7 +104,7 @@ badge_colors = html.Span(
 
 badges = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Badges", "badge/")),
+        dbc.CardHeader(make_subheading("dbc.Badge", "badge/")),
         dbc.CardBody(
             [
                 badge_colors,
@@ -122,7 +122,7 @@ badges = dbc.Card(
 
 buttons1 = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Buttons", "button/")),
+        dbc.CardHeader(make_subheading("dbc.Button", "button/")),
         dbc.CardBody(
             [
                 dbc.Button("Primary", color="primary", className="m-1"),
@@ -163,7 +163,7 @@ buttons1 = dbc.Card(
 
 buttons2 = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Button Groups", "buttongroups/")),
+        dbc.CardHeader(make_subheading("dbc.ButtonGroup", "buttongroups/")),
         dbc.CardBody(
             [
                 dbc.ButtonGroup(
@@ -203,7 +203,7 @@ buttons = dbc.Row([dbc.Col(buttons1), dbc.Col(buttons2)])
 
 cards = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Cards", "card/")),
+        dbc.CardHeader(make_subheading("dbc.Card", "card/")),
         dbc.CardBody(
             dbc.CardDeck(
                 [
@@ -264,7 +264,7 @@ cards = dbc.Card(
 
 collapse = html.Div(
     [
-        make_subheading("Collapse", "collapse/"),
+        make_subheading("dbc.Collapse", "collapse/"),
         html.Div(
             [
                 dbc.Button(
@@ -284,7 +284,7 @@ collapse = html.Div(
 
 columns = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Columns", "layout/")),
+        dbc.CardHeader(make_subheading("dbc.Row dbc.Col", "layout/")),
         dbc.CardBody(
             [
                 dbc.Row(
@@ -328,7 +328,7 @@ columns = dbc.Card(
 
 fade = html.Div(
     [
-        make_subheading("Fade", "fade/"),
+        make_subheading("dbc.Fade", "fade/"),
         html.Div(
             [
                 dbc.Button(
@@ -353,7 +353,7 @@ fade = html.Div(
 # ---------  start forms row ------------------
 form = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Form", "form/")),
+        dbc.CardHeader(make_subheading("dbc.Form", "form/")),
         dbc.CardBody(
             [
                 dbc.Form(
@@ -406,7 +406,7 @@ form = dbc.Card(
 
 input_ = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Input", "input/")),
+        dbc.CardHeader(make_subheading("dbc.Input", "input/")),
         dbc.CardBody(
             [
                 dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
@@ -442,21 +442,41 @@ input_ = dbc.Card(
 
 checklist_items = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("Checklist", "input/"),),
+        dbc.CardHeader(make_subheading("dbc.Checklist", "input/"),),
         dbc.CardBody(
             [
-                dbc.Checklist(
-                    options=[
-                        {"label": "Option {}".format(i), "value": i} for i in range(3)
-                    ],
-                    value=[],
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            dbc.Checklist(
+                                id="gallery_checklist1",
+                                options=[
+                                    {"label": "Option {}".format(i), "value": i}
+                                    for i in range(3)
+                                ],
+                                value=[1, 2],
+                            )
+                        ),
+                        dbc.Col(
+                            dbc.Checklist(
+                                id="gallery_checklist2",
+                                options=[
+                                    {"label": "Option {}".format(i), "value": i}
+                                    for i in range(3)
+                                ],
+                                value=[1, 2],
+                                switch=True,
+                            )
+                        ),
+                    ]
                 ),
                 html.H5("Inline checklist", className="mt-3"),
                 dbc.Checklist(
+                    id="gallery_checklist3",
                     options=[
                         {"label": "Option {}".format(i), "value": i} for i in range(5)
                     ],
-                    value=[],
+                    value=[0, 4],
                     inline=True,
                 ),
             ]
@@ -467,10 +487,11 @@ checklist_items = dbc.Card(
 
 radio_items = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("RadioItems", "input/"),),
+        dbc.CardHeader(make_subheading("dbc.RadioItems", "input/"),),
         dbc.CardBody(
             [
                 dbc.RadioItems(
+                    id="gallery_radio1",
                     options=[
                         {"label": "Option {}".format(i), "value": i} for i in range(3)
                     ],
@@ -478,6 +499,7 @@ radio_items = dbc.Card(
                 ),
                 html.H5("Inline radioitems", className="mt-3"),
                 dbc.RadioItems(
+                    id="gallery_radio2",
                     options=[
                         {"label": "Option {}".format(i), "value": i} for i in range(5)
                     ],
@@ -491,7 +513,7 @@ radio_items = dbc.Card(
 
 input_group = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("InputGroup and addons", "input_group/")),
+        dbc.CardHeader(make_subheading("dbc.InputGroup and addons", "input_group/")),
         dbc.CardBody(
             [
                 dbc.InputGroup(
@@ -531,7 +553,7 @@ input_group = dbc.Card(
 
 jumbotron = dbc.Card(
     [
-        make_subheading("Jumbotron", "jumbotron/"),
+        make_subheading("dbc.Jumbotron", "jumbotron/"),
         dbc.Jumbotron(
             [
                 html.H2("This is a jumbotron"),
@@ -545,7 +567,7 @@ jumbotron = dbc.Card(
 
 list_group = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("ListGroup", "list_group/")),
+        dbc.CardHeader(make_subheading("dbc.ListGroup", "list_group/")),
         dbc.CardBody(
             [
                 dbc.ListGroup(
@@ -573,7 +595,7 @@ COOKIE = (
 )
 modal = html.Div(
     [
-        make_subheading("Modal", "modal/"),
+        make_subheading("dbc.Modal", "modal/"),
         html.P(
             [
                 dbc.Button("Show the cookie monster", id="button"),
@@ -594,8 +616,8 @@ navbar = html.Div(
     [
         dbc.Row(
             [
-                make_subheading("Navbar", "navbar/"),
-                make_subheading("DropdownMenu", "dropdown_menu/"),
+                make_subheading("dbc.Navbar", "navbar/"),
+                make_subheading("dbc.DropdownMenu", "dropdown_menu/"),
             ]
         ),
         dbc.NavbarSimple(
@@ -628,7 +650,7 @@ navbar = html.Div(
 
 popover = html.Div(
     [
-        make_subheading("Popover", "popover/"),
+        make_subheading("dbc.Popover", "popover/"),
         dbc.Button("Click to toggle popover", id="popover-target", color="danger"),
         dbc.Popover(
             [dbc.PopoverHeader("Popover header"), dbc.PopoverBody("Popover body"),],
@@ -641,7 +663,7 @@ popover = html.Div(
 
 progress = html.Div(
     [
-        make_subheading("Progress", "progress/"),
+        make_subheading("dbc.Progress", "progress/"),
         dbc.Progress("25%", value=25),
         dbc.Progress(value=50, striped=True, className="my-2"),
         dbc.Progress(value=75, color="success"),
@@ -650,7 +672,7 @@ progress = html.Div(
 
 spinner = html.Div(
     [
-        make_subheading("Spinner", "spinner/"),
+        make_subheading("dbc.Spinner", "spinner/"),
         html.P(),
         html.Div(
             [
@@ -670,7 +692,7 @@ spinner = html.Div(
 
 table = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("HTML Table", "table/"),),
+        dbc.CardHeader(make_subheading("dbc.Table", "table/"),),
         dbc.CardBody(
             dbc.Table(
                 [
@@ -716,7 +738,7 @@ table = dbc.Card(
 
 tabs = html.Div(
     [
-        make_subheading("Tabs", "tabs/"),
+        make_subheading("dbc.Tabs", "tabs/"),
         dbc.Tabs(
             [
                 dbc.Tab(
@@ -742,7 +764,7 @@ tabs = html.Div(
 
 toast = html.Div(
     [
-        make_subheading("Toast", "toast/"),
+        make_subheading("dbc.Toast", "toast/"),
         dbc.Button(
             "Open toast", id="auto-toast-toggle", color="primary", className="mb-3",
         ),
@@ -759,7 +781,7 @@ toast = html.Div(
 
 tooltip = html.Div(
     [
-        make_subheading("Tooltip", "tooltip/"),
+        make_subheading("dbc.Tooltip", "tooltip/"),
         html.P(
             [
                 "I wonder what ",
@@ -877,3 +899,13 @@ def toggle_modal(n, is_open):
 @app.callback(Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")])
 def open_toast(n):
     return True
+
+
+@app.callback(
+    Output("gallery_checklist1", "value"),
+    Output("gallery_radio1", "value"),
+    Input("gallery_checklist1", "value"),
+)
+def update_checklist(value):
+    # This is a dummy callback so checkboxes change color when theme is switched
+    return (value, 0)

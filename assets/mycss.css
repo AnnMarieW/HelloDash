@@ -64,6 +64,82 @@ td:last-child:not(.CalendarDay) {
 }
 
 
+
+
+/*************************   experimental ignore below *****************/
+
+/*
+ * This styles the dcc.slider components
+ *
+
+
+.slider-dark-theme{
+ background:blue !important;
+  .rc-slider-dot-active, .rc-slider-handle {
+  border-color: blue !important;
+  }
+}
+  .slider-dark-theme .rc-slider-track {
+  background-color: blue !important
+  }
+
+  .slider-dark-theme, .rc-slider-rail {
+  background-color: black !important
+ }
+
+
+
+/* This changes color of the input box *
+.DateInput_input {
+    box-sizing: border-box;
+    background-color: blue; !important
+}
+.DateRangePickerInput {
+    background-color: blue; !important
+
+}
+
+
+
+/* Calendar to  and from day  *
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+  background: blue !important;
+  border: 1px double blue !important;
+  color: white !important;
+}
+
+/* Calendar range between to and from day */
+.CalendarDay__selected_span {
+    background: blue !important;
+    border: 1px blue !important;
+    opacity: .25 !important;
+}
+/* hover color on calendar day *
+.CalendarDay__selected_span:active, .CalendarDay__selected_span:hover {
+    background: grey !important;
+    border: 1px  grey !important;
+
+}
+
+/* this is just the q mark *
+.DayPickerKeyboardShortcuts_showSpan {
+  bottom: -11px;
+  right: -12px;
+  color: yellow;
+}
+
+/* background color of the hover keyboard shortcuts instructions
+.DayPickerKeyboardShortcuts_panel {
+    background: white;
+    border: 1px solid white;
+    color: black;
+
+    .DayPickerKeyboardShortcuts_closeSvg {
+      fill: pink;
+    }
+  }
+*/
+
 /* The styles the Export and Toggle button for the DataTable
 .export {
   display: inline-block;
@@ -134,4 +210,209 @@ td:last-child:not(.CalendarDay) {
 }
 
 */
+
+
+
+/*
+
+  // DatePicker* are wrapped in a div with display: inline-block
+  // inside FormGroup we want display: block instead.
+  .form-group > div {
+    display: block !important;
+  }
+
+  &.form-group > div {
+    display: block !important;
+  }
+
+  .SingleDatePicker,
+  .DateRangePicker {
+    display: block;
+  }
+
+  /* This changes the background between the two date boxes !!*
+  .SingleDatePickerInput,
+  .DateRangePickerInput {
+    background-color: blue;
+  }
+
+/* This controls the color of the input box !!!!! *
+  .DateInput_input {
+    background: blue;
+    text-align: center;
+    color: white;
+
+  }
+
+  /* no effect ?*
+  .DateRangePickerInput_arrow {
+    color: white;
+    background: blue
+
+  }
+
+
+  /* background behind dropdown calendar !! *
+  .DayPicker {
+    background: yellow;
+
+  }
+  /* color of days of week !!*
+  .DayPicker_weekHeader {
+    color: red;
+
+  }
+
+
+  /* I think this is the arrows on the drop down calendar
+  .DayPickerNavigation_button {
+    @include border-radius($input-border-radius, 0);
+    border: $input-border-width solid $popover-border-color;
+    background: $popover-bg;
+
+    svg {
+      fill: red;
+    }
+
+    &:hover {
+      $navigation-hover-bg: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 5%),
+        lighten($popover-bg, 5%)
+      );
+      background: $navigation-hover-bg;
+
+      svg {
+        fill: color-yiq(
+          $navigation-hover-bg,
+          $yiq-text-dark,
+          $yiq-text-light,
+          200
+        );
+      }
+    }
+  }
+*/
+
+  /* This is the month year on the drop down calendar !! *
+  .CalendarMonth_caption {
+    color: red;
+  }
+
+
+  /* doesn't have muc effect background on strip to the right of the drop down cal
+  .CalendarMonthGrid {
+    background-color: pink;
+  }
+  */
+
+  /* This is the background of the drop down cal, but not the grid with the days !! *
+  .CalendarMonth {
+    background-color: blue;
+  }
+
+/
+
+  .CalendarDay__default {
+    $calendar-day-border-color: color-yiq(
+      $popover-bg,
+      darken($popover-bg, 10%),
+      lighten($popover-bg, 10%)
+    );
+    color: $popover-body-color;
+    border-color: $calendar-day-border-color;
+    background-color: blue;
+
+    &:hover {
+      $day-hover-bg: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 5%),
+        lighten($popover-bg, 5%)
+      );
+
+      background: $day-hover-bg;
+      border-color: $calendar-day-border-color;
+      color: color-yiq($day-hover-bg, $yiq-text-dark, $yiq-text-light, 200);
+    }
+
+    /* amw - original is primary  no effect i can see so far*
+    &.CalendarDay__selected,
+    &.CalendarDay__selected:hover {
+      background: blue;
+      border: 1px double blue;
+      color: color-yiq(theme-color("primary"));
+    }
+
+    &.CalendarDay__hovered_span,
+    &.CalendarDay__hovered_span:hover {
+      $hovered-span-bg: color-yiq(
+        $popover-bg,
+        lighten(theme-color("primary"), 10%),
+        darken(theme-color("primary"), 10%)
+      );
+      background: $hovered-span-bg;
+      // border:
+      color: color-yiq($hovered-span-bg);
+    }
+
+    &.CalendarDay__blocked_out_of_range,
+    &.CalendarDay__blocked_out_of_range:hover {
+      color: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 10%),
+        lighten($popover-bg, 10%)
+      );
+      border-color: color-yiq(
+        $popover-bg,
+        darken($popover-bg, 10%),
+        lighten($popover-bg, 10%)
+      );
+      background: $popover-bg;
+      cursor: default;
+    }
+  }
+
+  /*
+
+  .CalendarDay__outside {
+    border: 0;
+    cursor: default;
+  }
+
+  .DayPicker_transitionContainer {
+    @if $enable-rounded {
+      border-radius: calc(#{$popover-border-radius} - #{$popover-border-width});
+    } @else {
+      border-radius: 0;
+    }
+  }
+  .DayPickerKeyboardShortcuts_show {
+    &::before {
+      content: none;
+    }
+  }
+
+  .DayPickerKeyboardShortcuts_show__bottomRight {
+    width: 0;
+    height: 0;
+
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid blue; !important
+    border-left: 16px solid transparent;
+    border-right: 12 px solid blue !important;
+
+
+    &::before {
+      border-right: 0;
+      border-top: 0;
+    }
+/*
+    &:hover {
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid blue, 7.5%) important!;
+      border-left: 16px solid transparent;
+      border-right: 16px solid blue, 7.5%) important!;
+    }
+*/
+
 
