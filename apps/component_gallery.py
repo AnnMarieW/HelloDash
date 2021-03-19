@@ -7,7 +7,6 @@ from .dbc_components import layout as components_layout
 from .dcc_components import layout as dcc_components_layout
 from .DataTable import layout as table_layout
 from .html_components import layout as html_layout
-from .cheatsheet import layout as cheastsheet_layout
 
 layout = dbc.Card(
     [
@@ -52,12 +51,6 @@ layout = dbc.Card(
                             dcc.Tab(
                                 children="Coming Soon",
                                 label="DAQ Components",
-                                style={"backgroundColor": "transparent"},
-                                selected_className="bg-light text-dark border-primary",
-                            ),
-                            dcc.Tab(
-                                children=cheastsheet_layout,
-                                label="Cheatsheet",
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),

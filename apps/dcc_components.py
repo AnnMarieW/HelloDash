@@ -19,7 +19,9 @@ header = dcc.Markdown(
      to the official Dash documentation and to see more examples.
 
      Change the Bootstrap theme in the App Design Selections panel to see how the components respond the different 
-     Bootstrap themes.    
+     Bootstrap themes.
+     
+     If you work for a company, consider using Dash Enterprise.  The Design Kit makes all this custom CSS unnecessary. 
     
 """,
     id="dcc",

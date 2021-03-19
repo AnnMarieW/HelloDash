@@ -7,7 +7,7 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 
 from app import app, header
-from .text import tutorial
+
 from .component_gallery import layout as component_layout
 
 import pathlib
@@ -364,7 +364,9 @@ source_code_modal = dbc.Card(
         dbc.CardBody(
             [
                 html.Div(" See the Sample Dash App"),
-                dbc.Button("Source Code", id="code_modal_btn", color="primary",),
+                dbc.Button(
+                    "Source Code", id="code_modal_btn", outline=True, color="primary",
+                ),
             ]
         ),
         dbc.Modal(

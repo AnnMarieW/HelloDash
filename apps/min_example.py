@@ -1,3 +1,9 @@
+"""
+This is a minimal example of the theme switcher clientside callback
+
+"""
+
+
 import dash
 import dash_html_components as html
 import dash_core_components as dcc

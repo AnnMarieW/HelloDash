@@ -12,6 +12,8 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from apps import text
 
+from app import app, header
+
 # todo - move this to css
 codebox = {
     "backgroundColor": "transparent",
@@ -71,7 +73,7 @@ Add Topics  here
 
 dash_links = dbc.Card(
     [
-        dbc.CardHeader(html.H4("Dash Links")),
+        dbc.CardHeader(html.H4("Dash")),
         dbc.CardBody(
             dbc.ListGroup(
                 [
@@ -101,7 +103,7 @@ dash_links = dbc.Card(
 
 bootstrap_links = dbc.Card(
     [
-        dbc.CardHeader(html.H4("Bootstrap Links")),
+        dbc.CardHeader(html.H4("Bootstrap")),
         dbc.CardBody(
             dbc.ListGroup(
                 [
@@ -117,10 +119,20 @@ bootstrap_links = dbc.Card(
                         "Bootstrap Bootswatch Themes",
                         "https://www.bootstrapcdn.com/bootswatch/",
                     ),
-                    make_link(
-                        "Theme Explorer App Glallery",
-                        "https://hellodash.pythonanywhere.com/app_gallery",
-                    ),
+                ]
+            )
+        ),
+    ],
+    className="m-2",
+)
+
+
+about_links = dbc.Card(
+    [
+        dbc.CardHeader(html.H4("About")),
+        dbc.CardBody(
+            dbc.ListGroup(
+                [
                     make_link(
                         "GitHub:  Theme Explorer",
                         "https://github.com/AnnMarieW/HelloDash",
@@ -135,7 +147,7 @@ bootstrap_links = dbc.Card(
 
 plotly_links = dbc.Card(
     [
-        dbc.CardHeader(html.H4("Plotly Links")),
+        dbc.CardHeader(html.H4("Plotly")),
         dbc.CardBody(
             dbc.ListGroup(
                 [
@@ -144,8 +156,12 @@ plotly_links = dbc.Card(
                         "https://plotly.com/python/discrete-color/",
                     ),
                     make_link(
-                        "Plotly continuous colorscaes",
+                        "Plotly continuous colorscales",
                         "https://plotly.com/python/builtin-colorscales/",
+                    ),
+                    make_link(
+                        "Plotly templates and themes",
+                        "https://plotly.com/python/templates/",
                     ),
                     make_link(
                         "Plotly Figure Reference",
@@ -172,7 +188,7 @@ plotly_links = dbc.Card(
 
 getting_started_links = dbc.Card(
     [
-        dbc.CardHeader(html.H4("Getting Started Links")),
+        dbc.CardHeader(html.H4("Getting Started")),
         dbc.CardBody(
             dbc.ListGroup(
                 [
@@ -261,6 +277,10 @@ how_to_general = dbc.Card(
             dbc.ListGroup(
                 [
                     make_link(
+                        "How to make a round button with an icon",
+                        "https://community.plotly.com/t/formatting-in-dash/51197/3",
+                    ),
+                    make_link(
                         "How to do pattern matching callback",
                         "https://community.plotly.com/t/pattern-call-backs-regarding-adding-dynamic-graphs/40724",
                     ),
@@ -286,10 +306,17 @@ Add card name to the Layout for the cheatsheet page here
 
 layout = dbc.Container(
     [
+        header,
         dbc.Row(
             [dbc.Col(bootstrap_links), dbc.Col(dash_links), dbc.Col(plotly_links),]
         ),
-        dbc.Row([dbc.Col(getting_started_links), dbc.Col(how_to_general),]),
+        dbc.Row(
+            [
+                dbc.Col(getting_started_links),
+                dbc.Col(how_to_general),
+                dbc.Col(about_links),
+            ]
+        ),
     ],
     fluid=True,
     className="m-4",

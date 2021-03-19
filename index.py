@@ -6,6 +6,7 @@ from dash.dependencies import Input, Output
 from apps import (
     theme_explorer,
     app_gallery,
+    cheatsheet,
 )
 
 
@@ -20,6 +21,8 @@ def display_page(pathname):
         return theme_explorer.layout
     elif pathname == "/app_gallery":
         return app_gallery.layout
+    elif pathname == "/cheatsheet":
+        return cheatsheet.layout
     else:
         return theme_explorer.layout
 
