@@ -367,7 +367,7 @@ source_code_modal = dbc.Card(
                 dbc.Button(
                     "Source Code", id="code_modal_btn", outline=True, color="primary",
                 ),
-            ]
+            ],
         ),
         dbc.Modal(
             [
@@ -388,6 +388,7 @@ source_code_modal = dbc.Card(
         ),
     ],
     className="my-4",
+    style={"minWidth": 250},
 )
 
 
@@ -452,23 +453,29 @@ sample_app_1 = dbc.Card(
                 dbc.Col(
                     [
                         dcc.Markdown(id="line_chart_title", className="text-center"),
-                        dcc.Graph(id="line_chart", config={"displayModeBar": False}),
+                        dcc.Graph(
+                            id="line_chart",
+                            config={"displayModeBar": False},
+                            style={"minWidth": 500},
+                        ),
                     ],
-                    width=6,
+                    lg=6,
                 ),
                 dbc.Col(
                     [
                         dcc.Markdown(id="scatter_chart_title", className="text-center"),
-                        dcc.Graph(id="scatter_chart", config={"displayModeBar": False}),
+                        dcc.Graph(
+                            id="scatter_chart", config={"displayModeBar": False},
+                        ),
                     ],
-                    width=6,
+                    lg=6,
                 ),
             ],
-            className="m-2",
+            className="m-1",
         ),
         sample_app_controls,
     ],
-    className="mx-2 shadow p-2",
+    className="mx-1 shadow p-2",
     id="layout_container",
 )
 
@@ -482,8 +489,8 @@ layout = dbc.Container(
         header,
         dbc.Row(
             [
-                dbc.Col([theme_controls, source_code_modal,], width=3),
-                dbc.Col(sample_app_1, width=9),
+                dbc.Col([theme_controls, source_code_modal,], md=3),
+                dbc.Col(sample_app_1, md=9, sm=12),
             ]
         ),
         component_layout,

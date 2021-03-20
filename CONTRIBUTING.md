@@ -4,8 +4,7 @@
 ## Getting Started
 
 Comments, suggestion, constructive criticism, contributions and pull requests are
-gladly accepted.  And positive remarks will be received with great glee and gratitude. :-)
-Please open an issue here.
+gladly accepted.  Please open an issue here.
 
 For now, this section is documentation for my future self, when I need to come back here
 to maintain this project.
@@ -63,14 +62,13 @@ Or add them in a card using:
 
 ### Code blocks
 
-It would be great if I could just use dcc.Markdown( ``` my code block ``)  However, this
+It would be great if I could just use `dcc.Markdown( ``` my code block ```)`.  However, this
 looks terrible in dark themed apps, especially if it's integrated on the page. (It's not too bad in a modal)
 Here are a couple work-arounds I use:
 
 
-- To show a compete app, it can be read from a file like the following.  It will format it as 
-a string with the ``` code ``` so it can be displayed in Markdown.  I use this for the "Source Code" button
-  on the main page.  When it's a modal, it doesn't look too bad even in a dark app.
+- To show a compete app, it can be read from a file like the following.   With a larger code block
+  it doesn't look too bad in a dark app with a modal.  It's bettwer with the syntax highlighting.
 ```python
         # set relative path
         PATH = pathlib.Path(__file__).parent
@@ -79,11 +77,12 @@ a string with the ``` code ``` so it can be displayed in Markdown.  I use this f
         # be sure to include a blank line and docstring at start of source file so it formats correctly
         with open(GALLERY_PATH.joinpath("theme_explorer_app.py")) as f:
             code = f.read()
-```
         code = f"```{code}```"
+```
+        
 
 - For smaller code blocks that are in the text.py file, they are formated as follows.  Because of the
-transparent background they look better in dark apps, but they don't have syntax hilighting. 
+transparent background they look better in dark apps, but they don't have syntax highlighting. 
 
     ```   
     codebox = {
@@ -102,6 +101,8 @@ directory is a stand-alone version of the Sample Dash app you see in the theme_e
 - To add apps to the app gallery see app_gallery.py  There are more instructions in the docstring.
 - To add cheatsheet cards see cheatsheet.py.  Any card that looks like the cheatsheet cards are created
 here and imported where needed.
+
+(more details to follow)
 
 
     
