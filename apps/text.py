@@ -609,16 +609,18 @@ Used in: dcc_components.py
 
 dcc_checklist_radio = """
 #### Styling dcc.RadioItems and dcc.Checklist
-The first row of Checklist and radioItems above shows the default style for these dash-core-components.
-It's also possible to adjust the margins and style of the text label using the `inputStyle, InputClassName, labelStyle, labelClassName` parameters.
-   However,  there is no easy way to change the color of the radio and checkbox icons.  Label style of selected items can be updated in a callback.  See an example [here]( https://community.plotly.com/t/dcc-radioitems-and-label-style/26358/2)
+The first row of dcc.Checklist and dcc.RadioItems below shows the default style.
+It's also possible to adjust the margins and style of the text label using the `inputStyle, InputClassName, 
+labelStyle, labelClassName` parameters. See [this example]( https://community.plotly.com/t/dcc-radioitems-and-label-style/26358/2)
+ for how to change the label color in a callback.  Unfortunately, there is no easy way to change the color 
+ of the radio and checkbox icons.  
 
 
-Improve your app design by using `dash-bootstrap-components`  dbc.Checklist and dbc.RadioItems. 
+A great alternate is to use `dash-bootstrap-components` dbc.Checklist and dbc.RadioItems. Here are the advantages:
 
 - The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color.  See this in action by changing the theme in the App Design Selections panel. 
 - You can also customize the selected label and icons color in dbc components using `labelCheckedStyle` and `labelCheckedStyle` parameters.
-- by default there is nice spacing between the icon and the label, so there is no need to define this manually.
+- By default there is nice spacing between the icon and the label, so there is no need to define this manually.
 -  The dbc.Checklist can be displayed as toggle switches by setting `switch=True`.  See the dash-boostrap-components gallery for an example.
 
 """
@@ -630,7 +632,7 @@ dcc_tabs = """
  the dcc.Tabs are very easy to customize using the `style` and `selected_className` parameters. 
 The tabs on the left in this app use dcc.Tabs and are styled so that they work well with both light and
 dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  Change 
-the theme to see how it looks! See the code for the Tabs [here](https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py)  
+the theme to see how it looks! See the code for the Component Gallery Tabs [here](https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py)  
 """
 
 dcc_dropdown = """
@@ -638,7 +640,7 @@ dcc_dropdown = """
 #### Styling dcc.Dropdown
 
 The dcc.Dropdown default style works well with many Bootstrap light themes.  However with dark themes, the
-font color makes the dropdown options text is very hard to read. 
+font color makes the dropdown options text very hard to read. 
 
 We fix it in this app by using the following CSS in the asset folder:
 ```
@@ -661,11 +663,12 @@ dcc_graph = """
 
 #### Styling dcc.Graph
 
-The Plotly figures are highly customizable.  The options shown in this app are only *a few* of the many choices 
-available.  See the Plotly card in the Cheatsheet tab to see some of my favorite Plotly resources and tutorials.
+The Plotly figures are highly customizable.  The options shown in the Theme Explorer app such as changing the colorscale
+and the template are only *some* of the many choices available.  See the Plotly card in the Cheatsheet tab to see 
+a few of my favorite Plotly resources and tutorials.
 
-Here is one more way to make charts better in dark themes.  By making the background transparent, the figure
-it will automatically look better with many of the Bootstrap dark themes. 
+Below is another way to make graphs look better in dark themes.  The figure on the right has a transparent background.
+Try switching between different dark themes in the App Design Selections panel to see how it looks! 
 
 Here is how the figure is defined:
 

@@ -113,7 +113,7 @@ gallery.append(
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/111547777-e7179c00-8736-11eb-8a9b-9635b9712628.png",
-        title="The easiest starter app! Simply Two graphs, side by side.  Only about 25 lines of code.",
+        title="Quickstart App #1:  Two graphs, side by side.  Only about 25 lines of code.",
         source_code="https://github.com/AnnMarieW/HelloDash/blob/main/gallery/quickstart1.py",
         about="One of the most popular questions on the Dash Community forum!",
     )
@@ -136,13 +136,14 @@ gallery.append(
 # 7
 gallery.append(
     Card(
-        image="https://user-images.githubusercontent.com/72614349/109823988-a6c40400-7bf5-11eb-8ee3-15b91e9c170d.png",
-        title="Another quick start app ~ 100 lines of code",
-        source_code="https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/gallery/wordcloud/app.py",
-        about="""This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)  
-                  Note: You may need to `pip install wordcloud`""",
+        image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
+        title="Quickstart App #2   <75 lines of code! ",
+        source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",
+        about="This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)",
     )
 )
+
+
 
 # 8
 gallery.append(
@@ -181,10 +182,11 @@ gallery.append(
 # 10
 gallery.append(
     Card(
-        image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
-        title="Great quick start app   <75 lines of code! ",
-        source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",
-        about="This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)",
+        image="https://user-images.githubusercontent.com/72614349/109823988-a6c40400-7bf5-11eb-8ee3-15b91e9c170d.png",
+        title="Quickstart app #3  ~ 100 lines of code",
+        source_code="https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/gallery/wordcloud/app.py",
+        about="""This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)  
+                  Note: You may need to `pip install wordcloud`""",
     )
 )
 

@@ -15,13 +15,11 @@ from app import app
 
 header = dcc.Markdown(
     """            
-    These are the components available in the Plotly `dash-core-components` library.  Click on the component names to go
-     to the official Dash documentation and to see more examples.
-
-     Change the Bootstrap theme in the App Design Selections panel to see how the components respond the different 
-     Bootstrap themes.
-     
-     If you work for a company, consider using Dash Enterprise.  The Design Kit makes all this custom CSS unnecessary. 
+     `dash-core-components` is the core set of components included with Dash.  Change the Bootstrap theme in the
+      App Design Selections panel to see how these components respond the different Bootstrap themes.  Note: if you work for
+       a company, see Dash Enterprise Design KIt.  
+      - [Dash Core Components Overview](https://dash.plotly.com/dash-core-components)
+      
     
 """,
     id="dcc",
@@ -116,8 +114,9 @@ checklist_radio_card = dbc.Card(
                 ]
             ),
         ),
-        dbc.CardBody([dbc.Row([dbc.Col(checklist_items), dbc.Col(radio_items)]),]),
         dcc.Markdown(text.dcc_checklist_radio, className="p-4"),
+        dbc.CardBody([dbc.Row([dbc.Col(checklist_items), dbc.Col(radio_items)]),]),
+
     ],
     className="my-2",
 )
@@ -171,6 +170,7 @@ dropdown_card = dbc.Card(
             [
                 html.Div(
                     [
+                        dcc.Markdown(text.dcc_dropdown, className="my-4"),
                         dcc.Dropdown(
                             options=[
                                 {"label": "New York City", "value": "NYC"},
@@ -189,7 +189,7 @@ dropdown_card = dbc.Card(
                             value=["NYC", "MTL"],
                             multi=True,
                         ),
-                        dcc.Markdown(text.dcc_dropdown, className="my-4"),
+
                     ]
                 ),
             ]
@@ -219,6 +219,7 @@ graph_card = dbc.Card(
         dbc.CardHeader(make_subheading("dcc.Graph", "graph/")),
         dbc.CardBody(
             [
+                dcc.Markdown(text.dcc_graph),
                 dbc.Row(
                     [
                         dbc.Col(
@@ -235,7 +236,7 @@ graph_card = dbc.Card(
                         ),
                     ]
                 ),
-                dcc.Markdown(text.dcc_graph),
+
             ]
         ),
     ],
@@ -369,6 +370,8 @@ tabs_card = dbc.Card(
         dbc.CardHeader(make_subheading("dcc.Tabs", "tabs/")),
         dbc.CardBody(
             [
+                dcc.Markdown(text.dcc_tabs),
+                html.Hr(),
                 dcc.Tabs(
                     id="tabs-example",
                     value="tab-1",
@@ -378,8 +381,8 @@ tabs_card = dbc.Card(
                     ],
                 ),
                 html.Div(id="tabs-example-content"),
-                html.Hr(),
-                dcc.Markdown(text.dcc_tabs),
+
+
             ]
         ),
     ],

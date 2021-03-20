@@ -155,8 +155,7 @@ def make_table(theme):
 
 default_table_text = dcc.Markdown(
     """
-    Dash DataTable is an interactive table component designed for viewing, editing, and exploring large datasets. See
-    the full documentation [here](https://dash.plotly.com/datatable)
+    Dash `DataTable` is an interactive table component designed for viewing, editing, and exploring large datasets. 
 
      Unlike a standard HTML table, the Dash DataTable does not respond to Bootstrap themes automatically.  The first table shows
      the default style for the DataTable.  Try changing the Bootstrap theme in the App Design Selections panel to see how
@@ -166,7 +165,9 @@ default_table_text = dcc.Markdown(
      dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The
      good news is that the DashTable is highly customizable so you can make it look great with any of the Boostrap themes.
      
-     See more information on styling the DataTable in the [Dash Documentation](https://dash.plotly.com/datatable/style). 
+     - [DataTable Quickstart](https://dash.plotly.com/datatable)
+     - [DataTable styling](https://dash.plotly.com/datatable/style)
+     - [DataTable Reference](https://dash.plotly.com/datatable/reference)
 
 """
 )
@@ -199,7 +200,8 @@ light_theme_card = dbc.Card(
                         html.Pre(html.Code(text.datatable_light_code)), style=codebox,
                     ),
                 ),
-                "Change to a dark theme to see more about styling the table for a dark theme",
+                dbc.Alert("Change to a dark theme to see more about styling the table for a dark theme",
+                          color='dark', className='d-inline-flex'),
             ]
         ),
     ],
