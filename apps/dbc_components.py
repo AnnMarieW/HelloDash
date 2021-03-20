@@ -798,7 +798,7 @@ tooltip = html.Div(
 
 source_code = dcc.Markdown(
     """
-    ## See the [source code](https://github.com/AnnMarieW/HelloDash/blob/main/apps/components.py)       
+    ## See the [source code](https://github.com/AnnMarieW/HelloDash/blob/main/apps/dbc_components.py)       
     """
 )
 
@@ -904,8 +904,10 @@ def open_toast(n):
 @app.callback(
     Output("gallery_checklist1", "value"),
     Output("gallery_radio1", "value"),
+    Output("gallery_checklist2", "value"),
+    Output("gallery_radio2", "value"),
     Input("gallery_checklist1", "value"),
 )
 def update_checklist(value):
     # This is a dummy callback so checkboxes change color when theme is switched
-    return (value, 0)
+    return (value, 0, value, 0)

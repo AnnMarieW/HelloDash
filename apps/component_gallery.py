@@ -1,8 +1,13 @@
-import dash_html_components as html
+"""
+This app is for the Component Gallery contest.  Note that it uses dcc.Tabs which are styled to
+work with any Bootstrap theme.  The background is transparent and the selected tabs are
+highlighted with the theme's "primary" color.
+
+"""
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 
-from app import app
+
 from .dbc_components import layout as components_layout
 from .dcc_components import layout as dcc_components_layout
 from .DataTable import layout as table_layout
@@ -31,6 +36,12 @@ layout = dbc.Card(
                                 selected_className="bg-light text-dark border-primary",
                             ),
                             dcc.Tab(
+                                children=dcc_components_layout,
+                                label="Dash Core Components",
+                                style={"backgroundColor": "transparent"},
+                                selected_className="bg-light text-dark border-primary",
+                            ),
+                            dcc.Tab(
                                 children=html_layout,
                                 label="Dash HTML Components",
                                 style={"backgroundColor": "transparent"},
@@ -39,12 +50,6 @@ layout = dbc.Card(
                             dcc.Tab(
                                 children=table_layout,
                                 label="DataTable",
-                                style={"backgroundColor": "transparent"},
-                                selected_className="bg-light text-dark border-primary",
-                            ),
-                            dcc.Tab(
-                                children=dcc_components_layout,
-                                label="Dash Core Components",
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),

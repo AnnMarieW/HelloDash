@@ -447,16 +447,18 @@ sample_app_controls = dbc.Card(
 
 sample_app_1 = dbc.Card(
     [
-        html.H2("Sample Dash App", className="bg-primary text-white m-1 p-2"),
+        html.H2("Sample Dash App", className="bg-primary text-white p-2"),
         dbc.Row(
             [
                 dbc.Col(
                     [
-                        dcc.Markdown(id="line_chart_title", className="text-center"),
+                        dcc.Markdown(
+                            id="line_chart_title", className="text-center mb-0"
+                        ),
                         dcc.Graph(
                             id="line_chart",
                             config={"displayModeBar": False},
-                            style={"minWidth": 500},
+                            # style={"minWidth": 500},
                         ),
                     ],
                     lg=6,
@@ -471,11 +473,11 @@ sample_app_1 = dbc.Card(
                     lg=6,
                 ),
             ],
-            className="m-1",
+            className="mt-0, mb-2",
         ),
         sample_app_controls,
     ],
-    className="mx-1 shadow p-2",
+    className="mx-1 shadow p-1 pb-4",
     id="layout_container",
 )
 
@@ -538,7 +540,7 @@ def update_line_chart(
         color_discrete_sequence=discrete_colors[color_discrete],
         height=350,
     )
-    fig.update_layout(margin=dict(l=75, r=20, t=00, b=20))
+    fig.update_layout(margin=dict(l=75, r=20, t=10, b=20))
     dff = df[df.year == years[1]]
     title2 = """template= {}  \n  color_continuous_scale= {}""".format(
         template, color_continuous
@@ -553,7 +555,7 @@ def update_line_chart(
         hover_data=["country", "year"],
         height=350,
     )
-    fig2.update_layout(margin=dict(l=75, r=20, t=0, b=20))
+    fig2.update_layout(margin=dict(l=75, r=20, t=10, b=20))
     return fig, fig2, title, title2
 
 

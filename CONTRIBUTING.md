@@ -62,13 +62,48 @@ Or add them in a card using:
 
 ### Code blocks
 
-It would be great if I could just use `dcc.Markdown( ``` my code block ```)`.  However, this
-looks terrible in dark themed apps, especially if it's integrated on the page. (It's not too bad in a modal)
-Here are a couple work-arounds I use:
+This app uses several different methods to display code.
+
+#### Button with external link
+The app gallery uses a button with a link to the github repo:
+```python
+        dbc.Button(
+            "Source Code",
+            color="secondary",            
+            target="_blank",
+            href=source_code,  # github link
+            size="sm",
+            outline=True,
+        ),
+```
+
+#### Button with a modal
+See helper functions in dcc_components.py.  Code can be displayed in dcc.Markdown(```code```) or as described below 
+which is better for dark themes.
 
 
-- To show a compete app, it can be read from a file like the following.   With a larger code block
-  it doesn't look too bad in a dark app with a modal.  It's bettwer with the syntax highlighting.
+        
+#### Format code to display with dark themes
+For smaller code blocks that are displayed in-line, it needs to have a transparent background so it looks OK with 
+dark themed apps.  This is a work-around, but it doesn't have syntax highlighting:
+
+``` 
+codebox = {
+    "backgroundColor": "transparent",
+    "borderStyle": "groove",
+    "borderRadius": 15,
+    "maxWidth": 900,
+    "marginTop": 0,
+    "marginBottom": 20,
+}
+html.Div(html.Pre(html.Code(" enter code here" )), style=codebox)  
+```
+  
+
+#### Get app code from gallery directory
+To show an compete app from the gallery without an external link  - like in a modal using dcc.Markdown(code),
+it can be read from a file like this:
+
 ```python
         # set relative path
         PATH = pathlib.Path(__file__).parent
@@ -79,22 +114,10 @@ Here are a couple work-arounds I use:
             code = f.read()
         code = f"```{code}```"
 ```
-        
 
-- For smaller code blocks that are in the text.py file, they are formated as follows.  Because of the
-transparent background they look better in dark apps, but they don't have syntax highlighting. 
+#### Get code from the text.py file
+Most of the smaller code blocks are in this file
 
-    ```   
-    codebox = {
-        "backgroundColor": "transparent",
-        "borderStyle": "groove",
-        "borderRadius": 15,
-        "maxWidth": 900,
-        "marginTop": 0,
-        "marginBottom": 20,
-    }
-    html.Div(html.Pre(html.Code(" enter code here" )), style=codebox)  
-  ```
    
 - The app for the theme switcher is called theme_explorer.py.  The theme_explorer_app.py in the gallery
 directory is a stand-alone version of the Sample Dash app you see in the theme_explorer.

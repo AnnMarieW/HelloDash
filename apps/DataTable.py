@@ -200,8 +200,11 @@ light_theme_card = dbc.Card(
                         html.Pre(html.Code(text.datatable_light_code)), style=codebox,
                     ),
                 ),
-                dbc.Alert("Change to a dark theme to see more about styling the table for a dark theme",
-                          color='dark', className='d-inline-flex'),
+                dbc.Alert(
+                    "Change to a dark theme to see more about styling the table for a dark theme",
+                    color="dark",
+                    className="d-inline-flex",
+                ),
             ]
         ),
     ],

@@ -607,43 +607,49 @@ datatable_dark_code = """
 Used in: dcc_components.py
 """
 
-dcc_checklist_radio = """
-#### Styling dcc.RadioItems and dcc.Checklist
+dcc_checklist_radio_1 = """
+##### Styling dcc.RadioItems and dcc.Checklist
 The first row of dcc.Checklist and dcc.RadioItems below shows the default style.
 It's also possible to adjust the margins and style of the text label using the `inputStyle, InputClassName, 
 labelStyle, labelClassName` parameters. See [this example]( https://community.plotly.com/t/dcc-radioitems-and-label-style/26358/2)
  for how to change the label color in a callback.  Unfortunately, there is no easy way to change the color 
- of the radio and checkbox icons.  
+ of the radio and checkbox icons."""
 
-
+dcc_checklist_radio_2 = """
 A great alternate is to use `dash-bootstrap-components` dbc.Checklist and dbc.RadioItems. Here are the advantages:
 
 - The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color.  See this in action by changing the theme in the App Design Selections panel. 
 - You can also customize the selected label and icons color in dbc components using `labelCheckedStyle` and `labelCheckedStyle` parameters.
 - By default there is nice spacing between the icon and the label, so there is no need to define this manually.
--  The dbc.Checklist can be displayed as toggle switches by setting `switch=True`.  See the dash-boostrap-components gallery for an example.
+-  The dbc.Checklist can be displayed as toggle switches by setting `switch=True`.  See the dash-boostrap-components gallery for an example.  
 
-"""
+Here is an example of `dash-bootstrap-components` dcc.Checklist and dcc.RadioItems.  Change the theme to see the updated
+style:"""
 
 dcc_tabs = """
-#### Styling dcc.Tabs
+##### Styling dcc.Tabs
 
  If you switch to a dark theme you will see that the default style for dcc.Tabs shown here does not work well. However,
- the dcc.Tabs are very easy to customize using the `style` and `selected_className` parameters. 
-The tabs on the left in this app use dcc.Tabs and are styled so that they work well with both light and
-dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  Change 
-the theme to see how it looks! See the code for the Component Gallery Tabs [here](https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py)  
+ the dcc.Tabs are very easy to customize using the `style` and `selected_className` parameters.   
+
+The tabs on the left are the default and the tabs on the right are styled so that they work well with both light and
+dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  
+
+The tabs for this Component Gallery use dcc.Tabs styled for all themes and and `vertical=True`
 """
 
 dcc_dropdown = """
 
-#### Styling dcc.Dropdown
+##### Styling dcc.Dropdown
 
 The dcc.Dropdown default style works well with many Bootstrap light themes.  However with dark themes, the
 font color makes the dropdown options text very hard to read. 
 
-We fix it in this app by using the following CSS in the asset folder:
+We fix it in this app by using the following CSS in the asset folder:"""
+
+dcc_dropdown_css = """
 ```
+
 /** This styles the dropdown menu items so they are visible in both light and dark theme apps **/
 .VirtualizedSelectOption {
     background-color: white;
@@ -654,25 +660,29 @@ We fix it in this app by using the following CSS in the asset folder:
     background-color: lightgrey;
     color: black;
 }
-```
-Coming soon: more custom CSS for styling dropdowns
-
-"""
+```"""
 
 dcc_graph = """
 
-#### Styling dcc.Graph
+##### Styling dcc.Graph
 
 The Plotly figures are highly customizable.  The options shown in the Theme Explorer app such as changing the colorscale
 and the template are only *some* of the many choices available.  See the Plotly card in the Cheatsheet tab to see 
 a few of my favorite Plotly resources and tutorials.
 
 Below is another way to make graphs look better in dark themes.  The figure on the right has a transparent background.
+It also use the "plotly_dark" template which makes the text and grid lines look better with dark themes
+
+
 Try switching between different dark themes in the App Design Selections panel to see how it looks! 
+"""
 
-Here is how the figure is defined:
-
+dcc_graph_code = """
 ```
+# This is a figure with a transparent background color for the  plot and paper
+# It also uses the "plotly_dark" template which makes the text and grig lines look 
+# better with dark themes
+
 df = px.data.gapminder()
 fig = px.scatter(
     df.query("year==2007"),
@@ -686,6 +696,54 @@ fig = px.scatter(
 fig.update_layout(
     {"plot_bgcolor": "rgba(0, 0, 0, 0)", "paper_bgcolor": "rgba(0, 0, 0, 0)"}
 )
+```
+"""
 
 
+dcc_slider = """
+##### Styling dcc.Slider and dcc.RangeSlider
+
+The default style for the dcc.Slider and dcc.RangeSlider is shown on the left.  It's possible to change the 
+style of the label with the `marker`  property, but if you would like to update the color of the track, or the handles, 
+or the selected label style, it's  necessary to use custom CSS.  
+ 
+ The sliders on the right side are updated with the primary colors of the PULSE theme.  See the CSS to add to your
+ css file in the assets folder:
+"""
+
+
+dcc_slider_css = """
+
+/*
+ * Custom CSS for sliders -  PULSE Theme
+ */
+.rc-slider-handle {
+  border: 0;
+  background-color: #593196;  /* primary */
+}
+
+.rc-slider-rail {
+  background-color: #ededed;  /* grey */
+}
+
+.rc-slider-track {
+  background-color: #593196;  /* primary */
+}
+
+.rc-slider-dot {
+  border: 0;
+  background-color: #ededed; /* grey */
+}
+
+.rc-slider-dot.rc-slider-dot-active {
+  background-color: #593196;  /* primary */
+}
+
+.rc-slider-mark-text {
+  color: #868e96;    /* label color */
+}
+
+.rc-slider-mark-text.rc-slider-mark-text-active {
+  color: #343a40;     /* Makes the active label color different than default label color */
+}
 """

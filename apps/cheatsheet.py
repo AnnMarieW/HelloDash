@@ -200,7 +200,6 @@ getting_started_links = dbc.Card(
                         "See quikstart apps and layout templates in the App Gallery",
                         "/app_gallery",
                     ),
-
                     make_link(
                         "Getting started with HTML",
                         "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started",
@@ -213,7 +212,6 @@ getting_started_links = dbc.Card(
                         "Browser developer tools",
                         "https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools",
                     ),
-
                     make_link(
                         "10 minutes to Pandas",
                         "https://pandas.pydata.org/pandas-docs/dev/user_guide/10min.html",

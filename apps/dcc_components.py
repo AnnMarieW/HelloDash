@@ -13,17 +13,11 @@ DCC_DOCS = "https://dash.plotly.com/dash-core-components/"
 from apps import text
 from app import app
 
-header = dcc.Markdown(
-    """            
-     `dash-core-components` is the core set of components included with Dash.  Change the Bootstrap theme in the
-      App Design Selections panel to see how these components respond the different Bootstrap themes.  Note: if you work for
-       a company, see Dash Enterprise Design KIt.  
-      - [Dash Core Components Overview](https://dash.plotly.com/dash-core-components)
-      
-    
-""",
-    id="dcc",
-)
+
+"""
+=====================================================================
+Helper functions
+"""
 
 
 def make_subheading(label, link):
@@ -51,8 +45,69 @@ def make_subheading(label, link):
     )
 
 
+def make_btn_with_modal(id, title, content):
+    """
+     This makes a button that opens a modal for content
+     note: The modal callback is located in the app_galery.py
+
+     id:  unique identifier
+     title:  what appears on the button
+     content:
+        To display text, use dcc.Markdown("my text")
+        To display a codebox:
+          html.Div(html.Pre(html.Code(" enter code here" )), style=codebox,)
+
+    """
+    return html.Div(
+        [
+            dbc.Button(
+                title,
+                id={"type": "modal_btn", "index": id},
+                color="secondary",
+                size="sm",
+                outline=True,
+                className="mb-2",
+            ),
+            dbc.Modal(
+                dbc.ModalBody(content),
+                id={"type": "modal", "index": id},
+                scrollable=True,
+                size="lg",
+            ),
+        ]
+    )
+
+
+def make_btn_with_link(link):
+    return dbc.Button(
+        "See Code",
+        color="secondary",
+        target="_blank",
+        href=link,  # github link
+        size="sm",
+        outline=True,
+    )
+
+
+"""
+=====================================================================
+Content
+"""
+
+intro_text = dcc.Markdown(
+    """            
+     `dash-core-components` is the core set of components included with Dash.  Change the Bootstrap theme in the
+      App Design Selections panel to see how these components respond the different Bootstrap themes.  Note: if you work for
+       a company, see also Dash Enterprise Design KIt.  
+      - [Dash Core Components Overview](https://dash.plotly.com/dash-core-components)
+
+
+""",
+    id="dcc",
+)
+
 checklist_items = (
-    html.Div(
+    dbc.Card(
         [
             dcc.Checklist(
                 options=[
@@ -72,13 +127,14 @@ checklist_items = (
                 value=["NYC", "MTL"],
                 labelStyle={"display": "block"},
             ),
-        ]
+        ],
+        className="p-2",
     ),
 )
 
 
 radio_items = (
-    html.Div(
+    dbc.Card(
         [
             dcc.RadioItems(
                 options=[
@@ -99,10 +155,28 @@ radio_items = (
                 labelStyle={"display": "block"},
                 inputClassName="bg-danger",
             ),
-        ]
+        ],
+        className="p-2",
     ),
 )
 
+dbc_checklist_radio = html.Div(
+    [
+        dbc.Checklist(
+            id="gallery_checklist2",
+            options=[{"label": "Option {}".format(i), "value": i} for i in range(4)],
+            value=[0, 3],
+            inline=True,
+        ),
+        dbc.RadioItems(
+            id="gallery_radio2",
+            options=[{"label": "Option {}".format(i), "value": i} for i in range(4)],
+            value=[1],
+            inline=True,
+        ),
+    ],
+    className="mx-4 mb-4 px-5",
+)
 
 checklist_radio_card = dbc.Card(
     [
@@ -114,11 +188,12 @@ checklist_radio_card = dbc.Card(
                 ]
             ),
         ),
-        dcc.Markdown(text.dcc_checklist_radio, className="p-4"),
+        dcc.Markdown(text.dcc_checklist_radio_1, className="p-4"),
         dbc.CardBody([dbc.Row([dbc.Col(checklist_items), dbc.Col(radio_items)]),]),
-
+        dcc.Markdown(text.dcc_checklist_radio_2, className="p-4"),
+        dbc_checklist_radio,
     ],
-    className="my-2",
+    className="my-4",
 )
 
 datepicker_range = html.Div(
@@ -159,7 +234,7 @@ datepicker_card = dbc.Card(
         ),
         #  dcc.Markdown(text.dcc_checklist_radio_text, className='p-4'),
     ],
-    className="my-2",
+    className="my-4",
 )
 
 
@@ -171,6 +246,11 @@ dropdown_card = dbc.Card(
                 html.Div(
                     [
                         dcc.Markdown(text.dcc_dropdown, className="my-4"),
+                        make_btn_with_modal(
+                            "dcc_dropdown_css",
+                            "see CSS",
+                            dcc.Markdown(text.dcc_dropdown_css),
+                        ),
                         dcc.Dropdown(
                             options=[
                                 {"label": "New York City", "value": "NYC"},
@@ -189,13 +269,12 @@ dropdown_card = dbc.Card(
                             value=["NYC", "MTL"],
                             multi=True,
                         ),
-
                     ]
                 ),
             ]
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
 df = px.data.gapminder()
 dff = df.query("year==2007")
@@ -220,27 +299,33 @@ graph_card = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Markdown(text.dcc_graph),
+                make_btn_with_modal(
+                    "dcc_graph", "see code", dcc.Markdown(text.dcc_graph_code)
+                ),
                 dbc.Row(
                     [
                         dbc.Col(
                             [
-                                html.H4("Default Style"),
-                                dcc.Graph(id="dcc_graph", figure=fig,),
+                                html.H4("Default style"),
+                                dcc.Graph(
+                                    id="dcc_graph", figure=fig, className="border"
+                                ),
                             ]
                         ),
                         dbc.Col(
                             [
-                                html.H4("Transparent background for dark themes"),
-                                dcc.Graph(id="dcc_graph", figure=fig1,),
+                                html.H4("See this style with a dark theme!"),
+                                dcc.Graph(
+                                    id="dcc_graph", figure=fig1, className="border"
+                                ),
                             ]
                         ),
                     ]
                 ),
-
             ]
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
 
 ALLOWED_TYPES = (
@@ -273,7 +358,7 @@ input_card = dbc.Card(
             ]
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
 
 loading_card = dbc.Card(
@@ -303,67 +388,147 @@ loading_card = dbc.Card(
             ],
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
 
 
-rangeslider_card = dbc.Card(
+def make_range_slider(classname):
+    return dcc.RangeSlider(
+        min=0,
+        max=10,
+        step=None,
+        marks={0: "0 °F", 3: "3 °F", 5: "5 °F", 7.65: "7.65 °F", 10: "10 °F",},
+        value=[3, 7.65],
+        className=classname,
+    )
+
+
+def make_slider(classname):
+    return dcc.Slider(
+        min=0,
+        max=10,
+        step=None,
+        marks={0: "0 °F", 3: "3 °F", 5: "5 °F", 7.65: "7.65 °F", 10: "10 °F",},
+        value=3,
+        className=classname,
+    )
+
+
+slider_default_card = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dcc.RangeSlider", "rangeslider/")),
-        dbc.CardBody(
+        html.H4("Default slider style"),
+        make_slider("m-4"),
+        make_range_slider(("m-4")),
+        html.Div("Sample selected theme colors"),
+        dbc.ButtonGroup(
             [
-                html.Div(
-                    [
-                        dcc.RangeSlider(
-                            min=0,
-                            max=10,
-                            step=None,
-                            marks={
-                                0: "0 °F",
-                                3: "3 °F",
-                                5: "5 °F",
-                                7.65: "7.65 °F",
-                                10: "10 °F",
-                            },
-                            value=[3, 7.65],
-                        )
-                    ]
-                ),
-            ]
+                dbc.Badge("primary", color="primary", style={"margin": 2}),
+                dbc.Badge("secondary", color="secondary", style={"margin": 2}),
+                dbc.Badge("success", color="success", style={"margin": 2}),
+            ],
         ),
     ],
-    className="my-2",
+    className="p-2",
 )
+
+slider_pulse_card = dbc.Card(
+    [
+        html.H4("Styled for PULSE theme "),
+        make_slider("m-4 dash-bootstrap"),
+        make_range_slider("m-4 dash-bootstrap"),
+        html.Div("Sample PULSE colors"),
+        html.Div(
+            [
+                dbc.Badge(
+                    "primary",
+                    style={"background": "#593196", "color": "white", "margin": 2},
+                ),
+                dbc.Badge(
+                    "secondary",
+                    style={"backgroundColor": "#a991d4", "color": "white", "margin": 2},
+                ),
+                dbc.Badge(
+                    "success",
+                    style={"backgroundColor": "#13b955", "color": "white", "margin": 2},
+                ),
+            ],
+        ),
+    ],
+    className="p-2",
+)
+
 
 slider_card = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dcc.Slider", "slider/")),
+        dbc.CardHeader(
+            dbc.Row(
+                [
+                    make_subheading("dcc.Slider", "slider/"),
+                    make_subheading("dcc.RangeSlider", "rangeslider/"),
+                ]
+            ),
+        ),
+        dcc.Markdown(text.dcc_slider, className="px-4 pt-4"),
+        html.Div(
+            make_btn_with_modal(
+                "dcc_slider", "see CSS", dcc.Markdown(text.dcc_slider_css)
+            ),
+            className="pl-4",
+        ),
         dbc.CardBody(
-            [
-                html.Div(
-                    [
-                        dcc.Slider(
-                            id="slider-dark-theme",
-                            min=0,
-                            max=10,
-                            step=None,
-                            marks={
-                                0: "0 °F",
-                                3: "3 °F",
-                                5: "5 °F",
-                                7.65: "7.65 °F",
-                                10: "10 °F",
-                            },
-                            value=3,
-                        )
-                    ],
-                    className="slider-dark-theme",
-                ),
-            ]
+            [dbc.Row([dbc.Col(slider_default_card), dbc.Col(slider_pulse_card)]),]
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
+
+tabs_default = dbc.Card(
+    [
+        dcc.Tabs(
+            id="tabs-example",
+            value="tab-1",
+            children=[
+                dcc.Tab(label="Tab one", value="tab-1"),
+                dcc.Tab(label="Tab two", value="tab-2"),
+            ],
+        ),
+        html.Div(id="tabs-example-content"),
+    ]
+)
+
+tabs_theme = dbc.Card(
+    dcc.Tabs(
+        [
+            dcc.Tab(
+                html.Div(
+                    [
+                        html.H4(
+                            "Styled for all Bootstrap themes. Change theme to see how it looks!",
+                            className="m-4 p-5 text-center",
+                        )
+                    ]
+                ),
+                label="Tab one",
+                style={"backgroundColor": "transparent"},
+                selected_className="bg-light text-dark border-primary",
+            ),
+            dcc.Tab(
+                html.Div(
+                    [
+                        html.H4(
+                            "Be sure to see how it looks with dark themes!",
+                            className="m-4 p-5 text-center",
+                        )
+                    ]
+                ),
+                label="Tab 2",
+                style={"backgroundColor": "transparent"},
+                selected_className="bg-light text-dark border-primary",
+            ),
+        ]
+    )
+)
+
 
 tabs_card = dbc.Card(
     [
@@ -371,22 +536,15 @@ tabs_card = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Markdown(text.dcc_tabs),
-                html.Hr(),
-                dcc.Tabs(
-                    id="tabs-example",
-                    value="tab-1",
-                    children=[
-                        dcc.Tab(label="Tab one", value="tab-1"),
-                        dcc.Tab(label="Tab two", value="tab-2"),
-                    ],
+                make_btn_with_link(
+                    "https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py"
                 ),
-                html.Div(id="tabs-example-content"),
-
-
+                html.Hr(),
+                dbc.Row([dbc.Col(tabs_default), dbc.Col(tabs_theme)]),
             ]
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
 
 
@@ -401,7 +559,7 @@ textarea_card = dbc.Card(
             ]
         ),
     ],
-    className="my-2",
+    className="my-4",
 )
 
 source_code = dcc.Markdown(
@@ -415,17 +573,16 @@ layout = dbc.Container(
     [
         dbc.Card(
             [
-                header,
+                intro_text,
                 html.Hr(),
-                checklist_radio_card,
+                slider_card,
                 tabs_card,
+                checklist_radio_card,
                 dropdown_card,
                 graph_card,
                 datepicker_card,
                 input_card,
                 loading_card,
-                rangeslider_card,
-                slider_card,
                 textarea_card,
                 html.Div(style={"height": "50px"}),
                 source_code,
@@ -454,6 +611,15 @@ def input_triggers_nested(value):
 )
 def render_content(tab):
     if tab == "tab-1":
-        return html.Div([html.H3("Tab content 1", className="m-4 p-5 text-center")])
+        return html.Div(
+            [html.H4("Default Style of dcc.Tabs", className="m-4 p-5 text-center")]
+        )
     elif tab == "tab-2":
-        return html.Div([html.H3("Tab content 2", className="m-4 p-5 text-center")])
+        return html.Div(
+            [
+                html.H4(
+                    "Change to a dark theme to see that default style does not work well.",
+                    className="m-4 p-5 text-center",
+                )
+            ]
+        )

@@ -50,6 +50,47 @@ td:last-child:not(.CalendarDay) {
   padding-right: 0; }
 
 
+/*
+ * Styles the slider for Bootstrap themes
+ * This one is customized for PULSE.  Change the colors for your selected theme
+ */
+
+.dash-bootstrap .rc-slider-handle {
+  border: 0;
+  background-color: #593196;  /* primary */
+}
+
+.dash-bootstrap .rc-slider-rail {
+  background-color: #ededed;  /* grey  */
+}
+
+.dash-bootstrap .rc-slider-track {
+  background-color: #593196;  /* primary */
+}
+
+.dash-bootstrap .rc-slider-dot {
+  border: 0;
+  background-color: #ededed; /* grey  */
+}
+
+.dash-bootstrap .rc-slider-dot.rc-slider-dot-active {
+  background-color: #593196;  /* primary */
+}
+
+.dash-bootstrap .rc-slider-mark-text {
+  color: #868e96;    /* default label color */
+}
+
+.dash-bootstrap .rc-slider-mark-text.rc-slider-mark-text-active {
+  color: #343a40;     /* Makes the active label color different than default label color */
+}
+
+
+
+
+
+/*************************   experimental ignore below *****************/
+
 
 /* for code boxes in the app.  The transparent background works well for both light
    and dark themed apps.  Doesn't work???
@@ -63,29 +104,6 @@ td:last-child:not(.CalendarDay) {
     margin-bottom:20px;
 }
 
-
-
-
-/*************************   experimental ignore below *****************/
-
-/*
- * This styles the dcc.slider components
- *
-
-
-.slider-dark-theme{
- background:blue !important;
-  .rc-slider-dot-active, .rc-slider-handle {
-  border-color: blue !important;
-  }
-}
-  .slider-dark-theme .rc-slider-track {
-  background-color: blue !important
-  }
-
-  .slider-dark-theme, .rc-slider-rail {
-  background-color: black !important
- }
 
 
 
@@ -108,7 +126,7 @@ td:last-child:not(.CalendarDay) {
   color: white !important;
 }
 
-/* Calendar range between to and from day */
+/* Calendar range between to and from day
 .CalendarDay__selected_span {
     background: blue !important;
     border: 1px blue !important;

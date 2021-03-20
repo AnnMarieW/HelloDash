@@ -121,6 +121,31 @@ gallery.append(
 
 
 # 6
+
+
+gallery.append(
+    Card(
+        image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
+        title="Quickstart App #2   <75 lines of code! ",
+        source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",
+        about="This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)",
+    )
+)
+
+
+# 7
+
+gallery.append(
+    Card(
+        image="https://user-images.githubusercontent.com/72614349/109823988-a6c40400-7bf5-11eb-8ee3-15b91e9c170d.png",
+        title="Quickstart app #3  ~ 100 lines of code",
+        source_code="https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/gallery/wordcloud/app.py",
+        about="""This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)  
+                  Note: You may need to `pip install wordcloud`""",
+    )
+)
+
+# 8
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/109817256-f2bf7a80-7bee-11eb-9beb-dd6673e98549.png",
@@ -133,19 +158,8 @@ gallery.append(
     )
 )
 
-# 7
-gallery.append(
-    Card(
-        image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
-        title="Quickstart App #2   <75 lines of code! ",
-        source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",
-        about="This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)",
-    )
-)
 
-
-
-# 8
+# 9
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/109827271-d0325f00-7bf8-11eb-9dc4-a24640b46690.png",
@@ -157,40 +171,9 @@ gallery.append(
 )
 
 
-# 9
-gallery.append(
-    Card(
-        title="""
-        ### New to Web Design?       
-            
-        Here are some great resources:
-        
-        - [Getting started with HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
-        - [Learn CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
-        - [Browser developer tools ](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)
-        -  [My favorite Boostrap Cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
-        - [Theme Explorer](https://hellodash.pythonanywhere.com/)
-         - [Dash Bootstrap video by Charming Data](https://www.youtube.com/watch?v=0mfIK8zxUds)
-        
-        Have any other good references?  Please drop me a note [here](https://github.com/AnnMarieW/HelloDash/issues) and I'll add
-        them to the list!
-        
-        """
-    )
-)
-
 # 10
-gallery.append(
-    Card(
-        image="https://user-images.githubusercontent.com/72614349/109823988-a6c40400-7bf5-11eb-8ee3-15b91e9c170d.png",
-        title="Quickstart app #3  ~ 100 lines of code",
-        source_code="https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/gallery/wordcloud/app.py",
-        about="""This is one of the example apps in  [dash-bootstrap-components GitHub](https://github.com/facultyai/dash-bootstrap-components/tree/main/examples)  
-                  Note: You may need to `pip install wordcloud`""",
-    )
-)
 
-# 11
+
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/110704339-1025b300-81b2-11eb-9b26-7a8815e722ce.png",
@@ -202,7 +185,7 @@ gallery.append(
     )
 )
 
-# 12
+# 11
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/110702548-e79cb980-81af-11eb-96b0-d89a36d3fcb9.png",
@@ -214,7 +197,7 @@ gallery.append(
     )
 )
 
-# 13
+# 12
 gallery.append(
     Card(
         image="https://user-images.githubusercontent.com/72614349/110704060-bb823800-81b1-11eb-8ac3-e866944beee6.png",
@@ -226,6 +209,28 @@ gallery.append(
     )
 )
 
+# 13
+
+gallery.append(
+    Card(
+        title="""
+        ### New to Web Design?       
+
+        Here are some great resources:
+
+        - [Getting started with HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
+        - [Learn CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
+        - [Browser developer tools ](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)
+        -  [My favorite Boostrap Cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+        - [Theme Explorer](https://hellodash.pythonanywhere.com/)
+         - [Dash Bootstrap video by Charming Data](https://www.youtube.com/watch?v=0mfIK8zxUds)
+
+        Have any other good references?  Please drop me a note [here](https://github.com/AnnMarieW/HelloDash/issues) and I'll add
+        them to the list!
+
+        """
+    )
+)
 
 """
 ======================================================================
