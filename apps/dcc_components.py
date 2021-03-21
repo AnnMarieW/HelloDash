@@ -29,7 +29,7 @@ def make_subheading(label, link):
                         [
                             label,
                             html.I(
-                                className="far fa-question-circle ml-2 mb-2",
+                                className="far fa-question-circle ml-2",
                                 style={"fontSize": 18},
                                 id="tooltip_target",
                             ),
@@ -63,7 +63,7 @@ def make_btn_with_modal(id, title, content):
             dbc.Button(
                 title,
                 id={"type": "modal_btn", "index": id},
-                color="secondary",
+                color="primary",
                 size="sm",
                 outline=True,
                 className="mb-2",
@@ -81,7 +81,7 @@ def make_btn_with_modal(id, title, content):
 def make_btn_with_link(link):
     return dbc.Button(
         "See Code",
-        color="secondary",
+        color="primary",
         target="_blank",
         href=link,  # github link
         size="sm",
@@ -238,6 +238,33 @@ datepicker_card = dbc.Card(
 )
 
 
+def make_dropdowns(classname):
+    return dbc.Card(
+        [
+            dcc.Dropdown(
+                options=[
+                    {"label": "New York City", "value": "NYC"},
+                    {"label": "Montréal", "value": "MTL"},
+                    {"label": "San Francisco", "value": "SF"},
+                ],
+                value="NYC",
+                className=classname,
+            ),
+            html.Br(),
+            dcc.Dropdown(
+                options=[
+                    {"label": "New York City", "value": "NYC"},
+                    {"label": "Montréal", "value": "MTL"},
+                    {"label": "San Francisco", "value": "SF"},
+                ],
+                value=["NYC", "MTL"],
+                multi=True,
+                className=classname,
+            ),
+        ],
+    )
+
+
 dropdown_card = dbc.Card(
     [
         dbc.CardHeader(make_subheading("dcc.Dropdown", "dropdown/")),
@@ -251,23 +278,16 @@ dropdown_card = dbc.Card(
                             "see CSS",
                             dcc.Markdown(text.dcc_dropdown_css),
                         ),
-                        dcc.Dropdown(
-                            options=[
-                                {"label": "New York City", "value": "NYC"},
-                                {"label": "Montréal", "value": "MTL"},
-                                {"label": "San Francisco", "value": "SF"},
-                            ],
-                            value="NYC",
-                        ),
-                        html.Br(),
-                        dcc.Dropdown(
-                            options=[
-                                {"label": "New York City", "value": "NYC"},
-                                {"label": "Montréal", "value": "MTL"},
-                                {"label": "San Francisco", "value": "SF"},
-                            ],
-                            value=["NYC", "MTL"],
-                            multi=True,
+                        dbc.Row(
+                            [
+                                dbc.Col(["Styled for all themes:", make_dropdowns("")]),
+                                dbc.Col(
+                                    [
+                                        "Styled for CYBORG theme:",
+                                        make_dropdowns("dash-bootstrap"),
+                                    ]
+                                ),
+                            ]
                         ),
                     ]
                 ),
@@ -575,10 +595,10 @@ layout = dbc.Container(
             [
                 intro_text,
                 html.Hr(),
+                dropdown_card,
                 slider_card,
                 tabs_card,
                 checklist_radio_card,
-                dropdown_card,
                 graph_card,
                 datepicker_card,
                 input_card,

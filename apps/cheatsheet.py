@@ -281,6 +281,10 @@ how_to_general = dbc.Card(
             dbc.ListGroup(
                 [
                     make_link(
+                        "How to add custom CSS to a Dash app",
+                        "https://dash.plotly.com/external-resources",
+                    ),
+                    make_link(
                         "How to make a round button with an icon",
                         "https://community.plotly.com/t/formatting-in-dash/51197/3",
                     ),

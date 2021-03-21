@@ -645,12 +645,18 @@ dcc_dropdown = """
 The dcc.Dropdown default style works well with many Bootstrap light themes.  However with dark themes, the
 font color makes the dropdown options text very hard to read. 
 
-We fix it in this app by using the following CSS in the asset folder:"""
+There are only limited ways to style the dropdown using component props. It is necessary to use the css file in the
+assets folder to style the dropdown. More info on how to do that [here](https://dash.plotly.com/external-resources).
+  
+
+The dropdowns on the left is styled so that it works well with with any theme.  The dropdowns on the right have a
+black background and work will with many dark themes.  You can use this CSS as a starting point to fine tune the
+dropdown for your selected theme."""
 
 dcc_dropdown_css = """
 ```
 
-/** This styles the dropdown menu items so they are visible in both light and dark theme apps **/
+/* This styles the dropdown menu items so they are visible in both light and dark theme apps */
 .VirtualizedSelectOption {
     background-color: white;
     color: black;
@@ -660,6 +666,34 @@ dcc_dropdown_css = """
     background-color: lightgrey;
     color: black;
 }
+
+/* ---------------------------------------------------------- */
+/* This styles the dropdown with a black background           */
+
+.Select-control {
+    background-color: black !important;    /* input box */
+}
+
+.Select-value-label {   /* changes the text color of input box */
+    color: white !important;
+}
+
+.Select--single > .Select-control .Select-value, .Select-placeholder {
+    border: 1px solid grey !important;
+    border-radius: 4px !important;
+
+}
+
+.VirtualizedSelectOption {   /* dropdown menu options */
+    background-color: black;
+    color: white;
+}
+
+.VirtualizedSelectFocusedOption {  /* dropdown menu hover effect */
+    background-color: black;
+    opacity: .7;
+}
+
 ```"""
 
 dcc_graph = """
