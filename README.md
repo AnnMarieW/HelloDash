@@ -1,11 +1,24 @@
 # HelloDash
 ## See this app at:  https://hellodash.pythonanywhere.com/
 
-The purpose of this app is to help you see how different Bootstrap and Bootswatch themes, Plotly figure templates and colors 
-will look in your Dash app.  
+### The Dash Bootstrap Theme Explorer will help you improve the design of your Dash app. 
+
+ - The Theme Explorer app makes it easy to see how different Bootstrap themes, Plotly figure templates and colors 
+will look in your app.
+   
+ - The Component Gallery shows a sample of the components available and how they respond to different Bootstrap and
+Bootswatch themes.  For the DataTable and some Dash Core Components, there are examples of how to 
+   use the `style` and `className` properties and custom CSS to make them look great with your selected Bootstrap theme. 
+   
+- The App Gallery has examples of Dash Apps made with Bootstrap.  
+  
+- The Cheatsheet is a page with my favorite links to help with app design.
+
+This is still a work in progress --  I would love to hear comments and suggestions for improvements. If you have design tips
+or would like to add an app to the gallery, feel free to open an issue.  See details below.
 
 
-## The Theme Explorer helps you create a design theme for your Dash app
+## The Theme Explorer 
 
 Choose from:
  - 22 [Boostrap Bootswatch themes](https://www.bootstrapcdn.com/bootswatch/)
@@ -35,11 +48,9 @@ Choose from:
 -----------
 
 
-When you decide on a scheme you like, you can take note of the settings and add them into your own app, or use one of the
-sample apps to get started. 
-
-See the App Gallery for more examples.  If you have an app that you would like to include in the gallery, please open
-an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
+When you decide on a design you like, you can take note of the settings and add them into your own app, or use one of the
+sample apps to get started. See the App Gallery for more examples.  If you have an app that you would like to include
+in the gallery, please open an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
 
 1) An image of your app
 2) A short title to appear on the card in the gallery
@@ -47,12 +58,6 @@ an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the follow
 4) An extended description of your app.  This will be displayed in a dcc.Markdown component, so feel free to include any
 compatible Markdown formatting and links etc.
    
-
-The Component Gallery shows how all the components look with different themes.  It also shows how to use the `style` 
-and `className` properties and custom CSS to fine tune your design.  
-
-This app is still a work in progress.  If you have any design tips you would like to share, please open an issue,
-and I'll add it to the app!
 
 See this app at https://hellodash.pythonanywhere.com/
 

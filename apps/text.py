@@ -10,8 +10,9 @@ Used in: dbc_components.py
 
 dbc_intro_text = """  
     `dash-bootstrap-components` is a library of Bootstrap components for Plotly Dash that makes it easier to build 
-    consistently styled apps with complex, responsive layouts. It's provided open source by [Faculty AI](https://dash-bootstrap-components.opensource.faculty.ai/).  Click on the link with the 
-    component name to go directly to the component's docs for more great examples.  
+    consistently styled apps with complex, responsive layouts. It's provided open source by [Faculty AI](https://dash-bootstrap-components.opensource.faculty.ai/).  
+    Click on the component name in the card header to go directly to the component's official documentation for more
+     info and great examples.  
 
     All dash-boostrap-components are automatically styled based on your selected Bootstrap theme -- no custom CSS is required!
     See this in action by changing the Bootstrap theme in the App Design Selections panel above.  
@@ -679,7 +680,7 @@ dcc_intro_text = """
        most light themes, however,  many elements of the component cannot be updated without CSS and do not 
        automatically respond to changes in themes.  
 
-        This section will show how to style dcc components so look great with your selected Bootstrap theme. 
+        This section will show how to style dcc components so they look great with your selected Bootstrap theme. 
           Note this is still a work in progress, so if you have any style tips please open an 
           [issue](https://github.com/AnnMarieW/HelloDash/issues) and  I'll include them here!
            
