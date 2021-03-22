@@ -1,17 +1,13 @@
 # HelloDash
 ## See this app at:  https://hellodash.pythonanywhere.com/
 
-Note - this site is under active development and there will be frequent breaking changes.  If you have any suggestions
-for improvements or features to add, I'd be delighted to hear from you!  Please don't hesitate to open an issue, or
-create a pull request.  And of course I accept positive feedback too :-)
-
 The purpose of this app is to help you see how different Bootstrap and Bootswatch themes, Plotly figure templates and colors 
 will look in your Dash app.  
 
 When you decide on a scheme you like, you can take note of the settings and add them into your own app, or use one of the
 sample apps to get started. 
 
-See the app gallery for more examples.  If you have an app that you would like to include in the gallery, please open
+See the App Gallery for more examples.  If you have an app that you would like to include in the gallery, please open
 an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
 
 1) An image of your app
@@ -21,6 +17,11 @@ an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the follow
 compatible Markdown formatting and links etc.
    
 
+The Component Gallery shows how all the components look with different themes.  It also shows how to use the `style` 
+and `className` properties and custom CSS to fine tune your design.  
+
+This app is still a work in progress.  If you have any design tips you would like to share, please open an issue,
+and I'll add it to the app!
 
 -------------
 ------------
@@ -40,8 +41,6 @@ Choose from:
 
 ### These two images are the same app!  Only 1 line of code is changed to set a different theme.
 
-
-
 |Light Theme app     | Dark Theme app |
 | ----------- | ----------- |
 | ![theme_explorer_light](https://user-images.githubusercontent.com/72614349/109723319-28bb1b00-7b6b-11eb-8942-20a109b3ed1e.png#thumbnail) | ![theme_explorer_dark](https://user-images.githubusercontent.com/72614349/109723317-28228480-7b6b-11eb-8a50-0ac06ec2bca1.png#thumbnail) |
@@ -50,8 +49,6 @@ Choose from:
 | __Graph Color Sequences:__ Pastel | Dark24|
 | __Graph Continuous Colorscales:__ darkmint | ice|
 | __App Background Color:__ #F3F6F3 | ""|
-
-
 
 ------
 -------
