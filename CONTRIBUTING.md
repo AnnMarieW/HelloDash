@@ -1,12 +1,12 @@
 
 # HelloDash Contributor Guide
 
-## Getting Started
+
 
 Comments, suggestion, constructive criticism, contributions and pull requests are
 gladly accepted.  Please open an issue here.
 
-For now, this section is documentation for my future self, when I need to come back here
+Caution - this page is mostly notes for my future self  -- for when I need to come back here
 to maintain this project.
 
 ### App Structure
@@ -14,10 +14,10 @@ The app is structured as a multi-page app as shown in the [docs](https://dash.pl
 
 - app.py
 - index.py
-- apps
-   |-- __init__.py
-   |-- app1.py
-   |-- app2.py
+- apps  
+   |-- __init__.py  
+   |-- app1.py  
+   |-- app2.py  
 
 After cloning or forking this repo, run index.py
 
@@ -30,7 +30,7 @@ Note that the app to create the gallery is in the apps directory.
 
 ### Images
 The images for this app are not included in the file structure.  All the images are located in
-Issue #1 in the HelloDash GitHub repo (If you can't find it, look for closed issues).  This is
+Issue #1 in the HelloDash GitHub repo (If you can't find it, check closed issues).  This is
 done to keep the file size smaller so I don't run out of space on my free PythonAnywhere hosting
 site.  Also, it seems to  load the images faster from the link than when the are in the
 assets directory.  
@@ -38,7 +38,7 @@ assets directory.
 To add images to the app, copy and paste or upload an image. Or edit an image that's currently
 there.  Copy the address.  It can be included like this:
 
-    dcc.Markdown(" [title](link)]
+    dcc.Markdown("[title](link)"]
 
 To control the size of the image add a hashtag ie link#thumbnail  at the end of the link, 
 Then adjust the size in the .css file in the assets folder:
@@ -48,7 +48,7 @@ Then adjust the size in the .css file in the assets folder:
        height:100px;
     }
 
-Or add them in a card using:
+The the images in the app gallery use a card like this:
 
 ```python
         dbc.CardImg(
@@ -78,7 +78,7 @@ The app gallery uses a button with a link to the github repo:
 ```
 
 #### Button with a modal
-See helper functions in dcc_components.py.  Code can be displayed in dcc.Markdown(```code```) or as described below 
+See helper functions in dcc_components.py.  Code can be displayed in dcc.Markdown("""\```code```""") or as described below 
 which is better for dark themes.
 
 

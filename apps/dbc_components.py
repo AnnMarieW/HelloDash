@@ -597,33 +597,36 @@ navbar = dbc.Card(
             [
                 make_subheading("dbc.Navbar", "navbar/"),
                 make_subheading("dbc.DropdownMenu", "dropdown_menu/"),
-            ], className='px-2',
-        ),
-        dbc.CardBody(dbc.NavbarSimple(
-            children=[
-                dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
-                dbc.DropdownMenu(
-                    nav=True,
-                    in_navbar=True,
-                    label="Menu",
-                    children=[
-                        dbc.DropdownMenuItem("Entry 1", href="https://google.com"),
-                        dbc.DropdownMenuItem("Entry 2", href="/test"),
-                        dbc.DropdownMenuItem(divider=True),
-                        dbc.DropdownMenuItem("A heading", header=True),
-                        dbc.DropdownMenuItem(
-                            "Entry 3", href="/external-relative", external_link=True
-                        ),
-                        dbc.DropdownMenuItem("Entry 4 - does nothing"),
-                    ],
-                ),
             ],
-            brand="Dash Bootstrap Components",
-            brand_href=DBC_HOME,
-            sticky="top",
-            color="primary",
-            dark=True,
-        )),
+            className="px-2",
+        ),
+        dbc.CardBody(
+            dbc.NavbarSimple(
+                children=[
+                    dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
+                    dbc.DropdownMenu(
+                        nav=True,
+                        in_navbar=True,
+                        label="Menu",
+                        children=[
+                            dbc.DropdownMenuItem("Entry 1", href="https://google.com"),
+                            dbc.DropdownMenuItem("Entry 2", href="/test"),
+                            dbc.DropdownMenuItem(divider=True),
+                            dbc.DropdownMenuItem("A heading", header=True),
+                            dbc.DropdownMenuItem(
+                                "Entry 3", href="/external-relative", external_link=True
+                            ),
+                            dbc.DropdownMenuItem("Entry 4 - does nothing"),
+                        ],
+                    ),
+                ],
+                brand="Dash Bootstrap Components",
+                brand_href=DBC_HOME,
+                sticky="top",
+                color="primary",
+                dark=True,
+            )
+        ),
     ]
 )
 
@@ -643,12 +646,15 @@ popover = html.Div(
 progress = dbc.Card(
     [
         html.H2(make_subheading("dbc.Progress", "progress/")),
-        dbc.CardBody([
-        dbc.Progress("25%", value=25),
-        dbc.Progress(value=50, striped=True, className="my-2"),
-        dbc.Progress(value=75, color="success"),
-            ])
-    ],className="mb-4",
+        dbc.CardBody(
+            [
+                dbc.Progress("25%", value=25),
+                dbc.Progress(value=50, striped=True, className="my-2"),
+                dbc.Progress(value=75, color="success"),
+            ]
+        ),
+    ],
+    className="mb-4",
 )
 
 spinner = dbc.Card(
@@ -666,7 +672,8 @@ spinner = dbc.Card(
                 ),
             ]
         ),
-    ],className="mb-4",
+    ],
+    className="mb-4",
 )
 
 
@@ -719,25 +726,31 @@ table = dbc.Card(
 tabs = dbc.Card(
     [
         make_subheading("dbc.Tabs", "tabs/"),
-        dbc.CardBody(dbc.Tabs(
-            [
-                dbc.Tab(
-                    html.H4("This is tab 1"), label="Tab 1", style={"padding": "10px"},
-                ),
-                dbc.Tab(
-                    dbc.Card(
-                        dbc.CardBody(
-                            [
-                                html.P("This tab has a card!", className="card-text",),
-                                dbc.Button("Click here", color="success"),
-                            ]
-                        )
+        dbc.CardBody(
+            dbc.Tabs(
+                [
+                    dbc.Tab(
+                        html.H4("This is tab 1"),
+                        label="Tab 1",
+                        style={"padding": "10px"},
                     ),
-                    label="Tab 2",
-                    style={"padding": "10px"},
-                ),
-            ]
-        ),),
+                    dbc.Tab(
+                        dbc.Card(
+                            dbc.CardBody(
+                                [
+                                    html.P(
+                                        "This tab has a card!", className="card-text",
+                                    ),
+                                    dbc.Button("Click here", color="success"),
+                                ]
+                            )
+                        ),
+                        label="Tab 2",
+                        style={"padding": "10px"},
+                    ),
+                ]
+            ),
+        ),
     ],
     className="my-4",
 )
@@ -800,12 +813,11 @@ layout = dbc.Container(
                 columns,
                 list_group,
                 table,
-
                 progress,
                 spinner,
                 dbc.Card(
                     [
-                        html.H2("Dialogs", className='pl-2 text-primary'),
+                        html.H2("Dialogs", className="pl-2 text-primary"),
                         dbc.CardBody(
                             dbc.Row(
                                 [
