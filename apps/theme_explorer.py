@@ -445,7 +445,7 @@ sample_app_controls = dbc.Card(
     className="mr-4 ml-4 px-2",
 )
 
-sample_app_1 = dbc.Card(
+sample_app = dbc.Card(
     [
         html.H2("Sample Dash App", className="bg-primary text-white p-2"),
         dbc.Row(
@@ -453,19 +453,19 @@ sample_app_1 = dbc.Card(
                 dbc.Col(
                     [
                         dcc.Markdown(
-                            id="line_chart_title", className="text-center mb-0"
+                            id="line_chart_title",
+                            className="text-center mb-0 d-inline-block",
                         ),
-                        dcc.Graph(
-                            id="line_chart",
-                            config={"displayModeBar": False},
-                            # style={"minWidth": 500},
-                        ),
+                        dcc.Graph(id="line_chart", config={"displayModeBar": False},),
                     ],
                     lg=6,
                 ),
                 dbc.Col(
                     [
-                        dcc.Markdown(id="scatter_chart_title", className="text-center"),
+                        dcc.Markdown(
+                            id="scatter_chart_title",
+                            className="text-center  d-inline-block",
+                        ),
                         dcc.Graph(
                             id="scatter_chart", config={"displayModeBar": False},
                         ),
@@ -473,12 +473,12 @@ sample_app_1 = dbc.Card(
                     lg=6,
                 ),
             ],
-            className="mt-0, mb-2",
+            className="mt-0, mb-2 mx-2",
         ),
         sample_app_controls,
     ],
     className="mx-1 shadow p-1 pb-4",
-    id="layout_container",
+    id="sample_app_container",
 )
 
 
@@ -492,8 +492,8 @@ layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col([theme_controls, source_code_modal,], md=3),
-                dbc.Col(sample_app_1, md=9, sm=12),
-            ]
+                dbc.Col(sample_app, md=9, sm=12,),
+            ],
         ),
         component_layout,
         html.Div(id="blank_output"),
@@ -576,7 +576,7 @@ def update(theme):
 
 
 @app.callback(
-    Output("layout_container", "style"),
+    Output("sample_app_container", "style"),
     Output("bg_default", "value"),
     Input("bg_color", "value"),
     Input("bg_default", "value"),

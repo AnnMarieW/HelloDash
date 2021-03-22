@@ -46,8 +46,26 @@ See the Dash documentation to learn more about [discrete colors](https://plotly.
 
 """
 =====================================================================
-Used in: html.dbc_components.py
+Used in: html_components.py
 """
+
+html_intro_text = """ 
+    The `dash-html-components` library has a component for every HTML tag.  All components are fully customizable using
+    the  `className` and `style` parameter.
+    
+    When you use Bootstrap classes, the style will automatically be updated when you change themes - no custom CSS
+    required!  See this in action by changing the Bootstrap theme in the App Design Selections panel above.  Notice that 
+    the font and the colors change according to the theme selected.
+
+    Note - it's often easier to use dbc or dcc components rather than dash-html-components.  See dcc.Markdown for an easy 
+    way to format text - including code blocks, lists, simple tables and more.  See also dbc.Table and 
+    Dash DataTable for formatting tables, and other dbc components for lists and forms. 
+
+    - See the  full documentation for [dash-html-components](https://dash.plotly.com/dash-html-components) 
+    - Learn more about [Bootstrap classes](https://getbootstrap.com/docs/3.4/css/)
+    - This is my favorite Bootstrap classes [cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)   
+"""
+
 
 typography_code = """
 typography = html.Div(
@@ -503,13 +521,30 @@ datatable_move_export_btn = """
 Used in: DataTable.py 
 """
 
+datatable_intro_text = """
+    Dash `DataTable` is an interactive table component designed for viewing, editing, and exploring large datasets. 
+
+     Unlike a standard HTML table, the Dash DataTable does not respond to Bootstrap themes automatically.  The first table shows
+     the default style for the DataTable.  Try changing the Bootstrap theme in the App Design Selections panel to see how
+     the DataTable responds to  different themes.
+
+     As you will see, the default style for the DataTable functions well with light themes. However, with
+     dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The
+     good news is that the DashTable is highly customizable so you can make it look great with any of the Boostrap themes.
+
+     - [DataTable Quickstart](https://dash.plotly.com/datatable)
+     - [DataTable styling](https://dash.plotly.com/datatable/style)
+     - [DataTable Reference](https://dash.plotly.com/datatable/reference)
+"""
+
 
 datatable_light_text = """   
 
-    With two simple style changes, the DataTable will look even better in your app with Bootstrap light themes:
+    With two simple style changes, the DataTable will look even better in your app with Bootstrap light themes.  This
+    table is styled with DataTable parameters for the standard BOOTSTRAP theme.
 
-    -  Change the font to be the same font as your selected theme.
-    -  Change the active and selected cells to Bootstrap theme colors rather than the Dash default of "hotpink". Try
+    -  The font is changed to the font for the BOOTSTRAP theme.
+    -  The active and selected cells are highlighted with the Bootstrap theme colors rather than the Dash default of "hotpink". Try
     selecting cells in this table and in the default table above to see the style difference.
 """
 
@@ -607,6 +642,27 @@ datatable_dark_code = """
 Used in: dcc_components.py
 """
 
+dcc_intro_text = """            
+     The `dash-core-components` library is the core set of components included with Dash.  Change the Bootstrap theme in the
+      App Design Selections panel to see how these components respond the different Bootstrap themes.  Note: if you work for
+       a company, see also Dash Enterprise Design KIt.  
+
+       Most Dash core components (dcc) have a `style` and `className` property that can be used to style the component.  Some 
+       components will also inherit the style of the container.  However,  it's not possible to style all parts of 
+       the component this way.  For example, there is no way to style the options of a dropdown without using  CSS.  
+
+       If you use Bootstrap, you will see that Dash components look nice with the default BOOTSTRAP theme and 
+       most light themes, however,  many elements of the component cannot be updated without CSS and do not 
+       automatically respond to changes in themes.  
+
+        This section will show how to style dcc components so look great with your selected Bootstrap theme. 
+          Note this is still a work in progress, so if you have any style tips please open an 
+          [issue](https://github.com/AnnMarieW/HelloDash/issues) and  I'll include them here!
+           
+      - [dash-core-components Overview](https://dash.plotly.com/dash-core-components)
+      - [How to add custom CSS to a Dash app](https://dash.plotly.com/external-resources).
+"""
+
 dcc_checklist_radio_1 = """
 ##### Styling dcc.RadioItems and dcc.Checklist
 The first row of dcc.Checklist and dcc.RadioItems below shows the default style.
@@ -618,7 +674,8 @@ labelStyle, labelClassName` parameters. See [this example]( https://community.pl
 dcc_checklist_radio_2 = """
 A great alternate is to use `dash-bootstrap-components` dbc.Checklist and dbc.RadioItems. Here are the advantages:
 
-- The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color.  See this in action by changing the theme in the App Design Selections panel. 
+- The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color.  
+See this now by changing the theme in the App Design Selections panel. 
 - You can also customize the selected label and icons color in dbc components using `labelCheckedStyle` and `labelCheckedStyle` parameters.
 - By default there is nice spacing between the icon and the label, so there is no need to define this manually.
 -  The dbc.Checklist can be displayed as toggle switches by setting `switch=True`.  See the dash-boostrap-components gallery for an example.  
@@ -635,7 +692,7 @@ dcc_tabs = """
 The tabs on the left are the default and the tabs on the right are styled so that they work well with both light and
 dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  
 
-The tabs for this Component Gallery use dcc.Tabs styled for all themes and and `vertical=True`
+The tabs for this Component Gallery use dcc.Tabs styled for all themes and `vertical=True`
 """
 
 dcc_dropdown = """
@@ -645,13 +702,10 @@ dcc_dropdown = """
 The dcc.Dropdown default style works well with many Bootstrap light themes.  However with dark themes, the
 font color makes the dropdown options text very hard to read. 
 
-There are only limited ways to style the dropdown using component props. It is necessary to use the css file in the
-assets folder to style the dropdown. More info on how to do that [here](https://dash.plotly.com/external-resources).
-  
-
-The dropdowns on the left is styled so that it works well with with any theme.  The dropdowns on the right have a
-black background and work will with many dark themes.  You can use this CSS as a starting point to fine tune the
-dropdown for your selected theme."""
+There are only limited ways to style the dropdown using component props. The dropdowns below are styled with CSS.
+The ones on the left are styled so the dropdown menu options are visible with with any theme.  The ones on 
+the right have a black background and work well with many dark themes.  This CSS can be used as a starting point 
+to fine tune the dropdown for your selected theme."""
 
 dcc_dropdown_css = """
 ```

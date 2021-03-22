@@ -231,14 +231,6 @@ how_to_datatable = dbc.Card(
             dbc.ListGroup(
                 [
                     make_link(
-                        "How to format numbers in a DataTable",
-                        "https://formattable.pythonanywhere.com/",
-                    ),
-                    make_link(
-                        "How to add sparkline to a DataTable",
-                        "https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468",
-                    ),
-                    make_link(
                         "How to do fix table where data is cut off at the edges",
                         "https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/",
                     ),
@@ -266,6 +258,14 @@ how_to_datatable = dbc.Card(
                             html.Pre(html.Code(text.datatable_move_export_btn)),
                             style=codebox,
                         ),
+                    ),
+                    make_link(
+                        "How to format numbers in a DataTable",
+                        "https://formattable.pythonanywhere.com/",
+                    ),
+                    make_link(
+                        "How to add sparkline to a DataTable",
+                        "https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468",
                     ),
                 ]
             )

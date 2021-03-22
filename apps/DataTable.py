@@ -3,8 +3,8 @@ This module is imported in the component_gallery.py and demonstrates how to styl
 Dash DataTable to look better with Bootstrap themes.
 
 To keep things organized:
-    put long descriptions and code examples in text.py and import them here
-    cards organized like a list of links are created in cheatsheet.py and imported here
+    long descriptions and code examples are in text.py
+    cards like a list of links are created in cheatsheet.py and imported here
 
 Cards for a light (dark)  theme are displayed only when a light (dark) theme is selected
 
@@ -84,7 +84,7 @@ def make_btn_with_modal(id, title, content):
      title:  what appears on the button
      content:
         To display text, use dcc.Markdown("my text")
-        To display a codebox:
+        To display a codebox that looks better with dark themes:
           html.Div(html.Pre(html.Code(" enter code here" )), style=codebox,)
 
     """
@@ -142,7 +142,7 @@ def make_table(theme):
             {
                 "if": {"row_index": "odd"},
                 "type": "markdown",
-                "value": "This row is significant.",
+                "value": "odd rows have a sample tooltip",
             }
         ],
     )
@@ -150,27 +150,8 @@ def make_table(theme):
 
 """
 =====================================================================
+content
 """
-
-
-default_table_text = dcc.Markdown(
-    """
-    Dash `DataTable` is an interactive table component designed for viewing, editing, and exploring large datasets. 
-
-     Unlike a standard HTML table, the Dash DataTable does not respond to Bootstrap themes automatically.  The first table shows
-     the default style for the DataTable.  Try changing the Bootstrap theme in the App Design Selections panel to see how
-     the DataTable responds to  different themes.
-
-     As you will see, the default style for the DataTable functions well with light themes. However, with
-     dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The
-     good news is that the DashTable is highly customizable so you can make it look great with any of the Boostrap themes.
-     
-     - [DataTable Quickstart](https://dash.plotly.com/datatable)
-     - [DataTable styling](https://dash.plotly.com/datatable/style)
-     - [DataTable Reference](https://dash.plotly.com/datatable/reference)
-
-"""
-)
 
 default_table_card = dbc.Card(
     [
@@ -241,7 +222,7 @@ layout = (
         [
             dbc.Card(
                 [
-                    default_table_text,
+                    dcc.Markdown(text.datatable_intro_text),
                     default_table_card,
                     light_theme_card,
                     dark_theme_card,

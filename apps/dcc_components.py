@@ -94,17 +94,6 @@ def make_btn_with_link(link):
 Content
 """
 
-intro_text = dcc.Markdown(
-    """            
-     `dash-core-components` is the core set of components included with Dash.  Change the Bootstrap theme in the
-      App Design Selections panel to see how these components respond the different Bootstrap themes.  Note: if you work for
-       a company, see also Dash Enterprise Design KIt.  
-      - [Dash Core Components Overview](https://dash.plotly.com/dash-core-components)
-
-
-""",
-    id="dcc",
-)
 
 checklist_items = (
     dbc.Card(
@@ -593,10 +582,10 @@ layout = dbc.Container(
     [
         dbc.Card(
             [
-                intro_text,
+                dcc.Markdown(text.dcc_intro_text),
                 html.Hr(),
-                dropdown_card,
                 slider_card,
+                dropdown_card,
                 tabs_card,
                 checklist_radio_card,
                 graph_card,

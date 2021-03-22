@@ -66,7 +66,7 @@ def make_btn_with_modal(id, title, content):
             dbc.Button(
                 title,
                 id={"type": "modal_btn", "index": id},
-                color="secondary",
+                color="primary",
                 size="sm",
                 outline=True,
                 className="my-2",
@@ -102,25 +102,6 @@ def make_html_table():
 Content
 """
 
-html_intro_text = dcc.Markdown(
-    """ 
-    The `dash-html-components` library has a component for every HTML tag.  All components have a `className`
-    parameter, so you can use standard Bootstrap classes.  This makes dash-html-components  compatible with any 
-    Bootstrap theme.  You can also customize them with CSS using the `style` property.
-
-    All dash-html-components are automatically styled based on your selected Bootstrap theme -- no custom CSS is required!
-    See this in action by changing the Bootstrap theme in the App Design Selections panel above.  Notice that the font
-    and the colors change according to the theme selected.
-    
-    Note - it's often easier to use dbc or dcc components rather than dash-html-components.  See dcc.Markdown for an easy 
-    way to format text - including code blocks, lists, simple tables and more.  See also dbc.Table and 
-    Dash DataTable for formatting tables, and other dbc components for lists and forms. 
-
-    - See the  full documentation for [dash-html-components](https://dash.plotly.com/dash-html-components) 
-    - Learn more about [Bootstrap classes](https://getbootstrap.com/docs/3.4/css/)
-    - This is my favorite Bootstrap classes [cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)   
-"""
-)
 
 typography_text = dcc.Markdown(
     "This shows the use of html.H1 - "
@@ -136,7 +117,7 @@ typography_text = dcc.Markdown(
             "html.Abbr",
         ]
     )
-    + ".",
+    + ".  It also shows the use of Boostrap classes to change the text and background color.",
     className="ml-4",
 )
 typography_card = dbc.Card(
@@ -263,7 +244,7 @@ typography_card = dbc.Card(
 blockquotes_text = dcc.Markdown(
     "This shows the default Bootstrap style for Blockquotes and the use of "
     + make_links(["html.H2", "html.P", "html.Blockquote", "html.Footer", "html.Cite"])
-    + ".",
+    + ". It also uses Bootstrap classes to align the text",
     className="ml-4",
 )
 blockquotes_card = dbc.Card(
@@ -465,7 +446,7 @@ layout = dbc.Container(
     [
         dbc.Card(
             [
-                html_intro_text,
+                dcc.Markdown(text.html_intro_text),
                 html.Hr(),
                 typography_card,
                 blockquotes_card,
