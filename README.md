@@ -4,25 +4,6 @@
 The purpose of this app is to help you see how different Bootstrap and Bootswatch themes, Plotly figure templates and colors 
 will look in your Dash app.  
 
-When you decide on a scheme you like, you can take note of the settings and add them into your own app, or use one of the
-sample apps to get started. 
-
-See the App Gallery for more examples.  If you have an app that you would like to include in the gallery, please open
-an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
-
-1) An image of your app
-2) A short title to appear on the card in the gallery
-3) A link to the Github/GitLab ect for your code
-4) An extended description of your app.  This will be displayed in a dcc.Markdown component, so feel free to include any
-compatible Markdown formatting and links etc.
-   
-
-The Component Gallery shows how all the components look with different themes.  It also shows how to use the `style` 
-and `className` properties and custom CSS to fine tune your design.  
-
-This app is still a work in progress.  If you have any design tips you would like to share, please open an issue,
-and I'll add it to the app!
-
 -------------
 ------------
 
@@ -58,6 +39,26 @@ Choose from:
 
 -------------
 ------------
+
+
+When you decide on a scheme you like, you can take note of the settings and add them into your own app, or use one of the
+sample apps to get started. 
+
+See the App Gallery for more examples.  If you have an app that you would like to include in the gallery, please open
+an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
+
+1) An image of your app
+2) A short title to appear on the card in the gallery
+3) A link to the Github/GitLab ect for your code
+4) An extended description of your app.  This will be displayed in a dcc.Markdown component, so feel free to include any
+compatible Markdown formatting and links etc.
+   
+
+The Component Gallery shows how all the components look with different themes.  It also shows how to use the `style` 
+and `className` properties and custom CSS to fine tune your design.  
+
+This app is still a work in progress.  If you have any design tips you would like to share, please open an issue,
+and I'll add it to the app!
 
 See this app at https://hellodash.pythonanywhere.com/
 
