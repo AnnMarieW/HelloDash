@@ -23,11 +23,11 @@ def make_subheading(label, link):
         [
             dbc.Button(
                 [
-                    html.H4(
+                    html.H2(
                         [
                             label,
                             html.I(
-                                className="far fa-question-circle ml-2 mb-2",
+                                className="far fa-question-circle ml-2 mb-2 align-middle",
                                 style={"fontSize": 18},
                                 id="tooltip_target",
                             ),
@@ -62,7 +62,7 @@ alerts2 = html.Div(
 
 alerts = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Alert", "alert/")),
+        html.H2(make_subheading("dbc.Alert", "alert/")),
         dbc.CardBody(dbc.Row([dbc.Col(alerts1), dbc.Col(alerts2)])),
     ],
     className="mb-4",
@@ -83,7 +83,7 @@ badge_colors = html.Span(
 
 badges = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Badge", "badge/")),
+        html.H2(make_subheading("dbc.Badge", "badge/")),
         dbc.CardBody(
             [
                 badge_colors,
@@ -101,7 +101,7 @@ badges = dbc.Card(
 
 buttons1 = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Button", "button/")),
+        html.H2(make_subheading("dbc.Button", "button/")),
         dbc.CardBody(
             [
                 dbc.Button("Primary", color="primary", className="m-1"),
@@ -142,7 +142,7 @@ buttons1 = dbc.Card(
 
 buttons2 = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.ButtonGroup", "buttongroups/")),
+        html.H2(make_subheading("dbc.ButtonGroup", "buttongroups/")),
         dbc.CardBody(
             [
                 dbc.ButtonGroup(
@@ -182,13 +182,13 @@ buttons = dbc.Row([dbc.Col(buttons1), dbc.Col(buttons2)])
 
 cards = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Card", "card/")),
+        html.H2(make_subheading("dbc.Card", "card/")),
         dbc.CardBody(
             dbc.CardDeck(
                 [
                     dbc.Card(
                         [
-                            dbc.CardHeader("Header"),
+                            html.H2("Header"),
                             dbc.CardBody(
                                 [
                                     html.H5(
@@ -263,7 +263,7 @@ collapse = html.Div(
 
 columns = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Row dbc.Col", "layout/")),
+        html.H2(make_subheading("dbc.Row dbc.Col", "layout/")),
         dbc.CardBody(
             [
                 dbc.Row(
@@ -332,7 +332,7 @@ fade = html.Div(
 # ---------  start forms row ------------------
 form = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Form", "form/")),
+        html.H2(make_subheading("dbc.Form", "form/")),
         dbc.CardBody(
             [
                 dbc.Form(
@@ -385,7 +385,7 @@ form = dbc.Card(
 
 input_ = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Input", "input/")),
+        html.H2(make_subheading("dbc.Input", "input/")),
         dbc.CardBody(
             [
                 dbc.FormGroup([dbc.Label("Text input"), dbc.Input(type="text")]),
@@ -421,7 +421,7 @@ input_ = dbc.Card(
 
 checklist_items = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Checklist", "input/"),),
+        html.H2(make_subheading("dbc.Checklist", "input/"),),
         dbc.CardBody(
             [
                 dbc.Row(
@@ -466,7 +466,7 @@ checklist_items = dbc.Card(
 
 radio_items = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.RadioItems", "input/"),),
+        html.H2(make_subheading("dbc.RadioItems", "input/"),),
         dbc.CardBody(
             [
                 dbc.RadioItems(
@@ -492,7 +492,7 @@ radio_items = dbc.Card(
 
 input_group = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.InputGroup and addons", "input_group/")),
+        html.H2(make_subheading("dbc.InputGroup and addons", "input_group/")),
         dbc.CardBody(
             [
                 dbc.InputGroup(
@@ -532,7 +532,7 @@ input_group = dbc.Card(
 
 jumbotron = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Jumbotron", "jumbotron/")),
+        html.H2(make_subheading("dbc.Jumbotron", "jumbotron/")),
         dbc.Jumbotron(
             [
                 html.H2("This is a jumbotron"),
@@ -546,7 +546,7 @@ jumbotron = dbc.Card(
 
 list_group = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.ListGroup", "list_group/")),
+        html.H2(make_subheading("dbc.ListGroup", "list_group/")),
         dbc.CardBody(
             [
                 dbc.ListGroup(
@@ -591,15 +591,15 @@ modal = html.Div(
     ]
 )
 
-navbar = html.Div(
+navbar = dbc.Card(
     [
         dbc.Row(
             [
                 make_subheading("dbc.Navbar", "navbar/"),
                 make_subheading("dbc.DropdownMenu", "dropdown_menu/"),
-            ]
+            ], className='px-2',
         ),
-        dbc.NavbarSimple(
+        dbc.CardBody(dbc.NavbarSimple(
             children=[
                 dbc.NavItem(dbc.NavLink("GitHub", href=DBC_GITHUB)),
                 dbc.DropdownMenu(
@@ -623,7 +623,7 @@ navbar = html.Div(
             sticky="top",
             color="primary",
             dark=True,
-        ),
+        )),
     ]
 )
 
@@ -640,20 +640,21 @@ popover = html.Div(
     ]
 )
 
-progress = html.Div(
+progress = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Progress", "progress/")),
+        html.H2(make_subheading("dbc.Progress", "progress/")),
+        dbc.CardBody([
         dbc.Progress("25%", value=25),
         dbc.Progress(value=50, striped=True, className="my-2"),
         dbc.Progress(value=75, color="success"),
-    ]
+            ])
+    ],className="mb-4",
 )
 
-spinner = html.Div(
+spinner = dbc.Card(
     [
-        make_subheading("dbc.Spinner", "spinner/"),
-        html.P(),
-        html.Div(
+        html.H2(make_subheading("dbc.Spinner", "spinner/")),
+        dbc.CardBody(
             [
                 dbc.Spinner(color="secondary"),
                 dbc.Spinner(color="danger", type="grow"),
@@ -665,13 +666,13 @@ spinner = html.Div(
                 ),
             ]
         ),
-    ]
+    ],className="mb-4",
 )
 
 
 table = dbc.Card(
     [
-        dbc.CardHeader(make_subheading("dbc.Table", "table/"),),
+        html.H2(make_subheading("dbc.Table", "table/"),),
         dbc.CardBody(
             dbc.Table(
                 [
@@ -715,10 +716,10 @@ table = dbc.Card(
     className="mb-4",
 )
 
-tabs = html.Div(
+tabs = dbc.Card(
     [
         make_subheading("dbc.Tabs", "tabs/"),
-        dbc.Tabs(
+        dbc.CardBody(dbc.Tabs(
             [
                 dbc.Tab(
                     html.H4("This is tab 1"), label="Tab 1", style={"padding": "10px"},
@@ -736,7 +737,7 @@ tabs = html.Div(
                     style={"padding": "10px"},
                 ),
             ]
-        ),
+        ),),
     ],
     className="my-4",
 )
@@ -793,24 +794,18 @@ layout = dbc.Container(
                 cards,
                 dbc.Row([dbc.Col([form, input_group,]), dbc.Col([input_])]),
                 dbc.Row([dbc.Col([checklist_items]), dbc.Col([radio_items])]),
-                dbc.Card(
-                    [
-                        dbc.CardHeader(html.H4("Navigation")),
-                        dbc.CardBody([navbar, tabs,], className="mb-4"),
-                    ],
-                    className="mb-4",
-                ),
+                navbar,
+                tabs,
                 jumbotron,
                 columns,
                 list_group,
                 table,
-                dbc.Card(
-                    [dbc.Row([dbc.Col([progress]), dbc.Col([spinner])]),],
-                    className="mb-4",
-                ),
+
+                progress,
+                spinner,
                 dbc.Card(
                     [
-                        dbc.CardHeader(html.H4("Dialogs")),
+                        html.H2("Dialogs", className='pl-2 text-primary'),
                         dbc.CardBody(
                             dbc.Row(
                                 [
