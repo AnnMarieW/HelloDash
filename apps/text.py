@@ -5,6 +5,30 @@ This is for longer text and code blocks used throughout this app.
 
 """
 =====================================================================
+Used in: dbc_components.py
+"""
+
+dbc_intro_text = """  
+    `dash-bootstrap-components` is a library of Bootstrap components for Plotly Dash that makes it easier to build 
+    consistently styled apps with complex, responsive layouts. It's provided open source by [Faculty AI](https://dash-bootstrap-components.opensource.faculty.ai/).  Click on the link with the 
+    component name to go directly to the component's docs for more great examples.  
+
+    All dash-boostrap-components are automatically styled based on your selected Bootstrap theme -- no custom CSS is required!
+    See this in action by changing the Bootstrap theme in the App Design Selections panel above.  
+
+    Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and `DAQ` components) and 
+    Plotly figures do not automatically respond to changes to Bootstrap themes.  See more information on how to style
+    these components by clicking on the tabs to the left. 
+        
+    - [dash-bootstrap-components documentation](https://dash-bootstrap-components.opensource.faculty.ai/)
+    - [Bootswatch Themes](https://www.bootstrapcdn.com/bootswatch/)
+"""
+
+
+
+
+"""
+=====================================================================
 Used in: app_gallery.py
 """
 
@@ -530,7 +554,7 @@ datatable_intro_text = """
 
      As you will see, the default style for the DataTable functions well with light themes. However, with
      dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The
-     good news is that the DashTable is highly customizable so you can make it look great with any of the Boostrap themes.
+     good news is that the DashTable is highly customizable so you can make it look great with any of the Bootstrap themes.
 
      - [DataTable Quickstart](https://dash.plotly.com/datatable)
      - [DataTable styling](https://dash.plotly.com/datatable/style)

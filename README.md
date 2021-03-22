@@ -4,8 +4,6 @@
 The purpose of this app is to help you see how different Bootstrap and Bootswatch themes, Plotly figure templates and colors 
 will look in your Dash app.  
 
--------------
-------------
 
 ## The Theme Explorer helps you create a design theme for your Dash app
 
@@ -16,9 +14,6 @@ Choose from:
  - 94 [Plotly Graph Continuous Colorscales](https://plotly.com/python/builtin-colorscales/)
  - Any background color selected from a colorpicker
 
-
---------------
----------------
 
 ### These two images are the same app!  Only 1 line of code is changed to set a different theme.
 
@@ -32,13 +27,12 @@ Choose from:
 | __App Background Color:__ #F3F6F3 | ""|
 
 ------
--------
+
 
 
 ![Peek 2021-03-17 06-57](https://user-images.githubusercontent.com/72614349/111480344-228e7800-86ef-11eb-9ac9-32740c1fab1e.gif)
 
--------------
-------------
+-----------
 
 
 When you decide on a scheme you like, you can take note of the settings and add them into your own app, or use one of the

@@ -1,5 +1,7 @@
 """
-This module is imported in the component_gallery.py and shows all of the dbc components available
+This module is imported in the component_gallery.py and shows all of the dbc components available. This app is part of
+a multi page app adapted from an [example app](https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/components.py)
+ in the dash-bootstrap-components github repo.
 """
 
 
@@ -8,35 +10,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
+from apps import text
+from app import app
+
 DBC_HOME = "https://dash-bootstrap-components.opensource.faculty.ai/"
 DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
 DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
 
 
-from app import app
-
-about = """
-This app is part of a multi page app adapted from an [example app](https://github.com/facultyai/dash-bootstrap-components/blob/main/examples/components.py)
- in the dash-bootstrap-components github repo.  It is a gallery of all of the components available in the dbc library.
-"""
-
-
-header = dcc.Markdown(
-    """  
-    `dash-bootstrap-components` is a library of Bootstrap components for Plotly Dash that makes it easier to build 
-    consistently styled apps with complex, responsive layouts. It's provided open source by Faculty AI - see the 
-    full documentation [here](https://dash-bootstrap-components.opensource.faculty.ai/).  Click on the link with the 
-    component name to go directly to the component's docs for more great examples.  
-    
-    All dash-boostrap-components are automatically styled based on your selected Boostrap theme -- no custom CSS is required!
-    See this in action by changing the Bootstrap theme in the App Design Selections panel above.  See an overview
-    of Boostrap themes available with dbc components [here](https://www.bootstrapcdn.com/bootswatch/)
-     
-    Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and `DAQ` components) and 
-    Plotly figures do not automatically respond to changes to Bootstrap themes.  See more information on how to style
-    these components in each section.
-"""
-)
 
 
 def make_subheading(label, link):
@@ -807,7 +788,7 @@ layout = dbc.Container(
     [
         html.Div(
             [
-                header,
+                dcc.Markdown(text.dbc_intro_text),
                 alerts,
                 badges,
                 buttons,
