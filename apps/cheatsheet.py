@@ -300,6 +300,10 @@ how_to_general = dbc.Card(
                         "How to deploy your app on Heroku",
                         "https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723",
                     ),
+                    make_link_with_modal(
+                        "Advanced Callback Cheatsheet",
+                        dcc.Markdown(text.cheatsheet_advanced_callback),
+                    ),
                 ]
             )
         ),

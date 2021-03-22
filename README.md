@@ -1,13 +1,33 @@
 # HelloDash
 
-
-### Use the Dash Bootstrap Theme Explorer to help improve your app design 
+## Dash Bootstrap Theme Explorer 
+#### The Easy way to see Bootstrap themes and Plotly templates and colors in your Dash app
 
 #### See it at:  https://hellodash.pythonanywhere.com/
 
 
 
-Choose from:
+ - The __Theme Explorer App__ makes it easy to see how different Bootstrap themes, Plotly figure templates and colors 
+will look in your Dash app.  
+   
+   
+ - The __Component Gallery__ shows a sample of all the components available from the dash-boostrap-components library,
+   dash-core-components, and the Dash DataTable. (Dash DAQ coming soon!) You can see how the style of the component changes when you change the
+   Bootstrap theme.   For the DataTable and some Dash Core Components, there are examples of how to 
+   use the `style` and `className` properties and custom CSS to make them look great with your selected theme.  
+   
+   
+- The __App Gallery__ has examples of Dash Apps made with Bootstrap.  Add your app to the gallery!
+
+  
+- The __Cheatsheet__  has some of my favorite links to help with app design.  
+
+---
+---
+
+
+
+Theme Explorer App demo: See a sample Dash app updated as you choose from:
  - 22 [Bootstrap Bootswatch themes](https://www.bootstrapcdn.com/bootswatch/)
  - 11 [Plotly Graph Templates](https://plotly.com/python/templates/)
  - 18 [Plotly Graph Discrete Color Sequences](https://plotly.com/python/builtin-colorscales/#discrete-color-sequences)
@@ -20,18 +40,6 @@ Choose from:
 
 -----------
 
-
-
- - The __Theme Explorer App__ makes it easy to see how different Bootstrap themes, Plotly figure templates and colors 
-will look in your Dash app.
-   
- - The __Component Gallery__ shows a sample of the components available and how they respond to different Bootstrap and
-Bootswatch themes.  For the DataTable and some Dash Core Components, there are examples of how to 
-   use the `style` and `className` properties and custom CSS to make them look great with your selected Bootstrap theme. 
-   
-- The __App Gallery__ has examples of Dash Apps made with Bootstrap.  
-  
-- The __Cheatsheet__ is a page with some of my favorite links to help with app design.
 
 ### These two images are the same app!  Only 1 line of code is changed to update the design.
 
@@ -48,7 +56,7 @@ Bootswatch themes.  For the DataTable and some Dash Core Components, there are e
 
 
 This is still a work in progress and I'm planning to add a lot more content.  I would love to hear comments 
-and suggestions for improvements.  If you have any design tips you would like to see here, please let me know :-)
+and suggestions for improvements.  If you have any design tips you would like to see here, please let me know.
 
 
 If you have an app that you would like to add to the gallery, please open an [issue](https://github.com/AnnMarieW/HelloDash/issues) and include the following information:
@@ -60,5 +68,5 @@ If you have an app that you would like to add to the gallery, please open an [is
 compatible Markdown formatting and links etc.
    
 
-Special thanks to @tcbegley and @adamschroeder for some helpful tips
+Special thanks to @tcbegley and @adamschroeder for their helpful input on this project.
 
