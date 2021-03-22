@@ -18,8 +18,6 @@ DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
 DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
 
 
-
-
 def make_subheading(label, link):
     return html.Div(
         [
@@ -269,7 +267,7 @@ columns = dbc.Card(
         dbc.CardBody(
             [
                 dbc.Row(
-                    dbc.Col(html.H4("A single column"), className="border bg-light")
+                    dbc.Col(html.H4("A single column", className="border bg-light"))
                 ),
                 dbc.Row(
                     [
@@ -534,7 +532,7 @@ input_group = dbc.Card(
 
 jumbotron = dbc.Card(
     [
-        make_subheading("dbc.Jumbotron", "jumbotron/"),
+        dbc.CardHeader(make_subheading("dbc.Jumbotron", "jumbotron/")),
         dbc.Jumbotron(
             [
                 html.H2("This is a jumbotron"),
@@ -644,7 +642,7 @@ popover = html.Div(
 
 progress = html.Div(
     [
-        make_subheading("dbc.Progress", "progress/"),
+        dbc.CardHeader(make_subheading("dbc.Progress", "progress/")),
         dbc.Progress("25%", value=25),
         dbc.Progress(value=50, striped=True, className="my-2"),
         dbc.Progress(value=75, color="success"),

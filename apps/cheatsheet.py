@@ -331,5 +331,4 @@ layout = dbc.Container(
         ),
     ],
     fluid=True,
-    className="m-4",
 )
