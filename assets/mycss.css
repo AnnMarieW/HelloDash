@@ -110,12 +110,18 @@ td:last-child:not(.CalendarDay) {
 }
 
 
-
-
+/*
+ *  styles input boxes
+ */
+.dash-bootstrap input {
+    background-color : black !important;
+    color:white !important;
+}
 
 
 
 /*************************   experimental ignore below *****************/
+
 
 
 /* for code boxes in the app.  The transparent background works well for both light

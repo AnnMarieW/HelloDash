@@ -773,6 +773,36 @@ dcc_dropdown_css = """
 
 ```"""
 
+
+
+
+dcc_input = """
+
+##### Styling dcc.Input
+
+The default Dash input component has a white background.  Even the Bootswatch dark themes have input components 
+have a white background.  If you would like to change the input box background or text color, it is necessary
+to use custom CSS.  
+  
+This CSS creates a class that can be used to style specific input boxes.  Use it as a starting point to fine tune 
+the input boxes for your selected theme."""
+
+dcc_input_css="""
+
+
+
+/* This is a classname that styles the input box with a black background  */
+/* ---------------------------------------------------------------------- */
+
+
+.dash-bootstrap input {
+    background-color : black !important;
+    color:white !important;
+}
+
+"""
+
+
 dcc_graph = """
 
 ##### Styling dcc.Graph

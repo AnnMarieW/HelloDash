@@ -285,6 +285,8 @@ dropdown_card = dbc.Card(
     ],
     className="my-4",
 )
+
+
 df = px.data.gapminder()
 dff = df.query("year==2007")
 fig = px.scatter(
@@ -338,8 +340,8 @@ graph_card = dbc.Card(
 )
 
 ALLOWED_TYPES = (
-    "text",
     "number",
+    "text",
     "password",
     "email",
     "search",
@@ -348,10 +350,8 @@ ALLOWED_TYPES = (
     "range",
     "hidden",
 )
-input_card = dbc.Card(
-    [
-        dbc.CardHeader(make_subheading("dcc.Input", "input/"),),
-        dbc.CardBody(
+def make_input_card(classname):
+    return dbc.Card(
             [
                 html.Div(
                     [
@@ -359,16 +359,55 @@ input_card = dbc.Card(
                             id="input_{}".format(_),
                             type=_,
                             placeholder="input type {}".format(_),
+                            className='m-1'
                         )
                         for _ in ALLOWED_TYPES
                     ]
                     + [html.Div(id="out-all-types")]
+                ),
+            ],className=classname
+        )
+
+
+
+input_card = dbc.Card(
+    [
+        dbc.CardHeader(make_subheading("dcc.Input", "input/")),
+        dbc.CardBody(
+            [
+                html.Div(
+                    [
+                        dcc.Markdown(text.dcc_input, className="my-4"),
+                        make_btn_with_modal(
+                            "dcc_dropdown_css",
+                            "see CSS",
+                            dcc.Markdown(text.dcc_input_css),
+                        ),
+                        dbc.Row(
+                            [
+                                dbc.Col(["Dash Default", make_input_card("")]),
+                                dbc.Col(
+                                    [
+                                        "Styled for dark theme",
+                                        make_input_card("dash-bootstrap"),
+                                    ]
+                                ),
+                            ]
+                        ),
+                    ]
                 ),
             ]
         ),
     ],
     className="my-4",
 )
+
+
+
+
+
+
+
 
 loading_card = dbc.Card(
     [
@@ -589,8 +628,8 @@ layout = dbc.Container(
                 tabs_card,
                 checklist_radio_card,
                 graph_card,
-                datepicker_card,
                 input_card,
+                datepicker_card,
                 loading_card,
                 textarea_card,
                 html.Div(style={"height": "50px"}),
