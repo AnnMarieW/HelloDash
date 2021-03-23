@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-from app import app, header
+from app import app, header, urls
 
 from .component_gallery import layout as component_layout
 
@@ -22,7 +22,7 @@ with open(GALLERY_PATH.joinpath("theme_explorer_app.py")) as f:
 code = f"```{code}```"
 
 
-boostrap_light_themes = [
+light_themes = [
     "BOOTSTRAP",
     "CERULEAN",
     "COSMO",
@@ -41,7 +41,7 @@ boostrap_light_themes = [
     "UNITED",
     "YETI",
 ]
-boostrap_dark_themes = [
+dark_themes = [
     "CYBORG",
     "DARKLY",
     "SLATE",
@@ -159,7 +159,7 @@ boostrap_card = html.Div(
                         target="_blank",
                     )
                 ),
-                make_dropdown("themes", boostrap_light_themes),
+                dcc.Dropdown(id='themes'),
                 make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),
             ]
         ),
@@ -436,7 +436,7 @@ sample_app_controls = dbc.Card(
             [
                 dbc.Label("Select years"),
                 make_range_slider("slider_years", df.year.unique(), 5),
-                html.Div(id="theme_colors"),
+                html.Div("Bootstrap theme colors:"),
                 buttons,
             ]
         ),
@@ -490,8 +490,8 @@ layout = dbc.Container(
         header,
         dbc.Row(
             [
-                dbc.Col([theme_controls, source_code_modal,], md=3),
-                dbc.Col(sample_app, md=9, sm=12,),
+                dbc.Col([theme_controls, source_code_modal,], md=2),
+                dbc.Col(sample_app, md=10, sm=12,),
             ],
         ),
         component_layout,
@@ -566,11 +566,11 @@ def update_line_chart(
 def update(theme):
 
     if theme == "Light Themes":
-        options = [{"label": str(i), "value": i} for i in boostrap_light_themes]
-        value = boostrap_light_themes[0]
+        options = [{"label": str(i), "value": urls[i]} for i in light_themes]
+        value = urls["BOOTSTRAP"]
     else:
-        options = [{"label": str(i), "value": i} for i in boostrap_dark_themes]
-        value = boostrap_dark_themes[0]
+        options = [{"label": str(i), "value": urls[i]} for i in dark_themes]
+        value = urls["CYBORG"]
     return options, value
 
 
@@ -592,16 +592,6 @@ def update_app_bg_color(color, radio):
         color = "" if radio == "Use Default" or color is None else color
     return {"backgroundColor": color}, radio
 
-
-@app.callback(
-    Output("theme_colors", "children"), Input("themes", "value"),
-)
-def update(theme):
-    theme = "default" if theme == "BOOTSTRAP" else theme
-    link = f"https://bootswatch.com/{theme.lower()}/"
-    return html.Div(
-        ["Boostrap Theme colors: ", dcc.Link(theme, href=link, target="_blank")]
-    )
 
 
 #  ------------ color scale modal selection ------------------
@@ -674,22 +664,18 @@ def toggle_modal(n, is_open):
 
 # ----------------------------------------------------
 
+
+# Using 2 stylesheets with the delay reduces the annoying flicker when the theme changes
 app.clientside_callback(
     """
-    function(theme) {
-        var stylesheet = document.querySelector('link[rel=stylesheet][href^="https://stackpath"]')
-        var name = theme.toLowerCase()
-        if (name === 'bootstrap') {
-            var link = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
-          } else {
-            var link = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
-        }
-        if (theme === 'BOOTSTRAP' && stylesheet.href.startsWith('https://stackpath.bootstrapcdn.com/bootstrap')) {
-                 return
-             }
-        stylesheet.href = link
+    function(url) {
+        // Select the FIRST stylesheet only.
+        var stylesheets = document.querySelectorAll('link[rel=stylesheet][href^="https://stackpath"]')
+        // Update the url of the main stylesheet.
+        stylesheets[stylesheets.length - 1].href = url
+        // Delay update of the url of the buffer stylesheet.
+        setTimeout(function() {stylesheets[0].href = url;}, 100);
     }
     """,
-    Output("blank_output", "children"),
-    Input("themes", "value"),
+    Output("blank_output", "children"), Input("themes", "value")
 )

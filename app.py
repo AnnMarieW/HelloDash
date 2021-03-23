@@ -2,8 +2,39 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
+
+bootswatch=[
+    "CERULEAN",
+    "COSMO",
+    "FLATLY",
+    "JOURNAL",
+    "LITERA",
+    "LUMEN",
+    "LUX",
+    "MATERIA",
+    "MINTY",
+    "PULSE",
+    "SANDSTONE",
+    "SIMPLEX",
+    "SKETCHY",
+    "SPACELAB",
+    "UNITED",
+    "YETI",
+    "CYBORG",
+    "DARKLY",
+    "SLATE",
+    "SOLAR",
+    "SUPERHERO",
+    ]
+
+urls={}
+urls["BOOTSTRAP"] = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
+for theme in bootswatch:
+    urls[theme]= f"https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/{theme.lower()}/bootstrap.min.css"
 FONT_AWESOME = "https://use.fontawesome.com/releases/v5.10.2/css/all.css"
-external_stylesheets = [dbc.themes.BOOTSTRAP, FONT_AWESOME]
+
+# loading 2 stylesheets reduces the flicker when changing themes
+external_stylesheets = [urls["BOOTSTRAP"],urls["BOOTSTRAP"], FONT_AWESOME]
 
 app = dash.Dash(
     __name__,
