@@ -159,7 +159,7 @@ boostrap_card = html.Div(
                         target="_blank",
                     )
                 ),
-                dcc.Dropdown(id='themes'),
+                dcc.Dropdown(id="themes"),
                 make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),
             ]
         ),
@@ -365,9 +365,14 @@ source_code_modal = html.Div(
             [
                 html.Div("Sample App"),
                 dbc.Button(
-                    "Source Code", id="code_modal_btn", outline=True, color="primary", size="sm"
+                    "Source Code",
+                    id="code_modal_btn",
+                    outline=True,
+                    color="primary",
+                    size="sm",
                 ),
-            ],className="ml-4"
+            ],
+            className="ml-4",
         ),
         dbc.Modal(
             [
@@ -436,7 +441,7 @@ sample_app_controls = dbc.Card(
             [
                 dbc.Label("Select years"),
                 make_range_slider("slider_years", df.year.unique(), 5),
-                html.Div("Bootstrap theme colors:"),
+                html.Div("Bootstrap theme colors12"),
                 buttons,
             ]
         ),
@@ -490,8 +495,8 @@ layout = dbc.Container(
         header,
         dbc.Row(
             [
-                dbc.Col([theme_controls, source_code_modal,], md=2),
-                dbc.Col(sample_app, md=10, sm=12,),
+                dbc.Col([theme_controls, source_code_modal,], md=3),
+                dbc.Col(sample_app, md=9, sm=12,),
             ],
         ),
         component_layout,
@@ -593,7 +598,6 @@ def update_app_bg_color(color, radio):
     return {"backgroundColor": color}, radio
 
 
-
 #  ------------ color scale modal selection ------------------
 
 
@@ -677,5 +681,6 @@ app.clientside_callback(
         setTimeout(function() {stylesheets[0].href = url;}, 100);
     }
     """,
-    Output("blank_output", "children"), Input("themes", "value")
+    Output("blank_output", "children"),
+    Input("themes", "value"),
 )

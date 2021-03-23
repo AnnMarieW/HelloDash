@@ -350,24 +350,26 @@ ALLOWED_TYPES = (
     "range",
     "hidden",
 )
+
+
 def make_input_card(classname):
     return dbc.Card(
-            [
-                html.Div(
-                    [
-                        dcc.Input(
-                            id="input_{}".format(_),
-                            type=_,
-                            placeholder="input type {}".format(_),
-                            className='m-1'
-                        )
-                        for _ in ALLOWED_TYPES
-                    ]
-                    + [html.Div(id="out-all-types")]
-                ),
-            ],className=classname
-        )
-
+        [
+            html.Div(
+                [
+                    dcc.Input(
+                        id="input_{}".format(_),
+                        type=_,
+                        placeholder="input type {}".format(_),
+                        className="m-1",
+                    )
+                    for _ in ALLOWED_TYPES
+                ]
+                + [html.Div(id="out-all-types")]
+            ),
+        ],
+        className=classname,
+    )
 
 
 input_card = dbc.Card(
@@ -401,12 +403,6 @@ input_card = dbc.Card(
     ],
     className="my-4",
 )
-
-
-
-
-
-
 
 
 loading_card = dbc.Card(

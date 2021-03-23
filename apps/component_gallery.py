@@ -6,6 +6,7 @@ highlighted with the theme's "primary" color.
 """
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
+import dash_html_components as html
 
 
 from .dbc_components import layout as components_layout
@@ -53,12 +54,12 @@ layout = dbc.Card(
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),
-                            dcc.Tab(
-                                children="Coming Soon",
-                                label="DAQ Components",
-                                style={"backgroundColor": "transparent"},
-                                selected_className="bg-light text-dark border-primary",
-                            ),
+                            # dcc.Tab(
+                            #     children=html.Div(html.H1('Coming Soon!')),
+                            #     label="DAQ Components",
+                            #     style={"backgroundColor": "transparent"},
+                            #     selected_className="bg-light text-dark border-primary",
+                            # ),
                         ],
                         vertical=True,
                     ),

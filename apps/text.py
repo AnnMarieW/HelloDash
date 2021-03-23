@@ -774,8 +774,6 @@ dcc_dropdown_css = """
 ```"""
 
 
-
-
 dcc_input = """
 
 ##### Styling dcc.Input
@@ -787,7 +785,7 @@ to use custom CSS.
 This CSS creates a class that can be used to style specific input boxes.  Use it as a starting point to fine tune 
 the input boxes for your selected theme."""
 
-dcc_input_css="""
+dcc_input_css = """
 
 
 
