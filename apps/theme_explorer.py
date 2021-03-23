@@ -147,7 +147,7 @@ def make_range_slider(id, slider_list, step=1):
 Theme Controls
 """
 
-boostrap_card = dbc.Card(
+boostrap_card = html.Div(
     [
         dbc.FormGroup(
             [
@@ -168,7 +168,7 @@ boostrap_card = dbc.Card(
     style={"minWidth": 200},
 )
 
-graph_template_card = dbc.Card(
+graph_template_card = html.Div(
     [
         dbc.FormGroup(
             [
@@ -310,7 +310,7 @@ continuous_modal = html.Div(
 )
 
 
-graph_continuous_color_card = dbc.Card(
+graph_continuous_color_card = html.Div(
     [
         dbc.FormGroup(
             [
@@ -324,15 +324,15 @@ graph_continuous_color_card = dbc.Card(
     style={"minWidth": 200},
 )
 
-background_color_card = dbc.Card(
+background_color_card = html.Div(
     [
         dbc.FormGroup(
             [
-                dbc.Label("App Background Color", className="mt-2"),
+                dbc.Label("Background Color", className="mt-2"),
                 dbc.Input(
                     type="color",
                     id="bg_color",
-                    value="#DFDEE3",
+                    value="#e2e2e4",
                     style={"width": 75, "height": 50},
                 ),
                 make_radio_items("bg_default", ["Use Default", "Use Colorpicker"]),
@@ -353,21 +353,21 @@ theme_controls = dbc.Card(
                 graph_template_card,
                 graph_continuous_color_card,
                 background_color_card,
-            ]
+            ],
         ),
     ],
     style={"minWidth": 250},
 )
 
-source_code_modal = dbc.Card(
+source_code_modal = html.Div(
     [
-        dbc.CardBody(
+        html.Div(
             [
-                html.Div(" See the Sample Dash App"),
+                html.Div("Sample App"),
                 dbc.Button(
-                    "Source Code", id="code_modal_btn", outline=True, color="primary",
+                    "Source Code", id="code_modal_btn", outline=True, color="primary", size="sm"
                 ),
-            ],
+            ],className="ml-4"
         ),
         dbc.Modal(
             [
@@ -387,8 +387,7 @@ source_code_modal = dbc.Card(
             size="xl",
         ),
     ],
-    className="my-4",
-    style={"minWidth": 250},
+    className="my-2",
 )
 
 
