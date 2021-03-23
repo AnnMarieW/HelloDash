@@ -7,6 +7,7 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 
 from app import app, header, urls
+from apps import text
 
 from .component_gallery import layout as component_layout
 
@@ -396,6 +397,35 @@ source_code_modal = html.Div(
 )
 
 
+css_modal = html.Div(
+    [
+        html.Div(
+            [
+                html.Div("Custom CSS"),
+                dbc.Button(
+                    "Learn More",
+                    id="css_modal_btn",
+                    outline=True,
+                    color="primary",
+                    size="sm",
+                ),
+            ],
+            className="ml-4",
+        ),
+        dbc.Modal(
+            [
+                dbc.ModalBody([dcc.Markdown(text.css_text)]),
+            ],
+            id="css_modal",
+            scrollable=True,
+            size="xl",
+        ),
+    ],
+    className="my-2",
+)
+
+
+
 """
 ===============================================================================
 Sample Apps 
@@ -441,7 +471,7 @@ sample_app_controls = dbc.Card(
             [
                 dbc.Label("Select years"),
                 make_range_slider("slider_years", df.year.unique(), 5),
-                html.Div("Bootstrap theme colors12"),
+                html.Div("Bootstrap theme colors"),
                 buttons,
             ]
         ),
@@ -495,7 +525,7 @@ layout = dbc.Container(
         header,
         dbc.Row(
             [
-                dbc.Col([theme_controls, source_code_modal,], md=3),
+                dbc.Col([theme_controls, source_code_modal, css_modal], md=3),
                 dbc.Col(sample_app, md=9, sm=12,),
             ],
         ),
@@ -659,6 +689,17 @@ def toggle_modal(n, is_open):
     Output("code_modal", "is_open"),
     [Input("code_modal_btn", "n_clicks")],
     [State("code_modal", "is_open")],
+)
+def toggle_modal(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
+
+@app.callback(
+    Output("css_modal", "is_open"),
+    [Input("css_modal_btn", "n_clicks")],
+    [State("css_modal", "is_open")],
 )
 def toggle_modal(n, is_open):
     if n:
