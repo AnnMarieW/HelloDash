@@ -9,13 +9,13 @@ Used in: theme_explorer.py
 """
 
 css_text = """ 
-    This app shows how to customize your Dash app with Bootstrap themes.  You may notice that many components respond
+    This app shows how to customize your Dash app with Bootstrap themes.  You may notice that most components respond
     to the change in the Bootstrap theme, however some Dash components do not.  
     
     Try changing the theme and take note that the color of the slider does not update.  Also, in a dark theme, you may
     prefer that the dropdowns have a  dark background.  
     
-    For those changes it's necessary to use custom CSS.
+    For some style changes it's necessary to use custom CSS.
     
     In the Dash Component Gallery below, you will find details on how to apply custom CSS to Dash Core Components, 
     HTML Components and the DataTable.  Dash DAQ components coming soon!
