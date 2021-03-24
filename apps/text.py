@@ -9,20 +9,25 @@ Used in: theme_explorer.py
 """
 
 css_text = """ 
-    This app shows how to customize your Dash app with Bootstrap themes.  You may notice that most components respond
-    to the change in the Bootstrap theme, however some Dash components do not.  
+    This app shows how different Bootstrap themes look in a Dash app.  Most Dash components and all 
+    dash-bootstrap-components automatically update when the theme changes.
     
-    Try changing the theme and take note that the color of the slider does not update.  Also, in a dark theme, you may
-    prefer that the dropdowns have a  dark background.  
+    However, for some Dash components, it's necessary to use custom CSS to change the style.  For example, if you would like
+     to change the color of the slider, you can do that with CSS.
     
-    For some style changes it's necessary to use custom CSS.
-    
+    Note that light Bootstrap themes are the easiest to use with Dash.  The Dash components have a light 
+    background color which works well with the standard  Bootstrap theme and other Bootswatch light themes.  Dark theme
+     use a white text color which makes text hard to read in some Dash components. This app uses
+    custom CSS for the dropdowns to make text readable in both light and dark themed apps. 
+     
     In the Dash Component Gallery below, you will find details on how to apply custom CSS to Dash Core Components, 
     HTML Components and the DataTable.  Dash DAQ components coming soon!
     
-    See also the Dash documentation:
+    See the Dash documentation:
     
       - [How to add custom CSS to a Dash app](https://dash.plotly.com/external-resources).
+      
+    If you work for a company, see also Dash Enterprise Design Kit.
 """
 
 """

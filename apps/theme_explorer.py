@@ -414,7 +414,7 @@ css_modal = html.Div(
         ),
         dbc.Modal(
             [
-                dbc.ModalBody([dcc.Markdown(text.css_text)]),
+                dbc.ModalBody([dcc.Markdown(text.css_text, className='p-4')]),
             ],
             id="css_modal",
             scrollable=True,
