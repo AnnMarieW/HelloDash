@@ -413,9 +413,7 @@ css_modal = html.Div(
             className="ml-4",
         ),
         dbc.Modal(
-            [
-                dbc.ModalBody([dcc.Markdown(text.css_text, className='p-4')]),
-            ],
+            [dbc.ModalBody([dcc.Markdown(text.css_text, className="p-4")]),],
             id="css_modal",
             scrollable=True,
             size="xl",
@@ -423,7 +421,6 @@ css_modal = html.Div(
     ],
     className="my-2",
 )
-
 
 
 """

@@ -221,6 +221,14 @@ typography_card = dbc.Card(
                                     "Text with className='bg-primary text-white'",
                                     className="bg-primary text-white",
                                 ),
+                                html.P(
+                                    "Text with className='bg-light text-dark'",
+                                    className="bg-light text-dark",
+                                ),
+                                html.P(
+                                    "Text with className='bg-dark text-light'",
+                                    className="bg-dark text-light",
+                                ),
                             ],
                             className="p-4",
                         ),
@@ -444,7 +452,7 @@ blockquotes2_card = dbc.Card(
 
 layout = dbc.Container(
     [
-        dbc.Card(
+        html.Div(
             [
                 dcc.Markdown(text.html_intro_text),
                 html.Hr(),

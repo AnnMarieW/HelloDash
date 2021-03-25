@@ -26,45 +26,10 @@ TABLE_DOCS = "https://dash.plotly.com/datatable/"
 
 from app import app
 
-# todo - move this to mycss do the same for html_components.py
-codebox = {
-    "backgroundColor": "transparent",
-    "borderStyle": "groove",
-    "borderRadius": 15,
-    "maxWidth": 900,
-    "marginTop": 0,
-    "marginBottom": 20,
-}
-
 """
 =====================================================================
 Bootstrap style details
 """
-
-
-# https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css
-BOOTSTRAP = {
-    "primary": "#007bff",
-    "secondary": "#6c757d",
-    "selected": "rgba(0, 0, 0, 0.075)",
-    "font_color": "black",
-    "font": "sans-serif",
-}
-
-
-# https://bootswatch.com/4/cyborg/bootstrap.css
-CYBORG = {
-    "primary": "#2a9fd6",
-    "secondary": "#555",
-    "selected": "rgba(255, 255, 255, 0.075)",
-    "font_color": "white",
-    "font": "Roboto",
-}
-THEMES = {
-    "CYBORG": CYBORG,
-    "BOOTSTRAP": BOOTSTRAP,
-}
-
 
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
 
@@ -85,7 +50,7 @@ def make_btn_with_modal(id, title, content):
      content:
         To display text, use dcc.Markdown("my text")
         To display a codebox that looks better with dark themes:
-          html.Div(html.Pre(html.Code(" enter code here" )), style=codebox,)
+          html.Div(html.Pre(html.Code(" enter code here" )), className="codebox",)
 
     """
     return html.Div(
@@ -109,33 +74,40 @@ def make_btn_with_modal(id, title, content):
 
 
 def make_table(theme):
+    color = "white" if theme == "dark" else "black"
+    selected = (
+        "rgba(255, 255, 255, 0.075)" if theme == "dark" else "rgba(0, 0, 0, 0.075)"
+    )
+
     return dash_table.DataTable(
         columns=[{"name": i, "id": i} for i in df.columns],
         data=df.to_dict("records"),
         editable=True,
         page_size=4,
+        filter_action="native",
+        sort_action="native",
         css=[
-            {"selector": "input", "rule": f"color:{theme['font_color']}"},
+            {"selector": "input", "rule": f"color: {color}"},
             {"selector": "tr:hover", "rule": "background-color:transparent"},
             {"selector": ".dash-table-tooltip", "rule": "color:black"},
         ],
         style_cell={
             "backgroundColor": "transparent",
-            "fontFamily": theme["font"],
-            "color": theme["font_color"],
+            "fontFamily": "var(--font-family-sans-serif)",
+            "color": color,
         },
         style_data_conditional=[
             {
                 "if": {"state": "active"},
-                "backgroundColor": theme["selected"],
-                "border": "1px solid " + theme["primary"],
-                "color": theme["font_color"],
+                "backgroundColor": selected,
+                "border": "1px solid var(--primary)",
+                "color": color,
             },
             {
                 "if": {"state": "selected"},
-                "backgroundColor": theme["selected"],
-                "border": "1px solid" + theme["secondary"],
-                "color": theme["font_color"],
+                "backgroundColor": selected,
+                "border": "1px solid var(--secondary)",
+                "color": color,
             },
         ],
         tooltip_conditional=[
@@ -169,16 +141,17 @@ default_table_card = dbc.Card(
 
 light_theme_card = dbc.Card(
     [
-        dbc.CardHeader(html.H5("Dash DataTable - styled for light BOOTSTRAP theme")),
+        dbc.CardHeader(html.H5("Dash DataTable - styled for light themes")),
         dbc.CardBody(
             [
                 dcc.Markdown(text.datatable_light_text),
-                make_table(THEMES["BOOTSTRAP"]),
+                make_table("light"),
                 make_btn_with_modal(
                     "light_theme_code",
                     "see code",
                     html.Div(
-                        html.Pre(html.Code(text.datatable_light_code)), style=codebox,
+                        html.Pre(html.Code(text.datatable_light_code)),
+                        className="codebox",
                     ),
                 ),
                 dbc.Alert(
@@ -196,16 +169,17 @@ light_theme_card = dbc.Card(
 
 dark_theme_card = dbc.Card(
     [
-        dbc.CardHeader(html.H5("Dash DataTable - styled for dark CYBORG theme")),
+        dbc.CardHeader(html.H5("Dash DataTable - styled for dark themes")),
         dbc.CardBody(
             [
                 dcc.Markdown(text.datatable_dark_text),
-                make_table(THEMES["CYBORG"]),
+                make_table("dark"),
                 make_btn_with_modal(
                     "dark_theme_code",
                     "see code",
                     html.Div(
-                        html.Pre(html.Code(text.datatable_dark_code)), style=codebox,
+                        html.Pre(html.Code(text.datatable_dark_code)),
+                        className="codebox",
                     ),
                 ),
                 "Change to a dark theme to see more about styling the table for a dark theme",

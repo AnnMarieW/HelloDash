@@ -55,7 +55,7 @@ def make_btn_with_modal(id, title, content):
      content:
         To display text, use dcc.Markdown("my text")
         To display a codebox:
-          html.Div(html.Pre(html.Code(" enter code here" )), style=codebox,)
+          html.Div(html.Pre(html.Code(" enter code here" )), className="codebox",)
 
     """
     return html.Div(
@@ -361,7 +361,7 @@ def make_input_card(classname):
                         id="input_{}".format(_),
                         type=_,
                         placeholder="input type {}".format(_),
-                        className="m-1",
+                        className="m-5 p-4",
                     )
                     for _ in ALLOWED_TYPES
                 ]
@@ -540,34 +540,31 @@ tabs_default = dbc.Card(
     ]
 )
 
+
 tabs_theme = dbc.Card(
     dcc.Tabs(
         [
             dcc.Tab(
                 html.Div(
                     [
-                        html.H4(
-                            "Styled for all Bootstrap themes. Change theme to see how it looks!",
-                            className="m-4 p-5 text-center",
+                        html.H5(
+                            "Change theme to see the selected tab border is the "
+                            "the theme's 'primary' color",
+                            className="m-4 p-5",
                         )
                     ]
                 ),
                 label="Tab one",
-                style={"backgroundColor": "transparent"},
-                selected_className="bg-light text-dark border-primary",
+                selected_className="border-primary text-dark",
+                style={"backgroundColor": "transparent", "opacity": 0.6},
+                selected_style={"backgroundColor": "transparent"},
             ),
             dcc.Tab(
-                html.Div(
-                    [
-                        html.H4(
-                            "Be sure to see how it looks with dark themes!",
-                            className="m-4 p-5 text-center",
-                        )
-                    ]
-                ),
-                label="Tab 2",
-                style={"backgroundColor": "transparent"},
-                selected_className="bg-light text-dark border-primary",
+                html.Div(html.Pre(html.Code(text.dcc_tabs_code)), className="codebox"),
+                label="code",
+                selected_className="border-primary text-dark",
+                style={"backgroundColor": "transparent", "opacity": 0.6},
+                selected_style={"backgroundColor": "transparent"},
             ),
         ]
     )
@@ -615,7 +612,7 @@ source_code = dcc.Markdown(
 
 layout = dbc.Container(
     [
-        dbc.Card(
+        html.Div(
             [
                 dcc.Markdown(text.dcc_intro_text),
                 html.Hr(),

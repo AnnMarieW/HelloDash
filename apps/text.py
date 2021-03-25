@@ -591,7 +591,7 @@ datatable_intro_text = """
 datatable_light_text = """   
 
     With two simple style changes, the DataTable will look even better in your app with Bootstrap light themes.  This
-    table is styled with DataTable parameters for the standard BOOTSTRAP theme.
+    table is styled with DataTable parameters for light themes.
 
     -  The font is changed to the font for the BOOTSTRAP theme.
     -  The active and selected cells are highlighted with the Bootstrap theme colors rather than the Dash default of "hotpink". Try
@@ -600,32 +600,24 @@ datatable_light_text = """
 
 
 datatable_light_code = """ 
-        Styling a Dash Datatable with a Light theme.  Note:  To see how to format
-        the tooltip, switch to a dark theme to see more info and example.
-    
-        # DashTable updated with font and colors from this bootstrap theme:        
-        # https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.css 
+        Styling a Dash Datatable with a light theme.  Note:  To see how to format
+        the tooltip, switch to a dark theme to see more info and example.  
         
-               
-        font = "sans-serif"
-        primary = "#007bff"
-        secondary = "#6c757d"
-        selected = "rgba(0, 0, 0, 0.075)"
 
         datatable = dash_table.DataTable(
             columns=[{"name": i, "id": i} for i in df.columns],
             data=df.to_dict("records"),
-            style_cell={"fontFamily": font},
+            style_cell={"fontFamily": "var(--font-family-sans-serif)",
             style_data_conditional=[
                 {
                     "if": {"state": "active"},
-                    "backgroundColor": selected,
-                    "border": "1px solid " + primary,
+                    "backgroundColor": "rgba(0, 0, 0, 0.075)"
+                    "border": "1px solid var(--primary)",
                 },
                 {
                     "if": {"state": "selected"},
-                    "backgroundColor": selected,
-                    "border": "1px solid" + secondary,
+                    "backgroundColor": "rgba(0, 0, 0, 0.075)"
+                    "border": "1px solid var(--secondary),
                 },
             ],
         )   
@@ -648,43 +640,50 @@ datatable_dark_text = """
 
 
 datatable_dark_code = """
-    Styling a Dash Datatable with a Light theme
+    Styling a Dash Datatable with a dark theme
     
-    # DashTable updated with font and colors from this bootstrap theme:    
-    # https://bootswatch.com/4/cyborg/bootstrap.css   
-     
-    primary = "#2a9fd6"
-    secondary = "#555"
-    selected = "rgba(255, 255, 255, 0.075)"
-    font_color = "white"
-    font = "Roboto"    
-
-    datatable =dash_table.DataTable(
+    
+    dash_table.DataTable(
         columns=[{"name": i, "id": i} for i in df.columns],
         data=df.to_dict("records"),
         editable=True,
         page_size=4,
+        filter_action="native",
+        sort_action="native",
         css=[
-            {"selector": "input", "rule": f"color:{font_color}"},                # fixes text color for editable columns
-            {"selector": "tr:hover", "rule": "background-color:transparent"},    # fixes hover bg color 
-            {"selector": ".dash-table-tooltip", "rule": "color:black"},          # fixes text color of tooltip data
+            {"selector": "input", "rule": "color: white"},       #fixes the "filter data... text and editable cells
+            {"selector": "tr:hover", "rule": "background-color:transparent"},   # fixes background hover color
+            {"selector": ".dash-table-tooltip", "rule": "color:black"},         # fixes tooltip color
+
         ],
-        style_cell={"backgroundColor": "transparent", "fontFamily": font},
+        style_cell={
+            "backgroundColor": "transparent",
+            "fontFamily": "var(--font-family-sans-serif)",
+            "color": color
+        },
         style_data_conditional=[
             {
                 "if": {"state": "active"},
-                "backgroundColor": selected,
-                "border": "1px solid " + primary,
-                "color": font_color,
+                "backgroundColor": "rgba(255, 255, 255, 0.075)",
+                "border": "1px solid var(--primary)",
+                "color": white,
             },
             {
                 "if": {"state": "selected"},
-                "backgroundColor": "selected",
-                "border": "1px solid" + secondary,
-                "color": font_color,
+                "backgroundColor": "rgba(255, 255, 255, 0.075)",
+                "border": "1px solid var(--secondary)",
+                "color": white,
             },
         ],
-    )  
+        tooltip_conditional=[
+            {
+                "if": {"row_index": "odd"},
+                "type": "markdown",
+                "value": "odd rows have a sample tooltip",
+            }
+        ],
+    )
+    
     """
 
 """
@@ -744,6 +743,17 @@ dark themes. The selected tab is highlighted with the "primary" theme color and 
 
 The tabs for this Component Gallery use dcc.Tabs styled for all themes and `vertical=True`
 """
+
+dcc_tabs_code = """
+
+dcc.Tab(
+    children="tab content"
+    label="Tab one",
+    selected_className="border-primary text-dark",
+    style={"backgroundColor": "transparent", "opacity": 0.6},
+    selected_style={"backgroundColor": "transparent"},
+),"""
+
 
 dcc_dropdown = """
 

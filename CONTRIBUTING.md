@@ -87,16 +87,22 @@ which is better for dark themes.
 For smaller code blocks that are displayed in-line, it needs to have a transparent background so it looks OK with 
 dark themed apps.  This is a work-around, but it doesn't have syntax highlighting:
 
-``` 
-codebox = {
-    "backgroundColor": "transparent",
-    "borderStyle": "groove",
-    "borderRadius": 15,
-    "maxWidth": 900,
-    "marginTop": 0,
-    "marginBottom": 20,
+This goes in `mycss.css` file in \assets
+```css
+.codebox  {
+    background-color: transparent;
+    border-style: double;
+    border-radius: 15px;
+    max-width: 900px;
+    margin-top: 10px;
+    margin-bottom:20px;
+    padding:20px;
 }
-html.Div(html.Pre(html.Code(" enter code here" )), style=codebox)  
+```
+
+to use:
+``` 
+html.Div(html.Pre(html.Code(" enter code here" )), className="codebox")  
 ```
   
 
