@@ -228,7 +228,7 @@ datepicker_card = dbc.Card(
 
 
 def make_dropdowns(classname):
-    return dbc.Card(
+    return html.Div(
         [
             dcc.Dropdown(
                 options=[
@@ -275,6 +275,31 @@ dropdown_card = dbc.Card(
                                         "Styled for CYBORG theme:",
                                         make_dropdowns("dash-bootstrap"),
                                     ]
+                                ),
+                            ],
+                            className="mb-4",
+                        ),
+                        dbc.Row(
+                            [
+                                dcc.Markdown(text.dbc_select, className="p-4"),
+                                dbc.Col(
+                                    [
+                                        "dbc.Select component",
+                                        dbc.Select(
+                                            id="select",
+                                            options=[
+                                                {"label": "Option 1", "value": "1"},
+                                                {"label": "Option 2", "value": "2"},
+                                                {
+                                                    "label": "Disabled option",
+                                                    "value": "3",
+                                                    "disabled": True,
+                                                },
+                                            ],
+                                            value="1",
+                                        ),
+                                    ],
+                                    md=6,
                                 ),
                             ]
                         ),
@@ -353,7 +378,7 @@ ALLOWED_TYPES = (
 
 
 def make_input_card(classname):
-    return dbc.Card(
+    return html.Div(
         [
             html.Div(
                 [
@@ -361,7 +386,7 @@ def make_input_card(classname):
                         id="input_{}".format(_),
                         type=_,
                         placeholder="input type {}".format(_),
-                        className="m-5 p-4",
+                        className="m-1 p-2",
                     )
                     for _ in ALLOWED_TYPES
                 ]

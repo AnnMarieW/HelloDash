@@ -98,11 +98,11 @@ td:last-child:not(.CalendarDay) {
 
 
 /*
- * Style the Dropdown with a black background
+ * Style the Dropdown with a black background for a dark theme
  */
-.dash-bootstrap .Select-control .Select-input {
-   /* background-color: black !important;     input box */
-     background-color: var(--light) !important;
+
+.dash-bootstrap .Select-control {
+    background-color: black !important;    /* input box */
 }
 
 .dash-bootstrap .Select-value-label {   /* changes the text color of input box */
@@ -116,18 +116,18 @@ td:last-child:not(.CalendarDay) {
 }
 
 .dash-bootstrap .VirtualizedSelectOption {   /* dropdown menu options */
-    background-color: var(--light);
-  /*  color: white;
-  */}
+    background-color: black;
+    color: white;
+ }
 
 .dash-bootstrap .VirtualizedSelectFocusedOption {  /* dropdown menu hover effect */
-    background-color: var(--light);
+    background-color: black;
     opacity: .7;
 }
 
 
 /*
- *  styles input boxes
+ *  styles input boxes use className to assign this to specified inputs
  */
 .dash-bootstrap input {
     background-color : black !important;
@@ -136,8 +136,21 @@ td:last-child:not(.CalendarDay) {
 
 
 
-/*************************   experimental ignore below *****************/
-
+/*
+ * Changes the color of the sort arrow and delete icons in the DataTable header
+ *  these icons appear when the table is sortable and/or columns are deletable
+ */
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
     --accent: var(--primary) !important;
     }
+
+
+/*
+ * Changes the pink color when hovering over the pagination buttons in the DataTable
+ */
+.last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+  color: var(--primary) !important;
+}
+
+
+/*************************   experimental ignore below *****************/

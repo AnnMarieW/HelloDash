@@ -58,7 +58,7 @@ def make_btn_with_modal(id, title, content):
             dbc.Button(
                 title,
                 id={"type": "modal_btn", "index": id},
-                color="secondary",
+                color="primary",
                 size="sm",
                 outline=True,
                 className="my-2",
@@ -80,7 +80,7 @@ def make_table(theme):
     )
 
     return dash_table.DataTable(
-        columns=[{"name": i, "id": i} for i in df.columns],
+        columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
         data=df.to_dict("records"),
         editable=True,
         page_size=4,

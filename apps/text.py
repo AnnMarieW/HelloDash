@@ -566,6 +566,54 @@ datatable_move_export_btn = """
 
 """
 
+datatable_pink_css = """
+
+The default table has hot pink accents.  Add the CSS below to the css file in the assets folder to
+ will change the pagination buttons and the icons in the column headers.
+
+Note the `var(--primary)` is the "primary" color of the Bootstrap theme.  You can change this to
+any other named Bootstrap color, or use a named css color,  or hex, rgb color code.  For example 
+`--accent: yellow` !important;'  or `color: #fff !important;`
+
+
+/*
+ * Changes the color of the sort arrow and delete icons in the DataTable header
+ *  these icons appear when the table is sortable and/or columns are deletable
+ */
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+    --accent: var(--primary) !important;
+    }
+
+
+/*
+ * Changes the pink color when hovering over the pagination buttons in the DataTable
+ */
+.last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+  color: var(--primary) !important;
+}
+
+"""
+
+datatable_filter_data_css = """
+In dark themed tables the default black text of the "filter data..." placeholder disappears.
+To change the color you can add this to the css file in the assets folder:
+
+```
+.dash-spreadsheet .dash-filter input {
+            color: var(--white) !important;
+         }
+```
+
+Or add it in the css parameter in the table definition:
+
+```
+css = [{"selector": "input", "rule": f"color: {color}"}],
+
+```
+
+"""
+
+
 """
 =========================================================================
 Used in: DataTable.py 
@@ -581,6 +629,8 @@ datatable_intro_text = """
      As you will see, the default style for the DataTable functions well with light themes. However, with
      dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The
      good news is that the DashTable is highly customizable so you can make it look great with any of the Bootstrap themes.
+     
+     See the DataTable How To section below for more ways to customize the table.
 
      - [DataTable Quickstart](https://dash.plotly.com/datatable)
      - [DataTable styling](https://dash.plotly.com/datatable/style)
@@ -721,19 +771,22 @@ labelStyle, labelClassName` parameters. See [this example]( https://community.pl
  of the radio and checkbox icons."""
 
 dcc_checklist_radio_2 = """
-A great alternate is to use `dash-bootstrap-components` dbc.Checklist and dbc.RadioItems. Here are the advantages:
 
-- The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color.  
+##### Alternate: `dbc.Checklist and dbc.RadioItems`
+Here are the advantages of using `dash-bootstrap-components` dbc.Checklist and dbc.RadioItems:
+
+- The checked boxes and selected radio items of dbc components automatically use the theme's "primary" color. No CSS required!  
 See this now by changing the theme in the App Design Selections panel. 
 - You can also customize the selected label and icons color in dbc components using `labelCheckedStyle` and `labelCheckedStyle` parameters.
 - By default there is nice spacing between the icon and the label, so there is no need to define this manually.
 -  The dbc.Checklist can be displayed as toggle switches by setting `switch=True`.  See the dash-boostrap-components gallery for an example.  
 
-Here is an example of `dash-bootstrap-components` dcc.Checklist and dcc.RadioItems.  Change the theme to see the updated
-style:"""
+Change the theme to see the updated colors.
+"""
 
 dcc_tabs = """
 ##### Styling dcc.Tabs
+
 
  If you switch to a dark theme you will see that the default style for dcc.Tabs shown here does not work well. However,
  the dcc.Tabs are very easy to customize using the `style` and `selected_className` parameters.   
@@ -742,6 +795,12 @@ The tabs on the left are the default and the tabs on the right are styled so tha
 dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  
 
 The tabs for this Component Gallery use dcc.Tabs styled for all themes and `vertical=True`
+
+##### Alternate: `dbc.Tabs`
+
+Note that `dash-bootstrap-components` dbc.Tabs are styled to work well with all Bootstrap themes. No custom CSS is required. 
+See the Dash Bootstrap Components section for an example.
+ 
 """
 
 dcc_tabs_code = """
@@ -809,6 +868,17 @@ dcc_dropdown_css = """
 }
 
 ```"""
+
+
+dbc_select = """
+
+##### Alternate: `dbc.Select` 
+
+The `dash-bootstrap-component` dbc.Select is a good alternate to the dcc.Dropdown if you have a simple dropdown to 
+select a single option. (There is no multi-select).  The advantage of dbc.Select is that it automatically updates the
+ design of the dropdown according to the Bootstrap theme selected with no custom CSS required.  Change the theme 
+ to see this in action!
+"""
 
 
 dcc_input = """
@@ -890,6 +960,22 @@ or the selected label style, it's  necessary to use custom CSS.
 
 dcc_slider_css = """
 
+
+Note:  This is styled to show the PULSE theme.  If you would like the slider color to be the primary color of any
+Bootstrap theme, specify the color like this:   `var(--primary)`
+Example:
+```
+.rc-slider-handle {
+  border: 0;
+  background-color: var(--primary)
+}
+```
+
+
+Here is the CSS for the css file in the assets folder
+
+
+```
 /*
  * Custom CSS for sliders -  PULSE Theme
  */
@@ -922,4 +1008,5 @@ dcc_slider_css = """
 .rc-slider-mark-text.rc-slider-mark-text-active {
   color: #343a40;     /* Makes the active label color different than default label color */
 }
+```
 """

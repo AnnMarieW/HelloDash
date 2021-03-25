@@ -230,6 +230,14 @@ how_to_datatable = dbc.Card(
         dbc.CardBody(
             dbc.ListGroup(
                 [
+                    make_link_with_modal(
+                        "How change the hotpink color of icons in the header and pagination buttons",
+                        dcc.Markdown(text.datatable_pink_css),
+                    ),
+                    make_link_with_modal(
+                        "How change color of the `filter data...` text in the header",
+                        dcc.Markdown(text.datatable_filter_data_css),
+                    ),
                     make_link(
                         "How to do fix table where data is cut off at the edges",
                         "https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/",
