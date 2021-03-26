@@ -8,6 +8,8 @@ import dash_bootstrap_components as dbc
 
 from app import app, header, urls
 from apps import text
+#from apps import text, dbc_template
+
 
 from .component_gallery import layout as component_layout
 
@@ -51,6 +53,7 @@ dark_themes = [
 ]
 
 plotly_template = [
+  #  "bootstrap",
     "plotly",
     "ggplot2",
     "seaborn",
@@ -508,7 +511,7 @@ sample_app = dbc.Card(
         ),
         sample_app_controls,
     ],
-    className="mx-1 shadow p-1 pb-4",
+    className="mx-1 shadow pb-4",
     id="sample_app_container",
 )
 
@@ -545,9 +548,10 @@ layout = dbc.Container(
     Input("template", "value"),
     Input("discrete_selected", "children"),
     Input("continuous_selected", "children"),
+    Input("themes","value"),
 )
 def update_line_chart(
-    indicator, continents, years, template, color_discrete, color_continuous
+    indicator, continents, years, template, color_discrete, color_continuous, theme
 ):
 
     color_discrete = color_discrete.split(": ")[1].strip()
@@ -562,20 +566,27 @@ def update_line_chart(
     title = """template= {}  \ncolor_discrete_sequence=px.colors.qualitative.{}""".format(
         template, color_discrete
     )
+    title2 = """template= {}  \n  color_continuous_scale= {}""".format(
+        template, color_continuous
+    )
+
+    cds = discrete_colors[color_discrete]
+    if template=='bootstrap':
+       # template=dbc_template.try_build_plotly_template_from_bootstrap_css_path(theme)
+        cds = None
+
     fig = px.line(
         dff,
         x="year",
         y=indicator,
         color="country",
         template=template,
-        color_discrete_sequence=discrete_colors[color_discrete],
+      #  color_discrete_sequence=discrete_colors[color_discrete],
+        color_discrete_sequence=cds,
         height=350,
     )
     fig.update_layout(margin=dict(l=75, r=20, t=10, b=20))
     dff = df[df.year == years[1]]
-    title2 = """template= {}  \n  color_continuous_scale= {}""".format(
-        template, color_continuous
-    )
     fig2 = px.scatter(
         dff[dff.continent.isin(continents)],
         x="lifeExp",

@@ -575,7 +575,7 @@ Note the `var(--primary)` is the "primary" color of the Bootstrap theme.  You ca
 any other named Bootstrap color, or use a named css color,  or hex, rgb color code.  For example 
 `--accent: yellow` !important;'  or `color: #fff !important;`
 
-
+```
 /*
  * Changes the color of the sort arrow and delete icons in the DataTable header
  *  these icons appear when the table is sortable and/or columns are deletable
@@ -591,7 +591,7 @@ any other named Bootstrap color, or use a named css color,  or hex, rgb color co
 .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
   color: var(--primary) !important;
 }
-
+```
 """
 
 datatable_filter_data_css = """
