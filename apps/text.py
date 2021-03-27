@@ -827,8 +827,8 @@ the right have a black background and work well with many dark themes.  This CSS
 to fine tune the dropdown for your selected theme."""
 
 dcc_dropdown_css = """
-```
 
+```
 /* This styles the dropdown menu items so they are visible in both light and dark theme apps */
 .VirtualizedSelectOption {
     background-color: white;
@@ -867,7 +867,8 @@ dcc_dropdown_css = """
     opacity: .7;
 }
 
-```"""
+```
+"""
 
 
 dbc_select = """
@@ -894,16 +895,25 @@ the input boxes for your selected theme."""
 
 dcc_input_css = """
 
+Add this to the css file in the assets folder:
 
-
-/* This is a classname that styles the input box with a black background  */
-/* ---------------------------------------------------------------------- */
-
-
+```
 .dash-bootstrap input {
     background-color : black !important;
     color:white !important;
 }
+```
+
+Use this class to style certain inputs with a black background.
+For example:
+
+```
+    dcc.Input(
+        id="my_input",
+        type="number",    
+        className="m-1 p-2 dash-bootstrap",
+    )
+```
 
 """
 

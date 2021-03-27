@@ -406,7 +406,7 @@ input_card = dbc.Card(
                     [
                         dcc.Markdown(text.dcc_input, className="my-4"),
                         make_btn_with_modal(
-                            "dcc_dropdown_css",
+                            "dcc_input_css",
                             "see CSS",
                             dcc.Markdown(text.dcc_input_css),
                         ),
