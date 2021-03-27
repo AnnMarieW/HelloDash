@@ -275,6 +275,14 @@ how_to_datatable = dbc.Card(
                         "How to add sparkline to a DataTable",
                         "https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468",
                     ),
+                    make_link(
+                        "How to make a cell act like a button in a  DataTable",
+                        "https://community.plotly.com/t/button-inside-a-dash-table/51460",
+                    ),
+                    make_link(
+                        "How to make columns editable after pasting new data into a table",
+                        "https://community.plotly.com/t/copy-and-paste-with-data-table-restricting-new-rows-and-columns/35758/5",
+                    ),
                 ]
             )
         ),

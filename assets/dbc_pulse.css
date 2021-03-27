@@ -1,0 +1,37 @@
+
+
+/*
+ * Styles the slider for Bootstrap themes
+ * This one is customized for PULSE.  Change the colors for your selected theme
+ */
+
+.dbc_pulse .rc-slider-handle {
+  border: 0;
+  background-color: #593196;  /* primary */
+}
+
+.dbc_pulse .rc-slider-rail {
+  background-color: #ededed;  /* grey  */
+}
+
+.dbc_pulse .rc-slider-track {
+  background-color: #593196;  /* primary */
+}
+
+.dbc_pulse .rc-slider-dot {
+  border: 0;
+  background-color: #ededed; /* grey  */
+}
+
+.dbc_pulse .rc-slider-dot.rc-slider-dot-active {
+  background-color: #593196;  /* primary */
+}
+
+.dbc_pulse .rc-slider-mark-text {
+  color: #868e96;    /* default label color */
+}
+
+.dbc_pulse .rc-slider-mark-text.rc-slider-mark-text-active {
+  color: #343a40;     /* Makes the active label color different than default label color */
+}
+

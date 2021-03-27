@@ -8,7 +8,8 @@ import dash_bootstrap_components as dbc
 
 from app import app, header, urls
 from apps import text
-#from apps import text, dbc_template
+
+# from apps import text, dbc_template
 
 
 from .component_gallery import layout as component_layout
@@ -53,7 +54,7 @@ dark_themes = [
 ]
 
 plotly_template = [
-  #  "bootstrap",
+    #  "bootstrap",
     "plotly",
     "ggplot2",
     "seaborn",
@@ -534,6 +535,7 @@ layout = dbc.Container(
         dcc.Store(id="store"),
     ],
     fluid=True,
+    className='dbc_both'
 )
 
 
@@ -548,7 +550,7 @@ layout = dbc.Container(
     Input("template", "value"),
     Input("discrete_selected", "children"),
     Input("continuous_selected", "children"),
-    Input("themes","value"),
+    Input("themes", "value"),
 )
 def update_line_chart(
     indicator, continents, years, template, color_discrete, color_continuous, theme
@@ -571,8 +573,8 @@ def update_line_chart(
     )
 
     cds = discrete_colors[color_discrete]
-    if template=='bootstrap':
-       # template=dbc_template.try_build_plotly_template_from_bootstrap_css_path(theme)
+    if template == "bootstrap":
+        # template=dbc_template.try_build_plotly_template_from_bootstrap_css_path(theme)
         cds = None
 
     fig = px.line(
@@ -581,7 +583,7 @@ def update_line_chart(
         y=indicator,
         color="country",
         template=template,
-      #  color_discrete_sequence=discrete_colors[color_discrete],
+        #  color_discrete_sequence=discrete_colors[color_discrete],
         color_discrete_sequence=cds,
         height=350,
     )

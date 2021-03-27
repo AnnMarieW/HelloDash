@@ -273,7 +273,7 @@ dropdown_card = dbc.Card(
                                 dbc.Col(
                                     [
                                         "Styled for CYBORG theme:",
-                                        make_dropdowns("dash-bootstrap"),
+                                        make_dropdowns("dbc_dark"),
                                     ]
                                 ),
                             ],
@@ -416,7 +416,7 @@ input_card = dbc.Card(
                                 dbc.Col(
                                     [
                                         "Styled for dark theme",
-                                        make_input_card("dash-bootstrap"),
+                                        make_input_card("dbc_dark"),
                                     ]
                                 ),
                             ]
@@ -523,7 +523,7 @@ slider_pulse_card = dbc.Card(
             ],
         ),
     ],
-    className="p-2",
+    className="p-2 dbc_pulse",
 )
 
 

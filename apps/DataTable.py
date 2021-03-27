@@ -73,42 +73,38 @@ def make_btn_with_modal(id, title, content):
     )
 
 
-def make_table(theme):
-    color = "white" if theme == "dark" else "black"
-    selected = (
-        "rgba(255, 255, 255, 0.075)" if theme == "dark" else "rgba(0, 0, 0, 0.075)"
-    )
-
-    return dash_table.DataTable(
+light_table = html.Div(
+    dash_table.DataTable(
         columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
         data=df.to_dict("records"),
         editable=True,
         page_size=4,
         filter_action="native",
         sort_action="native",
-        css=[
-            {"selector": "input", "rule": f"color: {color}"},
-            {"selector": "tr:hover", "rule": "background-color:transparent"},
-            {"selector": ".dash-table-tooltip", "rule": "color:black"},
+        style_data_conditional=[
+            {"if": {"state": "active"}, "border": "1px solid var(--primary)",},
+            {"if": {"state": "selected"}, "border": "1px solid var(--secondary)",},
         ],
-        style_cell={
-            "backgroundColor": "transparent",
-            "fontFamily": "var(--font-family-sans-serif)",
-            "color": color,
-        },
+    ),
+    className="dbc_light",
+)
+
+
+dark_table = html.Div(
+    dash_table.DataTable(
+        columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+        data=df.to_dict("records"),
+        editable=True,
+        page_size=4,
+        filter_action="native",
+        sort_action="native",
         style_data_conditional=[
             {
                 "if": {"state": "active"},
-                "backgroundColor": selected,
                 "border": "1px solid var(--primary)",
-                "color": color,
+                "opacity": 0.75,
             },
-            {
-                "if": {"state": "selected"},
-                "backgroundColor": selected,
-                "border": "1px solid var(--secondary)",
-                "color": color,
-            },
+            {"if": {"state": "selected"}, "opacity": 0.75},
         ],
         tooltip_conditional=[
             {
@@ -117,7 +113,9 @@ def make_table(theme):
                 "value": "odd rows have a sample tooltip",
             }
         ],
-    )
+    ),
+    className="dbc_dark",
+)
 
 
 """
@@ -130,9 +128,13 @@ default_table_card = dbc.Card(
         dbc.CardHeader(html.H5("Dash DataTable - default style")),
         dbc.CardBody(
             dash_table.DataTable(
-                columns=[{"name": i, "id": i} for i in df.columns],
+                columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
                 data=df.to_dict("records"),
                 page_size=4,
+                editable=True,
+                cell_selectable=True,
+                filter_action="native",
+                sort_action="native",
             ),
         ),
     ],
@@ -145,7 +147,7 @@ light_theme_card = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Markdown(text.datatable_light_text),
-                make_table("light"),
+                light_table,
                 make_btn_with_modal(
                     "light_theme_code",
                     "see code",
@@ -153,11 +155,6 @@ light_theme_card = dbc.Card(
                         html.Pre(html.Code(text.datatable_light_code)),
                         className="codebox",
                     ),
-                ),
-                dbc.Alert(
-                    "Change to a dark theme to see more about styling the table for a dark theme",
-                    color="dark",
-                    className="d-inline-flex",
                 ),
             ]
         ),
@@ -173,7 +170,7 @@ dark_theme_card = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Markdown(text.datatable_dark_text),
-                make_table("dark"),
+                dark_table,
                 make_btn_with_modal(
                     "dark_theme_code",
                     "see code",
@@ -182,7 +179,6 @@ dark_theme_card = dbc.Card(
                         className="codebox",
                     ),
                 ),
-                "Change to a dark theme to see more about styling the table for a dark theme",
             ]
         ),
     ],
@@ -209,11 +205,11 @@ layout = (
     ),
 )
 
-
-@app.callback(
-    Output("light_theme_table", "className"),
-    Output("dark_theme_table", "className"),
-    Input("light_dark", "value"),
-)
-def hide_show_table(theme):
-    return ("m-4", "m-4 d-none") if theme == "Light Themes" else ("m-4 d-none", "m-4")
+#
+# @app.callback(
+#     Output("light_theme_table", "className"),
+#     Output("dark_theme_table", "className"),
+#     Input("light_dark", "value"),
+# )
+# def hide_show_table(theme):
+#     return ("m-4", "m-4 d-none") if theme == "Light Themes" else ("m-4 d-none", "m-4")

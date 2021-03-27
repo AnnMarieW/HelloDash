@@ -1,0 +1,105 @@
+
+
+
+/*
+ * Style the Dropdown with a black background for a dark theme
+ */
+
+.dbc_dark .Select-control {
+    background-color: black !important;    /* input box */
+}
+
+.dbc_dark .Select-value-label {   /* changes the text color of input box */
+    color: white !important;
+}
+
+.dbc_dark .Select--single > .Select-control .Select-value, .Select-placeholder {
+    border: 1px solid grey !important;
+    border-radius: 4px !important;
+
+}
+
+.dbc_dark .VirtualizedSelectOption {   /* dropdown menu options */
+    background-color: black;
+    color: white;
+ }
+
+.dbc_dark .VirtualizedSelectFocusedOption {  /* dropdown menu hover effect */
+    background-color: black;
+    opacity: .7;
+}
+
+
+/*
+ *  input boxes - including editable fields in DataTable
+ */
+.dbc_dark input {
+    background-color : var(--dark) !important;
+    color: var(--light) !important;
+}
+
+/*--------------------------------------------
+ * DataTable
+ */
+
+/*
+ * fixes DataTable dropdown - allows dropdown menu to be visible
+ */
+.dbc_dark .dash-table-container .row {
+    display : block !important;
+    margin: 0;
+}
+
+/*
+ *  sort arrow and delete icons in the DataTable header
+ *  these icons appear when the table is sortable and/or columns are deletable
+ */
+.dbc_dark .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+    --accent: var(--primary) !important;
+    --hover: none !important;
+}
+
+/* pagination buttons - this removes the default pink hover */
+.dbc_dark .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+    color: var(--primary) !important;
+}
+
+
+
+/* table body */
+.dbc_dark .dash-spreadsheet td {
+    font-family:  var(--font-family-sans-serif);
+    background-color: var(--dark) !important;
+    color: var(--light) !important;
+    --border: lightgrey;
+}
+
+/*  table header */
+.dbc_dark .dash-spreadsheet .dash-header {
+    font-family:  var(--font-family-sans-serif);
+    background-color: var(--dark) !important;
+    opacity: 0.9;
+    color: var(--light) !important;
+    --accent: var(--primary) !important;
+    --border: lightgrey;
+}
+
+/* filter row in the header */
+.dbc_dark .dash-spreadsheet .dash-filter {
+    font-family:  var(--font-family-sans-serif);
+    background-color: var(--dark) !important;
+    color: var(--light) !important;
+    --border: lightgrey;
+}
+
+/* tooltips - makes text readable in dark themes */
+.dbc_dark .dash-table-tooltip {
+    color:black
+}
+
+
+/* row hover *
+.dbc_dark .dash-spreadsheet tr:hover td.dash-cell {
+    opacity: 0.9;
+}
+*/

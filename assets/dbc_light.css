@@ -1,0 +1,103 @@
+
+
+
+
+
+/*--------------------------------------------
+ * DataTable
+ */
+
+/* fixes DataTable dropdown - allows dropdown menu to be visible  */
+.dbc_light .dash-table-container .row {
+    display : block !important;
+    margin: 0;
+}
+
+/*
+ *  sort arrow and delete icons in the DataTable header
+ *  these icons appear when the table is sortable and/or columns are deletable
+ */
+.dbc_light .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+    --accent: var(--primary) !important;
+    --hover: none !important;
+    --border: lightgrey;
+    --text-color: var(--dark) !important;
+}
+
+/* pagination buttons - this removes the default pink hover  */
+.dbc_light .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+    color: var(--primary) !important;
+}
+
+/* table body */
+.dbc_light .dash-spreadsheet td {
+    font-family:  var(--font-family-sans-serif);
+    background-color: var(--light) !important;
+    color: var(--dark) !important;
+    border: lightgrey;
+}
+
+
+/* table header */
+.dbc_light .dash-spreadsheet .dash-header {
+    font-family:  var(--font-family-sans-serif);
+    background-color: var(--light) !important;
+    opacity: 0.9;
+    color: var(--dark) !important;
+    --accent: var(--primary) !important;
+    --border: lightgrey;
+}
+
+/*  filter row in the header  */
+.dbc_light .dash-spreadsheet .dash-filter {
+    font-family:  var(--font-family-sans-serif);
+    background-color: var(--light) !important;
+    color: var(--dark) !important;
+    --border: lightgrey;
+}
+
+
+/* tooltips - makes text readable in dark themes */
+.dbc_light .dash-table-tooltip {
+    color:black
+}
+
+
+
+/* row hover *
+.dbc_light .dash-spreadsheet tr:hover td.dash-cell {
+    opacity: 0.9;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  when using Bootstrap, this will add row borders to the table in dcc.Markdown Table
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.dbc.both table {
+  border-collapse: collapse;
+}
+.dbc.both th:not(.CalendarDay),
+.dbc.both td:not(.CalendarDay) {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+.dbc.both th:first-child:not(.CalendarDay),
+.dbc.both td:first-child:not(.CalendarDay) {
+  padding-left: 0; }
+.dbc.both th:last-child:not(.CalendarDay),
+.dbc.both td:last-child:not(.CalendarDay) {
+  padding-right: 0; }
+

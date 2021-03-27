@@ -646,94 +646,196 @@ datatable_light_text = """
     -  The font is changed to the font for the BOOTSTRAP theme.
     -  The active and selected cells are highlighted with the Bootstrap theme colors rather than the Dash default of "hotpink". Try
     selecting cells in this table and in the default table above to see the style difference.
+    
+    This table also has some custom CSS so that it will work with any Bootstrap theme.  The background color is set using
+    a variable.  This selects the Bootstrap "light" color for the theme `var(--light)`, and the text is set to the "dark"
+    color `var(--dark)`
+    
+    If the table is sortable, or the columns are deletable, there is CSS to make the icons in the header the "primary"
+    color rather than the default of "hotpink".   The pagination buttons are also changed to "primary" color rather than
+    pink on hover.
+    
+    Click on the code button to see the code and CSS for this table
+    
 """
 
 
 datatable_light_code = """ 
-        Styling a Dash Datatable with a light theme.  Note:  To see how to format
-        the tooltip, switch to a dark theme to see more info and example.  
+        Styling a Dash Datatable with a light theme. 
         
+        ```
+        light_table = html.Div(
+            dash_table.DataTable(
+                columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+                data=df.to_dict("records"),
+                editable=True,
+                page_size=4,
+                filter_action="native",
+                sort_action="native",
+                style_data_conditional=[
+                    {"if": {"state": "active"}, "border": "1px solid var(--primary)",},
+                    {"if": {"state": "selected"}, "border": "1px solid var(--secondary)",},
+                ],
+            ),
+            className="dbc_light",
+        )        
+        ```
+        
+        Here is the CSS for the assets folder:
+        
+        ```
+        /* fixes DataTable dropdown - allows dropdown menu to be visible  */
+        .dbc_light .dash-table-container .row {
+            display : block !important;
+            margin: 0;
+        }
+        
+        /*
+         *  sort arrow and delete icons in the DataTable header
+         *  these icons appear when the table is sortable and/or columns are deletable
+         */
+        .dbc_light .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+            --accent: var(--primary) !important;
+            --hover: none !important;
+            --border: lightgrey;
+            --text-color: var(--dark) !important;
+        }
+        
+        /* pagination buttons - this removes the default pink hover  */
+        .dbc_light .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+            color: var(--primary) !important;
+        }
+        
+        /* table body */
+        .dbc_light .dash-spreadsheet td {
+            font-family:  var(--font-family-sans-serif);
+            background-color: var(--light) !important;
+            color: var(--dark) !important;
+            border: lightgrey;
+        }
+        
+        
+        /* table header */
+        .dbc_light .dash-spreadsheet .dash-header {
+            font-family:  var(--font-family-sans-serif);
+            background-color: var(--light) !important;
+            opacity: 0.9;
+            color: var(--dark) !important;
+            --accent: var(--primary) !important;
+            --border: lightgrey;
+        }
+        
+        /*  filter row in the header  */
+        .dbc_light .dash-spreadsheet .dash-filter {
+            font-family:  var(--font-family-sans-serif);
+            background-color: var(--light) !important;
+            color: var(--dark) !important;
+            --border: lightgrey;
+        }
 
-        datatable = dash_table.DataTable(
-            columns=[{"name": i, "id": i} for i in df.columns],
-            data=df.to_dict("records"),
-            style_cell={"fontFamily": "var(--font-family-sans-serif)",
-            style_data_conditional=[
-                {
-                    "if": {"state": "active"},
-                    "backgroundColor": "rgba(0, 0, 0, 0.075)"
-                    "border": "1px solid var(--primary)",
-                },
-                {
-                    "if": {"state": "selected"},
-                    "backgroundColor": "rgba(0, 0, 0, 0.075)"
-                    "border": "1px solid var(--secondary),
-                },
-            ],
-        )   
+        
+        ```
+        
+        
+        
+        
 """
 
 
 datatable_dark_text = """    
-
-    When you use a dark theme, you will need to do a few more things to make the DataTable look nice.  The next table
-    has the following style changes:
-
-    -  The table background color is transparent to make it the same as the Bootstrap background color.
-    -  The font color is white when cells are selected or the table is editable. This makes text visible in a dark background.
-    -  The hover color is changed to transparent.  This is done because the default hover background color is white
-    which looks bad and makes the text disappear.
-    -  The text color of tooltips is changed to black.  The default background color is grey, which isn't bad -- but note
-     that you can also use this same selector to change the background color and/or add other style changes to tooltips.
-
+    This table is styled like the table above, but the background color is set to `var(--dark)` and the text color
+    is set to `var(--light)`.
+    
+    Click on the code button to see the code and CSS for this table.    
 """
 
 
 datatable_dark_code = """
     Styling a Dash Datatable with a dark theme
-    
-    
-    dash_table.DataTable(
-        columns=[{"name": i, "id": i} for i in df.columns],
-        data=df.to_dict("records"),
-        editable=True,
-        page_size=4,
-        filter_action="native",
-        sort_action="native",
-        css=[
-            {"selector": "input", "rule": "color: white"},       #fixes the "filter data... text and editable cells
-            {"selector": "tr:hover", "rule": "background-color:transparent"},   # fixes background hover color
-            {"selector": ".dash-table-tooltip", "rule": "color:black"},         # fixes tooltip color
-
-        ],
-        style_cell={
-            "backgroundColor": "transparent",
-            "fontFamily": "var(--font-family-sans-serif)",
-            "color": color
-        },
-        style_data_conditional=[
-            {
-                "if": {"state": "active"},
-                "backgroundColor": "rgba(255, 255, 255, 0.075)",
-                "border": "1px solid var(--primary)",
-                "color": white,
-            },
-            {
-                "if": {"state": "selected"},
-                "backgroundColor": "rgba(255, 255, 255, 0.075)",
-                "border": "1px solid var(--secondary)",
-                "color": white,
-            },
-        ],
-        tooltip_conditional=[
-            {
-                "if": {"row_index": "odd"},
-                "type": "markdown",
-                "value": "odd rows have a sample tooltip",
-            }
-        ],
+```
+    dark_table = html.Div(
+        dash_table.DataTable(
+            columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+            data=df.to_dict("records"),
+            editable=True,
+            page_size=4,
+            filter_action="native",
+            sort_action="native",
+            style_data_conditional=[
+                {
+                    "if": {"state": "active"},
+                    "border": "1px solid var(--primary)",
+                    "opacity": 0.75,
+                },
+                {"if": {"state": "selected"}, "opacity": 0.75},
+            ],
+            tooltip_conditional=[
+                {
+                    "if": {"row_index": "odd"},
+                    "type": "markdown",
+                    "value": "odd rows have a sample tooltip",
+                }
+            ],
+        ),
+        className="dbc_dark",
     )
+```
+
+    Here is the CSS for the assets folder:
+    ```
+    /*
+     * fixes DataTable dropdown - allows dropdown menu to be visible
+     */
+    .dbc_dark .dash-table-container .row {
+        display : block !important;
+        margin: 0;
+    }
     
+    /*
+     *  sort arrow and delete icons in the DataTable header
+     *  these icons appear when the table is sortable and/or columns are deletable
+     */
+    .dbc_dark .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+        --accent: var(--primary) !important;
+        --hover: none !important;
+    }
+    
+    /* pagination buttons - this removes the default pink hover */
+    .dbc_dark .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+        color: var(--primary) !important;
+    }
+    
+    /* table body */
+    .dbc_dark .dash-spreadsheet td {
+        font-family:  var(--font-family-sans-serif);
+        background-color: var(--dark) !important;
+        color: var(--light) !important;
+        --border: lightgrey;
+    }
+    
+    /*  table header */
+    .dbc_dark .dash-spreadsheet .dash-header {
+        font-family:  var(--font-family-sans-serif);
+        background-color: var(--dark) !important;
+        opacity: 0.9;
+        color: var(--light) !important;
+        --accent: var(--primary) !important;
+        --border: lightgrey;
+    }
+    
+    /* filter row in the header */
+    .dbc_dark .dash-spreadsheet .dash-filter {
+        font-family:  var(--font-family-sans-serif);
+        background-color: var(--dark) !important;
+        color: var(--light) !important;
+        --border: lightgrey;
+    }
+    
+    /* tooltips - makes text readable in dark themes */
+    .dbc_dark .dash-table-tooltip {
+        color:black
+    }    
+    ```
     """
 
 """
