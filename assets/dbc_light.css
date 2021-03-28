@@ -1,4 +1,11 @@
 
+/*
+ *  This stylesheet defines the className dbc_light which helps improve
+ *  the design of light themed Bootstrap apps
+ *
+ *
+ */
+
 
 
 
@@ -73,31 +80,39 @@
 
 
 
+/*------------------------------------
+ * Sliders - makes the slider the "primary color"
+ */
 
-
-
-
-
-
-
-
-
-
-
-/*  when using Bootstrap, this will add row borders to the table in dcc.Markdown Table
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.dbc.both table {
-  border-collapse: collapse;
+.dbc_light .rc-slider-handle {
+  border: 0;
+  background-color: var(--primary)
 }
-.dbc.both th:not(.CalendarDay),
-.dbc.both td:not(.CalendarDay) {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #E1E1E1; }
-.dbc.both th:first-child:not(.CalendarDay),
-.dbc.both td:first-child:not(.CalendarDay) {
-  padding-left: 0; }
-.dbc.both th:last-child:not(.CalendarDay),
-.dbc.both td:last-child:not(.CalendarDay) {
-  padding-right: 0; }
 
+.dbc_light .rc-slider-rail {
+   background-color: #ededed;  /* grey */
+}
+
+.dbc_light .rc-slider-track {
+  background-color: var(--primary)
+}
+
+.dbc_light .rc-slider-dot {
+  border: 0;
+  background-color: #ededed; /* grey */
+}
+
+.dbc_light .rc-slider-dot.rc-slider-dot-active {
+  background-color: var(--primary)
+}
+
+/* label color */
+.dbc_light .rc-slider-mark-text {
+  color: black
+  opacity: 0.7
+}
+
+/* Makes the active label color different than default label color */
+.dbc_light .rc-slider-mark-text.rc-slider-mark-text-active {
+  color: black
+}

@@ -490,6 +490,45 @@ radio_items = dbc.Card(
     ]
 )
 
+
+select = dbc.Card(
+    [
+        html.H2(make_subheading("dbc.Select", "input/"),),
+        dbc.CardBody(
+            dbc.Select(
+                id="select",
+                options=[
+                    {"label": "Option 1", "value": "1"},
+                    {"label": "Option 2", "value": "2"},
+                    {"label": "Disabled option", "value": "3", "disabled": True},
+                ],
+                value="1",
+            )
+        ),
+    ]
+)
+
+
+textarea = dbc.Card(
+    [
+        html.H2(make_subheading("dbc.Textarea", "input/"),),
+        dbc.CardBody(
+            [
+                dbc.Textarea(className="mb-3", placeholder="A Textarea"),
+                dbc.Textarea(
+                    valid=True,
+                    bs_size="sm",
+                    className="mb-3",
+                    placeholder="A small, valid Textarea",
+                ),
+                dbc.Textarea(
+                    invalid=True, bs_size="lg", placeholder="A large, invalid Textarea"
+                ),
+            ]
+        ),
+    ]
+)
+
 input_group = dbc.Card(
     [
         html.H2(make_subheading("dbc.InputGroup and addons", "input_group/")),
@@ -807,6 +846,7 @@ layout = dbc.Container(
                 cards,
                 dbc.Row([dbc.Col([form, input_group,]), dbc.Col([input_])]),
                 dbc.Row([dbc.Col([checklist_items]), dbc.Col([radio_items])]),
+                dbc.Row([dbc.Col([textarea]), dbc.Col([select])]),
                 navbar,
                 tabs,
                 jumbotron,

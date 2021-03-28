@@ -535,7 +535,7 @@ layout = dbc.Container(
         dcc.Store(id="store"),
     ],
     fluid=True,
-    className='dbc_both'
+    className="dbc_both",
 )
 
 

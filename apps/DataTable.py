@@ -151,10 +151,7 @@ light_theme_card = dbc.Card(
                 make_btn_with_modal(
                     "light_theme_code",
                     "see code",
-                    html.Div(
-                        html.Pre(html.Code(text.datatable_light_code)),
-                        className="codebox",
-                    ),
+                    dcc.Markdown(text.datatable_light_code),
                 ),
             ]
         ),
@@ -174,10 +171,7 @@ dark_theme_card = dbc.Card(
                 make_btn_with_modal(
                     "dark_theme_code",
                     "see code",
-                    html.Div(
-                        html.Pre(html.Code(text.datatable_dark_code)),
-                        className="codebox",
-                    ),
+                    dcc.Markdown(text.datatable_dark_code),
                 ),
             ]
         ),
@@ -204,12 +198,3 @@ layout = (
         fluid=True,
     ),
 )
-
-#
-# @app.callback(
-#     Output("light_theme_table", "className"),
-#     Output("dark_theme_table", "className"),
-#     Input("light_dark", "value"),
-# )
-# def hide_show_table(theme):
-#     return ("m-4", "m-4 d-none") if theme == "Light Themes" else ("m-4 d-none", "m-4")

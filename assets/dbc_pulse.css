@@ -1,8 +1,16 @@
 
-
 /*
- * Styles the slider for Bootstrap themes
- * This one is customized for PULSE.  Change the colors for your selected theme
+ *  This stylesheet defines the className dbc_pulse which helps improve
+ *  the design of  Bootswatch PULSE themed  apps
+ *
+ *
+ */
+
+
+
+/*  -------------------------------------
+ * Slider
+ *    Customized for PULSE.  Changes the slider bar to the "primary" color
  */
 
 .dbc_pulse .rc-slider-handle {
@@ -27,11 +35,14 @@
   background-color: #593196;  /* primary */
 }
 
+/* default label color */
 .dbc_pulse .rc-slider-mark-text {
-  color: #868e96;    /* default label color */
+  color: #868e96;
 }
 
+
+/* Makes the active label color different than default label color */
 .dbc_pulse .rc-slider-mark-text.rc-slider-mark-text-active {
-  color: #343a40;     /* Makes the active label color different than default label color */
+  color: #343a40;
 }
 

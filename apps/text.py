@@ -21,7 +21,11 @@ css_text = """
     custom CSS for the dropdowns to make text readable in both light and dark themed apps. 
      
     In the Dash Component Gallery below, you will find details on how to apply custom CSS to Dash Core Components, 
-    HTML Components and the DataTable.  Dash DAQ components coming soon!
+    HTML Components and the DataTable.  Dash DAQ components coming soon!  
+    
+    In the [assets folder](https://github.com/AnnMarieW/HelloDash/tree/main/assets) for this app,
+    see the stylesheets that define the classNames  dbc_light and dbc_dark. Use these classNames to enhance the 
+    design of either light or dark themed apps.
     
     See the Dash documentation:
     
@@ -681,63 +685,7 @@ datatable_light_code = """
         )        
         ```
         
-        Here is the CSS for the assets folder:
-        
-        ```
-        /* fixes DataTable dropdown - allows dropdown menu to be visible  */
-        .dbc_light .dash-table-container .row {
-            display : block !important;
-            margin: 0;
-        }
-        
-        /*
-         *  sort arrow and delete icons in the DataTable header
-         *  these icons appear when the table is sortable and/or columns are deletable
-         */
-        .dbc_light .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
-            --accent: var(--primary) !important;
-            --hover: none !important;
-            --border: lightgrey;
-            --text-color: var(--dark) !important;
-        }
-        
-        /* pagination buttons - this removes the default pink hover  */
-        .dbc_light .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
-            color: var(--primary) !important;
-        }
-        
-        /* table body */
-        .dbc_light .dash-spreadsheet td {
-            font-family:  var(--font-family-sans-serif);
-            background-color: var(--light) !important;
-            color: var(--dark) !important;
-            border: lightgrey;
-        }
-        
-        
-        /* table header */
-        .dbc_light .dash-spreadsheet .dash-header {
-            font-family:  var(--font-family-sans-serif);
-            background-color: var(--light) !important;
-            opacity: 0.9;
-            color: var(--dark) !important;
-            --accent: var(--primary) !important;
-            --border: lightgrey;
-        }
-        
-        /*  filter row in the header  */
-        .dbc_light .dash-spreadsheet .dash-filter {
-            font-family:  var(--font-family-sans-serif);
-            background-color: var(--light) !important;
-            color: var(--dark) !important;
-            --border: lightgrey;
-        }
-
-        
-        ```
-        
-        
-        
+        The class `dbc_light` is defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
         
 """
 
@@ -752,7 +700,8 @@ datatable_dark_text = """
 
 datatable_dark_code = """
     Styling a Dash Datatable with a dark theme
-```
+    
+    ```
     dark_table = html.Div(
         dash_table.DataTable(
             columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
@@ -779,63 +728,9 @@ datatable_dark_code = """
         ),
         className="dbc_dark",
     )
-```
-
-    Here is the CSS for the assets folder:
     ```
-    /*
-     * fixes DataTable dropdown - allows dropdown menu to be visible
-     */
-    .dbc_dark .dash-table-container .row {
-        display : block !important;
-        margin: 0;
-    }
     
-    /*
-     *  sort arrow and delete icons in the DataTable header
-     *  these icons appear when the table is sortable and/or columns are deletable
-     */
-    .dbc_dark .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
-        --accent: var(--primary) !important;
-        --hover: none !important;
-    }
-    
-    /* pagination buttons - this removes the default pink hover */
-    .dbc_dark .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
-        color: var(--primary) !important;
-    }
-    
-    /* table body */
-    .dbc_dark .dash-spreadsheet td {
-        font-family:  var(--font-family-sans-serif);
-        background-color: var(--dark) !important;
-        color: var(--light) !important;
-        --border: lightgrey;
-    }
-    
-    /*  table header */
-    .dbc_dark .dash-spreadsheet .dash-header {
-        font-family:  var(--font-family-sans-serif);
-        background-color: var(--dark) !important;
-        opacity: 0.9;
-        color: var(--light) !important;
-        --accent: var(--primary) !important;
-        --border: lightgrey;
-    }
-    
-    /* filter row in the header */
-    .dbc_dark .dash-spreadsheet .dash-filter {
-        font-family:  var(--font-family-sans-serif);
-        background-color: var(--dark) !important;
-        color: var(--light) !important;
-        --border: lightgrey;
-    }
-    
-    /* tooltips - makes text readable in dark themes */
-    .dbc_dark .dash-table-tooltip {
-        color:black
-    }    
-    ```
+    The class `dbc_dark` is defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
     """
 
 """
@@ -941,35 +836,12 @@ dcc_dropdown_css = """
     background-color: lightgrey;
     color: black;
 }
-
-/* ---------------------------------------------------------- */
-/* This styles the dropdown with a black background           */
-
-.Select-control {
-    background-color: black !important;    /* input box */
-}
-
-.Select-value-label {   /* changes the text color of input box */
-    color: white !important;
-}
-
-.Select--single > .Select-control .Select-value, .Select-placeholder {
-    border: 1px solid grey !important;
-    border-radius: 4px !important;
-
-}
-
-.VirtualizedSelectOption {   /* dropdown menu options */
-    background-color: black;
-    color: white;
-}
-
-.VirtualizedSelectFocusedOption {  /* dropdown menu hover effect */
-    background-color: black;
-    opacity: .7;
-}
-
 ```
+
+
+This dropdown with the dark background  uses `className="dbc_dark"`  
+It's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
+
 """
 
 
@@ -997,25 +869,8 @@ the input boxes for your selected theme."""
 
 dcc_input_css = """
 
-Add this to the css file in the assets folder:
-
-```
-.dash-bootstrap input {
-    background-color : black !important;
-    color:white !important;
-}
-```
-
-Use this class to style certain inputs with a black background.
-For example:
-
-```
-    dcc.Input(
-        id="my_input",
-        type="number",    
-        className="m-1 p-2 dash-bootstrap",
-    )
-```
+The dcc.Inputs with the dark background uses `className="dbc_dark"`  
+It's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
 
 """
 
@@ -1073,7 +928,7 @@ or the selected label style, it's  necessary to use custom CSS.
 dcc_slider_css = """
 
 
-Note:  This is styled to show the PULSE theme.  If you would like the slider color to be the primary color of any
+Note:  This is slider is styled to show the PULSE theme.  If you would like the slider color to be the primary color of any
 Bootstrap theme, specify the color like this:   `var(--primary)`
 Example:
 ```
@@ -1083,42 +938,6 @@ Example:
 }
 ```
 
+This slider uses `className="dbc_pulse"`  it's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
 
-Here is the CSS for the css file in the assets folder
-
-
-```
-/*
- * Custom CSS for sliders -  PULSE Theme
- */
-.rc-slider-handle {
-  border: 0;
-  background-color: #593196;  /* primary */
-}
-
-.rc-slider-rail {
-  background-color: #ededed;  /* grey */
-}
-
-.rc-slider-track {
-  background-color: #593196;  /* primary */
-}
-
-.rc-slider-dot {
-  border: 0;
-  background-color: #ededed; /* grey */
-}
-
-.rc-slider-dot.rc-slider-dot-active {
-  background-color: #593196;  /* primary */
-}
-
-.rc-slider-mark-text {
-  color: #868e96;    /* label color */
-}
-
-.rc-slider-mark-text.rc-slider-mark-text-active {
-  color: #343a40;     /* Makes the active label color different than default label color */
-}
-```
 """

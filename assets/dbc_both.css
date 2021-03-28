@@ -1,14 +1,15 @@
 
 /*
- *  This stylesheet defines the className dbc_both which can be used as a
- *  default style that will work with any Bootstrap theme.
+ *  This stylesheet defines the className dbc_both which helps improve
+ *  the design if apps use change between light and dark themes
  *
  *
  */
 
 
-/*
- * Dropdowns - improves visibility in dark themes
+/*-----------------------------------
+ * Dropdowns
+ *     improves visibility of menu items in either light or dark themes
  */
 .dbc_both .VirtualizedSelectOption {
     background-color: white;
@@ -21,48 +22,10 @@
 }
 
 
-
-/*------------------------------------
- * Sliders
+/* ----------------------------------------
+ * Markdown
+ *    Table -add style when used in dcc.Markdown
  */
-
-.dbc .rc-slider-handle {
-  border: 0;
-  background-color: var(--primary)
-}
-
-.dbc .rc-slider-rail {
-   background-color: #ededed;  /* grey */
-}
-
-.dbc .rc-slider-track {
-  background-color: var(--primary)
-}
-
-.dbc .rc-slider-dot {
-  border: 0;
-  background-color: #ededed; /* grey */
-}
-
-.dbc .rc-slider-dot.rc-slider-dot-active {
-  background-color: var(--primary)
-}
-
-.dbc .rc-slider-mark-text {
-  color: #868e96;    /* label color */
-}
-
-/* Makes the active label color different than default label color */
-.dbc .rc-slider-mark-text.rc-slider-mark-text-active {
-  color: #343a40;
-}
-
-
-
-
-
-/*  Styles a  dcc.Markdown Table
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .dbc_both table {
   border-collapse: collapse;
 }
@@ -77,3 +40,13 @@
 .dbc_both th:last-child:not(.CalendarDay),
 .dbc_both td:last-child:not(.CalendarDay) {
   padding-right: 0; }
+
+/*   Blockquotes - adds style when used in dcc.Markdown */
+dbc_both blockquote {
+  border-left: 4px lightgrey solid;
+  padding-left: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0rem;
+}
+

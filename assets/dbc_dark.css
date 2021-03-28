@@ -1,15 +1,24 @@
-
-
-
 /*
- * Style the Dropdown with a black background for a dark theme
+ *  This stylesheet defines the className dbc_dark which helps improve
+ *  the design of dark themed Bootstrap apps
+ *
+ *
  */
 
+
+
+/* ----------------------------------
+ *  Dropdown
+ *     Black background for a dark theme
+ */
+
+/* input box */
 .dbc_dark .Select-control {
-    background-color: black !important;    /* input box */
+    background-color: black !important;
 }
 
-.dbc_dark .Select-value-label {   /* changes the text color of input box */
+/* changes the text color of input box */
+.dbc_dark .Select-value-label {
     color: white !important;
 }
 
@@ -19,21 +28,40 @@
 
 }
 
-.dbc_dark .VirtualizedSelectOption {   /* dropdown menu options */
+/* dropdown menu options */
+.dbc_dark .VirtualizedSelectOption {
     background-color: black;
     color: white;
  }
 
-.dbc_dark .VirtualizedSelectFocusedOption {  /* dropdown menu hover effect */
+/* dropdown menu hover effect */
+.dbc_dark .VirtualizedSelectFocusedOption {
     background-color: black;
     opacity: .7;
 }
 
-
-/*
- *  input boxes - including editable fields in DataTable
+/* border on focus - default is blue
+ * shadow box around input box.  default is blue
  */
-.dbc_dark input {
+.dbc_dark .is-focused:not(.is-open) > .Select-control {
+  border-color: var(--primary) !important;
+ /* box-shadow: 0 0 0 0.2rem rgba(223, 105, 26, 0.25); /* lighter primary */
+  box-shadow: none !important;
+}
+
+
+/* primary  this colors the input box text and x  of multi */
+.dbc_dark .Select--multi .Select-value {
+  color: white;
+}
+
+
+
+/* ----------------------------------------
+ *  input boxes including editable fields in DataTable
+ *       Makes background the "dark" className of theme
+ */
+.dbc_dark input input.current-page {
     background-color : var(--dark) !important;
     color: var(--light) !important;
 }
@@ -43,7 +71,8 @@
  */
 
 /*
- * fixes DataTable dropdown - allows dropdown menu to be visible
+ * fixes margins so data isn't cut off at table edges
+ * fixes  when the table dropdown doesn't drop down
  */
 .dbc_dark .dash-table-container .row {
     display : block !important;
@@ -51,12 +80,13 @@
 }
 
 /*
- *  sort arrow and delete icons in the DataTable header
+ *  sort arrow and delete icons in the DataTable header - changes pink color
  *  these icons appear when the table is sortable and/or columns are deletable
  */
 .dbc_dark .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
     --accent: var(--primary) !important;
     --hover: none !important;
+    --text-color: none !important;
 }
 
 /* pagination buttons - this removes the default pink hover */
@@ -103,3 +133,41 @@
     opacity: 0.9;
 }
 */
+
+
+
+/*------------------------------------
+ * Sliders - makes the slider the "primary color"
+ */
+
+.dbc_dark .rc-slider-handle {
+  border: 0;
+  background-color: var(--primary)
+}
+
+.dbc_dark .rc-slider-rail {
+   background-color: #ededed;  /* grey */
+}
+
+.dbc_dark .rc-slider-track {
+  background-color: var(--primary)
+}
+
+.dbc_dark .rc-slider-dot {
+  border: 0;
+  background-color: #ededed; /* grey */
+}
+
+.dbc_dark .rc-slider-dot.rc-slider-dot-active {
+  background-color: var(--primary)
+}
+
+/* label color */
+.dbc_dark .rc-slider-mark-text {
+  color: grey
+}
+
+/* Makes the active label color different than default label color */
+.dbc_dark .rc-slider-mark-text.rc-slider-mark-text-active {
+  color: white
+}
