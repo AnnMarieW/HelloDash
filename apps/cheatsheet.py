@@ -245,7 +245,13 @@ how_to_datatable = dbc.Card(
                     make_link_with_modal(
                         "How to fix dropdown options that don't appear",
                         dcc.Markdown(
-                            "This error is fixed the same way as fixing data that is cut off at the edges. See https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/",
+                            """ Add this to the css in the assets folder:
+                        ```
+                        .Select-menu-outer {
+                            display: block !important;
+                        }
+                        ```                        
+                        """
                         ),
                     ),
                     make_link_with_modal(

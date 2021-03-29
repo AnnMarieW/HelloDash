@@ -631,19 +631,20 @@ Used in: DataTable.py
 datatable_intro_text = """
     Dash `DataTable` is an interactive table component designed for viewing, editing, and exploring large datasets. 
 
-     Unlike a standard HTML table, the Dash DataTable does not respond to Bootstrap themes automatically.  The first table shows
-     the default style for the DataTable.  Try changing the Bootstrap theme in the App Design Selections panel to see how
-     the DataTable responds to  different themes.
-
-     As you will see, the default style for the DataTable functions well with light themes. However, with
-     dark themes, the font color changes to white and the background stays unchanged,  making the text unreadable.  The
-     good news is that the DashTable is highly customizable so you can make it look great with any of the Bootstrap themes.
-     
-     See the DataTable How To section below for more ways to customize the table.
-
      - [DataTable Quickstart](https://dash.plotly.com/datatable)
      - [DataTable styling](https://dash.plotly.com/datatable/style)
      - [DataTable Reference](https://dash.plotly.com/datatable/reference)
+"""
+
+
+datatable_default_text = """
+    This is the default style of the Datatable.  Note the hotpink accents in the header icons and when you select cells,
+    This accent color does not look nice with many themes.   Also, with dark themes, the table is unreadable. 
+    
+    The good news is that DataTable is highly customizable  -- see the Dash DataTable documentation for details.
+    
+    The tables in the next sections are styled with custom CSS optimized for Bootstrap themes. Learn how below.
+
 """
 
 
@@ -661,6 +662,17 @@ datatable_light_text = """
     
     Click on the code button to see the code and CSS for this table
     
+"""
+
+datatable_light_hover_text = """   
+
+    This DataTable is styled with the `className='dbc_light dbc_row_hover'` 
+    
+    - The `dbc_row_hover`  className removes all of the hotpink accents in the table body without using `style_data_conditional` prop.
+    - There is no styling of active or selected cells, but the functionality remains.  
+     
+     Note that this overrides formatting for text color, border color, and opacity in the `style_*` props
+     in the DataTable.
 """
 
 
@@ -705,6 +717,17 @@ datatable_dark_text = """
     Click on the code button to see the code and CSS for this table
     
 
+"""
+
+datatable_dark_hover_text = """   
+
+    This DataTable is styled with the `className='dbc_dark dbc_row_hover'` 
+
+     - The `dbc_row_hover`  className removes all of the hotpink accents in the table body without using `style_data_conditional` prop.
+    - There is no styling of active or selected cells, but the functionality remains.  
+    
+     Note that this overrides formatting for text color, border color, and opacity in the `style_*` props
+     in the DataTable.
 """
 
 
