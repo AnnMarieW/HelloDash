@@ -272,7 +272,7 @@ dropdown_card = dbc.Card(
                                 dbc.Col(["Styled for all themes:", make_dropdowns("")]),
                                 dbc.Col(
                                     [
-                                        "Styled for CYBORG theme:",
+                                        "Styled for dark themes with className='dbc_dark':",
                                         make_dropdowns("dbc_dark"),
                                     ]
                                 ),
@@ -415,8 +415,8 @@ input_card = dbc.Card(
                                 dbc.Col(["Dash Default", make_input_card("")]),
                                 dbc.Col(
                                     [
-                                        "Styled for dark theme",
-                                        make_input_card("dbc_dark"),
+                                        "Styled for dark themes with className='dbc_dark_input':",
+                                        make_input_card("dbc_dark_input"),
                                     ]
                                 ),
                             ]

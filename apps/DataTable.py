@@ -84,6 +84,7 @@ default_table = dash_table.DataTable(
 )
 
 
+
 light_table = html.Div(
     dash_table.DataTable(
         columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
@@ -182,6 +183,24 @@ dark_theme_card = dbc.Card(
 )
 
 
+hover_light = dbc.Card(
+    [
+        dbc.CardHeader(html.H5("Dash DataTable - light theme with hover row")),
+        dbc.CardBody(default_table),
+    ],
+    className="m-4 dbc_row_hover dbc_light",
+)
+
+
+hover_dark = dbc.Card(
+    [
+        dbc.CardHeader(html.H5("Dash DataTable - dark theme with hover row")),
+        dbc.CardBody(default_table),
+    ],
+    className="m-4 dbc_row_hover dbc_dark",
+)
+
+
 layout = (
     dbc.Container(
         [
@@ -191,6 +210,8 @@ layout = (
                     default_table_card,
                     light_theme_card,
                     dark_theme_card,
+                 #   hover_light,
+                   # hover_dark,
                     html.Div(cheatsheet.how_to_datatable, className="mx-4"),
                 ],
                 className="my-2 p-4",

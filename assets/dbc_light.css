@@ -3,10 +3,7 @@
  *  This stylesheet defines the className dbc_light which helps improve
  *  the design of light themed Bootstrap apps
  *
- *
  */
-
-
 
 
 
@@ -33,15 +30,14 @@ dbc_light .Select-menu-outer {
 }
 
 
-
 /*
  *  sort arrow and delete icons in the DataTable header
  *  these icons appear when the table is sortable and/or columns are deletable
  */
 .dbc_light .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
     --accent: var(--primary) !important;
-    --hover: none !important;
-    --border: lightgrey;
+ /*   --hover: none !important; */
+    --border: lightgrey !important;
     --text-color: var(--dark) !important;
 }
 
@@ -55,7 +51,8 @@ dbc_light .Select-menu-outer {
     font-family:  var(--font-family-sans-serif);
     background-color: var(--light) !important;
     color: var(--dark) !important;
-    border: lightgrey;
+    --border: lightgrey;
+  /*  border-color: lightgrey !important; */
 }
 
 
@@ -84,14 +81,17 @@ dbc_light .Select-menu-outer {
 }
 
 
-
 /* row hover *
-.dbc_light .dash-spreadsheet tr:hover td.dash-cell {
-    opacity: 0.9;
+.dbc_row_hover .dash-spreadsheet td {
+    border-color: rgba(128, 128, 128, 0.3) !important;
+ }
+.dbc_row_hover .dash-spreadsheet tr:hover td.dash-cell {
+    border-color: lightgrey !important;
+    border-width: 1.5px !important;
+    opacity:  0.5;
 }
+
 */
-
-
 
 
 /*------------------------------------

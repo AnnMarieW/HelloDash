@@ -1,15 +1,14 @@
 
 /*
- *  This stylesheet defines the className dbc_both which helps improve
- *  the design if apps use change between light and dark themes
- *
+ *  This stylesheet defines the className dbc_both which has minimal
+ *  CSS to make Dash components work with Bootstrap themes
  *
  */
 
 
 /*-----------------------------------
  * Dropdowns
- *     improves visibility of menu items in either light or dark themes
+ *     improves readability of menu items in either light or dark themes
  */
 .dbc_both .VirtualizedSelectOption {
     background-color: white;

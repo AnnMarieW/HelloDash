@@ -9,26 +9,28 @@ Used in: theme_explorer.py
 """
 
 css_text = """ 
-    This app shows how different Bootstrap themes look in a Dash app.  Most Dash components and all 
-    `dash-bootstrap-components` automatically update when the theme changes.
+    #### Custom CSS for Dash apps with Bootstrap themes.  
     
-    However, for some Dash components, it's necessary to use custom CSS to change the style to enhance the design or 
+    Most Dash components and all `dash-bootstrap-components` automatically update styles and colors when the theme 
+    changes.  However, for some Dash components, it's necessary to use custom CSS to change the style to enhance the design or 
      improve readability .  For example, if you would like to change the color of the slider, or make dropdown options
      more visible in dark themes, you can do that with CSS.  
      
     In the [assets folder](https://github.com/AnnMarieW/HelloDash/tree/main/assets) for this app,
     see the stylesheets that define the classNames  `dbc_light dbc_dark, dbc_both`. Use these classNames to enhance the 
-    design of either light or dark themed apps.`
+    design of your Dash app when using Bootstrap themes.
     
-    - `dbc_both` has minimal CSS and is just enough to make text visible in both light and dark themes.
-    - `dbc_light` uses  CSS to add Bootstrap theme colors to  dcc components and the DataTable. See more details in the Component Gallery.
-    - `dbc_dark`  looks best with most dark themed apps.  See more details in the component Gallery.
+    - [`dbc_both `](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_both.css)
+    has minimal CSS and is just enough to make text visible in dropdowns in both light and dark themes. When
+    using a DataTable, it only fixes issues like data cut off at the edges, and it works best with light themes.
+    - [`dbc_light`](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_light.css)
+     uses  CSS to add Bootstrap theme colors to  dcc components and the DataTable. See more details in the Component Gallery.
+    - [`dbc_dark`](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_dark.css)
+     add Bootstrap theme colors to dcc components and the DataTable.  It looks best with dark themed apps.  See more details in the Component Gallery.
     
      
     In the Dash Component Gallery below, you will find details on how to apply custom CSS to Dash Core Components, 
     HTML Components and the DataTable.  Dash DAQ components coming soon!  
-    
-    
     
     See also the Dash documentation:
     
@@ -647,20 +649,15 @@ datatable_intro_text = """
 
 datatable_light_text = """   
 
-    With two simple style changes, the DataTable will look even better in your app with Bootstrap light themes.  This
-    table is styled with DataTable parameters for light themes.
-
-    -  The font is changed to the font for the BOOTSTRAP theme.
-    -  The active and selected cells are highlighted with the Bootstrap theme colors rather than the Dash default of "hotpink". Try
-    selecting cells in this table and in the default table above to see the style difference.
+    This DataTable is styled with the `className='dbc_light'` 
     
-    This table also has some custom CSS so that it will work with any Bootstrap theme.  The background color is set using
-    a variable.  This selects the Bootstrap "light" color for the theme `var(--light)`, and the text is set to the "dark"
-    color `var(--dark)`
+    - The background color is the Bootstrap theme's "light" color.
+    - The text color is the Bootstrap theme's "dark" color.
+    - The font is the Bootstrap theme's font.
+    - The accent color for icons is changed from the Dash default hotpink to the Bootsrap theme's "primary" color.
+    The icons are the pagination arrows and the icons in the header if the table is sortable or columns are deletable.
     
-    If the table is sortable, or the columns are deletable, there is CSS to make the icons in the header the "primary"
-    color rather than the default of "hotpink".   The pagination buttons are also changed to "primary" color rather than
-    pink on hover.
+    The DataTable is also styled with `style_data_conditional` to change the hotpink color on active and selected cells.
     
     Click on the code button to see the code and CSS for this table
     
@@ -693,11 +690,21 @@ datatable_light_code = """
 """
 
 
-datatable_dark_text = """    
-    This table is styled like the table above, but the background color is set to `var(--dark)` and the text color
-    is set to `var(--light)`.
+datatable_dark_text = """   
+    This DataTable is styled with the `className='dbc_dark'` 
     
-    Click on the code button to see the code and CSS for this table.    
+    - The background color is the Bootstrap theme's "dark" color.
+    - The text color is the Bootstrap theme's "light" color.
+    - The font is the Bootstrap theme's font.
+    - The text color for tooltips is black so it's more visible with the default grey background
+    - The accent color for icons is changed from the Dash default hotpink to the Bootsrap theme's "primary" color.
+    The icons are the pagination arrows and the icons in the header if the table is sortable or columns are deletable.
+    
+    The DataTable is also styled with `style_data_conditional` to change the hotpink color on active and selected cells.
+    
+    Click on the code button to see the code and CSS for this table
+    
+
 """
 
 
@@ -872,8 +879,8 @@ the input boxes for your selected theme."""
 
 dcc_input_css = """
 
-The dcc.Inputs with the dark background uses `className="dbc_dark"`  
-It's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
+The dcc.Inputs with the dark background uses `className="dbc_dark_input"`  
+It's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_dark.css)
 
 """
 

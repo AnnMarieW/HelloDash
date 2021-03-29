@@ -2,9 +2,7 @@
  *  This stylesheet defines the className dbc_dark which helps improve
  *  the design of dark themed Bootstrap apps
  *
- *
  */
-
 
 
 /* ----------------------------------
@@ -58,13 +56,19 @@
 
 
 /* ----------------------------------------
- *  input boxes including editable fields in DataTable
- *       Makes background the "dark" className of theme
+ *  input boxes including editable fields in DataTable and the pagination buttons
  */
 .dbc_dark input input.current-page {
     background-color : var(--dark) !important;
     color: var(--light) !important;
 }
+
+/* Use this classname for dcc.Input */
+.dbc_dark_input input {
+    background-color : var(--dark) !important;
+    color: var(--light) !important;
+}
+
 
 /*--------------------------------------------
  * DataTable
@@ -137,12 +141,15 @@ dbc_dark .Select-menu-outer {
 
 
 /* row hover *
-.dbc_dark .dash-spreadsheet tr:hover td.dash-cell {
-    opacity: 0.9;
+.dbc_row_hover .dash-spreadsheet td {
+    border-color: rgba(128, 128, 128, 0.3) !important;
+ }
+.dbc_row_hover .dash-spreadsheet tr:hover td.dash-cell {
+    border-color: lightgrey !important;
+    border-width: 1.5px !important;
+    opacity:  0.5;
 }
 */
-
-
 
 /*------------------------------------
  * Sliders - makes the slider the "primary color"

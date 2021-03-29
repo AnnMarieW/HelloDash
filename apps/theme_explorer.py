@@ -553,13 +553,13 @@ layout = dbc.Container(
             [
                 dbc.Col([theme_controls, source_code_modal,], md=3),
                 dbc.Col(sample_app, md=9, sm=12,),
-            ],
+            ], id="layout",
         ),
         component_layout,
         html.Div(id="blank_output"),
         dcc.Store(id="store"),
     ],
-    id="layout",
+
     fluid=True,
     className="dbc_both",
 )
