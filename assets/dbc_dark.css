@@ -68,15 +68,23 @@
 
 /*--------------------------------------------
  * DataTable
+ * NOTE:  Current limitation - it's not possible to use style data conditional to
+ *        change the color of the text or background when using this className.
+ *        A work around is to use the CSS parameter in the table instead.
+ *
+ *        Stay tuned for an update when I figure out how to fix this.
  */
 
-/*
- * fixes margins so data isn't cut off at table edges
- * fixes  when the table dropdown doesn't drop down
- */
+
+/* fixes margins so data isn't cut off at table edges */
 .dbc_dark .dash-table-container .row {
     display : block !important;
     margin: 0;
+}
+
+/* fixes  when the table dropdown doesn't drop down */
+dbc_dark .Select-menu-outer {
+    display: block !important;
 }
 
 /*

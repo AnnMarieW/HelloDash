@@ -73,6 +73,17 @@ def make_btn_with_modal(id, title, content):
     )
 
 
+default_table = dash_table.DataTable(
+    columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+    data=df.to_dict("records"),
+    page_size=4,
+    editable=True,
+    cell_selectable=True,
+    filter_action="native",
+    sort_action="native",
+)
+
+
 light_table = html.Div(
     dash_table.DataTable(
         columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
@@ -126,17 +137,7 @@ content
 default_table_card = dbc.Card(
     [
         dbc.CardHeader(html.H5("Dash DataTable - default style")),
-        dbc.CardBody(
-            dash_table.DataTable(
-                columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
-                data=df.to_dict("records"),
-                page_size=4,
-                editable=True,
-                cell_selectable=True,
-                filter_action="native",
-                sort_action="native",
-            ),
-        ),
+        dbc.CardBody(default_table),
     ],
     className="m-4",
 )

@@ -12,13 +12,27 @@
 
 /*--------------------------------------------
  * DataTable
+ * NOTE:  Current limitation - it's not possible to use style data conditional to
+ *        change the color of the text or background when using this className.
+ *        A work around is to use the CSS parameter in the table instead.
+ *
+ *        Stay tuned for an update when I figure out how to fix this.
  */
 
-/* fixes DataTable dropdown - allows dropdown menu to be visible  */
+
+
+/* fixes margins so data isn't cut off at table edges */
 .dbc_light .dash-table-container .row {
     display : block !important;
     margin: 0;
 }
+
+/* fixes  when the table dropdown doesn't drop down */
+dbc_light .Select-menu-outer {
+    display: block !important;
+}
+
+
 
 /*
  *  sort arrow and delete icons in the DataTable header
@@ -116,3 +130,19 @@
 .dbc_light .rc-slider-mark-text.rc-slider-mark-text-active {
   color: black
 }
+
+
+/*-----------------------------------
+ * Dropdowns
+ *     improves visibility of menu items in either light or dark themes
+ */
+.dbc_light .VirtualizedSelectOption {
+    background-color: white;
+    color: black;
+}
+
+.dbc_light .VirtualizedSelectFocusedOption {
+    background-color: lightgrey;
+    color: black;
+}
+

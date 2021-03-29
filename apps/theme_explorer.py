@@ -142,7 +142,7 @@ def make_range_slider(id, slider_list, step=1):
         max=slider_list[-1],
         step=step,
         marks={int(i): str(i) for i in slider_list},
-        value=[slider_list[0], slider_list[-1]],
+        value=[slider_list[2], slider_list[-2]],
         persistence_type="local",
     )
 
@@ -349,6 +349,56 @@ background_color_card = html.Div(
 )
 
 
+css_modal = html.Div(
+    [
+        html.Div(
+            [
+                #  html.Div("Custom CSS"),
+                dbc.Button(
+                    "Learn More",
+                    id="css_modal_btn",
+                    outline=True,
+                    color="primary",
+                    size="sm",
+                ),
+            ],
+            # className="ml-4",
+        ),
+        dbc.Modal(
+            [dbc.ModalBody([dcc.Markdown(text.css_text, className="p-4")]),],
+            id="css_modal",
+            scrollable=True,
+            size="xl",
+        ),
+    ],
+    className="mb-1",
+)
+
+css_card = dbc.Card(
+    [
+        dbc.FormGroup(
+            [
+                dbc.Label(["Custom CSS"], className="mt-2"),
+                css_modal,
+                dcc.Dropdown(
+                    id="css",
+                    options=[
+                        {"label": "className='dbc_both'", "value": "dbc_both"},
+                        {"label": "className='dbc_light'", "value": "dbc_light"},
+                        {"label": "className='dbc_dark'", "value": "dbc_dark"},
+                        {"label": "none", "value": "none"},
+                    ],
+                    value="dbc_both",
+                    clearable=False,
+                ),
+                html.Div(id="css_text"),
+            ]
+        ),
+    ],
+    className="px-2 mb-2",
+    style={"minWidth": 200},
+)
+
 theme_controls = dbc.Card(
     [
         dbc.CardHeader("App Design Selections"),
@@ -358,6 +408,7 @@ theme_controls = dbc.Card(
                 graph_template_card,
                 graph_continuous_color_card,
                 background_color_card,
+                css_card,
             ],
         ),
     ],
@@ -393,32 +444,6 @@ source_code_modal = html.Div(
                 dbc.ModalBody([dcc.Markdown(code)]),
             ],
             id="code_modal",
-            scrollable=True,
-            size="xl",
-        ),
-    ],
-    className="my-2",
-)
-
-
-css_modal = html.Div(
-    [
-        html.Div(
-            [
-                html.Div("Custom CSS"),
-                dbc.Button(
-                    "Learn More",
-                    id="css_modal_btn",
-                    outline=True,
-                    color="primary",
-                    size="sm",
-                ),
-            ],
-            className="ml-4",
-        ),
-        dbc.Modal(
-            [dbc.ModalBody([dcc.Markdown(text.css_text, className="p-4")]),],
-            id="css_modal",
             scrollable=True,
             size="xl",
         ),
@@ -526,7 +551,7 @@ layout = dbc.Container(
         header,
         dbc.Row(
             [
-                dbc.Col([theme_controls, source_code_modal, css_modal], md=3),
+                dbc.Col([theme_controls, source_code_modal,], md=3),
                 dbc.Col(sample_app, md=9, sm=12,),
             ],
         ),
@@ -534,6 +559,7 @@ layout = dbc.Container(
         html.Div(id="blank_output"),
         dcc.Store(id="store"),
     ],
+    id="layout",
     fluid=True,
     className="dbc_both",
 )
@@ -636,6 +662,16 @@ def update_app_bg_color(color, radio):
     else:
         color = "" if radio == "Use Default" or color is None else color
     return {"backgroundColor": color}, radio
+
+
+@app.callback(Output("layout", "className"), Input("css", "value"))
+def update_stylesheet(css):
+    return "" if css == "none" else css
+
+
+@app.callback(Output("css_text", "children"), Input("css", "value"))
+def update_stylesheet_text(css):
+    return "Looks best with dark themes" if css == "dbc_dark" else ""
 
 
 #  ------------ color scale modal selection ------------------

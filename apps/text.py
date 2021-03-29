@@ -10,24 +10,27 @@ Used in: theme_explorer.py
 
 css_text = """ 
     This app shows how different Bootstrap themes look in a Dash app.  Most Dash components and all 
-    dash-bootstrap-components automatically update when the theme changes.
+    `dash-bootstrap-components` automatically update when the theme changes.
     
-    However, for some Dash components, it's necessary to use custom CSS to change the style.  For example, if you would like
-     to change the color of the slider, you can do that with CSS.
+    However, for some Dash components, it's necessary to use custom CSS to change the style to enhance the design or 
+     improve readability .  For example, if you would like to change the color of the slider, or make dropdown options
+     more visible in dark themes, you can do that with CSS.  
+     
+    In the [assets folder](https://github.com/AnnMarieW/HelloDash/tree/main/assets) for this app,
+    see the stylesheets that define the classNames  `dbc_light dbc_dark, dbc_both`. Use these classNames to enhance the 
+    design of either light or dark themed apps.`
     
-    Note that light Bootstrap themes are the easiest to use with Dash.  The Dash components have a light 
-    background color which works well with the standard  Bootstrap theme and other Bootswatch light themes.  Dark theme
-     use a white text color which makes text hard to read in some Dash components. This app uses
-    custom CSS for the dropdowns to make text readable in both light and dark themed apps. 
+    - `dbc_both` has minimal CSS and is just enough to make text visible in both light and dark themes.
+    - `dbc_light` uses  CSS to add Bootstrap theme colors to  dcc components and the DataTable. See more details in the Component Gallery.
+    - `dbc_dark`  looks best with most dark themed apps.  See more details in the component Gallery.
+    
      
     In the Dash Component Gallery below, you will find details on how to apply custom CSS to Dash Core Components, 
     HTML Components and the DataTable.  Dash DAQ components coming soon!  
     
-    In the [assets folder](https://github.com/AnnMarieW/HelloDash/tree/main/assets) for this app,
-    see the stylesheets that define the classNames  dbc_light and dbc_dark. Use these classNames to enhance the 
-    design of either light or dark themed apps.
     
-    See the Dash documentation:
+    
+    See also the Dash documentation:
     
       - [How to add custom CSS to a Dash app](https://dash.plotly.com/external-resources).
       
