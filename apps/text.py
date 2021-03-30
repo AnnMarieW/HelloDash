@@ -11,11 +11,11 @@ Used in: theme_explorer.py
 css_text = """ 
     #### Custom CSS for Dash apps with Bootstrap themes.  
     
-    Most Dash components and all `dash-bootstrap-components` can be styled with the components' `style` and/or `className'
-    parameter. This will make the components "automatically" update the design if you switch Bootstrap themes. 
-      However, some parts of some  Dash components don't update based on they `style` and `className` of the component
-      properties.  For example if you would like to change the color of the slider, or make dropdown options
-     more visible in dark themes, you can do that with CSS.  
+    Dash components and `dash-bootstrap-components` can be styled with the components' `style` and/or `className` parameter.
+     Most dbc components will automatically update when the theme changes - like the color of the checkboxes will be the
+     theme's "primary" color.   However, some parts of some Dash components don't update based on their `style` and 
+     `className` properties.  For example if you would like to change the color of the slider, or make 
+     dropdown options more visible in dark themes, you need to use custom CSS.  
      
     In the [assets folder](https://github.com/AnnMarieW/HelloDash/tree/main/assets) for this app,
     see the stylesheets that define the classNames  `dbc_light dbc_dark, dbc_both`. Use these classNames to enhance the 
