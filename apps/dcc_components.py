@@ -279,30 +279,6 @@ dropdown_card = dbc.Card(
                             ],
                             className="mb-4",
                         ),
-                        dbc.Row(
-                            [
-                                dcc.Markdown(text.dbc_select, className="p-4"),
-                                dbc.Col(
-                                    [
-                                        "dbc.Select component",
-                                        dbc.Select(
-                                            id="select",
-                                            options=[
-                                                {"label": "Option 1", "value": "1"},
-                                                {"label": "Option 2", "value": "2"},
-                                                {
-                                                    "label": "Disabled option",
-                                                    "value": "3",
-                                                    "disabled": True,
-                                                },
-                                            ],
-                                            value="1",
-                                        ),
-                                    ],
-                                    md=6,
-                                ),
-                            ]
-                        ),
                     ]
                 ),
             ]

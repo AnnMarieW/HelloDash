@@ -11,9 +11,10 @@ Used in: theme_explorer.py
 css_text = """ 
     #### Custom CSS for Dash apps with Bootstrap themes.  
     
-    Most Dash components and all `dash-bootstrap-components` automatically update styles and colors when the theme 
-    changes.  However, for some Dash components, it's necessary to use custom CSS to change the style to enhance the design or 
-     improve readability .  For example, if you would like to change the color of the slider, or make dropdown options
+    Most Dash components and all `dash-bootstrap-components` can be styled with the components' `style` and/or `className'
+    parameter. This will make the components "automatically" update the design if you switch Bootstrap themes. 
+      However, some parts of some  Dash components don't update based on they `style` and `className` of the component
+      properties.  For example if you would like to change the color of the slider, or make dropdown options
      more visible in dark themes, you can do that with CSS.  
      
     In the [assets folder](https://github.com/AnnMarieW/HelloDash/tree/main/assets) for this app,
@@ -54,7 +55,8 @@ dbc_intro_text = """
     See this in action by changing the Bootstrap theme in the App Design Selections panel above.  
 
     Note that most of the other Dash components (such as `dash-core-components`, `DataTable` and `DAQ` components) and 
-    Plotly figures do not automatically respond to changes to Bootstrap themes.  See more information on how to style
+    Plotly figures have some elements of the component that cannot be updated with the `style` and className`
+    properties, so they do not all respond well to changes to Bootstrap themes.  See more information on how to style
     these components by clicking on the tabs to the left. 
         
     - [dash-bootstrap-components documentation](https://dash-bootstrap-components.opensource.faculty.ai/)
@@ -80,7 +82,7 @@ white or some other light color making the text hard to read in some Dash compon
 ### Dark Theme
  Here are some way to change the colors in Dash components:
 -  Dash Core Components:  Try using the `className` or `style` parameter of the component or use the inspector in the browser to see how the colors are set and override it with custom CSS in the assets folder. 
-See more information [here](https://dash.plotly.com/external-resources).   See the css we used here [ github link](https://github.com/AnnMarieW/HelloDash/blob/main/assets/mycss.css) 
+See more information [here](https://dash.plotly.com/external-resources).   See the css we used here [ github link](https://github.com/AnnMarieW/HelloDash/blob/main/assets) 
 -  Dash DataTables:  See how to set a dark theme [here](https://dash.plotly.com/datatable/style) in the Dash documentation
 -  Dash DAQ components: Use the `theme` parameter:   `theme= {'dark': True}`
 -  Figures: Use the [Graph template](https://plotly.com/python/templates/)  `plotly_dark`
@@ -697,7 +699,7 @@ datatable_light_code = """
         )        
         ```
         
-        The class `dbc_light` is defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
+        The class `dbc_light` is defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_light.css)
         
 """
 
@@ -763,7 +765,7 @@ datatable_dark_code = """
     )
     ```
     
-    The class `dbc_dark` is defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
+    The class `dbc_dark` is defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_dark.css)
     """
 
 """
@@ -873,19 +875,8 @@ dcc_dropdown_css = """
 
 
 This dropdown with the dark background  uses `className="dbc_dark"`  
-It's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
+It's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_dark.css)
 
-"""
-
-
-dbc_select = """
-
-##### Alternate: `dbc.Select` 
-
-The `dash-bootstrap-component` dbc.Select is a good alternate to the dcc.Dropdown if you have a simple dropdown to 
-select a single option. (There is no multi-select).  The advantage of dbc.Select is that it automatically updates the
- design of the dropdown according to the Bootstrap theme selected with no custom CSS required.  Change the theme 
- to see this in action!
 """
 
 
@@ -971,6 +962,6 @@ Example:
 }
 ```
 
-This slider uses `className="dbc_pulse"`  it's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/tree/main/assets)
+This slider uses `className="dbc_pulse"`  it's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_pulse.css)
 
 """
