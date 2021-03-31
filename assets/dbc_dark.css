@@ -113,7 +113,8 @@ dbc_dark .Select-menu-outer {
     font-family:  var(--font-family-sans-serif);
     background-color: var(--dark) !important;
     color: var(--light) !important;
-    --border: lightgrey;
+    --border: var(--gray);
+    --border-width: .5px;
 }
 
 /*  table header */
@@ -123,7 +124,7 @@ dbc_dark .Select-menu-outer {
     opacity: 0.9;
     color: var(--light) !important;
     --accent: var(--primary) !important;
-    --border: lightgrey;
+    --border: var(--gray);
 }
 
 /* filter row in the header */
@@ -131,7 +132,7 @@ dbc_dark .Select-menu-outer {
     font-family:  var(--font-family-sans-serif);
     background-color: var(--dark) !important;
     color: var(--light) !important;
-    --border: lightgrey;
+    --border: var(--gray);
 }
 
 /* tooltips - makes text readable in dark themes */
@@ -144,7 +145,7 @@ dbc_dark .Select-menu-outer {
 .dbc_row_hover .dash-spreadsheet td.dash-cell {
     border-color: lightgrey !important;
  }
-.dbc_row_hover .dash-spreadsheet tr:hover td.dash-cell {
+.dbc_row_hover .dash-spreadsheet  tr:hover td.dash-cell {
     border-color: lightgrey !important;
     border-width: 1.5px !important;
     opacity:  0.5;

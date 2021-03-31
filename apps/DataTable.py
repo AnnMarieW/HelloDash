@@ -93,8 +93,12 @@ light_table = html.Div(
         filter_action="native",
         sort_action="native",
         style_data_conditional=[
-            {"if": {"state": "active"}, "border": "1px solid var(--primary)",},
-            {"if": {"state": "selected"}, "border": "1px solid var(--secondary)",},
+            {
+                "if": {"state": "active"},
+                "border": "1px solid var(--primary)",
+                "opacity": 0.75,
+            },
+            {"if": {"state": "selected"}, "border": "1px solid", "opacity": 0.75,},
         ],
     ),
     className="dbc_light",
@@ -115,7 +119,7 @@ dark_table = html.Div(
                 "border": "1px solid var(--primary)",
                 "opacity": 0.75,
             },
-            {"if": {"state": "selected"}, "opacity": 0.75},
+            {"if": {"state": "selected"}, "border": "1px solid", "opacity": 0.75,},
         ],
         tooltip_conditional=[
             {

@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
 
 from dash.dependencies import Input, Output, State
 import plotly.express as px
@@ -457,6 +458,62 @@ source_code_modal = html.Div(
 Sample Apps 
 """
 
+
+sample_app_table = html.Div(
+    dash_table.DataTable(
+        id="table",
+        columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+        data=df.to_dict("records"),
+        page_size=10,
+        editable=True,
+        cell_selectable=True,
+        filter_action="native",
+        sort_action="native",
+        style_data_conditional=[
+            {
+                "if": {"state": "active"},
+                "border": "1px solid var(--primary)",
+                "opacity": 0.75,
+            },
+            {"if": {"state": "selected"}, "border": "1px solid", "opacity": 0.75,},
+        ],
+    ),
+    className="px-4 pb-4",
+)
+
+sample_app_graphs = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        dcc.Markdown(
+                            id="line_chart_title",
+                            className="text-center mb-0 d-inline-block",
+                        ),
+                        dcc.Graph(id="line_chart", config={"displayModeBar": False},),
+                    ],
+                    lg=6,
+                ),
+                dbc.Col(
+                    [
+                        dcc.Markdown(
+                            id="scatter_chart_title",
+                            className="text-center  d-inline-block",
+                        ),
+                        dcc.Graph(
+                            id="scatter_chart", config={"displayModeBar": False},
+                        ),
+                    ],
+                    lg=6,
+                ),
+            ],
+            className="m-2",
+        ),
+    ]
+)
+
+
 buttons = html.Div(
     [
         dbc.Button("Primary", color="primary", className="mr-1"),
@@ -505,36 +562,35 @@ sample_app_controls = dbc.Card(
     className="mr-4 ml-4 px-2",
 )
 
+
+sample_app_tabs = html.Div(
+    [
+        dbc.Tabs(
+            [
+                dbc.Tab(sample_app_graphs, label="Graphs", style={"padding": "10px"},),
+                dbc.Tab(
+                    html.Div(
+                        [
+                            html.P(
+                                "See more ways to style the table in the Component Gallery",
+                                className="pt-2",
+                            ),
+                            sample_app_table,
+                        ]
+                    ),
+                    label="Table",
+                    style={"padding": "10px"},
+                ),
+            ]
+        ),
+    ],
+    className="my-4",
+)
+
 sample_app = dbc.Card(
     [
         html.H2("Sample Dash App", className="bg-primary text-white p-2"),
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        dcc.Markdown(
-                            id="line_chart_title",
-                            className="text-center mb-0 d-inline-block",
-                        ),
-                        dcc.Graph(id="line_chart", config={"displayModeBar": False},),
-                    ],
-                    lg=6,
-                ),
-                dbc.Col(
-                    [
-                        dcc.Markdown(
-                            id="scatter_chart_title",
-                            className="text-center  d-inline-block",
-                        ),
-                        dcc.Graph(
-                            id="scatter_chart", config={"displayModeBar": False},
-                        ),
-                    ],
-                    lg=6,
-                ),
-            ],
-            className="mt-0, mb-2 mx-2",
-        ),
+        dbc.Row(dbc.Col(sample_app_tabs, className="mx-4")),
         sample_app_controls,
     ],
     className="mx-1 shadow pb-4",
@@ -570,6 +626,7 @@ layout = dbc.Container(
     Output("scatter_chart", "figure"),
     Output("line_chart_title", "children"),
     Output("scatter_chart_title", "children"),
+    Output("table", "data"),
     Input("indicator", "value"),
     Input("continents", "value"),
     Input("slider_years", "value"),
@@ -597,6 +654,8 @@ def update_line_chart(
     title2 = """template= {}  \n  color_continuous_scale= {}""".format(
         template, color_continuous
     )
+
+    data = dff.to_dict("records")
 
     cds = discrete_colors[color_discrete]
     if template == "bootstrap":
@@ -626,7 +685,8 @@ def update_line_chart(
         height=350,
     )
     fig2.update_layout(margin=dict(l=75, r=20, t=10, b=20))
-    return fig, fig2, title, title2
+
+    return fig, fig2, title, title2, data
 
 
 @app.callback(

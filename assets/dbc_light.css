@@ -36,7 +36,7 @@ dbc_light .Select-menu-outer {
  */
 .dbc_light .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
     --accent: var(--primary) !important;
- /*   --hover: none !important; */
+    --hover: none !important;
     --border: lightgrey !important;
     --text-color: var(--dark) !important;
 }
@@ -85,7 +85,7 @@ dbc_light .Select-menu-outer {
 .dbc_row_hover .dash-spreadsheet td.dash-cell {
     border-color: lightgrey !important;
  }
-.dbc_row_hover .dash-spreadsheet tr:hover td.dash-cell {
+.dbc_row_hover .dash-spreadsheet .dash-fixed-content .phantom-cell  tr:hover td.dash-cell {
     border-color: lightgrey !important;
     border-width: 1.5px !important;
     opacity:  0.5;

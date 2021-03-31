@@ -674,7 +674,7 @@ datatable_light_hover_text = """
     - There is no styling of active or selected cells, but the functionality remains.  
      
      Note that this overrides formatting for text color, border color, and opacity in the `style_*` props
-     in the DataTable.
+     in the DataTable.  Also, it does not work for tables with fixed columns. See [issue #871](https://github.com/plotly/dash-table/issues/871)
 """
 
 
@@ -729,7 +729,7 @@ datatable_dark_hover_text = """
     - There is no styling of active or selected cells, but the functionality remains.  
     
      Note that this overrides formatting for text color, border color, and opacity in the `style_*` props
-     in the DataTable.
+     in the DataTable.  Also, it does not work for tables with fixed columns. See [issue #871](https://github.com/plotly/dash-table/issues/871)
 """
 
 
