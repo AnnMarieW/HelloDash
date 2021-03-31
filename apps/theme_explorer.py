@@ -384,12 +384,12 @@ css_card = dbc.Card(
                 dcc.Dropdown(
                     id="css",
                     options=[
-                        {"label": "className='dbc_both'", "value": "dbc_both"},
                         {"label": "className='dbc_light'", "value": "dbc_light"},
                         {"label": "className='dbc_dark'", "value": "dbc_dark"},
+                        {"label": "className='dbc_both'", "value": "dbc_both"},
                         {"label": "none", "value": "none"},
                     ],
-                    value="dbc_both",
+                    value="dbc_light",
                     clearable=False,
                 ),
                 html.Div(id="css_text"),
@@ -572,7 +572,8 @@ sample_app_tabs = html.Div(
                     html.Div(
                         [
                             html.P(
-                                "See more ways to style the table in the Component Gallery",
+                                "Change the className to style the table for light and dark themes. See more ways to "
+                                "style the table in the Component Gallery",
                                 className="pt-2",
                             ),
                             sample_app_table,
