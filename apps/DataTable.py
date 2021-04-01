@@ -81,6 +81,7 @@ default_table = dash_table.DataTable(
     cell_selectable=True,
     filter_action="native",
     sort_action="native",
+    style_table={"overflowX": "auto"},
 )
 
 
@@ -92,6 +93,7 @@ light_table = html.Div(
         page_size=4,
         filter_action="native",
         sort_action="native",
+        style_table={"overflowX": "auto"},
         style_data_conditional=[
             {
                 "if": {"state": "active"},
@@ -113,6 +115,7 @@ dark_table = html.Div(
         page_size=4,
         filter_action="native",
         sort_action="native",
+        style_table={"overflowX": "auto"},
         style_data_conditional=[
             {
                 "if": {"state": "active"},

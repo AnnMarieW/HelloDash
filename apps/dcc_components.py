@@ -269,12 +269,17 @@ dropdown_card = dbc.Card(
                         ),
                         dbc.Row(
                             [
-                                dbc.Col(["Styled for all themes:", make_dropdowns("")]),
+                                dbc.Col(
+                                    ["Styled for all themes:", make_dropdowns("")],
+                                    lg=6,
+                                    className="mb-4",
+                                ),
                                 dbc.Col(
                                     [
                                         "Styled for dark themes with className='dbc_dark':",
                                         make_dropdowns("dbc_dark"),
-                                    ]
+                                    ],
+                                    lg=6,
                                 ),
                             ],
                             className="mb-4",
@@ -322,7 +327,9 @@ graph_card = dbc.Card(
                                 dcc.Graph(
                                     id="dcc_graph", figure=fig, className="border"
                                 ),
-                            ]
+                            ],
+                            lg=6,
+                            className="mb-4",
                         ),
                         dbc.Col(
                             [
@@ -330,7 +337,8 @@ graph_card = dbc.Card(
                                 dcc.Graph(
                                     id="dcc_graph", figure=fig1, className="border"
                                 ),
-                            ]
+                            ],
+                            lg=6,
                         ),
                     ]
                 ),
@@ -388,12 +396,17 @@ input_card = dbc.Card(
                         ),
                         dbc.Row(
                             [
-                                dbc.Col(["Dash Default", make_input_card("")]),
+                                dbc.Col(
+                                    ["Dash Default", make_input_card("")],
+                                    lg=6,
+                                    className="mb-4",
+                                ),
                                 dbc.Col(
                                     [
                                         "Styled for dark themes with className='dbc_dark_input':",
                                         make_input_card("dbc_dark_input"),
-                                    ]
+                                    ],
+                                    lg=6,
                                 ),
                             ]
                         ),
@@ -521,7 +534,14 @@ slider_card = dbc.Card(
             className="pl-4",
         ),
         dbc.CardBody(
-            [dbc.Row([dbc.Col(slider_default_card), dbc.Col(slider_pulse_card)]),]
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(slider_default_card, lg=6, className="mb-4"),
+                        dbc.Col(slider_pulse_card, lg=6),
+                    ]
+                ),
+            ]
         ),
     ],
     className="my-4",
@@ -582,7 +602,12 @@ tabs_card = dbc.Card(
                     "https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py"
                 ),
                 html.Hr(),
-                dbc.Row([dbc.Col(tabs_default), dbc.Col(tabs_theme)]),
+                dbc.Row(
+                    [
+                        dbc.Col(tabs_default, lg=6, className="mb-4"),
+                        dbc.Col(tabs_theme, lg=6),
+                    ]
+                ),
             ]
         ),
     ],

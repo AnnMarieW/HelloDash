@@ -150,6 +150,7 @@ typography_card = dbc.Card(
                                 ),
                             ],
                             className="p-4",
+                            lg=4,
                         ),
                         dbc.Col(
                             [
@@ -185,6 +186,7 @@ typography_card = dbc.Card(
                                 ),
                             ],
                             className="p-4",
+                            lg=4,
                         ),
                         dbc.Col(
                             [
@@ -231,6 +233,7 @@ typography_card = dbc.Card(
                                 ),
                             ],
                             className="p-4",
+                            lg=4,
                         ),
                     ]
                 ),

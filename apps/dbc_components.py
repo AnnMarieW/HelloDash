@@ -145,16 +145,19 @@ buttons2 = dbc.Card(
         html.H2(make_subheading("dbc.ButtonGroup", "buttongroups/")),
         dbc.CardBody(
             [
-                dbc.ButtonGroup(
-                    [
-                        dbc.Button("Primary", color="primary"),
-                        dbc.Button("Secondary", color="secondary"),
-                        dbc.Button("Success", color="success"),
-                        dbc.Button("Warning", color="warning"),
-                        dbc.Button("Danger", color="danger"),
-                        dbc.Button("Info", color="info"),
-                    ],
-                    className="mb-4",
+                html.Div(
+                    dbc.ButtonGroup(
+                        [
+                            dbc.Button("Primary", color="primary"),
+                            dbc.Button("Secondary", color="secondary"),
+                            dbc.Button("Success", color="success"),
+                            dbc.Button("Warning", color="warning"),
+                            dbc.Button("Danger", color="danger"),
+                            dbc.Button("Info", color="info"),
+                        ],
+                        className="mb-4",
+                    ),
+                    style={"overflowX": "auto"},
                 ),
                 html.Br(),
                 dbc.ButtonGroup(
@@ -177,7 +180,7 @@ buttons2 = dbc.Card(
     ],
     className="mb-4",
 )
-buttons = dbc.Row([dbc.Col(buttons1), dbc.Col(buttons2)])
+buttons = dbc.Row([dbc.Col(buttons1, lg=6), dbc.Col(buttons2, lg=6)])
 
 
 cards = dbc.Card(
@@ -844,9 +847,11 @@ layout = dbc.Container(
                 badges,
                 buttons,
                 cards,
-                dbc.Row([dbc.Col([form, input_group,]), dbc.Col([input_])]),
-                dbc.Row([dbc.Col([checklist_items]), dbc.Col([radio_items])]),
-                dbc.Row([dbc.Col([textarea]), dbc.Col([select])]),
+                dbc.Row([dbc.Col([form, input_group,], lg=6), dbc.Col([input_], lg=6)]),
+                dbc.Row(
+                    [dbc.Col([checklist_items], lg=6), dbc.Col([radio_items], lg=6)]
+                ),
+                dbc.Row([dbc.Col([textarea], lg=6), dbc.Col([select], lg=6)]),
                 navbar,
                 tabs,
                 jumbotron,
@@ -861,8 +866,8 @@ layout = dbc.Container(
                         dbc.CardBody(
                             dbc.Row(
                                 [
-                                    dbc.Col([modal, fade, collapse,]),
-                                    dbc.Col([popover, toast, tooltip]),
+                                    dbc.Col([modal, fade, collapse,], lg=6),
+                                    dbc.Col([popover, toast, tooltip], lg=6),
                                 ]
                             ),
                         ),
