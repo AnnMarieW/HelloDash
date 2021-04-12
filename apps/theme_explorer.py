@@ -7,7 +7,9 @@ from dash.dependencies import Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-from app import app, header, urls
+from app import app
+
+import util
 from apps import text
 
 # from apps import text, dbc_template
@@ -606,7 +608,7 @@ Layout
 """
 layout = dbc.Container(
     [
-        header,
+        util.header,
         dbc.Row(
             [
                 dbc.Col([theme_controls, source_code_modal,], md=3),
@@ -699,11 +701,15 @@ def update_line_chart(
 def update(theme):
 
     if theme == "Light Themes":
-        options = [{"label": str(i), "value": urls[i]} for i in light_themes]
-        value = urls["BOOTSTRAP"]
+        options = [
+            {"label": str(i), "value": util.dbc_themes_url[i]} for i in light_themes
+        ]
+        value = util.dbc_themes_url["BOOTSTRAP"]
     else:
-        options = [{"label": str(i), "value": urls[i]} for i in dark_themes]
-        value = urls["CYBORG"]
+        options = [
+            {"label": str(i), "value": util.dbc_themes_url[i]} for i in dark_themes
+        ]
+        value = util.dbc_themes_url["CYBORG"]
     return options, value
 
 

@@ -18,3 +18,8 @@
 img[src*="#thumbnail"] {
        width:450px;
     }
+
+.popover {
+  max-width: 1000px;
+}
+

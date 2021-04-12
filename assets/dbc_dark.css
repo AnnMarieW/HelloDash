@@ -5,6 +5,32 @@
  */
 
 
+
+/*--------------------------------------------
+ * Note: DataTable
+
+ *     Current limitation - it's not possible to use style data conditional to
+ *     change the color of the text or background when using this className.
+ *     A work around is to use the CSS parameter in the table instead of the
+ *     dbc_light or dbc_dark class names.
+ *
+ *     The dbc_light and dbc_darklooks best with the following included in the
+ *     dataTable definition:
+ *
+ *          style_data_conditional=[
+ *              {
+ *                   "if": {"state": "active"},
+ *                   "border": ".5px solid ",
+ *                   "fontWeight" : 1000,
+ *               },
+ *               {"if": {"state": "selected"},
+ *                "fontWeight": 700,
+ *                },
+ *           ],
+ */
+
+
+
 /* ----------------------------------
  *  Dropdown
  *     Black background for a dark theme
@@ -53,7 +79,13 @@
   color: white;
 }
 
-
+/* ---------------------------------------
+ * textarea
+ */
+.dbc_dark textarea {
+    background-color : var(--dark) !important;
+    color: var(--light) !important;
+}
 
 /* ----------------------------------------
  *  input boxes including editable fields in DataTable and the pagination buttons
@@ -69,16 +101,9 @@
     color: var(--light) !important;
 }
 
-
-/*--------------------------------------------
- * DataTable
- * NOTE:  Current limitation - it's not possible to use style data conditional to
- *        change the color of the text or background when using this className.
- *        A work around is to use the CSS parameter in the table instead.
- *
- *        Stay tuned for an update when I figure out how to fix this.
+/* ---------------------------------------
+ * Datatable
  */
-
 
 /* fixes margins so data isn't cut off at table edges */
 .dbc_dark .dash-table-container .row {
@@ -105,8 +130,6 @@ dbc_dark .Select-menu-outer {
 .dbc_dark .last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
     color: var(--primary) !important;
 }
-
-
 
 /* table body */
 .dbc_dark .dash-spreadsheet td {
@@ -142,13 +165,14 @@ dbc_dark .Select-menu-outer {
 
 
 /* row hover */
-.dbc_row_hover .dash-spreadsheet td.dash-cell {
+.dbc_dark.dbc_row_hover .dash-spreadsheet td.dash-cell {
     border-color: lightgrey !important;
  }
-.dbc_row_hover .dash-spreadsheet  tr:hover td.dash-cell {
+.dbc_dark.dbc_row_hover .dash-spreadsheet  tr:hover td.dash-cell {
     border-color: lightgrey !important;
     border-width: 1.5px !important;
-    opacity:  0.5;
+    background-color: var(--light) !important;
+    color: var(--dark) !important;
 }
 
 

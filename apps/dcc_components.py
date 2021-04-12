@@ -403,8 +403,8 @@ input_card = dbc.Card(
                                 ),
                                 dbc.Col(
                                     [
-                                        "Styled for dark themes with className='dbc_dark_input':",
-                                        make_input_card("dbc_dark_input"),
+                                        "Styled for dark themes with className='dbc_both_input':",
+                                        make_input_card("dbc_both_input"),
                                     ],
                                     lg=6,
                                 ),

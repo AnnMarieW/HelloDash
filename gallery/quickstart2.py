@@ -1,120 +1,56 @@
+# -*- coding: utf-8 -*-
 """
-This is a "kitchen sink" quickstart
+Quickstart app Datatable with a callback
+"""
 
-"""
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
-from dash.dependencies import Input, Output
 import dash_table
-import plotly.express as px
-import plotly.graph_objects as go
-
 import pandas as pd
-import numpy as np
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
+)
 
-# Datasets
-
-#  https://plotly.com/python-api-reference/generated/plotly.data.html#module-plotly.data#
-df = px.data.gapminder()
-
-# Other datasets
-# df = px.data.iris()
-# df = px.data.tips()
-# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')#
-# # random numbers
-# df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))
-
-# components and figures
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
-def make_dropdown(id, option_list, option_val=0):
-    return dcc.Dropdown(
-        id=id,
-        options=[{"label": str(i), "value": i} for i in option_list],
-        value=option_list[option_val],
-        clearable=False,
-    )
+controls = html.Div(
+    dcc.Dropdown(
+        id="dropdown",
+        options=[{"label": i, "value": i} for i in df["country"].unique()],
+        multi=True,
+        value=[],
+    ),
+    className="m-4",
+)
 
-
-def make_slider(id, slider_list, step=1):
-    return dcc.Slider(
-        id=id,
-        min=slider_list[0],
-        max=slider_list[-1],
-        step=step,
-        marks={int(i): str(i) for i in slider_list},
-        value=slider_list[-1],
-    )
-
-
-def make_table(id, dff):
-    return dash_table.DataTable(
-        id=id,
-        columns=[{"name": i, "id": i} for i in dff.columns],
-        data=dff.to_dict("records"),
-        editable=True,
-        page_size=10,
-    )
-
-
-def make_graph(id, dff):
-    # This callback uses dataset: px.data.gapminder() select 1 year: dff = df.query("year==2007")
-    return dcc.Graph(
-        id=id,
-        figure=px.scatter(
-            dff,
-            x="gdpPercap",
-            y="lifeExp",
-            size="pop",
-            color="continent",
-            log_x=True,
-            size_max=60,
-            title="Gapminder",
-        ),
-    )
-
+table = dash_table.DataTable(
+    id="table",
+    columns=[{"name": i, "id": i} for i in df.columns],
+    data=df.to_dict("records"),
+    page_size=20,
+)
 
 app.layout = dbc.Container(
     [
-        html.H1("Title"),
+        html.H1("Table with a Dropdown"),
         html.Hr(),
-        dbc.Row(
-            [
-                dbc.CardDeck(
-                    [
-                        dbc.Card(dcc.Graph(id="graph"),),
-                        dbc.Card(make_table("table", df), className="p-4"),
-                    ],
-                    className="m-4",
-                )
-            ],
-        ),
-        dbc.Row(dbc.Col(make_slider("slider", df.year.unique()))),
+        dbc.Row(dbc.Col([controls, table],)),
     ],
     fluid=True,
 )
 
 
 @app.callback(
-    Output("graph", "figure"), Input("slider", "value"),
+    Output("table", "data"), Input("dropdown", "value"),
 )
-def update_graph(slider_val):
-    dff = df.query("year==" + str(slider_val))
-    figure = px.scatter(
-        dff,
-        x="gdpPercap",
-        y="lifeExp",
-        size="pop",
-        color="continent",
-        log_x=True,
-        size_max=60,
-        title=f"Gapminder {slider_val}",
-    )
-    return figure
+def update_table(country_dd):
+    dff = df.copy() if country_dd == [] else df[df["country"].isin(country_dd)]
+    return dff.to_dict("records")
 
 
 if __name__ == "__main__":

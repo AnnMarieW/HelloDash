@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Bootstrap Quickstart app - Two graphs side by side
+"""
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -6,7 +11,8 @@ import dash_bootstrap_components as dbc
 
 df = px.data.gapminder()
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+external_stylesheets = [dbc.themes.BOOTSTRAP]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 fig1 = px.line(df, x="year", y="gdpPercap", color="country",)
 

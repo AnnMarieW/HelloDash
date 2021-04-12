@@ -407,225 +407,6 @@ blockquote {
 
 
 """
-===========================================================================
-Used in:  cheatsheet.py 
-"""
-
-pythonanywhere_quickstart = """
-# Pythonanywhere Quickstart Guide
-
-Your free PythonAnywhere account comes with a website at http://your-username.pythonanywhere.com/. 
-
-### Setting up a page
-You can create an app to run there by going to the Web tab of your account. From there you click on the 
-"Add a new web app" button, which will pop up a wizard where you can  select a web application framework.
- Use the "quickstart" options for Flask.
-
-
-### Uploading files
-Follow [these instructions](https://help.pythonanywhere.com/pages/UploadingAndDownloadingFiles/) for getting your 
-app files uploaded.  
-
-If this is your first time, you can even skip this step for now.  Just copy the code for the Dash Hello World app 
-from the [Dash tutorial](https://dash.plotly.com/layout) and paste it into the app that was set up when you did 
-the Flask quickstart called "flask_app.py".
-
-
-### Configure WSGI file
-If you just copied and pasted into "flask_app.py" you can skip this step.  The WSGI file is already configured. 
- If you want to run a different app, follow [these instructions](https://help.pythonanywhere.com/pages/DashWSGIConfig/)
-
-### Error Log
-If you click on reload webpage and go to your app, you will get an error message.  You will find details if 
-you click on the link for the error log.  This is because Dash needs to be installed.   More info on debugging 
-this and other errors [here](https://help.pythonanywhere.com/pages/)
-
-
-### Install Dash
-
-Many modules are already included, but you will need to install Dash.  Here's how:
-Click on the Console tab and open a Bash console.
-
-`pip3.8 install --user dash`    
-
-Please note, the command line option before the module name is quite literally `--user`, you don't need to 
-replace it with your username, or to add your username to the command line. More in installing dependencies and using  a virtual environment [here](https://help.pythonanywhere.com/pages/InstallingNewModules/)
-
-Go back to the Web tab, reload the page.  That's it!  Your first app is live!!
-
-"""
-
-
-cheatsheet_advanced_callback = """
-
-|What to use||When to use it |  
-| :----|:----| :----|  
-|```  PreventUpdate ```| |Prevents _all_ outputs of a callback from updating| 
-|`dash.no_update`|| Prevents _certain_ outputs of a callback from updating|
-|`prevent_initial_call=True`|| Prevents initial call of a  _certain_ callback|
-|`prevent_initial_callbacks=True` || Prevents _all_ initial calls|
-| `dash.callback_context`|| Determine which Input triggered a callback|
-
-
----
-#### Code snippets:
-
-```  PreventUpdate ```
-```
-    from dash.exceptions import PreventUpdate    
-    ...   
-    def update_output(n_clicks):
-        if n_clicks is None:
-            raise PreventUpdate
-```
-
----
-`dash.no_update`    
-```
-        # first  Output not updated
-        return dash.no_update, figure
-```
-
-
----
-`prevent_initial_call=True`
-```
-    @app.callback(Output('container', 'children'),
-                   Input('btn-1', 'n_clicks'),
-                   Input('btn-2', 'n_clicks'),
-                   prevent_initial_call=True
-    )
-```
----
-`prevent_initial_callbacks=True`
-```
-    app = Dash(name=__name__, prevent_initial_callbacks=True)
-```
-
-
----
-
-`dash.callback_context`    
-```
-    @app.callback(Output('container', 'children'),
-                   Input('btn-1', 'n_clicks'),
-                   Input('btn-2', 'n_clicks'))
-    def display(btn1, btn2):
-        ctx = dash.callback_context
-        input_id = ctx.triggered[0]['prop_id'].split('.')[0]
-
-        if input_id == 'btn-1':
-            # do something...
-```
-"""
-
-# this is created in  cheatsheet.py and displayed in datatable.py
-datatable_markdown = """
-    Add the following to the css file in the assets folder:
-
-    /*  when using Bootstrap, this will style the table in dcc.Markdown */
-
-    table {
-      border-collapse: collapse;
-    }
-    th:not(.CalendarDay),
-    td:not(.CalendarDay) {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #E1E1E1; }
-    th:first-child:not(.CalendarDay),
-    td:first-child:not(.CalendarDay) {
-      padding-left: 0; }
-    th:last-child:not(.CalendarDay),
-    td:last-child:not(.CalendarDay) {
-      padding-right: 0; }
-      """
-
-datatable_move_export_btn = """
-
-    # This moves the Export and/or Toggle Columns button to the bottom left 
-    # side of the DataTable
-
-    import dash
-    import dash_table
-    import pandas as pd
-    
-    df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
-    
-    app = dash.Dash(__name__)
-    
-    app.layout = dash_table.DataTable(
-        id="table",
-        columns=[{"name": i, "id": i, "hideable": True} for i in df.columns],
-        export_format="xlsx",
-        css=[
-            # If export button only,  use this:
-            #{"selector": ".export", "rule": "position:absolute; left: 0px; bottom:-30px"},
-    
-            # If both export button and toggle columns button,  use this:
-            {
-                "selector": ".dash-spreadsheet-menu",
-                "rule": "position:absolute; left:0px; bottom:-30px",
-            },
-        ],
-        data=df.to_dict("records"),
-    )
-    
-    if __name__ == "__main__":
-        app.run_server(debug=True)
-    
-
-"""
-
-datatable_pink_css = """
-
-The default table has hot pink accents.  Add the CSS below to the css file in the assets folder to
- will change the pagination buttons and the icons in the column headers.
-
-Note the `var(--primary)` is the "primary" color of the Bootstrap theme.  You can change this to
-any other named Bootstrap color, or use a named css color,  or hex, rgb color code.  For example 
-`--accent: yellow` !important;'  or `color: #fff !important;`
-
-```
-/*
- * Changes the color of the sort arrow and delete icons in the DataTable header
- *  these icons appear when the table is sortable and/or columns are deletable
- */
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
-    --accent: var(--primary) !important;
-    }
-
-
-/*
- * Changes the pink color when hovering over the pagination buttons in the DataTable
- */
-.last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
-  color: var(--primary) !important;
-}
-```
-"""
-
-datatable_filter_data_css = """
-In dark themed tables the default black text of the "filter data..." placeholder disappears.
-To change the color you can add this to the css file in the assets folder:
-
-```
-.dash-spreadsheet .dash-filter input {
-            color: var(--white) !important;
-         }
-```
-
-Or add it in the css parameter in the table definition:
-
-```
-css = [{"selector": "input", "rule": f"color: {color}"}],
-
-```
-
-"""
-
-
-"""
 =========================================================================
 Used in: DataTable.py 
 """
@@ -965,3 +746,477 @@ Example:
 This slider uses `className="dbc_pulse"`  it's defined in the assets folder [here](https://github.com/AnnMarieW/HelloDash/blob/main/assets/dbc_pulse.css)
 
 """
+
+"""
+===========================================================================
+Used in:  cheatsheet.py 
+"""
+
+pythonanywhere_quickstart = """
+# Pythonanywhere Quickstart Guide
+
+Your free PythonAnywhere account comes with a website at http://your-username.pythonanywhere.com/. 
+
+### Setting up a page
+You can create an app to run there by going to the Web tab of your account. From there you click on the 
+"Add a new web app" button, which will pop up a wizard where you can  select a web application framework.
+ Use the "quickstart" options for Flask.
+
+
+### Uploading files
+Follow [these instructions](https://help.pythonanywhere.com/pages/UploadingAndDownloadingFiles/) for getting your 
+app files uploaded.  
+
+If this is your first time, you can even skip this step for now.  Just copy the code for the Dash Hello World app 
+from the [Dash tutorial](https://dash.plotly.com/layout) and paste it into the app that was set up when you did 
+the Flask quickstart called "flask_app.py".
+
+
+### Configure WSGI file
+If you just copied and pasted into "flask_app.py" you can skip this step.  The WSGI file is already configured. 
+ If you want to run a different app, follow [these instructions](https://help.pythonanywhere.com/pages/DashWSGIConfig/)
+
+### Error Log
+If you click on reload webpage and go to your app, you will get an error message.  You will find details if 
+you click on the link for the error log.  This is because Dash needs to be installed.   More info on debugging 
+this and other errors [here](https://help.pythonanywhere.com/pages/)
+
+
+### Install Dash
+
+Many modules are already included, but you will need to install Dash.  Here's how:
+Click on the Console tab and open a Bash console.
+
+`pip3.8 install --user dash`    
+
+Please note, the command line option before the module name is quite literally `--user`, you don't need to 
+replace it with your username, or to add your username to the command line. More in installing dependencies and using  a virtual environment [here](https://help.pythonanywhere.com/pages/InstallingNewModules/)
+
+Go back to the Web tab, reload the page.  That's it!  Your first app is live!!
+
+"""
+
+cheatsheet_advanced_callback = """
+
+|What to use||When to use it |  
+| :----|:----| :----|  
+|```  PreventUpdate ```| |Prevents _all_ outputs of a callback from updating| 
+|`dash.no_update`|| Prevents _certain_ outputs of a callback from updating|
+|`prevent_initial_call=True`|| Prevents initial call of a  _certain_ callback|
+|`prevent_initial_callbacks=True` || Prevents _all_ initial calls|
+| `dash.callback_context`|| Determine which Input triggered a callback|
+| `MATCH, ALL, ALLSMALLER`|| Pattern matching callbacks|
+
+
+---
+#### Code snippets:
+
+```  PreventUpdate ```
+```
+    from dash.exceptions import PreventUpdate    
+    ...   
+    def update_output(n_clicks):
+        if n_clicks is None:
+            raise PreventUpdate
+```
+
+---
+`dash.no_update`    
+```
+        # first  Output not updated
+        return dash.no_update, figure
+```
+
+
+---
+`prevent_initial_call=True`
+```
+    @app.callback(Output('container', 'children'),
+                   Input('btn-1', 'n_clicks'),
+                   Input('btn-2', 'n_clicks'),
+                   prevent_initial_call=True
+    )
+```
+---
+`prevent_initial_callbacks=True`
+```
+    app = Dash(name=__name__, prevent_initial_callbacks=True)
+```
+
+
+---
+
+`dash.callback_context`    
+```
+    @app.callback(Output('container', 'children'),
+                   Input('btn-1', 'n_clicks'),
+                   Input('btn-2', 'n_clicks'))
+    def display(btn1, btn2):
+        ctx = dash.callback_context
+        input_id = ctx.triggered[0]['prop_id'].split('.')[0]
+
+        if input_id == 'btn-1':
+            # do something...
+```
+
+
+---
+`Pattern Matching Callbacks`
+
+```
+from dash.dependencies import Input, Output, State, MATCH, ALL, ALLSMALLER
+
+```
+"""
+
+# this is created in  cheatsheet.py and displayed in datatable.py
+datatable_markdown = """
+    Add the following to the css file in the assets folder:
+
+    /*  when using Bootstrap, this will style the table in dcc.Markdown */
+
+    table {
+      border-collapse: collapse;
+    }
+    th:not(.CalendarDay),
+    td:not(.CalendarDay) {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #E1E1E1; }
+    th:first-child:not(.CalendarDay),
+    td:first-child:not(.CalendarDay) {
+      padding-left: 0; }
+    th:last-child:not(.CalendarDay),
+    td:last-child:not(.CalendarDay) {
+      padding-right: 0; }
+      """
+
+datatable_move_export_btn = """
+
+    # This moves the Export and/or Toggle Columns button to the bottom left 
+    # side of the DataTable
+
+    import dash
+    import dash_table
+    import pandas as pd
+
+    df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
+
+    app = dash.Dash(__name__)
+
+    app.layout = dash_table.DataTable(
+        id="table",
+        columns=[{"name": i, "id": i, "hideable": True} for i in df.columns],
+        export_format="xlsx",
+        css=[
+            # If export button only,  use this:
+            #{"selector": ".export", "rule": "position:absolute; left: 0px; bottom:-30px"},
+
+            # If both export button and toggle columns button,  use this:
+            {
+                "selector": ".dash-spreadsheet-menu",
+                "rule": "position:absolute; left:0px; bottom:-30px",
+            },
+        ],
+        data=df.to_dict("records"),
+    )
+
+    if __name__ == "__main__":
+        app.run_server(debug=True)
+
+
+"""
+
+datatable_pink_css = """
+
+The default table has hot pink accents.  Add the CSS below to the css file in the assets folder to
+ will change the pagination buttons and the icons in the column headers.
+
+Note the `var(--primary)` is the "primary" color of the Bootstrap theme.  You can change this to
+any other named Bootstrap color, or use a named css color,  or hex, rgb color code.  For example 
+`--accent: yellow` !important;'  or `color: #fff !important;`
+
+```
+/*
+ * Changes the color of the sort arrow and delete icons in the DataTable header
+ *  these icons appear when the table is sortable and/or columns are deletable
+ */
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+    --accent: var(--primary) !important;
+    }
+
+
+/*
+ * Changes the pink color when hovering over the pagination buttons in the DataTable
+ */
+.last-page:hover, .previous-page:hover, .first-page:hover, .next-page:hover{
+  color: var(--primary) !important;
+}
+```
+"""
+
+datatable_filter_data_css = """
+In dark themed tables the default black text of the "filter data..." placeholder disappears.
+To change the color you can add this to the css file in the assets folder:
+
+```
+.dash-spreadsheet .dash-filter input {
+            color: var(--white) !important;
+         }
+```
+
+Or add it in the css parameter in the table definition:
+
+```
+css = [{"selector": "input", "rule": f"color: {color}"}],
+
+```
+
+"""
+
+
+import_basic = """```
+
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import dash_boostrap_components as dbc
+
+```"""
+
+
+import_plotly = """```
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
+import numpy as np
+
+```"""
+
+import_datatable = """```
+import data_table
+import pandas as pd
+import numpy as np
+```"""
+
+datasets_code = """
+
+```
+    import pandas as pd
+    import numpy as np
+    import plotly.express as px
+
+    # random numbers
+    df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))  
+
+
+    # ploty express datasets.  See more at 
+    #  https://plotly.com/python-api-reference/generated/plotly.data.html#module-plotly.data
+    #  
+    df = px.data.gapminder()
+    df = px.data.iris()
+    df = px.data.tips()
+
+    # other hosted datasets
+    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
+
+    # used in the datatable conditional formatting chapter:
+    data = dict(
+        [
+            ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
+            ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
+            ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
+            ("Humidity", [10, 20, 30, 40, 50, 60]),
+            ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
+        ]
+    )
+    df = pd.DataFrame(data)
+"""
+
+layout_code = """```
+
+controls= ....
+graph = ...
+
+`Layout with Bootstrap stylesheet`
+app.layout = dbc.Container(
+    [
+        html.H1("My Title"),
+        html.Hr(),
+        dbc.Row(
+            [
+                dbc.Col(controls, md=4),
+                dbc.Col(graph, md=8),
+            ],
+            align="center",
+        ),
+    ],
+    fluid=True,
+)
+
+
+
+---
+`Dash Layout with default stylesheet`
+app.layout = html.Div([
+    html.Div([
+        html.Div([
+            html.H3('Column 1'),
+            controls,
+        ], className="four columns"),
+
+        html.Div([
+            html.H3('Column 2'),
+            graph,
+        ], className="eight columns"),
+    ], className="row")
+])
+
+
+```"""
+
+
+basic_callbacks = """```
+
+from dash.dependencies import Input, Output
+
+@app.callback(
+    Output('output_id ', 'children'),
+    Input("input_id', 'n_clicks')
+)
+def update_output(n_clicks):
+    .....
+    return .....
+
+```"""
+
+import_advanced_callbacks = """```
+
+
+
+```"""
+
+external_stylesheets = """```
+
+FONT_AWESOME = "https://use.fontawesome.com/releases/v5.10.2/css/all.css"
+DASH_DEFAULT = 'https://codepen.io/chriddyp/pen/bWLwgP.css'
+BOOTSTRAP = dbc.themes.BOOTSTRAP
+
+external_stylesheets = [BOOTSTRAP, FONT_AWESOME]
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+
+
+# Note: include font awesome like this:  html.Div(className="fa fa-globe")
+
+```"""
+
+quickstart_dropdown = """```
+
+dropdown = html.Div(
+    dcc.Dropdown(
+        id="my_dropdown",
+         options=[{"label": str(i), "value": i} for i in ["a", "b", "c"],
+         value=["a"],
+         clearable=False,
+         multi=True,
+         placeholder="select a"
+     )
+)
+
+```"""
+
+
+quickstart_sliders = """```
+
+slider = html.Div(
+    dcc.Slider(
+        id='my-slider',
+        min=0,
+        max=20,
+        step=0.5,
+        value=10,
+        tooltip={"always_visible": True, "placement": "bottom"},
+    ),
+)
+
+slider_with_marks = html.Div(
+    dcc.Slider(
+        min=0,
+        max=100,
+        value=65,
+        marks={
+            0: {'label': '0 °C', 'style': {'color': '#77b0b1'}},
+            26: {'label': '26 °C'},
+            37: {'label': '37 °C'},
+            100: {'label': '100 °C', 'style': {'color': '#f50'}}
+        }
+    )
+)
+
+range_slider = html.Div(
+    dcc.RangeSlider(
+        # same as slider except value is a list
+    )
+)
+
+```"""
+
+quickstart_cheklist_radio = """```
+
+radioitems = dbc.FormGroup(
+    [
+        dbc.Label("Choose one"),
+        dbc.RadioItems(
+            options=[
+                {"label": "Option 1", "value": 1},
+                {"label": "Option 2", "value": 2},
+                {"label": "Disabled option", "value": 3, "disabled": True},
+            ],
+            value=1,
+            id="radioitems-input",
+        ),
+    ]
+)
+
+checklist = dbc.FormGroup(
+    [
+        dbc.Label("Choose a bunch"),
+        dbc.Checklist(
+            options=[
+                {"label": "Option 1", "value": 1},
+                {"label": "Option 2", "value": 2},
+                {"label": "Disabled Option", "value": 3, "disabled": True},
+            ],
+            value=[],
+            id="checklist-input",
+        ),
+    ]
+)
+
+switches = dbc.FormGroup(
+    [
+        dbc.Label("Toggle a bunch"),
+        dbc.Checklist(
+            options=[
+                {"label": "Option 1", "value": 1},
+                {"label": "Option 2", "value": 2},
+                {"label": "Disabled Option", "value": 3, "disabled": True},
+            ],
+            value=[],
+            id="switches-input",
+            switch=True,
+        ),
+    ]
+)
+
+inputs = html.Div(
+    [
+        dbc.Form([radioitems, checklist, switches]),
+        html.P(id="radioitems-checklist-output"),
+    ]
+)
+
+```"""

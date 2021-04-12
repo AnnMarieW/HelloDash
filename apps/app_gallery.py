@@ -13,7 +13,8 @@ from dash.dependencies import Input, Output, MATCH
 import dash_bootstrap_components as dbc
 
 from apps import text
-from app import app, header
+from util import header
+from app import app
 
 from dataclasses import dataclass
 
