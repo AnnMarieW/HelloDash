@@ -1,13 +1,11 @@
 """
-This app is for the Component Gallery contest.  Note that it uses dcc.Tabs which are styled to
+This app is for the Component Gallery content.  Note that it uses dcc.Tabs which are styled to
 work with any Bootstrap theme.  The background is transparent and the selected tabs are
 highlighted with the theme's "primary" color.
 
 """
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
-import dash_html_components as html
-
 
 from .dbc_components import layout as components_layout
 from .dcc_components import layout as dcc_components_layout
@@ -54,12 +52,6 @@ layout = dbc.Card(
                                 style={"backgroundColor": "transparent"},
                                 selected_className="bg-light text-dark border-primary",
                             ),
-                            # dcc.Tab(
-                            #     children=html.Div(html.H1('Coming Soon!')),
-                            #     label="DAQ Components",
-                            #     style={"backgroundColor": "transparent"},
-                            #     selected_className="bg-light text-dark border-primary",
-                            # ),
                         ],
                         vertical=True,
                     ),

@@ -39,7 +39,7 @@ app.layout = dbc.Container(
     [
         html.H1("Table with a Dropdown"),
         html.Hr(),
-        dbc.Row(dbc.Col([controls, table],)),
+        dbc.Row(dbc.Col([controls, table])),
     ],
     fluid=True,
 )

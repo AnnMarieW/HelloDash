@@ -601,18 +601,15 @@ dcc_tabs = """
 ##### Styling dcc.Tabs
 
 
- If you switch to a dark theme you will see that the default style for dcc.Tabs shown here does not work well. However,
+ If you switch to a dark theme you will see that the default style for dcc.Tabs shown here 
+  on the left does not work well. However,
  the dcc.Tabs are very easy to customize using the `style` and `selected_className` parameters.   
 
-The tabs on the left are the default and the tabs on the right are styled so that they work well with both light and
-dark themes. The selected tab is highlighted with the "primary" theme color and the background is transparent.  
+- The tabs on the left are the default.  (No CSS or `style` or `className` is applied)
 
-The tabs for this Component Gallery use dcc.Tabs styled for all themes and `vertical=True`
-
-##### Alternate: `dbc.Tabs`
-
-Note that `dash-bootstrap-components` dbc.Tabs are styled to work well with all Bootstrap themes. No custom CSS is required. 
-See the Dash Bootstrap Components section for an example.
+- The tabs on the right are styled so that they work well with both light and dark themes. 
+The selected tab is highlighted with the "primary" theme color and the background is transparent. See
+the tab labeled "code" to see how it's defined.  
  
 """
 

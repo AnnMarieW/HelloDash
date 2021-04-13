@@ -82,7 +82,7 @@ def make_button_with_popover(title, content, link=""):
                 ],
                 id="popover" + id,
                 target=id,
-                trigger="hover",
+                trigger="focus",
                 className="shadow-lg",
                 placement="right-start"
                 #  placement="top"
@@ -442,12 +442,15 @@ layout = dbc.Container(
                 dbc.Col(bootstrap_links, md=4),
                 dbc.Col(dash_links, md=4),
                 dbc.Col(plotly_links, md=4),
+
             ]
         ),
         dbc.Row(
             [
                 dbc.Col(getting_started_links, md=4),
+
                 dbc.Col(how_to_general, md=4),
+
                 dbc.Col(about_links, md=4),
             ]
         ),

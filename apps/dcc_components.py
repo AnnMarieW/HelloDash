@@ -598,9 +598,6 @@ tabs_card = dbc.Card(
         dbc.CardBody(
             [
                 dcc.Markdown(text.dcc_tabs),
-                make_btn_with_link(
-                    "https://github.com/AnnMarieW/HelloDash/blob/main/apps/component_gallery.py"
-                ),
                 html.Hr(),
                 dbc.Row(
                     [
@@ -679,7 +676,7 @@ def input_triggers_nested(value):
 def render_content(tab):
     if tab == "tab-1":
         return html.Div(
-            [html.H4("Default Style of dcc.Tabs", className="m-4 p-5 text-center")]
+            [html.H4("Default dcc.Tabs", className="m-4 p-5 text-center")]
         )
     elif tab == "tab-2":
         return html.Div(
