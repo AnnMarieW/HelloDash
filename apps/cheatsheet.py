@@ -82,7 +82,7 @@ def make_button_with_popover(title, content, link=""):
                 ],
                 id="popover" + id,
                 target=id,
-                trigger="focus",
+                trigger="legacy",
                 className="shadow-lg",
                 placement="right-start"
                 #  placement="top"
@@ -469,6 +469,13 @@ layout = dbc.Container(
             ]
         ),
         html.Div(style={"height": 2000}),
+        dbc.Button(
+            "Download",
+            href="/assets/html.csv",
+         #   href='https://raw.githubusercontent.com/plotly/datasets/master/solar.csv',
+            download="html",
+            external_link=True,
+        ),
     ],
     fluid=True,
 )
