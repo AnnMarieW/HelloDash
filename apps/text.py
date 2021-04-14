@@ -1031,7 +1031,9 @@ datasets_code = """
     df = pd.DataFrame(data)
 """
 
-layout_code = """```
+layout_code = """
+
+```
 
 controls= ....
 graph = ...
@@ -1080,7 +1082,7 @@ from dash.dependencies import Input, Output
 
 @app.callback(
     Output('output_id ', 'children'),
-    Input("input_id', 'n_clicks')
+    Input('input_id', 'n_clicks')
 )
 def update_output(n_clicks):
     .....
@@ -1217,3 +1219,26 @@ inputs = html.Div(
 )
 
 ```"""
+
+
+quickstart_button = """
+##### Bootstrap dbc.Button.   Dash default see html.Button
+
+```
+buttons = html.Div(
+    [
+        dbc.Button("Primary", color="primary", className="mr-1"),
+        dbc.Button("Secondary", color="secondary", className="mr-1"),
+        dbc.Button("Success", color="success", className="mr-1"),
+        dbc.Button("Warning", color="warning", className="mr-1"),
+        dbc.Button("Danger", color="danger", className="mr-1"),
+        dbc.Button("Info", color="info", className="mr-1"),
+        dbc.Button("Light", color="light", className="mr-1"),
+        dbc.Button("Dark", color="dark", className="mr-1"),
+        dbc.Button("Link", color="link"),
+    ]
+)
+```
+
+
+"""

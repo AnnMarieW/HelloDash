@@ -250,7 +250,7 @@ getting_started_links = dbc.Card(
 
 how_to_datatable = dbc.Card(
     [
-        dbc.CardHeader(html.H4("DataTable How To:")),
+        dbc.CardHeader(html.H4("How To: DataTable")),
         dbc.ListGroup(
             [
                 make_link_with_modal(
@@ -277,19 +277,7 @@ how_to_datatable = dbc.Card(
                         """
                     ),
                 ),
-                make_link_with_modal(
-                    "How to make blockquotes in markdown text have a colored left border",
-                    dcc.Markdown(
-                        "Click on the HTML Components tab to see the answer with examples."
-                    ),
-                ),
-                make_link_with_modal(
-                    "How to style a text table in markdown",
-                    html.Div(
-                        html.Pre(html.Code(text.datatable_markdown)),
-                        className="codebox",
-                    ),
-                ),
+
                 make_link_with_modal(
                     "How to move the Export and Toggle Columns button",
                     html.Div(
@@ -335,6 +323,19 @@ how_to_general = dbc.Card(
                 make_link(
                     "How to make a card with an image to the left or right",
                     "https://community.plotly.com/t/how-to-create-card-with-icon-on-the-right/51832/3",
+                ),
+                make_link_with_modal(
+                    "How to make blockquotes in markdown text have a colored left border",
+                    dcc.Markdown(
+                        "Click on the HTML Components tab to see the answer with examples."
+                    ),
+                ),
+                make_link_with_modal(
+                    "How to style a text table in markdown",
+                    html.Div(
+                        html.Pre(html.Code(text.datatable_markdown)),
+                        className="codebox",
+                    ),
                 ),
                 make_link(
                     "How to do pattern matching callback",
@@ -408,15 +409,15 @@ quickstart_components = dbc.Card(
                 make_button_with_popover(
                     "Dropdown", dcc.Markdown(text.quickstart_dropdown),
                 ),
-                # make_button_with_popover(
-                #     "Button",
-                #     dcc.Markdown(""),
-                # ),
+                make_button_with_popover(
+                    "Bootstrap Button",
+                    dcc.Markdown(text.quickstart_button),
+                ),
                 make_button_with_popover(
                     "Sliders", dcc.Markdown(text.quickstart_sliders)
                 ),
                 make_button_with_popover(
-                    "Checklists and RadioItems",
+                    "Checklists and RadioItems with labels",
                     dcc.Markdown(text.quickstart_cheklist_radio),
                 ),
                 make_button_with_popover(
@@ -451,7 +452,7 @@ layout = dbc.Container(
 
                 dbc.Col(how_to_general, md=4),
 
-                dbc.Col(about_links, md=4),
+                dbc.Col(how_to_datatable, md=4),
             ]
         ),
         dbc.Row(
@@ -468,14 +469,14 @@ layout = dbc.Container(
                 # dbc.Col(about_links, md=4),
             ]
         ),
-        html.Div(style={"height": 2000}),
-        dbc.Button(
-            "Download",
-            href="/assets/html.csv",
-         #   href='https://raw.githubusercontent.com/plotly/datasets/master/solar.csv',
-            download="html",
-            external_link=True,
+        dbc.Row(
+            [
+                #  dbc.Col(quickstart_code, md=4),
+                #dbc.Col(quickstart_components, md=4),
+                 dbc.Col(about_links, md=4),
+            ]
         ),
+        html.Div(style={"height": 2000}),
     ],
     fluid=True,
 )
