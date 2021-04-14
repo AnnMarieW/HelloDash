@@ -820,8 +820,16 @@ cheatsheet_advanced_callback = """
 ---
 `dash.no_update`    
 ```
-        # first  Output not updated
-        return dash.no_update, figure
+        @app.callback(
+            Output('container', 'children'),
+            Output('my_graph', 'figure'),
+            Input('btn-1', 'n_clicks'),
+        )
+        def update(n):
+            # ......
+            # updates the figure only
+            return dash.no_update, fig
+
 ```
 
 
@@ -829,8 +837,7 @@ cheatsheet_advanced_callback = """
 `prevent_initial_call=True`
 ```
     @app.callback(Output('container', 'children'),
-                   Input('btn-1', 'n_clicks'),
-                   Input('btn-2', 'n_clicks'),
+                   Input('btn-1', 'n_clicks'),                   
                    prevent_initial_call=True
     )
 ```
@@ -848,7 +855,7 @@ cheatsheet_advanced_callback = """
     @app.callback(Output('container', 'children'),
                    Input('btn-1', 'n_clicks'),
                    Input('btn-2', 'n_clicks'))
-    def display(btn1, btn2):
+    def display(n_clicks_1, n_clicks_2):
         ctx = dash.callback_context
         input_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
@@ -1033,12 +1040,14 @@ datasets_code = """
 
 layout_code = """
 
-```
+Layout with Bootstrap stylesheet
 
+```
 controls= ....
 graph = ...
+```
 
-`Layout with Bootstrap stylesheet`
+```
 app.layout = dbc.Container(
     [
         html.H1("My Title"),
@@ -1053,11 +1062,12 @@ app.layout = dbc.Container(
     ],
     fluid=True,
 )
-
-
+```
 
 ---
-`Dash Layout with default stylesheet`
+Layout with Dash default stylesheet
+
+```
 app.layout = html.Div([
     html.Div([
         html.Div([
@@ -1071,7 +1081,6 @@ app.layout = html.Div([
         ], className="eight columns"),
     ], className="row")
 ])
-
 
 ```"""
 
