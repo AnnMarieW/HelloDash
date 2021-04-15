@@ -223,7 +223,7 @@ getting_started_links = dbc.Card(
                     "https://www.youtube.com/watch?v=0mfIK8zxUds",
                 ),
                 make_link(
-                    "See quikstart apps and layout templates in the App Gallery",
+                    "See quickstart apps and layout templates in the App Gallery",
                     "/app_gallery",
                 ),
                 make_link(
@@ -350,7 +350,7 @@ how_to_general = dbc.Card(
                     "https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723",
                 ),
                 make_link(
-                    "How to deploy your app on Heroku",
+                    "How to add your dash app to Flask",
                     "https://community.plotly.com/t/how-to-add-your-dash-app-to-flask/51870"
                 ),
 

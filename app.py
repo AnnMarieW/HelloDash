@@ -12,6 +12,7 @@ app = dash.Dash(
     suppress_callback_exceptions=True,
     external_stylesheets=external_stylesheets,
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+    title='HelloDash',
 )
 
 server = app.server
