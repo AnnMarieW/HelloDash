@@ -1,0 +1,111 @@
+Component,Description
+html.A,Defines a hyperlink
+html.Abbr,Defines an abbreviation or an acronym
+html.Acronym,Not supported in HTML5. Use html.Abbr instead.  Defines an acronym
+html.Address,Defines contact information for the author/owner of a document
+html.Area,Defines an area inside an image map
+html.Article,Defines an article
+html.Aside,Defines content aside from the page content
+html.Audio,Defines embedded sound content
+html.B,Defines bold text
+html.Base,Specifies the base URL/target for all relative URLs in a document
+html.Basefont,"Not supported in HTML5. Use CSS instead. Specifies a default color, size, and font for all text in a document"
+html.Bdi,Isolates a part of text that might be formatted in a different direction from other text outside it
+html.Bdo,Overrides the current text direction
+html.Big,Not supported in HTML5. Use CSS instead. Defines big text
+html.Blockquote ,Defines a section that is quoted from another source
+html.Br,Defines a single line break
+html.Button,Defines a clickable button
+html.Canvas,"Used to draw graphics, on the fly, via scripting (usually JavaScript)"
+html.Caption,Defines a table caption
+html.Center,Not supported in HTML5. Use CSS instead.Defines centered text
+html.Cite,Defines the title of a work
+html.Code,Defines a piece of computer code
+html.Col,Specifies column properties for each column within a <colgroup> element
+html.Colgroup,Specifies a group of one or more columns in a table for formatting
+html.Data,Adds a machine-readable translation of a given content
+html.Datalist,Specifies a list of pre-defined options for input controls
+html.Dd,Defines a description/value of a term in a description list
+html.Del,Defines text that has been deleted from a document
+html.Details,Defines additional details that the user can view or hide
+html.Dfn,Specifies a term that is going to be defined within the content
+html.Dialog,Defines a dialog box or window
+html.Dir,Not supported in HTML5. Use html.Ul instead. Defines a directory list
+html.Div,Defines a section in a document
+html.Dl,Defines a description list
+html.Dt,Defines a term/name in a description list
+html.Em,Defines emphasized text
+html.Embeded,Defines a container for an external application
+html.Fieldset,Groups related elements in a form
+html.Figcaption,Defines a caption for a <figure> element
+html.Figure,Specifies self-contained content
+html.Font,"Not supported in HTML5. Use CSS instead. Defines font, color, and size for text"
+html.Footer,Defines a footer for a document or section
+html.Form,Defines an HTML form for user input
+html.Frame,Not supported in HTML5. Defines a window (a frame) in a frameset
+html.Framset,Not supported in HTML5. Defines a set of frames
+html.H1 to html.H6,Defines HTML headings
+html.Header,Defines a header for a document or section
+html.Hr,Defines a thematic change in the content
+html.I,Defines a part of text in an alternate voice or mood
+html.Iframe,Defines an inline frame
+html.Img,Defines an image
+html.Input,Defines an input control
+html.Ins,Defines a text that has been inserted into a document
+html.Kbd,Defines keyboard input
+html.Label,Defines a label for an <input> element
+html.Legent,Defines a caption for a <fieldset> element
+html.Li,Defines a list item
+html.Link,Defines the relationship between a document and an external resource (most used to link to style sheets)
+html.Main,Specifies the main content of a document
+html.Map,Defines an image map
+html.Mark,Defines marked/highlighted text
+html.Meta,Defines metadata about an HTML document
+html.Meter,Defines a scalar measurement within a known range (a gauge)
+html.Nav,Defines navigation links
+html.Noscript,Defines an alternate content for users that do not support client-side scripts
+html.ObjectEl,Defines a container for an external application
+html.Ol,Defines an ordered list
+html.Optgroup,Defines a group of related options in a drop-down list
+html.Option,Defines an option in a drop-down list
+html.Output,Defines the result of a calculation
+html.P,Defines a paragraph
+html.Param,Defines a parameter for an object
+html.Picture,Defines a container for multiple image resources
+html.Pre,Defines preformatted text
+html.Progress,Represents the progress of a task
+html.Q,Defines a short quotation
+html.Rp,Defines what to show in browsers that do not support ruby annotations
+html.Rt,Defines an explanation/pronunciation of characters (for East Asian typography)
+html.Ruby,Defines a ruby annotation (for East Asian typography)
+html.S,Defines text that is no longer correct
+html.Samp,Defines sample output from a computer program
+html.Script,Defines a client-side script
+html.Section,Defines a section in a document
+html.Select,Defines a drop-down list
+html.Small,Defines smaller text
+html.Source,Defines multiple media resources for media elements (<video> and <audio>)
+html.Span,Defines a section in a document
+html.Strike,Not supported in HTML5. Use <del> or <s> instead. Defines strikethrough text
+html.Strong,Defines important text
+html.Sub,Defines subscripted text
+html.Summary,Defines a visible heading for a <details> element
+html.Sup,Defines superscripted text
+html.Svg,Defines a container for SVG graphics
+html.Table,Defines a table
+html.Tbody,Groups the body content in a table
+html.Td,Defines a cell in a table
+html.Template,Defines a container for content that should be hidden when the page loads
+html.Textarea,Defines a multiline input control (text area)
+html.Tfoot,Groups the footer content in a table
+html.Th,Defines a header cell in a table
+html.Thead,Groups the header content in a table
+html.Time,Defines a specific time (or datetime)
+html.Title,Defines a title for the document
+html.Tr,Defines a row in a table
+html.Track,Defines text tracks for media elements (<video> and <audio>)
+html.U,Defines some text that is unarticulated and styled differently from normal text
+html.Ul,Defines an unordered list
+html.var,Defines a variable
+html.Video,Defines embedded video content
+html.Wbr,Defines a possible line-break
