@@ -1,0 +1,129 @@
+
+/*
+ *  This stylesheet defines the className dbc_dl which  is the default
+ *  CSS included with the Dbc templates
+ */
+
+
+
+/*--------------------------------------------
+ * Note: DataTable
+
+ *     Current limitation - it's not possible to use style data conditional to
+ *     change the color of the text or background when using this className.
+ *     A work around is to use the CSS parameter in the table instead of the
+ *     dbc_light or dbc_dark class names.
+ *
+ *     The dbc_light and dbc_dark looks best with the following included in the
+ *     dataTable definition:
+ *
+ *          style_data_conditional=[
+ *              {
+ *                   "if": {"state": "active"},
+ *                   "border": ".5px solid ",
+ *                   "fontWeight" : 1000,
+ *               },
+ *               {"if": {"state": "selected"},
+ *                "fontWeight": 700,
+ *                },
+ *           ],
+ */
+
+
+ .dbc_dl .rc-slider-tooltip-inner {
+        user-select: none;
+    }
+
+ .dbc_dl .dash-spreadsheet .row {
+    margin-left: 0;
+    margin-right: 0;
+ }
+
+ .dbc_dl .dash-spreadsheet-inner input {
+    color: var(--white) !important;
+    font-weight: 800 !important;
+ }
+ .dbc_dl .dash-spreadsheet .dash-header {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+    border-color: rgba(128, 128, 128, 0.3) !important;
+    font-weight: 400 !important;
+    font-size: 1.25em !important;
+ }
+
+ .dbc_dl .dash-spreadsheet .dash-filter {
+    background-color: var(--primary) !important;
+    border-color: rgba(128, 128, 128, 0.3) !important;
+ }
+
+ .dbc_dl .dash-spreadsheet .dash-filter input {
+    color: var(--white) !important;
+ }
+
+ .dbc_dl .dash-spreadsheet td {
+    background-color: var(--light) !important;
+    border-color: rgba(128, 128, 128, 0.3) !important;
+    color: var(--dark) !important;
+ }
+
+ .dbc_dl .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+    --hover: transparent !important;
+ }
+
+ .dbc_dl .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td.focused {
+    background-color: var(--info) !important;
+    color: white !important;
+ }
+
+ .dbc_dl .dash-spreadsheet td.cell--selected {
+    background-color: var(--info) !important;
+    color: white !important;
+ }
+ .dbc_dl .tab-pane .card {
+    border-top-left-radius: 0;
+ }
+
+ .dbc_dl .nav-tabs {
+    border-bottom-width: 0 !important;
+ }
+
+ .dbc_dl .nav-link {
+    border-width: 0.5px !important;
+    border-color: rgba(100, 100, 100, 0.4) !important;
+    color: var(--primary) !important;
+ }
+
+ .dbc_dl .nav-link.active {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+    border-color: rgba(100, 100, 100, 0.4);
+ }
+
+ .dbc_dl .nav-item {
+    margin-right: 0 !important;
+ }
+
+ .dbc_dl .card {
+    margin-bottom: 1rem !important;
+    border-color: rgba(100, 100, 100, 0.4);
+}
+
+
+.dbc_dl .rc-slider-handle {
+    border: solid 2px var(--primary) !important;
+}
+
+.dbc_dl .rc-slider-handle:focus {
+    box-shadow: unset; !important;
+    background-color: var(--primary);
+}
+
+.dbc_dl .rc-slider-track {
+    background-color: var(--primary);
+    height: 2px;
+    margin-top: 1px;
+}
+.dbc_dl .rc-slider-rail {
+    height: 2px;
+    margin-top: 1px;
+}

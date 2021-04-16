@@ -9,6 +9,8 @@ from apps import (
     cheatsheet,
 )
 
+from dash_labs_explorer.apps import theme_explorer_dl
+
 
 app.layout = html.Div(
     [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
@@ -23,6 +25,8 @@ def display_page(pathname):
         return app_gallery.layout
     elif pathname == "/cheatsheet":
         return cheatsheet.layout
+    elif pathname == "/dash_labs":
+        return theme_explorer_dl.layout
     else:
         return theme_explorer.layout
 

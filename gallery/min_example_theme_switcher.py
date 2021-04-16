@@ -14,36 +14,35 @@ import dash_bootstrap_components as dbc
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
-themes_list = [
-    "BOOTSTRAP",
-    "CYBORG",
-    "DARKLY",
-    "SLATE",
-    "SOLAR",
-    "SUPERHERO",
-    "CERULEAN",
-    "COSMO",
-    "FLATLY",
-    "JOURNAL",
-    "LITERA",
-    "LUMEN",
-    "LUX",
-    "MATERIA",
-    "MINTY",
-    "PULSE",
-    "SANDSTONE",
-    "SIMPLEX",
-    "SKETCHY",
-    "SPACELAB",
-    "UNITED",
-    "YETI",
-]
-
+dbc_themes_url = {
+    "BOOTSTRAP": dbc.themes.BOOTSTRAP,
+    "CERULEAN": dbc.themes.CERULEAN,
+    "COSMO": dbc.themes.COSMO,
+    "FLATLY": dbc.themes.FLATLY,
+    "JOURNAL": dbc.themes.JOURNAL,
+    "LITERA": dbc.themes.LITERA,
+    "LUMEN": dbc.themes.LUMEN,
+    "LUX": dbc.themes.LUX,
+    "MATERIA": dbc.themes.MATERIA,
+    "MINTY": dbc.themes.MINTY,
+    "PULSE": dbc.themes.PULSE,
+    "SANDSTONE": dbc.themes.SANDSTONE,
+    "SIMPLEX": dbc.themes.SIMPLEX,
+    "SKETCHY": dbc.themes.SKETCHY,
+    "SPACELAB": dbc.themes.SPACELAB,
+    "UNITED": dbc.themes.UNITED,
+    "YETI": dbc.themes.YETI,
+    "CYBORG": dbc.themes.CYBORG,
+    "DARKLY": dbc.themes.DARKLY,
+    "SLATE": dbc.themes.SLATE,
+    "SOLAR": dbc.themes.SOLAR,
+    "SUPERHERO": dbc.themes.SUPERHERO,
+}
 
 dropdown = dcc.Dropdown(
     id="themes",
-    options=[{"label": str(i), "value": i} for i in themes_list],
-    value="BOOTSTRAP",
+    options=[{"label": str(i), "value": dbc_themes_url[i]} for i in dbc_themes_url],
+    value=dbc_themes_url["BOOTSTRAP"],
     clearable=False,
 )
 
@@ -58,7 +57,8 @@ buttons = html.Div(
         dbc.Button("Light", color="light", className="mr-1"),
         dbc.Button("Dark", color="dark", className="mr-1"),
         dbc.Button("Link", color="link"),
-    ]
+    ],
+    className="m-4",
 )
 
 alerts = html.Div(
@@ -87,17 +87,16 @@ app.layout = dbc.Container(
 )
 
 
+# Using 2 stylesheets with the delay reduces the annoying flicker when the theme changes
 app.clientside_callback(
     """
-    function(theme) {
-        var stylesheet = document.querySelector('link[rel=stylesheet][href^="https://stackpath"]')
-        var name = theme.toLowerCase()
-        if (name === 'bootstrap') {
-            var link = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
-          } else {
-            var link = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/" + name + "/bootstrap.min.css"
-        }
-        stylesheet.href = link
+    function(url) {
+        // Select the FIRST stylesheet only.
+        var stylesheets = document.querySelectorAll('link[rel=stylesheet][href^="https://stackpath"]')
+        // Update the url of the main stylesheet.
+        stylesheets[stylesheets.length - 1].href = url
+        // Delay update of the url of the buffer stylesheet.
+        setTimeout(function() {stylesheets[0].href = url;}, 100);
     }
     """,
     Output("blank_output", "children"),

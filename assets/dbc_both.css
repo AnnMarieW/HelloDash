@@ -56,12 +56,12 @@ dbc_both blockquote {
  * /
 
 /* fixes margins so data isn't cut off at table edges */
-.dbc_dark .dash-table-container .row {
+.dash-table-container .row {
     display : block !important;
     margin: 0;
 }
 
 /* fixes  when the table dropdown doesn't drop down */
-dbc_dark .Select-menu-outer {
+.Select-menu-outer {
     display: block !important;
 }

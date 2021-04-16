@@ -8,6 +8,11 @@
 
 /*--------------------------------------------
  * Note: DataTable
+
+ *     Current limitation - it's not possible to use style data conditional to
+ *     change the color of the text or background when using this className.
+ *     A work around is to use the CSS parameter in the table instead of the
+ *     dbc_light or dbc_dark class names.
  *
  *     The dbc_light and dbc_darklooks best with the following included in the
  *     dataTable definition:
@@ -33,7 +38,7 @@
 }
 
 /* fixes  when the table dropdown doesn't drop down */
-.dbc_light .Select-menu-outer {
+dbc_light .Select-menu-outer {
     display: block !important;
 }
 
@@ -182,3 +187,4 @@
 .dbc_light .nav-item {
     margin-right: 0 !important;
  }
+

@@ -36,11 +36,7 @@ table = dash_table.DataTable(
 )
 
 app.layout = dbc.Container(
-    [
-        html.H1("Table with a Dropdown"),
-        html.Hr(),
-        dbc.Row(dbc.Col([controls, table])),
-    ],
+    [html.H1("Table with a Dropdown"), html.Hr(), dbc.Row(dbc.Col([controls, table])),],
     fluid=True,
 )
 

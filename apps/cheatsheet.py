@@ -277,7 +277,6 @@ how_to_datatable = dbc.Card(
                         """
                     ),
                 ),
-
                 make_link_with_modal(
                     "How to move the Export and Toggle Columns button",
                     html.Div(
@@ -351,9 +350,8 @@ how_to_general = dbc.Card(
                 ),
                 make_link(
                     "How to add your dash app to Flask",
-                    "https://community.plotly.com/t/how-to-add-your-dash-app-to-flask/51870"
+                    "https://community.plotly.com/t/how-to-add-your-dash-app-to-flask/51870",
                 ),
-
             ]
         ),
     ],
@@ -410,8 +408,7 @@ quickstart_components = dbc.Card(
                     "Dropdown", dcc.Markdown(text.quickstart_dropdown),
                 ),
                 make_button_with_popover(
-                    "Bootstrap Button",
-                    dcc.Markdown(text.quickstart_button),
+                    "Bootstrap Button", dcc.Markdown(text.quickstart_button),
                 ),
                 make_button_with_popover(
                     "Sliders", dcc.Markdown(text.quickstart_sliders)
@@ -443,15 +440,12 @@ layout = dbc.Container(
                 dbc.Col(bootstrap_links, md=4),
                 dbc.Col(dash_links, md=4),
                 dbc.Col(plotly_links, md=4),
-
             ]
         ),
         dbc.Row(
             [
                 dbc.Col(getting_started_links, md=4),
-
                 dbc.Col(how_to_general, md=4),
-
                 dbc.Col(how_to_datatable, md=4),
             ]
         ),
@@ -472,8 +466,8 @@ layout = dbc.Container(
         dbc.Row(
             [
                 #  dbc.Col(quickstart_code, md=4),
-                #dbc.Col(quickstart_components, md=4),
-                 dbc.Col(about_links, md=4),
+                # dbc.Col(quickstart_components, md=4),
+                dbc.Col(about_links, md=4),
             ]
         ),
         html.Div(style={"height": 2000}),

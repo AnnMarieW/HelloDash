@@ -5,7 +5,7 @@ This is for longer text and code blocks used throughout this app.
 
 """
 =====================================================================
-Used in: theme_explorer.py
+Used in: theme_explorer_dl.py
 """
 
 css_text = """ 

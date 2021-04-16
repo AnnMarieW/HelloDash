@@ -1,12 +1,42 @@
 """
-This is a collection of shared components, utilites and data
+This is a collection of shared components, utilities and data
 
 """
 
+import pickle
+import pathlib
+
 
 import dash_bootstrap_components as dbc
+import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
+
+
+# set relative path
+PATH = pathlib.Path(__file__).parent
+GALLERY_PATH = PATH.joinpath("./gallery").resolve()
+DATA_PATH = PATH.joinpath("./data").resolve()
+
+" This pickle file was created in dbc_template.py  It's kept in dcc.Store for use in all app pages"
+with open(DATA_PATH.joinpath("dbc_graph_templates"), "rb") as handle:
+    dbc_templates = pickle.load(handle)
+
+
+
+def get_code_file(filename):
+    """
+    :param filename: (str) file name of python file in the gallery directory
+    :return: a string to display the code with highlighting in dcc.Markdown(code)
+
+    Note: be sure to include a blank line and docstring at start of source file so highlighting
+      works correctly
+    """
+    with open(GALLERY_PATH.joinpath(filename)) as f:
+        code = f.read()
+    return f"```{code}```"
+
+
 
 
 header = dbc.Jumbotron(
@@ -29,6 +59,14 @@ header = dbc.Jumbotron(
                     size="sm",
                 ),
                 dbc.Button(
+                    "Dash Labs Explorer",
+                    color="primary",
+                    outline=True,
+                    href="/dash_labs",
+                    className="mr-2",
+                    size="sm",
+                ),
+                dbc.Button(
                     "App Gallery",
                     id="app_gallery",
                     color="primary",
@@ -46,26 +84,11 @@ header = dbc.Jumbotron(
                     className="mr-2",
                     size="sm",
                 ),
-                # dbc.Button(
-                #     "Dash Bootstrap Components",
-                #     color="primary",
-                #     outline=True,
-                #     target="_blank",
-                #     className="mr-2",
-                #     href="https://dash-bootstrap-components.opensource.faculty.ai/",
-                #     size="sm",
-                # ),
-                # dbc.Button(
-                #     "Dash Documentation",
-                #     color="primary",
-                #     outline=True,
-                #     target="_blank",
-                #     href="https://dash.plotly.com/",
-                #     size="sm",
-                # ),
             ],
             className="mt-2",
         ),
+        html.Div(id="blank_output", className="mb-4"),
+        dcc.Store("store", data=dbc_templates),
     ]
 )
 
@@ -78,7 +101,6 @@ dash_labs_templates = [
     "DbcSidebar",
     "DbcSidebarTabs",
 ]
-
 
 light_themes = [
     "BOOTSTRAP",

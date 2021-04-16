@@ -675,9 +675,7 @@ def input_triggers_nested(value):
 )
 def render_content(tab):
     if tab == "tab-1":
-        return html.Div(
-            [html.H4("Default dcc.Tabs", className="m-4 p-5 text-center")]
-        )
+        return html.Div([html.H4("Default dcc.Tabs", className="m-4 p-5 text-center")])
     elif tab == "tab-2":
         return html.Div(
             [
