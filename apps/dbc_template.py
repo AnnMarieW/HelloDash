@@ -18,7 +18,7 @@ import numpy as np
 import util
 
 PATH = pathlib.Path(__file__).parent
-DATA_PATH = PATH.joinpath(".../data").resolve()
+DATA_PATH = PATH.joinpath("../data").resolve()
 
 
 """
@@ -389,3 +389,12 @@ with open(DATA_PATH.joinpath("dbc_graph_templates"), "wb") as handle:
     pickle.dump(dbc_templates, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 print("templates saved to /data/dbc_graph_templates")
+
+"""
+try adding templates to pio
+"""
+
+for theme_name, url in util.dbc_themes_url.items():
+    pio.templates[theme_name] = generate_template(url)
+
+print("bootstrap themes added to plotly.io")

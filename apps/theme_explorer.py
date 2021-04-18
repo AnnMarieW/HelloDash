@@ -56,20 +56,6 @@ dark_themes = [
     "SUPERHERO",
 ]
 
-plotly_template = [
-    #  "bootstrap",
-    "plotly",
-    "ggplot2",
-    "seaborn",
-    "simple_white",
-    "plotly_white",
-    "plotly_dark",
-    "presentation",
-    "xgridoff",
-    "ygridoff",
-    "gridon",
-    "none",
-]
 
 continuous_colors = px.colors.named_colorscales()
 
@@ -181,7 +167,7 @@ graph_template_card = html.Div(
         dbc.FormGroup(
             [
                 dbc.Label("Graph Templates", className="mt-2"),
-                make_dropdown("template", plotly_template),
+                make_dropdown("template", util.plotly_template),
             ],
             style={"minWidth": 100},
         )
@@ -618,7 +604,6 @@ layout = dbc.Container(
         ),
         component_layout,
         html.Div(id="blank_output"),
-        dcc.Store(id="store"),
     ],
     fluid=True,
     className="dbc_both",
@@ -638,9 +623,10 @@ layout = dbc.Container(
     Input("discrete_selected", "children"),
     Input("continuous_selected", "children"),
     Input("themes", "value"),
+    Input("store", "data"),
 )
 def update_line_chart(
-    indicator, continents, years, template, color_discrete, color_continuous, theme
+    indicator, continents, years, template, color_discrete, color_continuous, theme, dbc_template
 ):
 
     color_discrete = color_discrete.split(": ")[1].strip()
@@ -664,6 +650,7 @@ def update_line_chart(
     cds = discrete_colors[color_discrete]
     if template == "bootstrap":
         # template=dbc_template.try_build_plotly_template_from_bootstrap_css_path(theme)
+        template = dbc_template[theme]
         cds = None
 
     fig = px.line(
@@ -672,6 +659,7 @@ def update_line_chart(
         y=indicator,
         color="country",
         template=template,
+
         #  color_discrete_sequence=discrete_colors[color_discrete],
         color_discrete_sequence=cds,
         height=350,
