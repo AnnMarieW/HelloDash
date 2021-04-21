@@ -153,7 +153,7 @@ boostrap_card = html.Div(
                         target="_blank",
                     )
                 ),
-                dcc.Dropdown(id="themes"),
+                dcc.Dropdown(id="themes",clearable=False),
                 make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),
             ]
         ),
