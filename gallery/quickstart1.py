@@ -27,8 +27,10 @@ app.layout = dbc.Container(
             "Two graphs side by side", className="bg-primary text-white text-center"
         ),
         dbc.Row(
-            [dbc.Col(dcc.Graph(figure=fig1), md=6), dbc.Col(dcc.Graph(figure=fig2)),],
-            className="m-2",
+            [
+                dbc.Col(dcc.Graph(figure=fig1), lg=6),
+                dbc.Col(dcc.Graph(figure=fig2), lg=6),
+            ]
         ),
     ],
     fluid=True,

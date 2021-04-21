@@ -3,7 +3,7 @@ import dash_labs as dl
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
 from app import app
@@ -89,7 +89,7 @@ tpl.add_component(
 )
 
 tpl.add_component(make_spacer(10))
-tpl.add_component(dcc.Dropdown(id="themes"), label="Bootstrap Themes")
+tpl.add_component(dcc.Dropdown(id="themes", clearable=False), label="Bootstrap Themes", )
 tpl.add_component(te.make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),)
 tpl.add_component(make_spacer(10))
 

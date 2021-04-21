@@ -1090,10 +1090,10 @@ basic_callbacks = """```
 from dash.dependencies import Input, Output
 
 @app.callback(
-    Output('output_id ', 'children'),
-    Input('input_id', 'n_clicks')
+    Output("output_id", "children"),
+    Input("input_id", "n_clicks")
 )
-def update_output(n_clicks):
+def update_output(n):
     .....
     return .....
 
