@@ -33,48 +33,40 @@ DARKLY = {
     "app_background_color": "",
 }
 
-
 """
 =====================================================================
 Change THEME  to apply design themes to app
 """
-# THEME = MINTY
-THEME = DARKLY
+THEME = MINTY
+# THEME = DARKLY
 
 app = dash.Dash(__name__, external_stylesheets=THEME["external_stylesheets"])
+
 df = px.data.gapminder()
 
+dropdown = dcc.Dropdown(
+    id="indicator",
+    options=[{"label": str(i), "value": i} for i in ["gdpPercap", "lifeExp", "pop"]],
+    value="gdpPercap",
+    clearable=False,
+)
 
-def make_dropdown(id, option_list, option_val=0):
-    return dcc.Dropdown(
-        id=id,
-        options=[{"label": str(i), "value": i} for i in option_list],
-        value=option_list[option_val],
-        clearable=False,
-        persistence_type="session",
-    )
+checklist = dbc.Checklist(
+    id="continents",
+    options=[{"label": i, "value": i} for i in df.continent.unique()],
+    value=df.continent.unique()[3:],
+    inline=True,
+)
 
-
-def make_checklist(id, option_list):
-    return dcc.Checklist(
-        id=id,
-        options=[{"label": i, "value": i} for i in option_list],
-        value=[option_list[0]],
-        labelStyle={"display": "inline-block"},
-        inputClassName="mr-2 ml-2",
-    )
-
-
-def make_range_slider(id, slider_list, step=1):
-    return dcc.RangeSlider(
-        id=id,
-        min=slider_list[0],
-        max=slider_list[-1],
-        step=step,
-        marks={int(i): str(i) for i in slider_list},
-        value=[slider_list[0], slider_list[-1]],
-    )
-
+years = df.year.unique()
+range_slider = dcc.RangeSlider(
+    id="slider_years",
+    min=years[0],
+    max=years[-1],
+    step=5,
+    marks={int(i): str(i) for i in years},
+    value=[1982, years[-1]],
+)
 
 buttons = html.Div(
     [
@@ -90,36 +82,17 @@ buttons = html.Div(
     ]
 )
 
-
 controls = dbc.Card(
     [
         dbc.Row(
             [
                 dbc.Col(
-                    dbc.FormGroup(
-                        [
-                            dbc.Label("Select indicator (y-axis)"),
-                            make_dropdown("indicator", ["gdpPercap", "lifeExp", "pop"]),
-                        ]
-                    )
+                    dbc.FormGroup([dbc.Label("Select indicator (y-axis)"), dropdown])
                 ),
-                dbc.Col(
-                    dbc.FormGroup(
-                        [
-                            dbc.Label("Select continents"),
-                            make_checklist("continents", df.continent.unique()),
-                        ]
-                    )
-                ),
+                dbc.Col(dbc.FormGroup([dbc.Label("Select continents"), checklist])),
             ]
         ),
-        dbc.FormGroup(
-            [
-                dbc.Label("Select years"),
-                make_range_slider("slider_years", df.year.unique(), 5),
-                buttons,
-            ]
-        ),
+        dbc.FormGroup([dbc.Label("Select years"), range_slider, buttons,]),
     ],
     className="m-4 px-2",
 )
@@ -130,8 +103,8 @@ app.layout = dbc.Container(
         html.Hr(),
         dbc.Row(
             [
-                dbc.Col(dcc.Graph(id="line_chart"), md=6),
-                dbc.Col(dcc.Graph(id="scatter_chart"), md=6),
+                dbc.Col(dcc.Graph(id="line_chart"), lg=6),
+                dbc.Col(dcc.Graph(id="scatter_chart"), lg=6),
             ]
         ),
         controls,
@@ -179,13 +152,15 @@ def update_charts(indicator, continents, years):
 if __name__ == "__main__":
     app.run_server(debug=True)
 
-
 """
 Note:  For dark themed apps, add the following the css file in the assets folder.  This 
        styles the dropdown menu items to make them visible in both light and dark theme apps.
        See more info here: https://dash.plotly.com/external-resources
-       
-       
+
+       For more custom CSS for other Dash Components see the dbc_light.css and dbc_dark.css
+       here: https://github.com/AnnMarieW/HelloDash/tree/main/assets
+
+
 .VirtualizedSelectOption {
     background-color: white;
     color: black;
