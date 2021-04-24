@@ -24,7 +24,7 @@ dl_indicators = dcc.Dropdown(
 
 dl_continents = dbc.Checklist(
     options=[{"label": i, "value": i} for i in df.continent.unique()],
-    value=[df.continent.unique()[0]],
+    value=df.continent.unique()[1:],
     inline=True,
 )
 
@@ -104,6 +104,7 @@ def update_line_chart(
         color_continuous = None
     if template == "bootstrap":
         template = dbc_template[theme]
+        print(template)
 
     dff = df[df.year.between(yrs[0], yrs[1])]
     dff = dff[dff.continent.isin(continents_sel)]
@@ -113,7 +114,8 @@ def update_line_chart(
         dff,
         x="year",
         y=indicator_sel,
-        color="country",
+        color="continent",
+        line_group="country",
         template=template,
         color_discrete_sequence=line_colors,
     )

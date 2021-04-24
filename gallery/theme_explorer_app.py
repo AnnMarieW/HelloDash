@@ -37,8 +37,8 @@ DARKLY = {
 =====================================================================
 Change THEME  to apply design themes to app
 """
-THEME = MINTY
-# THEME = DARKLY
+#THEME = MINTY
+THEME = DARKLY
 
 app = dash.Dash(__name__, external_stylesheets=THEME["external_stylesheets"])
 
@@ -54,7 +54,7 @@ dropdown = dcc.Dropdown(
 checklist = dbc.Checklist(
     id="continents",
     options=[{"label": i, "value": i} for i in df.continent.unique()],
-    value=df.continent.unique()[3:],
+    value=df.continent.unique()[1:],
     inline=True,
 )
 
@@ -132,7 +132,8 @@ def update_charts(indicator, continents, years):
         dff[dff.continent.isin(continents)],
         x="year",
         y=indicator,
-        color="country",
+        color="continent",
+        line_group="country",
         template=THEME["graph_template"],
         color_discrete_sequence=THEME["color_discrete_sequence"],
     )

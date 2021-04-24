@@ -117,7 +117,7 @@ def make_checklist(id, option_list):
     return dbc.Checklist(
         id=id,
         options=[{"label": i, "value": i} for i in option_list],
-        value=[option_list[0]],
+        value=option_list[1:],
         inline=True,
         #  inputClassName="mr-2 ml-2",
         persistence_type="local",
@@ -249,7 +249,7 @@ continuous_modal = html.Div(
                             className="text-center",
                         ),
                         dbc.Alert(
-                            "color selected: aggrnyl",
+                            "color selected: Plasma",
                             id="continuous_selected",
                             color="secondary",
                             className="text-center",
@@ -657,9 +657,9 @@ def update_line_chart(
         dff,
         x="year",
         y=indicator,
-        color="country",
+        color="continent",
+        line_group="country",
         template=template,
-
         #  color_discrete_sequence=discrete_colors[color_discrete],
         color_discrete_sequence=cds,
         height=350,
@@ -752,7 +752,7 @@ def sel_swatch(clicked):
 )
 def sel_swatch(seq, div, cyc):
     if seq is None and div is None and cyc is None:
-        return dash.no_update
+        return "color selected:   Plasma"
     ctx = dash.callback_context
     input_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
