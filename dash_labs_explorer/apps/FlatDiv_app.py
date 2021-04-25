@@ -50,7 +50,7 @@ def callback(
     # in the app by selecting a different color sequence
     color_discrete = color_discrete.split(": ")[1].strip()
     line_colors = util.discrete_colors[color_discrete]
-    if "theme" in checkbox:
+    if checkbox == []:
         line_colors = None
     if template == "bootstrap":
         template = dbc_template[theme]

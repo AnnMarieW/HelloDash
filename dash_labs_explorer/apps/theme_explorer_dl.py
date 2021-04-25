@@ -1,4 +1,3 @@
-
 import dash_labs as dl
 import dash_core_components as dcc
 import dash_html_components as html
@@ -26,13 +25,6 @@ tpl._inline_css = ""
 =====================================================================
 Helper functions and components
 """
-
-checkbox = dbc.Checklist(
-    id="checkbox",
-    options=[{"label": "use theme", "value": "theme"}],
-    value=["theme"],
-    className="ml-2",
-)
 
 
 def make_spacer(height):
@@ -65,16 +57,12 @@ css_options = [
 ]
 
 graph_color_modals = html.Div(
-    [te.discrete_modal, te.continuous_modal, checkbox],
+    [te.discrete_modal, te.continuous_modal, te.checkbox],
     className="d-inline-flex",
     id="graph_colors",
 )
 
-dl_code = html.Div(
-    dcc.Markdown(id="dl_code"),
-    className='p-4',
-
-)
+dl_code = html.Div(dcc.Markdown(id="dl_code"), className="p-4",)
 
 
 """
@@ -89,7 +77,9 @@ tpl.add_component(
 )
 
 tpl.add_component(make_spacer(10))
-tpl.add_component(dcc.Dropdown(id="themes", clearable=False), label="Bootstrap Themes", )
+tpl.add_component(
+    dcc.Dropdown(id="themes", clearable=False), label="Bootstrap Themes",
+)
 tpl.add_component(te.make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),)
 tpl.add_component(make_spacer(10))
 
@@ -136,7 +126,7 @@ layout = dbc.Container(
             ],
         ),
         html.Hr(),
-        dbc.Row(dbc.Col(dl_code))
+        dbc.Row(dbc.Col(dl_code)),
     ],
     fluid=True,
     id="dl_app_container",
@@ -151,7 +141,7 @@ Display Sample App
 
 @app.callback(
     Output("dl_sample_app", "children"),
-    Output('dl_code', "children"),
+    Output("dl_code", "children"),
     Input("dl_template", "value"),
 )
 def display_sample_app(template):
@@ -164,7 +154,10 @@ def display_sample_app(template):
     elif template == "DbcSidebar":
         return DbcSidebar_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
     elif template == "DbcSidebarTabs":
-        return DbcSidebarTabs_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return (
+            DbcSidebarTabs_app.tpl.layout(app),
+            util.get_code_file(f"dl_{template}.py"),
+        )
     else:
         return FlatDiv_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
 

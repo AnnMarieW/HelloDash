@@ -153,7 +153,7 @@ boostrap_card = html.Div(
                         target="_blank",
                     )
                 ),
-                dcc.Dropdown(id="themes",clearable=False),
+                dcc.Dropdown(id="themes", clearable=False),
                 make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),
             ]
         ),
@@ -178,7 +178,7 @@ graph_template_card = html.Div(
 discrete_modal = html.Div(
     [
         dbc.Button(
-            "Line Colors",
+            "Discrete",
             id="discrete_modal_btn",
             outline=True,
             color="primary",
@@ -234,7 +234,7 @@ discrete_modal = html.Div(
 continuous_modal = html.Div(
     [
         dbc.Button(
-            "Scatter Colors",
+            "Continuous",
             id="continuous_modal_btn",
             outline=True,
             color="primary",
@@ -304,13 +304,23 @@ continuous_modal = html.Div(
 )
 
 
+checkbox = dbc.Checklist(
+    id="checkbox",
+    options=[{"label": "Use selected", "value": "graph_color"}],
+    value=[],
+    className="ml-2",
+)
+
+
 graph_continuous_color_card = html.Div(
     [
         dbc.FormGroup(
             [
                 dbc.Label("Graph Colors", className="mt-2"),
-                discrete_modal,
-                continuous_modal,
+                html.Div(
+                    [discrete_modal, continuous_modal, checkbox],
+                    className="d-inline-flex",
+                ),
             ]
         )
     ],
@@ -622,36 +632,43 @@ layout = dbc.Container(
     Input("template", "value"),
     Input("discrete_selected", "children"),
     Input("continuous_selected", "children"),
+    Input("checkbox", "value"),
     Input("themes", "value"),
     Input("store", "data"),
 )
 def update_line_chart(
-    indicator, continents, years, template, color_discrete, color_continuous, theme, dbc_template
+    indicator,
+    continents,
+    years,
+    template,
+    color_discrete,
+    color_continuous,
+    checkbox,
+    theme,
+    dbc_template,
 ):
-
-    color_discrete = color_discrete.split(": ")[1].strip()
-    color_continuous = color_continuous.split(": ")[1].strip()
-
     if continents == [] or indicator is None:
         return {}, {}, "", ""
 
     dff = df[df.year.between(years[0], years[1])]
     dff = dff[dff.continent.isin(continents)]
-
-    title = """template= {}  \ncolor_discrete_sequence=px.colors.qualitative.{}""".format(
-        template, color_discrete
-    )
-    title2 = """template= {}  \n  color_continuous_scale= {}""".format(
-        template, color_continuous
-    )
-
     data = dff.to_dict("records")
 
-    cds = discrete_colors[color_discrete]
+    # figure line colors default is from the generated Bootstrap figure template.  These can be changed
+    # in the app by selecting a different color sequence
+    color_discrete = color_discrete.split(": ")[1].strip()
+    color_continuous = color_continuous.split(": ")[1].strip()
+    title = f"color_discrete_sequence=px.colors.qualitative.{color_discrete}"
+    title2 = f"color_continuous_scale= {color_continuous}"
+
+    line_colors = util.discrete_colors[color_discrete]
+    if not checkbox:
+        line_colors = None
+        color_continuous = None
+        title = ""
+        title2 = ""
     if template == "bootstrap":
-        # template=dbc_template.try_build_plotly_template_from_bootstrap_css_path(theme)
         template = dbc_template[theme]
-        cds = None
 
     fig = px.line(
         dff,
@@ -660,8 +677,7 @@ def update_line_chart(
         color="continent",
         line_group="country",
         template=template,
-        #  color_discrete_sequence=discrete_colors[color_discrete],
-        color_discrete_sequence=cds,
+        color_discrete_sequence=line_colors,
         height=350,
     )
     fig.update_layout(margin=dict(l=75, r=20, t=10, b=20))
@@ -713,7 +729,7 @@ def update_app_bg_color(color, radio):
     input_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
     if input_id == "bg_color":
-        radio = "Use Colorpicker"
+        radio = "Use color picker"
 
     else:
         color = "" if radio == "Use Default" or color is None else color

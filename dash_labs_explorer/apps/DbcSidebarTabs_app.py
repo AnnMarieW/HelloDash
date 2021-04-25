@@ -59,6 +59,19 @@ def make_table(dff):
                 },
                 {"if": {"state": "selected"}, "fontWeight": 700,},
             ],
+            #  This is an example to show  it's not possible to change the background and
+            #  text color when using the DL table styles.
+            #
+            # style_data_conditional=[
+            #     {
+            #         'if': {
+            #             'column_id': 'continent',
+            #         },
+            #         'backgroundColor': 'dodgerblue',
+            #         'color': 'white',
+            #         'textAlign': 'left'
+            #     },
+            # ],
         ),
     )
 
@@ -99,12 +112,11 @@ def update_line_chart(
     color_discrete = color_discrete.split(": ")[1].strip()
     color_continuous = color_continuous.split(": ")[1].strip()
     line_colors = util.discrete_colors[color_discrete]
-    if "theme" in checkbox:
+    if checkbox == []:
         line_colors = None
         color_continuous = None
     if template == "bootstrap":
         template = dbc_template[theme]
-        print(template)
 
     dff = df[df.year.between(yrs[0], yrs[1])]
     dff = dff[dff.continent.isin(continents_sel)]
