@@ -5,12 +5,14 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
+
 from app import app
 from dash_labs_explorer.apps import (
     HtmlCard_app,
     DbcCard_app,
     DbcRow_app,
-    DbcSidebar_app,
+    DbcSidebar,
+    DbcSidebar_4graphs,
     FlatDiv_app,
     DbcSidebarTabs_app,
 )
@@ -116,12 +118,13 @@ layout = dbc.Container(
         util.header,
         dbc.Row(
             [
-                dbc.Col(tpl.layout(app), lg=4),
+                dbc.Col(tpl.layout(app), lg=4, sm=12),
                 dbc.Col(
                     html.Div(
-                        id="dl_sample_app", style={"marginLeft": 90, "minWidth": 600}
+                        id="dl_sample_app", style={"paddingLeft": 50, "minWidth": 600}
                     ),
                     lg=8,
+                    sm=12,
                 ),
             ],
         ),
@@ -152,7 +155,12 @@ def display_sample_app(template):
     elif template == "DbcRow":
         return DbcRow_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
     elif template == "DbcSidebar":
-        return DbcSidebar_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return DbcSidebar.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+    elif template == "DbcSidebar_4graphs":
+        return (
+            DbcSidebar_4graphs.tpl.layout(app),
+            util.get_code_file(f"dl_{template}.py"),
+        )
     elif template == "DbcSidebarTabs":
         return (
             DbcSidebarTabs_app.tpl.layout(app),

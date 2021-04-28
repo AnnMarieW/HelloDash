@@ -33,19 +33,10 @@ slider2 = dcc.Slider(
     Input("graph_template", "value"),
     Input("discrete_selected", "children"),
     Input("checkbox", "value"),
-    Input("store", "data"),
     template=tpl,
 )
 def callback(
-    fun,
-    figure_title,
-    phase,
-    amplitude,
-    theme,
-    template,
-    color_discrete,
-    checkbox,
-    dbc_template,
+    fun, figure_title, phase, amplitude, theme, template, color_discrete, checkbox,
 ):
     # figure line colors default is from the generated Bootstrap figure template.  These can be changed
     # in the app by selecting a different color sequence
@@ -54,7 +45,7 @@ def callback(
     if checkbox == []:
         line_colors = None
     if template == "bootstrap":
-        template = dbc_template[theme]
+        template = util.url_dbc_themes[theme].lower()
 
     xs = np.linspace(-10, 10, 100)
     np_fn = getattr(np, fun)

@@ -53,7 +53,6 @@ tpl = dl.templates.dbc.DbcSidebar(
 # )
 
 
-
 # Define components ********************************************
 
 dropdown = dcc.Dropdown(

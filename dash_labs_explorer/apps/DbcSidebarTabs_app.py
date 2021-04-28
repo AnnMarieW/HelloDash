@@ -85,7 +85,6 @@ def make_table(dff):
     Input("discrete_selected", "children"),
     Input("continuous_selected", "children"),
     Input("checkbox", "value"),
-    Input("store", "data"),
     output=[
         tpl.graph_output(role="Line"),
         tpl.graph_output(role="Scatter"),
@@ -102,7 +101,6 @@ def update_line_chart(
     color_discrete,
     color_continuous,
     checkbox,
-    dbc_template,
 ):
     if continents_sel == [] or indicator_sel is None:
         return {}, {}, ""
@@ -116,7 +114,7 @@ def update_line_chart(
         line_colors = None
         color_continuous = None
     if template == "bootstrap":
-        template = dbc_template[theme]
+        template = util.url_dbc_themes[theme].lower()
 
     dff = df[df.year.between(yrs[0], yrs[1])]
     dff = dff[dff.continent.isin(continents_sel)]

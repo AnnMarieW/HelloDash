@@ -12,8 +12,6 @@ from app import app
 import util
 from apps import text
 
-# from apps import text, dbc_template
-
 
 from .component_gallery import layout as component_layout
 
@@ -27,59 +25,6 @@ GALLERY_PATH = PATH.joinpath("../gallery").resolve()
 with open(GALLERY_PATH.joinpath("theme_explorer_app.py")) as f:
     code = f.read()
 code = f"```{code}```"
-
-
-light_themes = [
-    "BOOTSTRAP",
-    "CERULEAN",
-    "COSMO",
-    "FLATLY",
-    "JOURNAL",
-    "LITERA",
-    "LUMEN",
-    "LUX",
-    "MATERIA",
-    "MINTY",
-    "PULSE",
-    "SANDSTONE",
-    "SIMPLEX",
-    "SKETCHY",
-    "SPACELAB",
-    "UNITED",
-    "YETI",
-]
-dark_themes = [
-    "CYBORG",
-    "DARKLY",
-    "SLATE",
-    "SOLAR",
-    "SUPERHERO",
-]
-
-
-continuous_colors = px.colors.named_colorscales()
-
-discrete_colors = {
-    "Plotly": px.colors.qualitative.Plotly,
-    "D3": px.colors.qualitative.D3,
-    "G10": px.colors.qualitative.G10,
-    "T10": px.colors.qualitative.T10,
-    "Alphabet": px.colors.qualitative.Alphabet,
-    "Dark24": px.colors.qualitative.Dark24,
-    "Light24": px.colors.qualitative.Light24,
-    "Set1": px.colors.qualitative.Set1,
-    "Pastel1": px.colors.qualitative.Pastel1,
-    "Dark2": px.colors.qualitative.Dark2,
-    "Set2": px.colors.qualitative.Set2,
-    "Pastel2": px.colors.qualitative.Pastel2,
-    "Set3": px.colors.qualitative.Set3,
-    "Antique": px.colors.qualitative.Antique,
-    "Bold": px.colors.qualitative.Bold,
-    "Pastel": px.colors.qualitative.Pastel,
-    "Safe": px.colors.qualitative.Safe,
-    "Vivid": px.colors.qualitative.Vivid,
-    "Prism": px.colors.qualitative.Prism,
-}
 
 
 df = px.data.gapminder()
@@ -104,9 +49,7 @@ def make_radio_items(id, option_list, option_val=0):
     return dbc.RadioItems(
         id=id,
         options=[{"label": i, "value": i} for i in option_list],
-        #    inputClassName="mr-2 ml-2",
-        #  labelStyle={'display': 'inline-block'},
-        inline=True,  # for dbc.RadioItems
+        inline=True,
         value=option_list[option_val],
         persistence_type="local",
         className="mt-2",
@@ -117,9 +60,8 @@ def make_checklist(id, option_list):
     return dbc.Checklist(
         id=id,
         options=[{"label": i, "value": i} for i in option_list],
-        value=option_list[1:],
+        value=option_list[2:],
         inline=True,
-        #  inputClassName="mr-2 ml-2",
         persistence_type="local",
     )
 
@@ -607,8 +549,8 @@ layout = dbc.Container(
         util.header,
         dbc.Row(
             [
-                dbc.Col([theme_controls, source_code_modal,], md=3),
-                dbc.Col(sample_app, md=9, sm=12,),
+                dbc.Col([theme_controls, source_code_modal,], md=4),
+                dbc.Col(sample_app, md=8, sm=12,),
             ],
             id="layout",
         ),
@@ -634,7 +576,6 @@ layout = dbc.Container(
     Input("continuous_selected", "children"),
     Input("checkbox", "value"),
     Input("themes", "value"),
-    Input("store", "data"),
 )
 def update_line_chart(
     indicator,
@@ -645,7 +586,6 @@ def update_line_chart(
     color_continuous,
     checkbox,
     theme,
-    dbc_template,
 ):
     if continents == [] or indicator is None:
         return {}, {}, "", ""
@@ -668,7 +608,7 @@ def update_line_chart(
         title = ""
         title2 = ""
     if template == "bootstrap":
-        template = dbc_template[theme]
+        template = util.url_dbc_themes[theme].lower()
 
     fig = px.line(
         dff,
@@ -706,12 +646,13 @@ def update(theme):
 
     if theme == "Light Themes":
         options = [
-            {"label": str(i), "value": util.dbc_themes_url[i]} for i in light_themes
+            {"label": str(i), "value": util.dbc_themes_url[i]}
+            for i in util.light_themes
         ]
         value = util.dbc_themes_url["BOOTSTRAP"]
     else:
         options = [
-            {"label": str(i), "value": util.dbc_themes_url[i]} for i in dark_themes
+            {"label": str(i), "value": util.dbc_themes_url[i]} for i in util.dark_themes
         ]
         value = util.dbc_themes_url["CYBORG"]
     return options, value

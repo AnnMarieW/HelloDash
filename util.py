@@ -3,7 +3,7 @@ This is a collection of shared components, utilities and data
 
 """
 
-import pickle
+
 import pathlib
 
 
@@ -11,17 +11,13 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
+from dash_bootstrap_templates import load_figure_template
 
 
 # set relative path
 PATH = pathlib.Path(__file__).parent
 GALLERY_PATH = PATH.joinpath("./gallery").resolve()
 DATA_PATH = PATH.joinpath("./data").resolve()
-
-" This pickle file was created in dbc_template.py  It's kept in dcc.Store for use in all app pages"
-with open(DATA_PATH.joinpath("dbc_graph_templates"), "rb") as handle:
-    dbc_templates = pickle.load(handle)
-
 
 
 def get_code_file(filename):
@@ -35,8 +31,6 @@ def get_code_file(filename):
     with open(GALLERY_PATH.joinpath(filename)) as f:
         code = f.read()
     return f"```{code}```"
-
-
 
 
 header = dbc.Jumbotron(
@@ -88,7 +82,6 @@ header = dbc.Jumbotron(
             className="mt-2",
         ),
         html.Div(id="blank_output", className="mb-4"),
-        dcc.Store("store", data=dbc_templates),
     ]
 )
 
@@ -99,6 +92,7 @@ dash_labs_templates = [
     "DbcCard",
     "DbcRow",
     "DbcSidebar",
+    "DbcSidebar_4graphs",
     "DbcSidebarTabs",
 ]
 
@@ -129,6 +123,10 @@ dark_themes = [
     "SUPERHERO",
 ]
 
+# the template themes are lower case to be consistent with the plotly naming convention
+dbc_lower_case = [t.lower() for t in light_themes + dark_themes]
+load_figure_template(dbc_lower_case)
+
 
 dbc_themes_url = {
     "BOOTSTRAP": dbc.themes.BOOTSTRAP,
@@ -154,6 +152,8 @@ dbc_themes_url = {
     "SOLAR": dbc.themes.SOLAR,
     "SUPERHERO": dbc.themes.SUPERHERO,
 }
+
+url_dbc_themes = dict(map(reversed, dbc_themes_url.items()))
 
 
 plotly_template = [

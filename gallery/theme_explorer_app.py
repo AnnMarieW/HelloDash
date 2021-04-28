@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Sample app with two different themes
+Sample app with two different themes.  This app uses figure templates
+customized for Bootstrap themes from the dash-bootstrap-templates library
 """
 
 import dash
@@ -10,37 +11,20 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-"""
-=====================================================================
-Set details for your selected theme here
-"""
-
-# ------  App version 1  Minty theme   ------------
-MINTY = {
-    "external_stylesheets": [dbc.themes.MINTY],
-    "graph_template": "simple_white",
-    "color_discrete_sequence": px.colors.qualitative.Pastel,
-    "color_continuous_scale": "darkmint",
-    "app_background_color": "#F3F6F3",
-}
-
-# -------- App version 2 Darkly theme     -------------
-DARKLY = {
-    "external_stylesheets": [dbc.themes.DARKLY],
-    "graph_template": "plotly_dark",
-    "color_discrete_sequence": px.colors.qualitative.Dark24,
-    "color_continuous_scale": "ice",
-    "app_background_color": "",
-}
+from dash_bootstrap_templates import load_figure_template
 
 """
 =====================================================================
-Change THEME  to apply design themes to app
+Change theme here
 """
-#THEME = MINTY
-THEME = DARKLY
+# load_figure_template('minty')
+# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.MINTY])
 
-app = dash.Dash(__name__, external_stylesheets=THEME["external_stylesheets"])
+load_figure_template("cyborg")
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
+
+# ====================================================================
+
 
 df = px.data.gapminder()
 
@@ -68,6 +52,7 @@ range_slider = dcc.RangeSlider(
     value=[1982, years[-1]],
 )
 
+# These buttons are included to display the Bootstrap theme colors only
 buttons = html.Div(
     [
         dbc.Button("Primary", color="primary", className="mr-1"),
@@ -110,9 +95,7 @@ app.layout = dbc.Container(
         controls,
         html.Hr(),
     ],
-    id="layout_container",
     fluid=True,
-    style={"backgroundColor": THEME["app_background_color"]},
 )
 
 
@@ -134,8 +117,6 @@ def update_charts(indicator, continents, years):
         y=indicator,
         color="continent",
         line_group="country",
-        template=THEME["graph_template"],
-        color_discrete_sequence=THEME["color_discrete_sequence"],
     )
     dff = df[df.year == years[1]]
     fig2 = px.scatter(
@@ -143,8 +124,6 @@ def update_charts(indicator, continents, years):
         x="lifeExp",
         y=indicator,
         color="lifeExp",
-        template=THEME["graph_template"],
-        color_continuous_scale=THEME["color_continuous_scale"],
         hover_data=["country", "year"],
     )
     return fig, fig2
