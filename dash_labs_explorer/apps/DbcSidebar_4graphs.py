@@ -20,7 +20,7 @@ import util
 
 # templates from dash-bootstrap-templates library
 tpl = dl.templates.dbc.DbcSidebar(
-    title="Dash Bootstrap Template Demo", sidebar_columns=3,
+    title="Dash Bootstrap Template Demo", sidebar_columns=3
 )
 
 
@@ -72,11 +72,9 @@ def update_charts(
     color_continuous,
     checkbox,
 ):
-    print("in callback")
     if continents == [] or indicator is None:
         return {}
 
-    print("incallback")
     color_discrete = color_discrete.split(": ")[1].strip()
     color_continuous = color_continuous.split(": ")[1].strip()
     line_colors = util.discrete_colors[color_discrete]

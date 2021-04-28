@@ -87,12 +87,12 @@ header = dbc.Jumbotron(
 
 
 dash_labs_templates = [
+    "DbcSidebar_4graphs",
     "FlatDiv",
     "HtmlCard",
     "DbcCard",
     "DbcRow",
     "DbcSidebar",
-    "DbcSidebar_4graphs",
     "DbcSidebarTabs",
 ]
 

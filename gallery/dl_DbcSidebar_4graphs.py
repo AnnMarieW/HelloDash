@@ -2,8 +2,7 @@
 
 """
 This is a demo of the `load_figure_template(themes)` function from dash_bootstrap_templates library
-The `load_figure_templates(theme) loads the Bootstrap theme template,
-adds it to plotly.io and makes it the default.  Do not use with `figure_template=True` in the
+The `load_figure_templates(theme) loads the Bootstrap theme template, adds it to plotly.io and makes it the default.
 
 """
 
