@@ -87,11 +87,11 @@ app.layout = dbc.Container(
 )
 
 
-# Using 2 stylesheets with the delay reduces the annoying flicker when the theme changes
+# Using 2 stylesheets with the delay reduces the  flicker when the theme changes
 app.clientside_callback(
     """
     function(url) {
-        // Select the FIRST stylesheet only.
+        // Select the stylesheets.
         var stylesheets = document.querySelectorAll('link[rel=stylesheet][href^="https://stackpath"]')
         // Update the url of the main stylesheet.
         stylesheets[stylesheets.length - 1].href = url

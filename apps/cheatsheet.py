@@ -73,7 +73,7 @@ def make_button_with_popover(title, content, link=""):
     return html.Div(
         [
             dbc.Button(
-                title, id=id, color="light", className="text-left ", block=True,
+                title, id=id, color="link", className="text-left ", block=True,
             ),
             dbc.Popover(
                 [
