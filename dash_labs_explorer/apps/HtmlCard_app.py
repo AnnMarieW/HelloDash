@@ -8,7 +8,9 @@ from app import app
 import util
 
 
-tpl = dl.templates.HtmlCard(title="Dash Labs App - HtmlCard Template", width="600px")
+tpl = dl.templates.HtmlCard(
+    app, title="Dash Labs App - HtmlCard Template", width="600px"
+)
 
 
 dropdown = dcc.Dropdown(

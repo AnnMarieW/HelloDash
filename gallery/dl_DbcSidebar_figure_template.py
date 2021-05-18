@@ -14,15 +14,16 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 
 
+app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
+
 # Current dbc template themes
 tpl = dl.templates.dbc.DbcSidebar(
+    app,
     title="Dash Bootstrap Template Demo",
     sidebar_columns=3,
     theme=dbc.themes.JOURNAL,  # change theme here
     figure_template=True,
 )
-
-app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
 df = px.data.gapminder()
 

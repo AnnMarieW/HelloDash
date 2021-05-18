@@ -11,7 +11,7 @@ import plotly.express as px
 
 
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
-tpl = dl.templates.HtmlCard(width="600px", title="Dash Labs App ")
+tpl = dl.templates.HtmlCard(app, width="600px", title="Dash Labs App ")
 
 
 dropdown = dcc.Dropdown(

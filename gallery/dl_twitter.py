@@ -28,6 +28,7 @@ df = df.reset_index()
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
 tpl = dl.templates.dbc.DbcSidebar(
+    app,
     title="Twitter Likes Analysis of Famous People",
     figure_template=True,
     theme=dbc.themes.SPACELAB,
@@ -35,6 +36,7 @@ tpl = dl.templates.dbc.DbcSidebar(
 
 #
 # tpl = dl.templates.dbc.DbcRow(
+#     app,
 #     title="Twitter Likes Analysis of Famous People",
 #     figure_template=True,
 #     theme=dbc.themes.SUPERHERO,
@@ -42,6 +44,7 @@ tpl = dl.templates.dbc.DbcSidebar(
 
 #
 # tpl = dl.templates.dbc.DbcCard(
+#     app,
 #     title="Twitter Likes Analysis of Famous People",
 #     figure_template=True,
 #     theme=dbc.themes.BOOTSTRAP,
@@ -49,7 +52,7 @@ tpl = dl.templates.dbc.DbcSidebar(
 #
 #
 # tpl = dl.templates.HtmlCard(
-#     title="Twitter Likes Analysis of Famous People",
+#     app, title="Twitter Likes Analysis of Famous People",
 # )
 
 
@@ -95,7 +98,7 @@ def update_graph(chosen_value):
 # Layout ******************************************************************
 
 tpl.add_component(twitter_link, role="output", after=0)
-app.layout = tpl.layout(app)
+app.layout = tpl.children
 
 if __name__ == "__main__":
     app.run_server(debug=True)

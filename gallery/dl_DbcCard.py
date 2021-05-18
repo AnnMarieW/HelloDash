@@ -12,7 +12,7 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 tpl = dl.templates.dbc.DbcCard(
-    title="Sample App", figure_template=True, theme=dbc.themes.CYBORG
+    app, title="Sample App", figure_template=True, theme=dbc.themes.CYBORG
 )
 
 
@@ -46,7 +46,7 @@ def callback(fun, figure_title, phase, amplitude):
     return dcc.Graph(figure=px.line(x=x, y=y,).update_layout(title_text=figure_title))
 
 
-app.layout = tpl.layout(app)
+app.layout = tpl.children
 
 if __name__ == "__main__":
     app.run_server(debug=True)

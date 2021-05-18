@@ -20,7 +20,7 @@ import util
 
 # templates from dash-bootstrap-templates library
 tpl = dl.templates.dbc.DbcSidebar(
-    title="Dash Bootstrap Template Demo", sidebar_columns=3
+    app, title="Dash Bootstrap Template Demo", sidebar_columns=3
 )
 
 

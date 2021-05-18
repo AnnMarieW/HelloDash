@@ -10,7 +10,7 @@ from pandas_datareader import wb
 
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 tpl = dl.templates.dbc.DbcSidebar(
-    title="Comparison of World Bank Country Data", theme=dbc.themes.PULSE
+    app, title="Comparison of World Bank Country Data", theme=dbc.themes.PULSE
 )
 
 indicators = {
@@ -119,7 +119,7 @@ def update_graph(n_clicks, stored_dataframe, years_chosen, indct_chosen):
         return make_figure(dff, indct_chosen)
 
 
-app.layout = html.Div([tpl.layout(app), interval, storage])
+app.layout = html.Div([tpl.children, interval, storage])
 
 if __name__ == "__main__":
     app.run_server(debug=True)

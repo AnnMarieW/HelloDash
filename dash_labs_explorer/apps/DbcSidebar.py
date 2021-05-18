@@ -8,7 +8,7 @@ from app import app
 import util
 
 
-tpl = dl.templates.DbcSidebar(title="Dash Labs App - DbcSidear Temaplate")
+tpl = dl.templates.DbcSidebar(app, title="Dash Labs App - DbcSidebar Template")
 
 
 dropdown = dcc.Dropdown(

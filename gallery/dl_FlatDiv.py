@@ -11,7 +11,7 @@ import plotly.express as px
 
 
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
-tpl = dl.templates.FlatDiv()
+tpl = dl.templates.FlatDiv(app)
 
 
 dropdown = dcc.Dropdown(

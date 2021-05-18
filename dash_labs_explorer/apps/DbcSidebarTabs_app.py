@@ -11,7 +11,7 @@ from app import app
 import util
 
 tpl = dl.templates.DbcSidebarTabs(
-    ["Line", "Scatter", "Table"], title="Dash Labs App - DbcSidebarTabs Template"
+    app, ["Line", "Scatter", "Table"], title="Dash Labs App - DbcSidebarTabs Template"
 )
 
 df = px.data.gapminder()

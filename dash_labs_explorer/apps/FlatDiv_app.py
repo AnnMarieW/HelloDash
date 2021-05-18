@@ -7,7 +7,7 @@ import numpy as np
 from app import app
 import util
 
-tpl = dl.templates.FlatDiv()
+tpl = dl.templates.FlatDiv(app)
 
 
 dropdown = dcc.Dropdown(

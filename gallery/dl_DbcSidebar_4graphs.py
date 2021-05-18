@@ -15,17 +15,17 @@ import dash_html_components as html
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
+app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
 # templates from dash-bootstrap-templates library
-tpl = dl.templates.dbc.DbcSidebar(
+tpl = dl.templates.DbcSidebar(
+    app,
     title="Dash Bootstrap Template Demo",
     sidebar_columns=3,
     theme=dbc.themes.FLATLY,  # change theme here
 )
 load_figure_template("flatly")  # and here
 #
-
-app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
 df = px.data.gapminder()
 
@@ -119,7 +119,7 @@ def update_charts(indicator, continents, years):
 
 
 tpl.add_component(badges, role="input", after=2)
-app.layout = tpl.layout(app)
+app.layout = tpl.children
 
 
 if __name__ == "__main__":

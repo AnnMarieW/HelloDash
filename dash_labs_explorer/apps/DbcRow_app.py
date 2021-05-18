@@ -7,7 +7,7 @@ import numpy as np
 from app import app
 import util
 
-tpl = dl.templates.DbcRow(title="Dash Labs App - DbcRow Template")
+tpl = dl.templates.DbcRow(app, title="Dash Labs App - DbcRow Template")
 
 
 dropdown = dcc.Dropdown(

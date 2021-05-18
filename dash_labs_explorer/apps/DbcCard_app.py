@@ -8,7 +8,7 @@ from app import app
 import util
 
 
-tpl = dl.templates.DbcCard(title="Dash Labs App - DbcCard Template")
+tpl = dl.templates.DbcCard(app, title="Dash Labs App - DbcCard Template")
 
 
 dropdown = dcc.Dropdown(

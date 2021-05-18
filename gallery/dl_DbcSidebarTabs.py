@@ -15,6 +15,7 @@ app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
 
 tpl = dl.templates.DbcSidebarTabs(
+    app,
     ["Line", "Scatter", "Table"],
     title="Dash Labs App - DbcSidebarTabs Template",
     figure_template=True,

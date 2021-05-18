@@ -20,7 +20,7 @@ from apps import theme_explorer as te
 import util
 
 
-tpl = dl.templates.DbcCard(title="App Design Selection", columns=12)
+tpl = dl.templates.DbcCard(app, title="App Design Selection", columns=12)
 tpl._inline_css = ""
 
 """
@@ -118,7 +118,7 @@ layout = dbc.Container(
         util.header,
         dbc.Row(
             [
-                dbc.Col(tpl.layout(app), lg=4, sm=12),
+                dbc.Col(tpl.children, lg=4, sm=12),
                 dbc.Col(
                     html.Div(
                         id="dl_sample_app", style={"paddingLeft": 50, "minWidth": 600}
@@ -149,25 +149,25 @@ Display Sample App
 )
 def display_sample_app(template):
     if template == "HtmlCard":
-        return HtmlCard_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return HtmlCard_app.tpl.children, util.get_code_file(f"dl_{template}.py")
     elif template == "DbcCard":
-        return DbcCard_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return DbcCard_app.tpl.children, util.get_code_file(f"dl_{template}.py")
     elif template == "DbcRow":
-        return DbcRow_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return DbcRow_app.tpl.children, util.get_code_file(f"dl_{template}.py")
     elif template == "DbcSidebar":
-        return DbcSidebar.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return DbcSidebar.tpl.children, util.get_code_file(f"dl_{template}.py")
     elif template == "DbcSidebar_4graphs":
         return (
-            DbcSidebar_4graphs.tpl.layout(app),
+            DbcSidebar_4graphs.tpl.children,
             util.get_code_file(f"dl_{template}.py"),
         )
     elif template == "DbcSidebarTabs":
         return (
-            DbcSidebarTabs_app.tpl.layout(app),
+            DbcSidebarTabs_app.tpl.children,
             util.get_code_file(f"dl_{template}.py"),
         )
     else:
-        return FlatDiv_app.tpl.layout(app), util.get_code_file(f"dl_{template}.py")
+        return FlatDiv_app.tpl.children, util.get_code_file(f"dl_{template}.py")
 
 
 @app.callback(Output("dl_app_container", "className"), Input("dl_css", "value"))
