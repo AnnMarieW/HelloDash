@@ -117,7 +117,7 @@ def update_charts(indicator, continents, years):
 
 
 tpl.add_component(badges, role="input", after=2)
-app.layout = tpl.layout(app)
+app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 
 if __name__ == "__main__":

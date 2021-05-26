@@ -36,14 +36,12 @@ table = dash_table.DataTable(
 )
 
 app.layout = dbc.Container(
-    [html.H1("Table with a Dropdown"), html.Hr(), dbc.Row(dbc.Col([controls, table])),],
+    [html.H1("Table with a Dropdown"), html.Hr(), dbc.Row(dbc.Col([controls, table]))],
     fluid=True,
 )
 
 
-@app.callback(
-    Output("table", "data"), Input("dropdown", "value"),
-)
+@app.callback(Output("table", "data"), Input("dropdown", "value"))
 def update_table(country_dd):
     dff = df.copy() if country_dd == [] else df[df["country"].isin(country_dd)]
     return dff.to_dict("records")

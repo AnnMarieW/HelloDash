@@ -43,10 +43,10 @@ def callback(fun, figure_title, phase, amplitude):
     x = xs
     y = np_fn(xs + phase) * amplitude
 
-    return dcc.Graph(figure=px.line(x=x, y=y,).update_layout(title_text=figure_title))
+    return dcc.Graph(figure=px.line(x=x, y=y).update_layout(title_text=figure_title))
 
 
-app.layout = tpl.children
+app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 if __name__ == "__main__":
     app.run_server(debug=True)

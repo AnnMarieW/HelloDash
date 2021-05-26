@@ -83,7 +83,7 @@ def update_line_chart(continents_sel, indicator_sel, yrs):
     dff = dff[dff.continent.isin(continents_sel)]
     table = make_table(dff)
 
-    line_fig = px.line(dff, x="year", y=indicator_sel, color="country",)
+    line_fig = px.line(dff, x="year", y=indicator_sel, color="country")
 
     dff = df[df.year == yrs[1]]
     scatter_fig = px.scatter(
@@ -99,7 +99,7 @@ def update_line_chart(continents_sel, indicator_sel, yrs):
     return line_fig, scatter_fig, table
 
 
-app.layout = tpl.layout(app)
+app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 
 if __name__ == "__main__":

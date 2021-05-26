@@ -111,9 +111,9 @@ header = dbc.Row(
 
 control_panel = dbc.Card(
     [
-        html.P("Filter by construction date (or select range in histogram):",),
-        dcc.RangeSlider(id="year_slider", min=1960, max=2017, value=[1990, 2010],),
-        html.Div("Filter by well status:",),
+        html.P("Filter by construction date (or select range in histogram):"),
+        dcc.RangeSlider(id="year_slider", min=1960, max=2017, value=[1990, 2010]),
+        html.Div("Filter by well status:"),
         dbc.RadioItems(
             id="well_status_selector",
             options=[
@@ -142,7 +142,7 @@ control_panel = dbc.Card(
             id="well_type_selector",
             options=[
                 {"label": "All ", "value": "all"},
-                {"label": "Productive only ", "value": "productive",},
+                {"label": "Productive only ", "value": "productive"},
                 {"label": "Customize ", "value": "custom"},
             ],
             value="productive",
@@ -182,7 +182,7 @@ info_container = dbc.CardDeck(
             className="p-4 mr-4 shadow-sm bg-light",
             id="water",
         ),
-    ],
+    ]
 )
 
 
@@ -195,7 +195,7 @@ app.layout = dbc.Container(
         header,
         dbc.Row(
             [
-                dbc.Col(control_panel, width=4,),
+                dbc.Col(control_panel, width=4),
                 dbc.Col(
                     [
                         info_container,
@@ -212,11 +212,10 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(
-                    dbc.Card(dcc.Graph(id="main_graph"), className="shadow-sm",),
-                    width=7,
+                    dbc.Card(dcc.Graph(id="main_graph"), className="shadow-sm"), width=7
                 ),
                 dbc.Col(
-                    dbc.Card(dcc.Graph(id="individual_graph"), className="shadow-sm",),
+                    dbc.Card(dcc.Graph(id="individual_graph"), className="shadow-sm"),
                     width=5,
                 ),
             ],
@@ -225,11 +224,10 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(
-                    dbc.Card(dcc.Graph(id="pie_graph"), className="shadow-sm",),
-                    width=7,
+                    dbc.Card(dcc.Graph(id="pie_graph"), className="shadow-sm"), width=7
                 ),
                 dbc.Col(
-                    dbc.Card(dcc.Graph(id="aggregate_graph"), className="shadow-sm",),
+                    dbc.Card(dcc.Graph(id="aggregate_graph"), className="shadow-sm"),
                     width=5,
                 ),
             ],

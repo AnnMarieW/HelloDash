@@ -77,14 +77,14 @@ controls = dbc.Card(
                 dbc.Col(dbc.FormGroup([dbc.Label("Select continents"), checklist])),
             ]
         ),
-        dbc.FormGroup([dbc.Label("Select years"), range_slider, buttons,]),
+        dbc.FormGroup([dbc.Label("Select years"), range_slider, buttons]),
     ],
     className="m-4 px-2",
 )
 
 app.layout = dbc.Container(
     [
-        html.H1("Theme Explorer App", className="bg-primary text-white",),
+        html.H1("Theme Explorer App", className="bg-primary text-white"),
         html.Hr(),
         dbc.Row(
             [

@@ -7,6 +7,7 @@ import dash_labs as dl
 import dash
 import numpy as np
 import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 import plotly.express as px
 
 
@@ -41,10 +42,10 @@ def callback(fun, figure_title, phase, amplitude):
     x = xs
     y = np_fn(xs + phase) * amplitude
 
-    return dcc.Graph(figure=px.line(x=x, y=y,).update_layout(title_text=figure_title))
+    return dcc.Graph(figure=px.line(x=x, y=y).update_layout(title_text=figure_title))
 
 
-app.layout = tpl.layout(app)
+app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 if __name__ == "__main__":
     app.run_server(debug=True)

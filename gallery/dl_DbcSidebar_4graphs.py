@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 """
-This is a demo of the `load_figure_template(themes)` function from dash_bootstrap_templates library
-The `load_figure_templates(theme) loads the Bootstrap theme template, adds it to plotly.io and makes it the default.
+This is a demo of the figure templates from dash_bootstrap_templates library.
+See more info here:   https://github.com/AnnMarieW/dash-bootstrap-templates
+Note - these templates can be used in any dash app, not just a Dash Labs app
+
+pip install dash-bootstrap-templates
+
 
 """
-
-from dash_bootstrap_templates import load_figure_template
 
 import dash
 import dash_labs as dl
@@ -15,22 +17,25 @@ import dash_html_components as html
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
+from dash_bootstrap_templates import load_figure_template
+
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
-# templates from dash-bootstrap-templates library
 tpl = dl.templates.DbcSidebar(
     app,
     title="Dash Bootstrap Template Demo",
     sidebar_columns=3,
-    theme=dbc.themes.FLATLY,  # change theme here
+    theme=dbc.themes.FLATLY,
 )
-load_figure_template("flatly")  # and here
-#
+
+# This loads the "flatly" themed figure template templates from dash-bootstrap-templates library,
+# adds it to plotly.io and makes it the default.
+load_figure_template("flatly")
+
 
 df = px.data.gapminder()
 
 dropdown = dcc.Dropdown(
-    id="indicator",
     options=[{"label": str(i), "value": i} for i in ["gdpPercap", "lifeExp", "pop"]],
     value="gdpPercap",
     clearable=False,
@@ -38,7 +43,6 @@ dropdown = dcc.Dropdown(
 
 
 checklist = dbc.Checklist(
-    id="continents",
     options=[{"label": i, "value": i} for i in df.continent.unique()],
     value=df.continent.unique()[1:],
     inline=True,
@@ -46,7 +50,6 @@ checklist = dbc.Checklist(
 
 years = df.year.unique()
 range_slider = dcc.RangeSlider(
-    id="slider_years",
     min=years[0],
     max=years[-1],
     step=5,
@@ -54,6 +57,7 @@ range_slider = dcc.RangeSlider(
     value=[1982, years[-1]],
 )
 
+# These badges are added to the app just to show the Boostrap theme colors
 badges = html.Div(
     [
         dbc.Badge("Primary", color="primary", className="mr-1"),
@@ -119,7 +123,7 @@ def update_charts(indicator, continents, years):
 
 
 tpl.add_component(badges, role="input", after=2)
-app.layout = tpl.children
+app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 
 if __name__ == "__main__":

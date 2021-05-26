@@ -19,13 +19,13 @@ app.layout = dbc.Container(
             dbc.Col(card, width=2),
             dbc.Col(
                 [
-                    dbc.CardDeck([card] * 3,),
+                    dbc.CardDeck([card] * 3),
                     dbc.CardGroup([graph_card] * 2, className="mt-4"),
                 ],
                 width=8,
             ),
             dbc.Col(card, width=2),
-        ],
+        ]
     ),
     fluid=True,
 )

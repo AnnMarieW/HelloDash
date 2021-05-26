@@ -11,7 +11,7 @@ card = dbc.Card(
     className="h-100",
 )
 
-graph_card = dbc.Card([dbc.CardHeader("Here's a graph"), dbc.CardBody([dcc.Graph()])],)
+graph_card = dbc.Card([dbc.CardHeader("Here's a graph"), dbc.CardBody([dcc.Graph()])])
 
 app.layout = dbc.Container(
     dbc.Row(
@@ -25,7 +25,7 @@ app.layout = dbc.Container(
                 width=10,
             ),
             dbc.Col(card, width=2),
-        ],
+        ]
     ),
     fluid=True,
     className="m-3",

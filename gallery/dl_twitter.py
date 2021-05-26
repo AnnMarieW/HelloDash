@@ -27,7 +27,7 @@ df = df.reset_index()
 
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
 
-tpl = dl.templates.dbc.DbcSidebar(
+tpl = dl.templates.DbcSidebar(
     app,
     title="Twitter Likes Analysis of Famous People",
     figure_template=True,
@@ -78,7 +78,7 @@ def make_graph(df_filtered):
         y="number_of_likes",
         color="name",
         log_y=True,
-        labels={"number_of_likes": "Likes", "date_time": "Date", "name": "Celebrity",},
+        labels={"number_of_likes": "Likes", "date_time": "Date", "name": "Celebrity"},
     )
     return dcc.Graph(figure=fig)
 
@@ -98,7 +98,7 @@ def update_graph(chosen_value):
 # Layout ******************************************************************
 
 tpl.add_component(twitter_link, role="output", after=0)
-app.layout = tpl.children
+app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 if __name__ == "__main__":
     app.run_server(debug=True)

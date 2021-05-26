@@ -80,7 +80,7 @@ app.layout = dbc.Container(
             dbc.Col(["Select Theme", dropdown], width=3),
             dbc.Col([buttons, alerts]),
             html.Div(id="blank_output"),
-        ],
+        ]
     ),
     className="m-4",
     fluid=True,

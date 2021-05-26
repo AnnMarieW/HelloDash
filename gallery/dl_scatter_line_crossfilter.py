@@ -22,9 +22,9 @@ continents = list(df.continent.drop_duplicates())
             years[0], years[-1], step=5, value=years[-1], label="Year"
         ),
         continent=tpl.checklist_input(continents, value=continents, label="Continents"),
-        logs=tpl.checklist_input(["log(x)"], value="log(x)", label="Axis Scale",),
+        logs=tpl.checklist_input(["log(x)"], value="log(x)", label="Axis Scale"),
     ),
-    output=tpl.graph_output(),
+    output=tpl.graph_output(id="scatter_graph"),
     template=tpl,
 )
 def callback(year, continent, logs):
@@ -54,12 +54,11 @@ def callback(year, continent, logs):
     )
 
 
-graph_id = tpl.roles["output"][0].arg_component.id
 line_chart = dcc.Graph(id="line_chart")
 tpl.add_component(line_chart, role="output", after=0)
 
 
-@app.callback(Output("line_chart", "figure"), Input(graph_id, "clickData"))
+@app.callback(Output("line_chart", "figure"), Input("scatter_graph", "clickData"))
 def display_click_data(clickData):
     country = ""
     fig = px.line(title=f"Country selected: {country}")

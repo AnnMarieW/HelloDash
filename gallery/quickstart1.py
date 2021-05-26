@@ -14,11 +14,11 @@ df = px.data.gapminder()
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-fig1 = px.line(df, x="year", y="gdpPercap", color="country",)
+fig1 = px.line(df, x="year", y="gdpPercap", color="country")
 
 dff = df.query("year==2007")
 fig2 = px.scatter(
-    dff, x="gdpPercap", y="lifeExp", size="pop", color="continent", size_max=60,
+    dff, x="gdpPercap", y="lifeExp", size="pop", color="continent", size_max=60
 )
 
 app.layout = dbc.Container(
