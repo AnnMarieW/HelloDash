@@ -86,9 +86,9 @@ def make_table(dff):
     Input("continuous_selected", "children"),
     Input("checkbox", "value"),
     output=[
-        tpl.graph_output(role="Line"),
-        tpl.graph_output(role="Scatter"),
-        tpl.div_output(role="Table"),
+        tpl.new_graph(location="Line"),
+        tpl.new_graph(location="Scatter"),
+        tpl.new_div(location="Table"),
     ],
     template=tpl,
 )

@@ -75,37 +75,37 @@ Build App Design Selection Panel
 
 tpl.add_component(
     te.make_dropdown("dl_template", util.dash_labs_templates),
-    label="Dash Labs Templates",
+    label="Dash Labs Templates", location='top',
 )
 
-tpl.add_component(make_spacer(10))
+tpl.add_component(make_spacer(10), location='top')
 tpl.add_component(
-    dcc.Dropdown(id="themes", clearable=False), label="Bootstrap Themes",
+    dcc.Dropdown(id="themes", clearable=False), label="Bootstrap Themes", location='top',
 )
-tpl.add_component(te.make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),)
-tpl.add_component(make_spacer(10))
+tpl.add_component(te.make_radio_items("light_dark", ["Light Themes", "Dark Themes"]), location='top')
+tpl.add_component(make_spacer(10), location='top')
 
 
 tpl.add_component(
     dcc.Dropdown(id="dl_css", options=css_options, value="dbc_light", clearable=False,),
-    label="Custom CSS",
+    label="Custom CSS", location='top',
 )
-tpl.add_component(html.Div(id="css_text"))
+tpl.add_component(html.Div(id="css_text"), location='top')
 
 tpl.add_component(
-    te.make_dropdown("graph_template", util.plotly_template), label="Graph Templates"
+    te.make_dropdown("graph_template", util.plotly_template), label="Graph Templates", location='top',
 )
 
-tpl.add_component(graph_color_modals, label="Graph Color")
+tpl.add_component(graph_color_modals, label="Graph Color", location='top')
 
-tpl.add_component(make_spacer(10))
-tpl.add_component(badges, label="Selected Bootstrap Theme Colors")
+tpl.add_component(make_spacer(10), location='top')
+tpl.add_component(badges, label="Selected Bootstrap Theme Colors", location='top')
 tpl.add_component(
     dcc.Link(
         "See more Themes",
         href="https://www.bootstrapcdn.com/bootswatch/",
         target="_blank",
-    )
+    ), location='top',
 )
 
 
