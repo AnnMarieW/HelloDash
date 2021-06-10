@@ -1,6 +1,8 @@
 dash>=1.19.0
+dash_labs>=0.3.0
 pandas
 xlrd
 dash-bootstrap-components
+dash_bootstrap_templates
 openpyxl
 dash-daq
