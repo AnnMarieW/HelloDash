@@ -97,7 +97,7 @@ def update_graph(chosen_value):
 
 # Layout ******************************************************************
 
-tpl.add_component(twitter_link, role="output", after=0)
+tpl.add_component(twitter_link, location="main", after=0)
 app.layout = dbc.Container(fluid=True, children=tpl.children)
 
 if __name__ == "__main__":
