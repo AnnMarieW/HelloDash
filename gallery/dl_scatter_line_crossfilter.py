@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 # Make app and template
 app = dash.Dash(__name__, plugins=[dl.plugins.FlexibleCallbacks()])
-tpl = dl.templates.DbcRow(app, title="Gapminder", input_cols=4, figure_template=True)
+tpl = dl.templates.DbcRow(app, title="Gapminder", left_cols=4, figure_template=True)
 
 # Load and preprocess dataset
 df = px.data.gapminder()
@@ -18,13 +18,13 @@ continents = list(df.continent.drop_duplicates())
 
 @app.callback(
     args=dict(
-        year=tpl.slider_input(
+        year=tpl.new_slider(
             years[0], years[-1], step=5, value=years[-1], label="Year"
         ),
-        continent=tpl.checklist_input(continents, value=continents, label="Continents"),
-        logs=tpl.checklist_input(["log(x)"], value="log(x)", label="Axis Scale"),
+        continent=tpl.new_checklist(continents, value=continents, label="Continents"),
+        logs=tpl.new_checklist(["log(x)"], value="log(x)", label="Axis Scale"),
     ),
-    output=tpl.graph_output(id="scatter_graph"),
+    output=tpl.new_graph(id="scatter_graph"),
     template=tpl,
 )
 def callback(year, continent, logs):
@@ -55,7 +55,7 @@ def callback(year, continent, logs):
 
 
 line_chart = dcc.Graph(id="line_chart")
-tpl.add_component(line_chart, role="output", after=0)
+tpl.add_component(line_chart, location="right", after=0)
 
 
 @app.callback(Output("line_chart", "figure"), Input("scatter_graph", "clickData"))
