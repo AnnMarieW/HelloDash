@@ -68,9 +68,9 @@ def make_table(dff):
     dl.Input(indicators, label="Select indicator (y-axis)"),
     dl.Input(years, label="Select years"),
     output=[
-        tpl.graph_output(role="Line"),
-        tpl.graph_output(role="Scatter"),
-        tpl.div_output(role="Table"),
+        tpl.new_graph(location="Line"),
+        tpl.new_graph(location="Scatter"),
+        tpl.new_div(location="Table"),
     ],
     template=tpl,
 )
