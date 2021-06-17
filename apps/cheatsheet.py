@@ -261,6 +261,10 @@ how_to_datatable = dbc.Card(
                     "How change color of the `filter data...` text in the header",
                     dcc.Markdown(text.datatable_filter_data_css),
                 ),
+                make_link_with_modal(
+                    "How to add thumbail images to table",
+                    dcc.Markdown(get_code_file("image_in_table.py")),
+                ),
                 make_link(
                     "How to do fix table where data is cut off at the edges",
                     "https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/",
