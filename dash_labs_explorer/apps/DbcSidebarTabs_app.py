@@ -10,9 +10,17 @@ import dash_table
 from app import app
 import util
 
-tpl = dl.templates.DbcSidebarTabs(
+
+
+# temp fix to eliminate dl _incline_css
+import dash_labs_explorer.templates.dbc as dlt
+tpl = dlt.DbcSidebarTabs(
     app, ["Line", "Scatter", "Table"], title="Dash Labs App - DbcSidebarTabs Template"
 )
+
+# tpl = dl.templates.DbcSidebarTabs(
+#     app, ["Line", "Scatter", "Table"], title="Dash Labs App - DbcSidebarTabs Template"
+# )
 
 df = px.data.gapminder()
 

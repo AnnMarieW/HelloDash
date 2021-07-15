@@ -7,8 +7,11 @@ import numpy as np
 from app import app
 import util
 
+# temp fix to eliminate dl _incline_css
+import dash_labs_explorer.templates.dbc as dlt
+tpl = dlt.DbcCard(app, title="Dash Labs App - DbcCard Template")
 
-tpl = dl.templates.DbcCard(app, title="Dash Labs App - DbcCard Template")
+#tpl = dl.templates.DbcCard(app, title="Dash Labs App - DbcCard Template")
 
 
 dropdown = dcc.Dropdown(

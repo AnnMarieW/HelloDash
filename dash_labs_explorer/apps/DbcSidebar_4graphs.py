@@ -18,10 +18,15 @@ from app import app
 import util
 
 
-# templates from dash-bootstrap-templates library
-tpl = dl.templates.dbc.DbcSidebar(
+# temp fix to eliminate dl _incline_css
+import dash_labs_explorer.templates.dbc as dlt
+tpl = dlt.DbcSidebar(
     app, title="Dash Bootstrap Template Demo", sidebar_columns=3
 )
+
+# tpl = dl.templates.dbc.DbcSidebar(
+#     app, title="Dash Bootstrap Template Demo", sidebar_columns=3
+# )
 
 
 df = px.data.gapminder()

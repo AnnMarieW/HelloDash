@@ -7,8 +7,10 @@ import numpy as np
 from app import app
 import util
 
-
-tpl = dl.templates.DbcSidebar(app, title="Dash Labs App - DbcSidebar Template")
+# temp fix to eliminate dl _incline_css
+import dash_labs_explorer.templates.dbc as dlt
+tpl = dlt.DbcSidebar(app, title="Dash Labs App - DbcSidebar Template")
+#tpl = dl.templates.DbcSidebar(app, title="Dash Labs App - DbcSidebar Template")
 
 
 dropdown = dcc.Dropdown(

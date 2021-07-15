@@ -20,8 +20,11 @@ from apps import theme_explorer as te
 import util
 
 
-tpl = dl.templates.DbcCard(app, title="App Design Selection", columns=12)
-tpl._inline_css = ""
+import dash_labs_explorer.templates.dbc as dlt
+tpl = dlt.DbcCard(app, title="App Design Selection", columns=12)
+
+#tpl = dl.templates.DbcCard(app, title="App Design Selection", columns=12)
+#tpl._inline_css = ""
 
 """
 =====================================================================
