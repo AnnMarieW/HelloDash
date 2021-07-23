@@ -46,6 +46,11 @@
     color: white !important;
 }
 
+.dbc_dark .Select input{
+    color:white;
+}
+
+
 .dbc_dark .Select--single > .Select-control .Select-value, .Select-placeholder {
     border: 1px solid grey !important;
     border-radius: 4px !important;
