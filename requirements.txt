@@ -1,5 +1,4 @@
 dash>=1.19.0
-dash_labs>=0.3.0
 pandas
 pandas_datareader
 xlrd

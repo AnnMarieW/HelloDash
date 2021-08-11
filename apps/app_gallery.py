@@ -126,6 +126,24 @@ gallery.append(
 
 gallery.append(
     Card(
+        image="https://user-images.githubusercontent.com/13702392/128953753-5947a626-6c7f-4101-809b-dd0952053124.png",
+        title="App by @astrowonk - See it live at [Covid-19 Case Growth](https://marcoshuerta.com/dash/covid/) ",
+        source_code="https://github.com/astrowonk/covid_dash",
+        about="""
+        This Dash app displays new cases of covid-19 per county and/or state normalized by population. 
+        It uses data from the [New York Times](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html),
+         which hosts the data on [their github repository](https://github.com/nytimes/covid-19-data).
+         
+         See this app live at: [Covid-19 Case Growth](https://marcoshuerta.com/dash/covid/)
+         
+         Thanks @astrowonk for adding this app to the gallery!        
+        
+        """,
+    )
+)
+# 6a
+gallery.append(
+    Card(
         image="https://user-images.githubusercontent.com/72614349/109746748-22409980-7b93-11eb-9a04-fa3876e1cb3c.png",
         title="Quickstart App #2   <75 lines of code! ",
         source_code="https://github.com/facultyai/dash-bootstrap-components/tree/main/examples/gallery/telephones-by-region",

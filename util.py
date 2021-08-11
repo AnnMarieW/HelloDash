@@ -52,14 +52,14 @@ header = dbc.Jumbotron(
                     className="mr-2",
                     size="sm",
                 ),
-                dbc.Button(
-                    "Dash Labs Explorer",
-                    color="primary",
-                    outline=True,
-                    href="/dash_labs",
-                    className="mr-2",
-                    size="sm",
-                ),
+                # dbc.Button(
+                #     "Dash Labs Explorer",
+                #     color="primary",
+                #     outline=True,
+                #     href="/dash_labs",
+                #     className="mr-2",
+                #     size="sm",
+                # ),
                 dbc.Button(
                     "App Gallery",
                     id="app_gallery",

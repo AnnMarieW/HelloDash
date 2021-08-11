@@ -46,6 +46,10 @@
     color: white !important;
 }
 
+.dbc_dark .Select input {
+    color:white;
+}
+
 .dbc_dark .Select--single > .Select-control .Select-value, .Select-placeholder {
     border: 1px solid grey !important;
     border-radius: 4px !important;
@@ -124,6 +128,14 @@ dbc_dark .Select-menu-outer {
     --accent: var(--primary) !important;
     --hover: none !important;
     --text-color: none !important;
+}
+
+.dbc_dark input.dash-filter--case--sensitive {
+    border-color: var(--primary) !important;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 2px;
+    color: var(--primary) !important;
 }
 
 /* pagination buttons - this removes the default pink hover */

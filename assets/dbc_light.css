@@ -9,7 +9,7 @@
 /*--------------------------------------------
  * Note: DataTable
  *
- *     The dbc_light and dbc_darklooks best with the following included in the
+ *     The dbc_light and dbc_dark looks best with the following included in the
  *     dataTable definition:
  *
  *          style_data_conditional=[
@@ -29,7 +29,7 @@
 /* fixes margins so data isn't cut off at table edges */
 .dbc_light .dash-table-container .row {
     display : block !important;
-    margin: 0;
+    margin: 0 !important;
 }
 
 /* fixes  when the table dropdown doesn't drop down */
@@ -80,6 +80,15 @@
     background-color: var(--light) !important;
     color: var(--dark) !important;
     --border: lightgrey;
+}
+
+
+.dbc_light input.dash-filter--case--sensitive {
+    border-color: var(--primary) !important;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 2px;
+    color: var(--primary) !important;
 }
 
 

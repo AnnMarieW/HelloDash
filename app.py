@@ -14,7 +14,6 @@ app = dash.Dash(
     external_stylesheets=external_stylesheets,
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
     title="HelloDash",
-    plugins=[dl.plugins.FlexibleCallbacks()],
 )
 
 server = app.server
