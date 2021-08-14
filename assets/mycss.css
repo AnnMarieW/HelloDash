@@ -4,7 +4,7 @@
  * Styles a code box so it works with both light and dark themes
  */
 .codebox  {
-    background-color: transparent;
+    background-color: whitesmoke;
     border-style: double;
     border-radius: 15px;
     max-width: 900px;

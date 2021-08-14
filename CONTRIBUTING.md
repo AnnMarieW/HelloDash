@@ -32,7 +32,7 @@ Note that the app to create the gallery is in the apps directory.
 The images for this app are not included in the file structure.  All the images are located in
 Issue #1 in the HelloDash GitHub repo (If you can't find it, check closed issues).  This is
 done to keep the file size smaller so I don't run out of space on my free PythonAnywhere hosting
-site.  Also, it seems to  load the images faster from the link than when the are in the
+site.  Also, it seems to  load the images faster from the link than when they are in the
 assets directory.  
 
 To add images to the app, copy and paste or upload an image. Or edit an image that's currently
@@ -48,7 +48,7 @@ Then adjust the size in the .css file in the assets folder:
        height:100px;
     }
 
-The the images in the app gallery use a card like this:
+The images in the app gallery use a card like this:
 
 ```python
         dbc.CardImg(
@@ -62,7 +62,11 @@ The the images in the app gallery use a card like this:
 
 ### Code blocks
 
-This app uses several different methods to display code.
+This app uses several methods to display code.
+
+#### Div with a copy to clipboard icon
+See the `get_copy_code_div()` function in util.py. `dcc.Clipboard` was new in Dash 1.21.0
+Will start updating all the code blocks to use this.  
 
 #### Button with external link
 The app gallery uses a button with a link to the github repo:
@@ -107,7 +111,7 @@ html.Div(html.Pre(html.Code(" enter code here" )), className="codebox")
   
 
 #### Get app code from gallery directory
-To show an compete app from the gallery without an external link  - like in a modal using dcc.Markdown(code),
+To show a compete app from the gallery without an external link  - like in a modal using dcc.Markdown(code),
 it can be read from a file like this:
 
 ```python

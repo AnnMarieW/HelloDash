@@ -72,9 +72,7 @@ def make_button_with_popover(title, content, link=""):
     id = title.replace(" ", "")
     return html.Div(
         [
-            dbc.Button(
-                title, id=id, color="link", className="text-left ", block=True,
-            ),
+            dbc.Button(title, id=id, color="link", className="text-left ", block=True,),
             dbc.Popover(
                 [
                     dbc.PopoverHeader(dcc.Link(title, href=link, target="_blank")),

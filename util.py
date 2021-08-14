@@ -52,14 +52,14 @@ header = dbc.Jumbotron(
                     className="mr-2",
                     size="sm",
                 ),
-                # dbc.Button(
-                #     "Dash Labs Explorer",
-                #     color="primary",
-                #     outline=True,
-                #     href="/dash_labs",
-                #     className="mr-2",
-                #     size="sm",
-                # ),
+                dbc.Button(
+                    "Dash Bootstrap Templates",
+                    color="primary",
+                    outline=True,
+                    href="/dash_bootstrap_templates",
+                    className="mr-2",
+                    size="sm",
+                ),
                 dbc.Button(
                     "App Gallery",
                     id="app_gallery",
@@ -196,12 +196,33 @@ discrete_colors = {
 }
 
 
-# this is now in assets folder as a class name
-codebox = {
-    "backgroundColor": "transparent",
-    "borderStyle": "groove",
-    "borderRadius": 15,
-    "maxWidth": 900,
-    "marginTop": 0,
-    "marginBottom": 20,
-}
+def get_copy_code_div(code, id="copy_id", width=800, height=600):
+    """
+    Args:
+        code: The text to show in dcc.Markdown
+        id: The id for the copy to clipboard
+        width: The width of the div in pixels (integer)
+        height: The height of the div in pixels
+
+    Returns: a scrolling div with a copy to clipboard icon in top right corner
+    """
+    return html.Div(
+        [
+            dcc.Markdown(
+                code,
+                id=id,
+                style={
+                    "width": width,
+                    "height": height,
+                    "overflow": "auto",
+                    "backgroundColor": "white",
+                },
+                className="border p-2",
+            ),
+            dcc.Clipboard(
+                target_id=id,
+                style={"position": "absolute", "top": 0, "right": 20, "fontSize": 20,},
+            ),
+        ],
+        style={"width": width, "height": height, "position": "relative",},
+    )

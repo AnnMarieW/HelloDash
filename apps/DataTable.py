@@ -220,7 +220,7 @@ layout = (
                     hover_dark,
                     html.Div(cheatsheet.how_to_datatable, className="mx-4"),
                 ],
-               # className="my-2 p-4",
+                # className="my-2 p-4",
             ),
         ],
         fluid=True,

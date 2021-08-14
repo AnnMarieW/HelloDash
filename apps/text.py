@@ -5,7 +5,7 @@ This is for longer text and code blocks used throughout this app.
 
 """
 =====================================================================
-Used in: theme_explorer_dl.py
+Used in: dash_bootstrap_templates_explorer.py
 """
 
 css_text = """ 
@@ -1250,4 +1250,21 @@ buttons = html.Div(
 ```
 
 
+"""
+
+
+dash_bootstrap_templates_text = """
+
+## Apply Bootstrap theme to figures with one line of code!
+
+See more info at [dash-bootstrap-templates GitHub](https://github.com/AnnMarieW/dash-bootstrap-templates)
+
+pip install dash-bootstrap-templates
+"""
+
+dash_bootstrap_templates_app_text = """
+# Demo:
+Select the "CYBORG" Bootstrap theme.
+
+Then select either "Use figure templates from dash-bootstrap-templates" or "Use Plotly default figure template.
 """

@@ -87,20 +87,13 @@ boostrap_card = html.Div(
     [
         dbc.FormGroup(
             [
-                dbc.Label(
-                    dbc.Button(
-                        "Bootstrap Themes",
-                        color="link",
-                        href="https://www.bootstrapcdn.com/bootswatch/",
-                        target="_blank",
-                    )
-                ),
-                dcc.Dropdown(id="themes", clearable=False),
+                dbc.Label("Bootstrap Themes"),
                 make_radio_items("light_dark", ["Light Themes", "Dark Themes"]),
+                dcc.Dropdown(id="themes", clearable=False),
             ]
         ),
     ],
-    className="px-2 mb-2",
+    className="px-2 mb-1",
     style={"minWidth": 200},
 )
 

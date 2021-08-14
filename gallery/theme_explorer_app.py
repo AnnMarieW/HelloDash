@@ -11,7 +11,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-from dash_bootstrap_templates import load_figure_template
+from dash_bootstrap_templates_app import load_figure_template
 
 """
 =====================================================================

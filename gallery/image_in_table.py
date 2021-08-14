@@ -1,4 +1,3 @@
-
 """
 How to add images to a table
 """
@@ -34,7 +33,7 @@ app.layout = html.Div(
                 {"id": "city", "name": "city"},
                 {"id": "temperature", "name": "temperature"},
             ],
-            style_cell_conditional=[{"if": {"column_id": "image"}, "width": "200px"}, ],
+            style_cell_conditional=[{"if": {"column_id": "image"}, "width": "200px"},],
         )
     ]
 )
