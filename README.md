@@ -11,7 +11,7 @@
 will look in your Dash app.  
    
    
- - The __Component Gallery__ shows a sample of all the components available from the dash-boostrap-components library,
+ - The __Component Gallery__ shows a sample of all the components available from the dash-bootstrap-components library,
    dash-core-components, and the Dash DataTable. (Dash DAQ coming soon!) You can see how the style of the component changes when you change the
    Bootstrap theme.   For the DataTable and some Dash Core Components, there are examples of how to 
    use the `style` and `className` properties and custom CSS to make them look great with your selected theme.  
