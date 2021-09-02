@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+Apply Bootstrap theme to figures with one line of code! See more info at dash-bootstrap-templates GitHub
+pip install dash-bootstrap-templates
+"""
 
 import dash
 import dash_core_components as dcc

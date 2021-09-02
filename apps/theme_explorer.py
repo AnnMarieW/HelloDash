@@ -15,17 +15,7 @@ from apps import text
 
 from .component_gallery import layout as component_layout
 
-import pathlib
-
-# set relative path
-PATH = pathlib.Path(__file__).parent
-GALLERY_PATH = PATH.joinpath("../gallery").resolve()
-
-# be sure to include a blank line and docstring at start of source file
-with open(GALLERY_PATH.joinpath("theme_explorer_app.py")) as f:
-    code = f.read()
-code = f"```{code}```"
-
+code = util.get_code_file("dash_bootstrap_templates_app.py")
 
 df = px.data.gapminder()
 
@@ -375,7 +365,7 @@ source_code_modal = html.Div(
                         html.H5("See this app and more in the App Gallery!"),
                     ]
                 ),
-                dbc.ModalBody([dcc.Markdown(code)]),
+                dbc.ModalBody([dcc.Markdown(code, className='bg-white m-4')]),
             ],
             id="code_modal",
             scrollable=True,
@@ -633,6 +623,7 @@ def update_line_chart(
 @app.callback(
     Output("themes", "options"),
     Output("themes", "value"),
+    Output("css", "value"),
     Input("light_dark", "value"),
 )
 def update(theme):
@@ -643,12 +634,14 @@ def update(theme):
             for i in util.light_themes
         ]
         value = util.dbc_themes_url["BOOTSTRAP"]
+        css = "dbc_light"
     else:
         options = [
             {"label": str(i), "value": util.dbc_themes_url[i]} for i in util.dark_themes
         ]
         value = util.dbc_themes_url["CYBORG"]
-    return options, value
+        css = "dbc_dark"
+    return options, value, css
 
 
 @app.callback(
