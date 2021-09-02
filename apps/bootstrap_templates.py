@@ -34,7 +34,10 @@ control_panel_text = dcc.Markdown(
     text.dash_bootstrap_templates_text, className="border mb-5 p-4"
 )
 
-control_panel = [control_panel_text, te.boostrap_card, use_templates]
+# needed because the theme dropdown also updates "css" on Theme Explorer page but not here
+dummy_output = html.Div(id="css", className='d-none')
+
+control_panel = [control_panel_text, te.boostrap_card, use_templates, dummy_output]
 
 carousel = dbc.Carousel(
     ride="carousel",
