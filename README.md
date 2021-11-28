@@ -1,11 +1,14 @@
 # HelloDash
 
+> Note to anyone who might be considering cloning or forking this repo:  I'm working on a major
+revision which will use dash>=V2.0.0, dash-bootstrap-components>=V1.0.0 and new features in the dash-bootstrap-template library.   
+> The version you see here will be available by checking out the V0.0.1 tag.
+
+
 ## Dash Bootstrap Theme Explorer 
 #### The Easy way to see Bootstrap themes and Plotly templates and colors in your Dash app
 
 #### See it at:  https://hellodash.pythonanywhere.com/
-
-
 
  - The __Theme Explorer App__ makes it easy to see how different Bootstrap themes, Plotly figure templates and colors 
 will look in your Dash app.  
