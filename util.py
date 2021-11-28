@@ -3,21 +3,22 @@ This is a collection of shared components, utilities and data
 
 """
 
-
-import pathlib
-
-
-import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc, html
 import plotly.express as px
-from dash_bootstrap_templates import load_figure_template
-
+import dash_bootstrap_components as dbc
+import pathlib
 
 # set relative path
 PATH = pathlib.Path(__file__).parent
 GALLERY_PATH = PATH.joinpath("./gallery").resolve()
-DATA_PATH = PATH.joinpath("./data").resolve()
+
+
+# Links
+dbc_logo = "https://user-images.githubusercontent.com/72614349/133677816-5ea52424-bfd3-4405-9ccf-8ad0dbd18020.png"
+bootstrap_logo = "https://user-images.githubusercontent.com/72614349/133683669-eef08b42-2eff-49df-b0a5-33a7754a2b86.png"
+dbc_home_url = "https://dash-bootstrap-components.opensource.faculty.ai/"
+cheatsheet_url = "https://dashcheatsheet.pythonanywhere.com/"
+theme_explorer_url = "https://hellodash.pythonanywhere.com/theme_explorer"
 
 
 def get_code_file(filename):
@@ -33,127 +34,96 @@ def get_code_file(filename):
     return f"```{code}```"
 
 
-header = dbc.Jumbotron(
-    [
-        html.H1("Dash Bootstrap Theme Explorer", className="display-3"),
-        html.P(
-            "The easy way to see Bootstrap themes and Plotly  graph templates and colors in a Dash app.",
-            className="lead",
-        ),
-        html.P("Your app design starts here!", className=" font-italic",),
-        html.Hr(className="my-2"),
-        html.Div(
+def make_code_card(code, id=id, height=600):
+    return dbc.Card(
+        [
+            dcc.Markdown(
+                code,
+                id=id,
+                className="p-2 mt-4",
+                style={"maxHeight": height, "overflow": "auto"},
+            ),
+            dcc.Clipboard(
+                target_id=id,
+                title="copy snippet",
+                className="position-absolute top-0 end-0 fs-5",
+            ),
+        ],
+        className="position-relative",
+    )
+
+
+theme_explorer_header = html.Div(
+    dbc.Container(
+        [
+            html.H1("Dash Bootstrap Theme Explorer", className="display-3 text-dark",),
+            html.P(
+                "A guide for styling Dash components and figures with a Bootstrap theme",
+                className="fst-italic lead",
+            ),
+            html.Div(
+                [
+                    html.A(
+                        html.Img(src=dbc_logo, height=125, className="m-2"),
+                        href=dbc_home_url,
+                        target="_blank",
+                    ),
+                    html.A(
+                        html.Img(src=bootstrap_logo, height=125, className="m-2"),
+                        href="https://getbootstrap.com/docs/5.1/getting-started/introduction/",
+                        target="blank",
+                    ),
+                ],
+            ),
+            html.Div(
             [
                 dbc.Button(
                     "Theme Explorer",
                     color="primary",
                     outline=True,
                     href="/theme_explorer",
-                    className="mr-2",
+                    className="me-2",
                     size="sm",
                 ),
                 dbc.Button(
-                    "Dash Bootstrap Templates",
+                    "Figure Templates",
                     color="primary",
                     outline=True,
-                    href="/dash_bootstrap_templates",
-                    className="mr-2",
+                    href="/figure_templates",
+                    className="me-2",
                     size="sm",
                 ),
                 dbc.Button(
-                    "App Gallery",
+                    "Theme Change Components",
                     id="app_gallery",
                     color="primary",
                     outline=True,
-                    href="/app_gallery",
-                    className="mr-2",
+                    href="/theme_change_components",
+                    className="me-2",
                     size="sm",
                 ),
                 dbc.Button(
-                    "Cheatsheet",
+                    "Bootstrap Cheatsheet",
                     id="cheatsheet",
                     color="primary",
                     outline=True,
-                    href="/cheatsheet",
-                    className="mr-2",
+                    href="https://dashcheatsheet.pythonanywhere.com/",
+                    external_link=True,
+                    target="_blank",
+                    className="me-2",
                     size="sm",
                 ),
             ],
-            className="mt-2",
-        ),
-        html.Div(id="blank_output", className="mb-4"),
-    ]
+            className="mt-4",
+         ),
+
+        ],
+        fluid=True,
+        className="py-3",
+    ),
+    className="p-3 bg-light text-dark rounded-3 mb-4  position-relative",
+    style={"height": 400},
 )
-
-
-dash_labs_templates = [
-    "DbcSidebar_4graphs",
-    "FlatDiv",
-    "HtmlCard",
-    "DbcCard",
-    "DbcRow",
-    "DbcSidebar",
-    "DbcSidebarTabs",
-]
-
-light_themes = [
-    "BOOTSTRAP",
-    "CERULEAN",
-    "COSMO",
-    "FLATLY",
-    "JOURNAL",
-    "LITERA",
-    "LUMEN",
-    "LUX",
-    "MATERIA",
-    "MINTY",
-    "PULSE",
-    "SANDSTONE",
-    "SIMPLEX",
-    "SKETCHY",
-    "SPACELAB",
-    "UNITED",
-    "YETI",
-]
-dark_themes = [
-    "CYBORG",
-    "DARKLY",
-    "SLATE",
-    "SOLAR",
-    "SUPERHERO",
-]
-
-# the template themes are lower case to be consistent with the plotly naming convention
-dbc_lower_case = [t.lower() for t in light_themes + dark_themes]
-load_figure_template(dbc_lower_case)
-
-
-dbc_themes_url = {
-    "BOOTSTRAP": dbc.themes.BOOTSTRAP,
-    "CERULEAN": dbc.themes.CERULEAN,
-    "COSMO": dbc.themes.COSMO,
-    "FLATLY": dbc.themes.FLATLY,
-    "JOURNAL": dbc.themes.JOURNAL,
-    "LITERA": dbc.themes.LITERA,
-    "LUMEN": dbc.themes.LUMEN,
-    "LUX": dbc.themes.LUX,
-    "MATERIA": dbc.themes.MATERIA,
-    "MINTY": dbc.themes.MINTY,
-    "PULSE": dbc.themes.PULSE,
-    "SANDSTONE": dbc.themes.SANDSTONE,
-    "SIMPLEX": dbc.themes.SIMPLEX,
-    "SKETCHY": dbc.themes.SKETCHY,
-    "SPACELAB": dbc.themes.SPACELAB,
-    "UNITED": dbc.themes.UNITED,
-    "YETI": dbc.themes.YETI,
-    "CYBORG": dbc.themes.CYBORG,
-    "DARKLY": dbc.themes.DARKLY,
-    "SLATE": dbc.themes.SLATE,
-    "SOLAR": dbc.themes.SOLAR,
-    "SUPERHERO": dbc.themes.SUPERHERO,
-}
-
-url_dbc_themes = dict(map(reversed, dbc_themes_url.items()))
 
 
 plotly_template = [
@@ -194,35 +164,3 @@ discrete_colors = {
     "Vivid": px.colors.qualitative.Vivid,
     "Prism": px.colors.qualitative.Prism,
 }
-
-
-def get_copy_code_div(code, id="copy_id", width=800, height=600):
-    """
-    Args:
-        code: The text to show in dcc.Markdown
-        id: The id for the copy to clipboard
-        width: The width of the div in pixels (integer)
-        height: The height of the div in pixels
-
-    Returns: a scrolling div with a copy to clipboard icon in top right corner
-    """
-    return html.Div(
-        [
-            dcc.Markdown(
-                code,
-                id=id,
-                style={
-                    "width": width,
-                    "height": height,
-                    "overflow": "auto",
-                    "backgroundColor": "white",
-                },
-                className="border p-2",
-            ),
-            dcc.Clipboard(
-                target_id=id,
-                style={"position": "absolute", "top": 0, "right": 20, "fontSize": 20,},
-            ),
-        ],
-        style={"width": width, "height": height, "position": "relative",},
-    )

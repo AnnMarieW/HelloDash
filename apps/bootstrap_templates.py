@@ -35,7 +35,7 @@ control_panel_text = dcc.Markdown(
 )
 
 # needed because the theme dropdown also updates "css" on Theme Explorer page but not here
-dummy_output = html.Div(id="css", className='d-none')
+dummy_output = html.Div(id="css", className="d-none")
 
 control_panel = [control_panel_text, te.boostrap_card, use_templates, dummy_output]
 

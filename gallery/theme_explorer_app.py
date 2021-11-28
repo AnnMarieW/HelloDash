@@ -1,154 +1,163 @@
-# -*- coding: utf-8 -*-
+
+
 """
-Sample app with two different themes.  This app uses figure templates
-customized for Bootstrap themes from the dash-bootstrap-templates library
+This app applies Bootstrap themes to Dash components and Plotly figures by
+using the stylesheet, figure templates and theme change component
+from the dash-bootstrap-templates library: https://github.com/AnnMarieW/dash-bootstrap-templates
+
+`className="dbc"`:
+- Makes the text readable in both light and dark themes.
+- Uses the font from the Bootstrap theme's font-family.
+- Changes the accent color to the theme's primary color
+
+The figure templates applies Bootstrap themes to Plotly figures.  These figure
+templates are included in the theme change component.
 """
 
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash import Dash, dcc, html, dash_table, Input, Output, callback
 import plotly.express as px
 import dash_bootstrap_components as dbc
-
-from dash_bootstrap_templates_app import load_figure_template
-
-"""
-=====================================================================
-Change theme here
-"""
-# load_figure_template('minty')
-# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.MINTY])
-
-load_figure_template("cyborg")
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
-
-# ====================================================================
-
+from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
 
 df = px.data.gapminder()
-
-dropdown = dcc.Dropdown(
-    id="indicator",
-    options=[{"label": str(i), "value": i} for i in ["gdpPercap", "lifeExp", "pop"]],
-    value="gdpPercap",
-    clearable=False,
-)
-
-checklist = dbc.Checklist(
-    id="continents",
-    options=[{"label": i, "value": i} for i in df.continent.unique()],
-    value=df.continent.unique()[1:],
-    inline=True,
-)
-
 years = df.year.unique()
-range_slider = dcc.RangeSlider(
-    id="slider_years",
-    min=years[0],
-    max=years[-1],
-    step=5,
-    marks={int(i): str(i) for i in years},
-    value=[1982, years[-1]],
+continents = df.continent.unique()
+
+# stylesheet with the .dbc class
+dbc_css = (
+    "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.1/dbc.min.css"
 )
 
-# These buttons are included to display the Bootstrap theme colors only
-buttons = html.Div(
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
+
+header = html.H4("Sample Dash App", className="bg-primary text-white p-2 mb-2 text-center")
+
+table = dash_table.DataTable(
+    id="table",
+    columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+    data=df.to_dict("records"),
+    page_size=10,
+    editable=True,
+    cell_selectable=True,
+    filter_action="native",
+    sort_action="native",
+    style_table={"overflowX": "auto"},
+)
+
+dropdown = html.Div(
     [
-        dbc.Button("Primary", color="primary", className="mr-1"),
-        dbc.Button("Secondary", color="secondary", className="mr-1"),
-        dbc.Button("Success", color="success", className="mr-1"),
-        dbc.Button("Warning", color="warning", className="mr-1"),
-        dbc.Button("Danger", color="danger", className="mr-1"),
-        dbc.Button("Info", color="info", className="mr-1"),
-        dbc.Button("Light", color="light", className="mr-1"),
-        dbc.Button("Dark", color="dark", className="mr-1"),
+        dbc.Label("Select indicator (y-axis)"),
+        dcc.Dropdown(
+            id="indicator",
+            options=[
+                {"label": str(i), "value": i} for i in ["gdpPercap", "lifeExp", "pop"]
+            ],
+            value="pop",
+            clearable=False,
+        ),
+    ],
+    className="mb-4",
+)
+
+checklist = html.Div(
+    [
+        dbc.Label("Select Continents"),
+        dbc.Checklist(
+            id="continents",
+            options=[{"label": i, "value": i} for i in continents],
+            value=continents[2:],
+            inline=True,
+        ),
+    ],
+    className="mb-4",
+)
+
+slider = html.Div(
+    [
+        dbc.Label("Select Years"),
+        dcc.RangeSlider(
+            id="years",
+            min=years[0],
+            max=years[-1],
+            tooltip={"placement": "bottom", "always_visible": True},
+            value=[years[2], years[-2]],
+        ),
+    ],
+    className="mb-4",
+)
+
+colors = html.Div(
+    [
+        html.Span("Theme Colors: "),
+        dbc.Button("Primary", color="primary"),
+        dbc.Button("Secondary", color="secondary"),
+        dbc.Button("Success", color="success"),
+        dbc.Button("Warning", color="warning"),
+        dbc.Button("Danger", color="danger"),
+        dbc.Button("Info", color="info"),
+        dbc.Button("Light", color="light"),
+        dbc.Button("Dark", color="dark"),
         dbc.Button("Link", color="link"),
-    ]
+    ],
+    className="mb-2",
 )
 
 controls = dbc.Card(
     [
-        dbc.Row(
-            [
-                dbc.Col(
-                    dbc.FormGroup([dbc.Label("Select indicator (y-axis)"), dropdown])
-                ),
-                dbc.Col(dbc.FormGroup([dbc.Label("Select continents"), checklist])),
-            ]
-        ),
-        dbc.FormGroup([dbc.Label("Select years"), range_slider, buttons]),
+        dropdown,
+        checklist,
+        slider
     ],
-    className="m-4 px-2",
+    body=True,
 )
+
+tab1 = dbc.Tab([dcc.Graph(id="line-chart"), colors], label="Graph")
+tab2 = dbc.Tab([table], label="Table", className="p-4")
+tabs = dbc.Tabs([tab1, tab2])
 
 app.layout = dbc.Container(
     [
-        html.H1("Theme Explorer App", className="bg-primary text-white"),
-        html.Hr(),
+        header,
         dbc.Row(
             [
-                dbc.Col(dcc.Graph(id="line_chart"), lg=6),
-                dbc.Col(dcc.Graph(id="scatter_chart"), lg=6),
+                dbc.Col([controls, ThemeChangerAIO(aio_id="theme")], width=4),
+                dbc.Col(tabs, width=8),
             ]
         ),
-        controls,
-        html.Hr(),
     ],
     fluid=True,
+    className="dbc",
 )
 
 
-@app.callback(
-    Output("line_chart", "figure"),
-    Output("scatter_chart", "figure"),
+@callback(
+    Output("line-chart", "figure"),
+    Output("table", "data"),
     Input("indicator", "value"),
     Input("continents", "value"),
-    Input("slider_years", "value"),
+    Input("years", "value"),
+    Input(ThemeChangerAIO.ids.radio("theme"), "value"),
 )
-def update_charts(indicator, continents, years):
-    if continents == [] or indicator is None:
-        return {}, {}
+def update_line_chart(indicator, continent, yrs, theme):
+    if continent == [] or indicator is None:
+        return {}, []
 
-    dff = df[df.year.between(years[0], years[1])]
+    dff = df[df.year.between(years[0], yrs[1])]
+    dff = dff[dff.continent.isin(continent)]
+    data = dff.to_dict("records")
+
     fig = px.line(
-        dff[dff.continent.isin(continents)],
+        dff,
         x="year",
         y=indicator,
         color="continent",
         line_group="country",
+        template=template_from_url(theme),
     )
-    dff = df[df.year == years[1]]
-    fig2 = px.scatter(
-        dff[dff.continent.isin(continents)],
-        x="lifeExp",
-        y=indicator,
-        color="lifeExp",
-        hover_data=["country", "year"],
-    )
-    return fig, fig2
+    fig.update_layout(margin=dict(l=75, r=20, t=10, b=20))
+
+    return fig, data
 
 
 if __name__ == "__main__":
     app.run_server(debug=True)
-
-"""
-Note:  For dark themed apps, add the following the css file in the assets folder.  This 
-       styles the dropdown menu items to make them visible in both light and dark theme apps.
-       See more info here: https://dash.plotly.com/external-resources
-
-       For more custom CSS for other Dash Components see the dbc_light.css and dbc_dark.css
-       here: https://github.com/AnnMarieW/HelloDash/tree/main/assets
-
-
-.VirtualizedSelectOption {
-    background-color: white;
-    color: black;
-}
-
-.VirtualizedSelectFocusedOption {
-    background-color: lightgrey;
-    color: black;
-}
-
-"""

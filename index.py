@@ -1,31 +1,56 @@
-import dash_core_components as dcc
-import dash_html_components as html
 
-from app import app
-from dash.dependencies import Input, Output
-from apps import theme_explorer, app_gallery, cheatsheet, bootstrap_templates
+from dash import Dash, dcc, html, Input, Output
+import dash_bootstrap_components as dbc
+
+#from app import app
+
+# from apps import component_gallery, app_gallery, cheatsheet, bootstrap_templates
+
+import util
+
+from apps import component_gallery
+
+
+# specify version or latest version
+#dbc_css = ("https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.1/dbc.min.css")
+dbc_css1 = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+
+
+app = Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.SPACELAB, dbc.icons.BOOTSTRAP,
+                          dbc_css1,
+                          ],
+                suppress_callback_exceptions=True,
+                meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+                    title="Theme-Explorer",
+          )
 
 app.layout = html.Div(
-    [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
+    [
+        util.theme_explorer_header,
+        dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
 )
 
 
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
     if pathname == "/theme_explorer":
-        return theme_explorer.layout
-    if pathname == "/dash_bootstrap_templates":
-        return bootstrap_templates.layout
-    elif pathname == "/app_gallery":
-        return app_gallery.layout
-    elif pathname == "/cheatsheet":
-        return cheatsheet.layout
+        return component_gallery.layout
+    # if pathname == "/dash_bootstrap_templates":
+    #     return bootstrap_templates.layout
+    # elif pathname == "/app_gallery":
+    #     return app_gallery.layout
+    # elif pathname == "/cheatsheet":
+    #     return cheatsheet.layout
+    #     Note - the cheatsheet is an external site and is
+    #     controlled in the button and the link directly
     elif pathname == "/dash_labs":
         return html.H2(
             "Dash Labs Explorer is being moved to a new site.  Please check back later"
         )
     else:
-        return theme_explorer.layout
+        return component_gallery.layout
 
 
 if __name__ == "__main__":
