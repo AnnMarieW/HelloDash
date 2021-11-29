@@ -7,6 +7,14 @@ import apps.dcc_component_gallery as dcc_gallery
 import apps.dbc_component_gallery as dbc_gallery
 from .about_dbc_css import about_dbc_css_md
 
+
+heading_theme_explorer = html.H2(
+    "Theme Explorer - Component Gallery",
+    className="text-white bg-primary p-2",
+    id="dbc",
+)
+
+
 heading_dbc = html.H2(
     "Dash Bootstrap Component Gallery",
     className="text-white bg-primary p-2 mt-4",
@@ -80,7 +88,7 @@ def make_dcc_gallery():
     return dbc.Row(
         [
             dbc.Col(
-                dbc.Card(content, outline=True, color="primary", body=True),
+                dbc.Card(content),
                 className="dbc",
             ),
         ]
@@ -90,18 +98,19 @@ def make_dcc_gallery():
 about_dbc_css = dbc.Row(
         [
             dbc.Col(
-                dbc.Card([heading_about_dbc_css, about_dbc_css_md], outline=True, color="primary", body=True),
+                dbc.Card([heading_about_dbc_css, about_dbc_css_md], outline=True, color="primary"),
                 className="dbc",
             ),
         ]
     )
 
-layout = dbc.Container(
+layout = html.Div(
     [
         dbc.Row(
             [
                 dbc.Col(
                     [
+                        heading_theme_explorer,
                         dcc_gallery.about_md,
                         dcc_gallery.sample_layout_default,
                         html.Div([
@@ -113,13 +122,11 @@ layout = dbc.Container(
                             about_dbc_css
                         ], className="dbc")
                     ],
-                   # width=10,
                 ),
             ],
-            className="mt-4",
         ),
     ],
-    fluid=True,
+
 )
 
 

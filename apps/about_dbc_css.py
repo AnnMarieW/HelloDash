@@ -102,8 +102,6 @@ def make_dcc_card():
                         ),
                         dbc.CardBody(content),
                     ],
-                    outline=True,
-                    color="primary",
                 ),
                 className="dbc",
                 width=6
@@ -127,7 +125,7 @@ def make_dcc_card():
 about_dbc_css = dbc.Row(
         [
             dbc.Col(
-                dbc.Card([heading_about_dbc_css, about_dbc_css_md], outline=True, color="primary", body=True),
+                dbc.Card([heading_about_dbc_css, about_dbc_css_md], body=True),
                 className="dbc",
             ),
         ]

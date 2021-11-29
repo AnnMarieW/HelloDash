@@ -2,7 +2,7 @@
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import util
-from apps import component_gallery, figure_templates, about_dbc_css
+from apps import component_gallery, figure_templates, about_dbc_css, theme_change_components
 
 
 # specify version or latest version
@@ -26,8 +26,8 @@ app.layout = dbc.Container(
         util.theme_explorer_header,
         dbc.Row(
             [
-                dbc.Col(util.side_nav, width=2),
-                dbc.Col(id="page-content", width=10)
+                dbc.Col(util.side_nav,width=4, lg=2),
+                dbc.Col(id="page-content", width=8, lg=10, className="border")
             ]
         )
     ],
@@ -43,6 +43,8 @@ def display_page(pathname):
         return figure_templates.layout
     if pathname == "/about_dbc_css":
         return about_dbc_css.layout
+    if pathname == "/theme_change_components":
+        return theme_change_components.layout
     # elif pathname == "/cheatsheet":
     #     return cheatsheet.layout
     #     Note - the cheatsheet is an external site and is

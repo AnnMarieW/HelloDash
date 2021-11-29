@@ -81,7 +81,7 @@ tab3 = dbc.Tab(code_card, label="Source Code")
 tabs = dbc.Tabs([tab1, tab2, tab3])
 
 layout = dbc.Container(
-    [header, dbc.Row([dbc.Col([controls], width=4), dbc.Col(tabs, width=8)])],
+    [header, dbc.Row([dbc.Col([controls], width=12, lg=4), dbc.Col(tabs, width=12, lg=8)])],
     fluid=True,
     className="dbc",
 )

@@ -123,11 +123,11 @@ theme_explorer_header = html.Div(
         className="py-3",
     ),
     className="p-3 bg-light text-dark rounded-3 mb-4  position-relative",
-    style={"height": 400},
+    style={"height": 425},
 )
 
 
-side_nav = dbc.Card(
+side_nav = html.Div(
     [
         ThemeChangerAIO(
             aio_id="theme",
@@ -154,7 +154,7 @@ side_nav = dbc.Card(
             [
 
                 dbc.NavLink("className='dbc'", href="/about_dbc_css", external_link=True),
-                dbc.NavLink("Theme Change Components", href="#end", external_link=True),
+                dbc.NavLink("Theme Change Components", href="/theme_change_components", external_link=True),
                 dbc.NavLink(
                     "Bootstrap Cheatsheet",
                     href="https://dashcheatsheet.pythonanywhere.com/",
@@ -173,7 +173,6 @@ side_nav = dbc.Card(
 
         ),
     ],
-    body=True,
     className="sticky-top",
 )
 
