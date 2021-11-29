@@ -1,6 +1,7 @@
-
+#
 """
-Apply Bootstrap theme to figures with one line of code! See more info at dash-bootstrap-templates GitHub
+Apply Bootstrap theme to figures with one line of code! See more info at
+dash-bootstrap-templates.
 pip install dash-bootstrap-templates
 """
 from dash import Dash, dcc, html
@@ -11,9 +12,9 @@ from dash_bootstrap_templates import load_figure_template
 
 # This loads the "cyborg" themed figure template from dash-bootstrap-templates library,
 # adds it to plotly.io and makes it the default figure template.
-load_figure_template("vapor")
+load_figure_template("cyborg")
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.VAPOR])
+app = Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
 
 df = px.data.gapminder()
 
@@ -74,7 +75,7 @@ buttons = html.Div(
 
 heading = html.H1("Dash Bootstrap Template Demo", className="bg-primary text-white p-2")
 
-app.layout = dbc.Container(fluid=True, children=[heading, buttons, graphs])
+app.layout = dbc.Container([heading, buttons, graphs], fluid=True)
 
 
 if __name__ == "__main__":

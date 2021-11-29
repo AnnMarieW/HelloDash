@@ -1,4 +1,3 @@
-
 """
 This is a demo of the `load_figure_template(themes)` function from dash_bootstrap_templates.py
 It loads the Bootstrap theme template, adds it to plotly.io and makes it the default.

@@ -40,8 +40,7 @@ def make_code_card(code, id=id, height=600, width=None):
             dcc.Markdown(
                 code,
                 id=id,
-                className="p-2 mt-4",
-                style={"maxHeight": height,'maxWidth':width, "overflow": "auto"},
+                className="p-2 mt-4"
             ),
             dcc.Clipboard(
                 target_id=id,
@@ -49,7 +48,8 @@ def make_code_card(code, id=id, height=600, width=None):
                 className="position-absolute top-0 end-0 fs-5",
             ),
         ],
-        className="position-relative",
+        className="position-relative mb-2",
+        style={"maxHeight": height, 'maxWidth': width, "overflow": "auto"},
     )
 
 

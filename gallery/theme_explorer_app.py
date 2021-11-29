@@ -30,7 +30,9 @@ dbc_css = (
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
-header = html.H4("Sample Dash App", className="bg-primary text-white p-2 mb-2 text-center")
+header = html.H4(
+    "Sample Dash App", className="bg-primary text-white p-2 mb-2 text-center"
+)
 
 table = dash_table.DataTable(
     id="table",
@@ -102,14 +104,7 @@ colors = html.Div(
     className="mb-2",
 )
 
-controls = dbc.Card(
-    [
-        dropdown,
-        checklist,
-        slider
-    ],
-    body=True,
-)
+controls = dbc.Card([dropdown, checklist, slider], body=True,)
 
 tab1 = dbc.Tab([dcc.Graph(id="line-chart"), colors], label="Graph")
 tab2 = dbc.Tab([table], label="Table", className="p-4")
