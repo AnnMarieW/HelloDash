@@ -1,14 +1,8 @@
 
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
-
-#from app import app
-
-# from apps import component_gallery, app_gallery, cheatsheet, bootstrap_templates
-
 import util
-
-from apps import component_gallery
+from apps import component_gallery, figure_templates
 
 
 # specify version or latest version
@@ -37,9 +31,9 @@ app.layout = html.Div(
 def display_page(pathname):
     if pathname == "/theme_explorer":
         return component_gallery.layout
-    # if pathname == "/dash_bootstrap_templates":
-    #     return bootstrap_templates.layout
-    # elif pathname == "/app_gallery":
+    if pathname == "/figure_templates":
+        return figure_templates.layout
+    # # elif pathname == "/app_gallery":
     #     return app_gallery.layout
     # elif pathname == "/cheatsheet":
     #     return cheatsheet.layout

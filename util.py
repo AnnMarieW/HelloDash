@@ -34,14 +34,14 @@ def get_code_file(filename):
     return f"```{code}```"
 
 
-def make_code_card(code, id=id, height=600):
+def make_code_card(code, id=id, height=600, width=None):
     return dbc.Card(
         [
             dcc.Markdown(
                 code,
                 id=id,
                 className="p-2 mt-4",
-                style={"maxHeight": height, "overflow": "auto"},
+                style={"maxHeight": height,'maxWidth':width, "overflow": "auto"},
             ),
             dcc.Clipboard(
                 target_id=id,
@@ -64,12 +64,12 @@ theme_explorer_header = html.Div(
             html.Div(
                 [
                     html.A(
-                        html.Img(src=dbc_logo, height=125, className="m-2"),
+                        html.Img(src=dbc_logo, height=90, className="m-2"),
                         href=dbc_home_url,
                         target="_blank",
                     ),
                     html.A(
-                        html.Img(src=bootstrap_logo, height=125, className="m-2"),
+                        html.Img(src=bootstrap_logo, height=90, className="m-2"),
                         href="https://getbootstrap.com/docs/5.1/getting-started/introduction/",
                         target="blank",
                     ),

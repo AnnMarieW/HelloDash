@@ -3,8 +3,8 @@ import dash_bootstrap_components as dbc
 from dash import html
 from dash_bootstrap_templates import ThemeChangerAIO
 
-import apps.dcc_component_gallery as dcc_te
-import apps.dbc_component_gallery as dbc_te
+import apps.dcc_component_gallery as dcc_gallery
+import apps.dbc_component_gallery as dbc_gallery
 
 
 heading_dbc = html.H2(
@@ -31,11 +31,11 @@ side_nav = dbc.Card(
     [
         ThemeChangerAIO(
             aio_id="theme",
-            button_props={"color": "primary"},
+            button_props={"color": "primary", "outline": False},
             radio_props={"value": dbc.themes.SPACELAB},
         ),
 
-        html.Div("Bootstrap themes with:", className="mt-4"),
+        html.Div("Using Bootstrap themes with:", className="mt-4"),
         dbc.Nav(
             [
                 dbc.NavLink(
@@ -61,6 +61,12 @@ side_nav = dbc.Card(
                     external_link=True,
                     target="_blank",
                 ),
+                dbc.NavLink(
+                    "Github -Theme Explorer",
+                    href="https://github.com/AnnMarieW/HelloDash",
+                    external_link=True,
+                    target="_blank",
+                ),
             ],
             vertical=True,
             pills=True,
@@ -70,37 +76,37 @@ side_nav = dbc.Card(
     body=True,
 )
 
-dbc_gallery = html.Div(
+dbc_gallery_div = html.Div(
     [
-        dbc_te.intro,
-        dbc_te.alerts,
-        dbc_te.badges,
-        dbc_te.buttons,
-        dbc_te.cards,
-        dbc_te.collapse,
-        dbc_te.fade,
+        dbc_gallery.intro,
+        dbc_gallery.alerts,
+        dbc_gallery.badges,
+        dbc_gallery.buttons,
+        dbc_gallery.cards,
+        dbc_gallery.collapse,
+        dbc_gallery.fade,
         dbc.Row(
             [
-                dbc.Col([dbc_te.form, dbc_te.input_group], xs=12, md=6),
-                dbc.Col([dbc_te.input_], xs=12, md=6),
+                dbc.Col([dbc_gallery.form, dbc_gallery.input_group], xs=12, md=6),
+                dbc.Col([dbc_gallery.input_], xs=12, md=6),
             ]
         ),
         dbc.Row(
             [
-                dbc.Col([dbc_te.checklist_items], xs=12, md=6),
-                dbc.Col([dbc_te.radio_items], xs=12, md=6),
+                dbc.Col([dbc_gallery.checklist_items], xs=12, md=6),
+                dbc.Col([dbc_gallery.radio_items], xs=12, md=6),
             ]
         ),
-        dbc_te.list_group,
-        dbc_te.modal,
-        dbc_te.navbar,
-        dbc_te.popover,
-        dbc_te.progress,
-        dbc_te.spinner,
-        dbc_te.table,
-        dbc_te.tabs,
-        dbc_te.toast,
-        dbc_te.tooltip,
+        dbc_gallery.list_group,
+        dbc_gallery.modal,
+        dbc_gallery.navbar,
+        dbc_gallery.popover,
+        dbc_gallery.progress,
+        dbc_gallery.spinner,
+        dbc_gallery.table,
+        dbc_gallery.tabs,
+        dbc_gallery.toast,
+        dbc_gallery.tooltip,
     ]
 )
 
@@ -109,15 +115,15 @@ dbc_gallery = html.Div(
 def make_dcc_gallery():
     content = html.Div(
         [
-            dcc_te.about_dcc_md,
-            dcc_te.datatable,
-            dcc_te.dcc_date_picker_single,
-            dcc_te.dcc_date_picker_range,
-            dcc_te.dcc_dropdowns,
-            dcc_te.dcc_markdown,
-            dcc_te.dcc_slider,
-            dcc_te.dcc_range_slider,
-            dcc_te.dcc_tabs,
+            dcc_gallery.about_dcc_md,
+            dcc_gallery.datatable,
+            dcc_gallery.dcc_date_picker_single,
+            dcc_gallery.dcc_date_picker_range,
+            dcc_gallery.dcc_dropdowns,
+            dcc_gallery.dcc_markdown,
+            dcc_gallery.dcc_slider,
+            dcc_gallery.dcc_range_slider,
+            dcc_gallery.dcc_tabs,
         ]
     )
     return dbc.Row(
@@ -133,7 +139,7 @@ def make_dcc_gallery():
 about_dbc_css = dbc.Row(
         [
             dbc.Col(
-                dbc.Card([heading_about_dbc_css, dcc_te.about_dbc_css_md], outline=True, color="primary", body=True),
+                dbc.Card([heading_about_dbc_css, dcc_gallery.about_dbc_css_md], outline=True, color="primary", body=True),
                 className="dbc",
             ),
         ]
@@ -146,12 +152,12 @@ layout = dbc.Container(
                 dbc.Col([side_nav], width=2),
                 dbc.Col(
                     [
-                        dcc_te.about_md,
-                        dcc_te.sample_layout_default,
+                        dcc_gallery.about_md,
+                        dcc_gallery.sample_layout_default,
                         html.Div([
-                            dcc_te.sample_layout,
+                            dcc_gallery.sample_layout,
                             heading_dbc,
-                            dbc_gallery,
+                            dbc_gallery_div,
                             heading_dcc,
                             make_dcc_gallery(),
                             about_dbc_css
@@ -176,13 +182,13 @@ layout = dbc.Container(
 #     """ This makes a comparison between with className=dbc and default"""
 #     content = html.Div(
 #         [
-#             dcc_te.table,
-#             dcc_te.dcc_date_picker_single,
-#             dcc_te.dcc_date_picker_range,
-#             dcc_te.dcc_dropdowns,
-#             dcc_te.dcc_slider,
-#             dcc_te.dcc_range_slider,
-#             dcc_te.dcc_tabs,
+#             dcc_gallery.table,
+#             dcc_gallery.dcc_date_picker_single,
+#             dcc_gallery.dcc_date_picker_range,
+#             dcc_gallery.dcc_dropdowns,
+#             dcc_gallery.dcc_slider,
+#             dcc_gallery.dcc_range_slider,
+#             dcc_gallery.dcc_tabs,
 #         ]
 #     )
 #     return dbc.Row(
