@@ -7,7 +7,7 @@ from .util import dcc_make_subheading
 from datetime import date
 
 datepicker_single = html.Div(
-    [dcc.DatePickerSingle(date=date(2021, 5, 10))], className="dbc"
+    [dcc.DatePickerSingle(date=date(2021, 5, 10))]
 )
 
 datepicker_range = html.Div(

@@ -2,7 +2,7 @@
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import util
-from apps import component_gallery, figure_templates
+from apps import component_gallery, figure_templates, about_dbc_css
 
 
 # specify version or latest version
@@ -20,28 +20,40 @@ app = Dash(
                     title="Theme-Explorer",
           )
 
-app.layout = html.Div(
+app.layout = dbc.Container(
     [
+        dcc.Location(id="url", refresh=False),
         util.theme_explorer_header,
-        dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
+        dbc.Row(
+            [
+                dbc.Col(util.side_nav, width=2),
+                dbc.Col(id="page-content", width=10)
+            ]
+        )
+    ],
+    fluid=True
 )
 
 
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
-    if pathname == "/theme_explorer":
+    if pathname.startswith("/theme_explorer"):
         return component_gallery.layout
     if pathname == "/figure_templates":
         return figure_templates.layout
-    # # elif pathname == "/app_gallery":
-    #     return app_gallery.layout
+    if pathname == "/about_dbc_css":
+        return about_dbc_css.layout
     # elif pathname == "/cheatsheet":
     #     return cheatsheet.layout
     #     Note - the cheatsheet is an external site and is
     #     controlled in the button and the link directly
-    elif pathname == "/dash_labs":
+    if pathname == "/dash_labs":
         return html.H2(
             "Dash Labs Explorer is being moved to a new site.  Please check back later"
+        )
+    if pathname == "/gallery":
+        return html.H2(
+            "The app gallery is being updated - please check back later"
         )
     else:
         return component_gallery.layout

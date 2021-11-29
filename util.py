@@ -6,6 +6,7 @@ This is a collection of shared components, utilities and data
 from dash import dcc, html
 import plotly.express as px
 import dash_bootstrap_components as dbc
+from dash_bootstrap_templates import ThemeChangerAIO
 import pathlib
 
 # set relative path
@@ -124,6 +125,58 @@ theme_explorer_header = html.Div(
     className="p-3 bg-light text-dark rounded-3 mb-4  position-relative",
     style={"height": 400},
 )
+
+
+side_nav = dbc.Card(
+    [
+        ThemeChangerAIO(
+            aio_id="theme",
+            button_props={"color": "primary", "outline": False},
+            radio_props={"value": dbc.themes.SPACELAB},
+        ),
+
+        html.Div("Using Bootstrap themes with:", className="mt-4"),
+        dbc.Nav(
+            [
+                dbc.NavLink(
+                    "Dash Bootstrap Components", href="/theme_explorer#dbc", external_link=True
+                ),
+                dbc.NavLink("Dash Core Components", href="/theme_explorer#dcc", external_link=True),
+                dbc.NavLink("DataTable", href="/theme_explorer#dcc", external_link=True),
+                dbc.NavLink("Figures", href="/figure_templates", external_link=True),
+            ],
+            vertical=True,
+            pills=True,
+
+        ),
+        html.Div("More info:", className="mt-4"),
+        dbc.Nav(
+            [
+
+                dbc.NavLink("className='dbc'", href="/about_dbc_css", external_link=True),
+                dbc.NavLink("Theme Change Components", href="#end", external_link=True),
+                dbc.NavLink(
+                    "Bootstrap Cheatsheet",
+                    href="https://dashcheatsheet.pythonanywhere.com/",
+                    external_link=True,
+                    target="_blank",
+                ),
+                dbc.NavLink(
+                    "Github -Theme Explorer",
+                    href="https://github.com/AnnMarieW/HelloDash",
+                    external_link=True,
+                    target="_blank",
+                ),
+            ],
+            vertical=True,
+            pills=True,
+
+        ),
+    ],
+    body=True,
+    className="sticky-top",
+)
+
 
 
 plotly_template = [

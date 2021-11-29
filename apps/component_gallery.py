@@ -1,11 +1,11 @@
 
 import dash_bootstrap_components as dbc
 from dash import html
-from dash_bootstrap_templates import ThemeChangerAIO
+
 
 import apps.dcc_component_gallery as dcc_gallery
 import apps.dbc_component_gallery as dbc_gallery
-
+from .about_dbc_css import about_dbc_css_md
 
 heading_dbc = html.H2(
     "Dash Bootstrap Component Gallery",
@@ -26,55 +26,6 @@ heading_about_dbc_css = html.H2(
     id="about-dbc-css",
 )
 
-
-side_nav = dbc.Card(
-    [
-        ThemeChangerAIO(
-            aio_id="theme",
-            button_props={"color": "primary", "outline": False},
-            radio_props={"value": dbc.themes.SPACELAB},
-        ),
-
-        html.Div("Using Bootstrap themes with:", className="mt-4"),
-        dbc.Nav(
-            [
-                dbc.NavLink(
-                    "Dash Bootstrap Components", href="#dbc", external_link=True
-                ),
-                dbc.NavLink("Dash Core Components", href="#dcc", external_link=True),
-                dbc.NavLink("DataTable", href="#dcc", external_link=True),
-                dbc.NavLink("Figures", href="#mid", external_link=True),
-            ],
-            vertical=True,
-            pills=True,
-
-        ),
-        html.Div("More info:", className="mt-4"),
-        dbc.Nav(
-            [
-
-                dbc.NavLink("className='dbc'", href="#about-dbc-css", external_link=True),
-                dbc.NavLink("Theme Change Components", href="#end", external_link=True),
-                dbc.NavLink(
-                    "Bootstrap Cheatsheet",
-                    href="https://dashcheatsheet.pythonanywhere.com/",
-                    external_link=True,
-                    target="_blank",
-                ),
-                dbc.NavLink(
-                    "Github -Theme Explorer",
-                    href="https://github.com/AnnMarieW/HelloDash",
-                    external_link=True,
-                    target="_blank",
-                ),
-            ],
-            vertical=True,
-            pills=True,
-
-        ),
-    ],
-    body=True,
-)
 
 dbc_gallery_div = html.Div(
     [
@@ -139,7 +90,7 @@ def make_dcc_gallery():
 about_dbc_css = dbc.Row(
         [
             dbc.Col(
-                dbc.Card([heading_about_dbc_css, dcc_gallery.about_dbc_css_md], outline=True, color="primary", body=True),
+                dbc.Card([heading_about_dbc_css, about_dbc_css_md], outline=True, color="primary", body=True),
                 className="dbc",
             ),
         ]
@@ -149,7 +100,6 @@ layout = dbc.Container(
     [
         dbc.Row(
             [
-                dbc.Col([side_nav], width=2),
                 dbc.Col(
                     [
                         dcc_gallery.about_md,
@@ -163,7 +113,7 @@ layout = dbc.Container(
                             about_dbc_css
                         ], className="dbc")
                     ],
-                    width=10,
+                   # width=10,
                 ),
             ],
             className="mt-4",
@@ -175,50 +125,3 @@ layout = dbc.Container(
 
 
 
-
-
-#  todo Move to a different file
-# def make_dcc_card():
-#     """ This makes a comparison between with className=dbc and default"""
-#     content = html.Div(
-#         [
-#             dcc_gallery.table,
-#             dcc_gallery.dcc_date_picker_single,
-#             dcc_gallery.dcc_date_picker_range,
-#             dcc_gallery.dcc_dropdowns,
-#             dcc_gallery.dcc_slider,
-#             dcc_gallery.dcc_range_slider,
-#             dcc_gallery.dcc_tabs,
-#         ]
-#     )
-#     return dbc.Row(
-#         [
-#             dbc.Col(
-#                 dbc.Card(
-#                     [
-#                         dbc.CardHeader(
-#                             ' with ClassName="dbc"',
-#                             className="card-title h3 overflow-auto text-nowrap",
-#                         ),
-#                         dbc.CardBody(content),
-#                     ],
-#                     outline=True,
-#                     color="primary",
-#                 ),
-#                 width={"size": 5, "offset": 2},
-#                 className="dbc",
-#             ),
-#             dbc.Col(
-#                 dbc.Card(
-#                     [
-#                         dbc.CardHeader(
-#                             "Default style",
-#                             className="card-title h3 overflow-auto text-nowrap",
-#                         ),
-#                         dbc.CardBody(content),
-#                     ]
-#                 ),
-#                 width=5,
-#             ),
-#         ]
-#     )
