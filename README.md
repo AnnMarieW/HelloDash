@@ -5,4 +5,5 @@
 
 #### See it at:  https://hellodash.pythonanywhere.com/
 
-This is the start of the update for  V1.0.0 which uses dash-bootstrap-components>=1.0.0 and dash>=2.0.0
+This version (V1.0.0) requires dash-bootstrap-components>=1.0.0  dash>=2.0.0 and dash-bootstrap-templates>=1.0.2
+

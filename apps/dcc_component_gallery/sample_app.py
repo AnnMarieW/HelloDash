@@ -12,7 +12,7 @@ continents = df.continent.unique()
 code = util.get_code_file("theme_explorer_app.py")
 code_card = util.make_code_card(code, id="copy_theme_explorer_app_code")
 
-header = html.H3("Sample Dash App - After", className="bg-primary text-white p-2 my-2")
+header = html.H3("Theme Explorer Sample Dash App", className="bg-primary text-white p-2 my-2")
 
 
 table = dash_table.DataTable(

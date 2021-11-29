@@ -95,6 +95,14 @@ theme_explorer_header = html.Div(
                     size="sm",
                 ),
                 dbc.Button(
+                    "dbc.css Stylesheet",
+                    color="primary",
+                    outline=True,
+                    href="/about_dbc_css",
+                    className="me-2",
+                    size="sm",
+                ),
+                dbc.Button(
                     "Theme Change Components",
                     id="app_gallery",
                     color="primary",
@@ -131,7 +139,7 @@ side_nav = html.Div(
     [
         ThemeChangerAIO(
             aio_id="theme",
-            button_props={"color": "primary", "outline": False},
+            button_props={"color": "primary"},
             radio_props={"value": dbc.themes.SPACELAB},
         ),
 

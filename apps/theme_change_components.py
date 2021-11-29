@@ -1,8 +1,6 @@
 
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-from dash_bootstrap_templates import load_figure_template
-import plotly.express as px
 import util
 
 

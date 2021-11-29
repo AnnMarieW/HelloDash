@@ -4,7 +4,7 @@ import apps.dcc_component_gallery as dcc_gallery
 
 
 heading_about_dbc_css = html.H2(
-    "About className='dbc'",
+    "About dbc.css Stylesheet",
     className="text-white bg-primary p-2 mt-4",
 )
 
@@ -68,9 +68,9 @@ about_examples_text = dcc.Markdown(
 The column on the left has `className="dbc" added.  Try changing the themes - you will see the 
 biggest difference in dark themes.  
 
-Also, interact with the components. Notice that when you hover over
-the icons in the DataTable or select a cell, it's the theme's primary color rather than the default
-hot pink.  Try selecting dates in the datapickers.  You will see the calendar has a dark background in dark
+Also, try interacting with the components. Notice that when you hover over
+the icons in the DataTable or select a cell, its the theme's primary color rather than the default
+hot pink.  Try selecting dates in the datepickers.  You will see the calendar has a dark background in dark
 themes and the dates are highlighted in the primary color.     
     """
 )

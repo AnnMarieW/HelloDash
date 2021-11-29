@@ -9,9 +9,8 @@ from .about_dbc_css import about_dbc_css_md
 
 
 heading_theme_explorer = html.H2(
-    "Theme Explorer - Component Gallery",
+    "Theme Explorer - Sample App",
     className="text-white bg-primary p-2",
-    id="dbc",
 )
 
 
@@ -29,9 +28,8 @@ heading_dcc = html.H2(
 
 
 heading_about_dbc_css = html.H2(
-    "About className='dbc'",
-    className="text-white bg-primary p-2 mt-4",
-    id="about-dbc-css",
+    "About dbc.css stylesheet",
+    className="text-white bg-primary p-2",
 )
 
 
@@ -110,11 +108,11 @@ layout = html.Div(
             [
                 dbc.Col(
                     [
-                        heading_theme_explorer,
-                        dcc_gallery.about_md,
-                        dcc_gallery.sample_layout_default,
+                       # heading_theme_explorer,
+                       # dcc_gallery.sample_layout_default,
                         html.Div([
                             dcc_gallery.sample_layout,
+                            dcc_gallery.about_md,
                             heading_dbc,
                             dbc_gallery_div,
                             heading_dcc,

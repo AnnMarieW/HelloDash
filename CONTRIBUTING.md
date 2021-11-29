@@ -2,7 +2,6 @@
 # HelloDash Contributor Guide
 
 
-
 Comments, suggestion, constructive criticism, contributions and pull requests are
 gladly accepted.  Please open an issue here.
 
@@ -18,12 +17,13 @@ The app is structured as a multi-page app as shown in the [docs](https://dash.pl
    |-- app1.py  
    |-- app2.py  
 
-After cloning or forking this repo, run index.py
+After cloning or forking this repo, run app.py
 
 The apps directory contains separate apps for each page. 
 
-The gallery directory contains the code for the stand-alone apps that are shown in the gallery. 
+The gallery directory contains the code for the stand-alone apps that are shown in the gallery or used in demos. 
 Note that the app to create the gallery is in the apps directory. 
+
 
 ### Images
 The images for this app are not included in the file structure.  All the images are located in

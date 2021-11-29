@@ -27,7 +27,7 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(util.side_nav,width=4, lg=2),
-                dbc.Col(id="page-content", width=8, lg=10, className="border")
+                dbc.Col(id="page-content", width=8, lg=10)
             ]
         )
     ],
