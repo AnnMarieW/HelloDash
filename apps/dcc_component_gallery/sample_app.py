@@ -1,38 +1,19 @@
-#
-
-"""
-This app applies Bootstrap themes to Dash components and Plotly figures by
-using the stylesheet, figure templates and theme change component
-from the dash-bootstrap-templates library: https://github.com/AnnMarieW/dash-bootstrap-templates
-
-`className="dbc"`:
-- Makes the text readable in both light and dark themes.
-- Uses the font from the Bootstrap theme's font-family.
-- Changes the accent color to the theme's primary color
-
-The figure templates applies Bootstrap themes to Plotly figures.  These figure
-templates are included in the theme change component.
-"""
-
-from dash import Dash, dcc, html, dash_table, Input, Output, callback
+from dash import dcc, html, dash_table, Input, Output, callback
 import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
+import util
 
+# model
 df = px.data.gapminder()
 years = df.year.unique()
 continents = df.continent.unique()
 
-# stylesheet with the .dbc class
-dbc_css = (
-    "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.1/dbc.min.css"
-)
+code = util.get_code_file("theme_explorer_app.py")
+code_card = util.make_code_card(code, id="copy_theme_explorer_app_code")
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
+header = html.H3("Theme Explorer Sample Dash App", className="bg-primary text-white p-2 my-2")
 
-header = html.H4(
-    "Sample Dash App", className="bg-primary text-white p-2 mb-2 text-center"
-)
 
 table = dash_table.DataTable(
     id="table",
@@ -45,6 +26,7 @@ table = dash_table.DataTable(
     sort_action="native",
     style_table={"overflowX": "auto"},
 )
+
 
 dropdown = html.Div(
     [
@@ -88,38 +70,18 @@ slider = html.Div(
     className="mb-4",
 )
 
-colors = html.Div(
-    [
-        html.Span("Theme Colors: "),
-        dbc.Button("Primary", color="primary"),
-        dbc.Button("Secondary", color="secondary"),
-        dbc.Button("Success", color="success"),
-        dbc.Button("Warning", color="warning"),
-        dbc.Button("Danger", color="danger"),
-        dbc.Button("Info", color="info"),
-        dbc.Button("Light", color="light"),
-        dbc.Button("Dark", color="dark"),
-        dbc.Button("Link", color="link"),
-    ],
-    className="mb-2",
-)
 
 controls = dbc.Card([dropdown, checklist, slider], body=True,)
 
-tab1 = dbc.Tab([dcc.Graph(id="line-chart"), colors], label="Graph")
-tab2 = dbc.Tab([table], label="Table", className="p-4")
-tabs = dbc.Tabs([tab1, tab2])
+my_code = dcc.Markdown(f"```{code}```")
 
-app.layout = dbc.Container(
-    [
-        header,
-        dbc.Row(
-            [
-                dbc.Col([controls, ThemeChangerAIO(aio_id="theme")], width=4),
-                dbc.Col(tabs, width=8),
-            ]
-        ),
-    ],
+tab1 = dbc.Tab([dcc.Graph(id="line-chart")], label="Graph",)
+tab2 = dbc.Tab([table], label="Table", className="p-4")
+tab3 = dbc.Tab(code_card, label="Source Code")
+tabs = dbc.Tabs([tab1, tab2, tab3])
+
+layout = dbc.Container(
+    [header, dbc.Row([dbc.Col([controls], width=12, lg=4), dbc.Col(tabs, width=12, lg=8)])],
     fluid=True,
     className="dbc",
 )
@@ -152,7 +114,3 @@ def update_line_chart(indicator, continent, yrs, theme):
     fig.update_layout(margin=dict(l=75, r=20, t=10, b=20))
 
     return fig, data
-
-
-if __name__ == "__main__":
-    app.run_server(debug=True)

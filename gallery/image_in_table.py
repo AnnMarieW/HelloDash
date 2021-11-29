@@ -1,3 +1,4 @@
+#
 """
 How to add images to a table
 """
