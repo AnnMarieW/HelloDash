@@ -30,7 +30,7 @@ Adding `className="dbc"` minimally styles Dash components with your selected Boo
 
 You can add the dbc class as an external stylesheet like this:
 ```
-dbc_css = ("https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.2/dbc.min.css")
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.2/dbc.min.css"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 ```
@@ -56,7 +56,7 @@ Simply adding `className="dbc"` will make Dash Core Components and the DataTable
 
 If you have suggestion for improvements or if you find a bug, please let us know on the [issue tracker](https://github.com/AnnMarieW/dash-bootstrap-templates/issues)
 
-**Requires `dash-bootstrap-components>=V1.0.0`**
+**Requires `dash-bootstrap-components>=1.0.0`**
 
 """,
     className="dbc p-4",
