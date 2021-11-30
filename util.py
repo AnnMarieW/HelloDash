@@ -139,8 +139,8 @@ side_nav = html.Div(
     [
         ThemeChangerAIO(
             aio_id="theme",
-            button_props={"color": "primary"},
-            radio_props={"value": dbc.themes.SPACELAB},
+         #   button_props={"color": "primary"},
+          #  radio_props={"value": dbc.themes.SPACELAB},
         ),
 
         html.Div("Using Bootstrap themes with:", className="mt-4"),

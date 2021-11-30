@@ -12,7 +12,7 @@ dbc_css1 = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.m
 
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.SPACELAB, dbc.icons.BOOTSTRAP,
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP,
                           dbc_css1,
                           ],
                 suppress_callback_exceptions=True,
