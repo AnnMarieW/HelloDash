@@ -2,11 +2,9 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
-
 import apps.dcc_component_gallery as dcc_gallery
 import apps.dbc_component_gallery as dbc_gallery
 from .about_dbc_css import about_dbc_css_md
-
 
 heading_theme_explorer = html.H2(
     "Theme Explorer - Sample App",
@@ -68,7 +66,6 @@ dbc_gallery_div = html.Div(
 )
 
 
-
 def make_dcc_gallery():
     content = html.Div(
         [
@@ -126,7 +123,3 @@ layout = html.Div(
     ],
 
 )
-
-
-
-

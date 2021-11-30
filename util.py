@@ -161,7 +161,7 @@ side_nav = html.Div(
         dbc.Nav(
             [
 
-                dbc.NavLink("className='dbc'", href="/about_dbc_css", external_link=True),
+                dbc.NavLink("dbc.css stylesheet", href="/about_dbc_css", external_link=True),
                 dbc.NavLink("Theme Change Components", href="/theme_change_components", external_link=True),
                 dbc.NavLink(
                     "Bootstrap Cheatsheet",
