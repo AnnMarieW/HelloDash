@@ -1,14 +1,9 @@
-
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import util
 
 
 # intro ------------------------------------------------------------------
-heading = html.H2(
-    "Theme Change Components",
-    className="text-white bg-primary p-2",
-)
 
 intro = dcc.Markdown(
     """
@@ -18,20 +13,20 @@ The `dash-bootstrap-template` library has **Two [All-in-One](https://dash.plotly
 
 We use the `ThemeChangerAIO` in this app to demonstrate all the themes available.  See the `ThemeSwitchAIO` to toggle 
 between a light and a dark theme.
-    """)
+    """
+)
 intro_md = dbc.Alert(intro, color="primary", className="p-2")
 
 
 # ThemeChangerAIO ------------------------------------------------------------------
 
-heading_ThemeChangerAIO = html.H2(
-    "ThemeChangerAIO",
-    className="text-white bg-primary p-2 mt-4",
-)
 ThemeChangerAIO_code = util.get_code_file("demo_theme_changer_all.py")
-ThemeChangerAIO_code_card = util.make_code_card(ThemeChangerAIO_code, id="ThemeChangerAIO_code", height=450)
+ThemeChangerAIO_code_card = util.make_code_card(
+    ThemeChangerAIO_code, id="ThemeChangerAIO_code", height=450
+)
 
-ThemeChangerAIO_intro = dcc.Markdown("""
+ThemeChangerAIO_intro = dcc.Markdown(
+    """
 Below you will find a minimal example of changing themes with the ThemeChangerAIO component.  Use this component when you would
 like to select from multiple themes.  This example demos how to:
  - update the figure for the new theme in a callback
@@ -53,18 +48,17 @@ Note that the ThemeChangerAIO component updates the stylesheet for the theme, an
  ```
  template=template_from_url(theme)
  ```
-    """)
+    """
+)
 
 
 # ThemeSwitchAIO ------------------------------------------------------------------
 
 
-heading_ThemeSwitchAIO = html.H2(
-    "ThemeSwitchAIO",
-    className="text-white bg-primary p-2 mt-4",
-)
 ThemeSwitchAIO_code = util.get_code_file("demo_toggle.py")
-ThemeSwitchAIO_code_card = util.make_code_card(ThemeSwitchAIO_code, id="ThemeSwitchAIO_code", height=450)
+ThemeSwitchAIO_code_card = util.make_code_card(
+    ThemeSwitchAIO_code, id="ThemeSwitchAIO_code", height=450
+)
 
 ThemeSwitchAIO_intro = dcc.Markdown(
     """    
@@ -84,12 +78,10 @@ ThemeSwitchAIO_image = dcc.Markdown(
 # ThemeSwitchAIO example 2 ------------------------------------------------------------------
 
 
-heading_ThemeSwitchAIO_icons = html.H2(
-    "ThemeSwitchAIO with Bootstrap icons",
-    className="text-white bg-primary p-2 mt-4",
-)
 ThemeSwitchAIO_icons_code = util.get_code_file("demo_toggle_icons.py")
-ThemeSwitchAIO_code_icons_card = util.make_code_card(ThemeSwitchAIO_icons_code, id="ThemeSwitchAIO_icons_code", height=450)
+ThemeSwitchAIO_code_icons_card = util.make_code_card(
+    ThemeSwitchAIO_icons_code, id="ThemeSwitchAIO_icons_code", height=450
+)
 
 ThemeSwitchAIO_icons_intro = dcc.Markdown(
     """        
@@ -169,20 +161,20 @@ The All-in-One component dictionary IDs are available as
 
 layout = html.Div(
     [
-        heading,
+        util.make_header("Theme Change Components", spacing=""),
         intro_md,
-        heading_ThemeChangerAIO,
+        util.make_header("ThemeChangerAIO"),
         ThemeChangerAIO_intro,
         ThemeChangerAIO_code_card,
-        heading_ThemeSwitchAIO,
+        util.make_header("ThemeSwitchAIO"),
         ThemeSwitchAIO_intro,
         ThemeSwitchAIO_code_card,
         ThemeSwitchAIO_image,
-        heading_ThemeSwitchAIO_icons,
+        util.make_header("ThemeSwitchAIO with Bootstrap icons"),
         ThemeSwitchAIO_icons_intro,
         ThemeSwitchAIO_code_icons_card,
         ThemeSwitchAIO_icon_image,
         reference,
     ],
-    className="dbc pb-4"
+    className="dbc pb-4",
 )

@@ -53,6 +53,9 @@ def make_code_card(code, id=id, height=600, width=None):
         style={"maxHeight": height, 'maxWidth': width, "overflow": "auto"},
     )
 
+def make_header(text, spacing="mt-4"):
+    return( html.H2(text, className="text-white bg-primary p-2 " + spacing ,
+))
 
 theme_explorer_header = html.Div(
     dbc.Container(
@@ -79,10 +82,28 @@ theme_explorer_header = html.Div(
             html.Div(
             [
                 dbc.Button(
-                    "Theme Explorer",
+                    "Component Gallery",
                     color="primary",
                     outline=True,
                     href="/theme_explorer",
+                    className="me-2",
+                    size="sm",
+                ),
+
+                # dbc.Button(
+                #     "dbc.css Stylesheet",
+                #     color="primary",
+                #     outline=True,
+                #     href="/about_dbc_css",
+                #     className="me-2",
+                #     size="sm",
+                # ),
+                dbc.Button(
+                    "Theme Change Components",
+                    id="app_gallery",
+                    color="primary",
+                    outline=True,
+                    href="/theme_change_components",
                     className="me-2",
                     size="sm",
                 ),
@@ -91,23 +112,6 @@ theme_explorer_header = html.Div(
                     color="primary",
                     outline=True,
                     href="/figure_templates",
-                    className="me-2",
-                    size="sm",
-                ),
-                dbc.Button(
-                    "dbc.css Stylesheet",
-                    color="primary",
-                    outline=True,
-                    href="/about_dbc_css",
-                    className="me-2",
-                    size="sm",
-                ),
-                dbc.Button(
-                    "Theme Change Components",
-                    id="app_gallery",
-                    color="primary",
-                    outline=True,
-                    href="/theme_change_components",
                     className="me-2",
                     size="sm",
                 ),
@@ -139,30 +143,27 @@ side_nav = html.Div(
     [
         ThemeChangerAIO(
             aio_id="theme",
-         #   button_props={"color": "primary"},
-          #  radio_props={"value": dbc.themes.SPACELAB},
+            button_props={"color": "primary", "outline": False},
+            radio_props={"value": dbc.themes.SPACELAB},
         ),
 
-        html.Div("Using Bootstrap themes with:", className="mt-4"),
+
         dbc.Nav(
             [
+                html.Div("Component Gallery:", className="mt-4"),
                 dbc.NavLink(
                     "Dash Bootstrap Components", href="/theme_explorer#dbc", external_link=True
                 ),
-                dbc.NavLink("Dash Core Components", href="/theme_explorer#dcc", external_link=True),
-                dbc.NavLink("DataTable", href="/theme_explorer#dcc", external_link=True),
-                dbc.NavLink("Figures", href="/figure_templates", external_link=True),
-            ],
-            vertical=True,
-            pills=True,
+                dbc.NavLink("Bootstrap-themed Dash Core Components", href="/about_dbc_css"),
+                dbc.NavLink("Bootstrap-themed DataTable", href="/about_dbc_css"),
 
-        ),
-        html.Div("More info:", className="mt-4"),
-        dbc.Nav(
-            [
-
-                dbc.NavLink("dbc.css stylesheet", href="/about_dbc_css", external_link=True),
+              #  html.Div("Theme Change:", className="mt-4"),
                 dbc.NavLink("Theme Change Components", href="/theme_change_components", external_link=True),
+
+                html.Div("Figure Templates:", className="mt-4"),
+                dbc.NavLink("Bootstrap-themed Figures Templates", href="/figure_templates", external_link=True),
+
+                html.Div("More info:", className="mt-4"),
                 dbc.NavLink(
                     "Bootstrap Cheatsheet",
                     href="https://dashcheatsheet.pythonanywhere.com/",

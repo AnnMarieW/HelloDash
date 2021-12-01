@@ -1,3 +1,4 @@
+from .about_theme_explorer import about_explorer
 from .alert import alerts
 from .badge import badges
 from .button import buttons

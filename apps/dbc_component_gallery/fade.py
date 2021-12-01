@@ -28,7 +28,6 @@ fade = html.Div(
 )
 
 
-
 @callback(
     Output("fade", "is_in"),
     [Input("fade-button", "n_clicks")],

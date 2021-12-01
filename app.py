@@ -2,7 +2,7 @@
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import util
-from apps import component_gallery, figure_templates, about_dbc_css, theme_change_components
+from apps import app_dcc_gallery, app_figure_templates, app_dbc_gallery, app_theme_change_components
 
 
 # specify version or latest version
@@ -12,7 +12,7 @@ dbc_css1 = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.m
 
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP,
+    external_stylesheets=[dbc.themes.SPACELAB, dbc.icons.BOOTSTRAP,
                           dbc_css1,
                           ],
                 suppress_callback_exceptions=True,
@@ -38,13 +38,13 @@ app.layout = dbc.Container(
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
     if pathname.startswith("/theme_explorer"):
-        return component_gallery.layout
+        return app_dbc_gallery.layout
     if pathname == "/figure_templates":
-        return figure_templates.layout
+        return app_figure_templates.layout
     if pathname == "/about_dbc_css":
-        return about_dbc_css.layout
+        return app_dcc_gallery.layout
     if pathname == "/theme_change_components":
-        return theme_change_components.layout
+        return app_theme_change_components.layout
     # elif pathname == "/cheatsheet":
     #     return cheatsheet.layout
     #     Note - the cheatsheet is an external site and is
@@ -58,7 +58,7 @@ def display_page(pathname):
             "The app gallery is being updated - please check back later"
         )
     else:
-        return component_gallery.layout
+        return app_dcc_gallery.layout
 
 
 if __name__ == "__main__":

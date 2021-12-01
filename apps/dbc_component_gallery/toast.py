@@ -24,4 +24,3 @@ toast = html.Div(
 @callback(Output("auto-toast", "is_open"), [Input("auto-toast-toggle", "n_clicks")])
 def open_toast(_):
     return True
-

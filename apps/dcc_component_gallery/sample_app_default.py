@@ -11,7 +11,11 @@ continents = df.continent.unique()
 code = util.get_code_file("theme_explorer_app.py")
 code_card = util.make_code_card(code, id="copy_theme_explorer_app_code")
 
-header = html.H3("Sample Dash App - Before", className="p-2 my-2", style={"backgroundColor": "gray", "color":"white"})
+header = html.H3(
+    "Sample Dash App - Before",
+    className="p-2 my-2",
+    style={"backgroundColor": "gray", "color": "white"},
+)
 
 
 table = dash_table.DataTable(
@@ -49,7 +53,7 @@ checklist = html.Div(
             id="continents1",
             options=[{"label": i, "value": i} for i in continents],
             value=continents[2:],
-           # inline=True,
+            # inline=True,
         ),
     ],
     className="mb-4",
@@ -80,7 +84,10 @@ tab3 = dcc.Tab(code_card, label="Source Code")
 tabs = dcc.Tabs([tab1, tab2, tab3])
 
 layout = dbc.Container(
-    [header, dbc.Row([dbc.Col([controls], width=12, lg=4), dbc.Col(tabs, width=12, lg=8)])],
+    [
+        header,
+        dbc.Row([dbc.Col([controls], width=12, lg=4), dbc.Col(tabs, width=12, lg=8)]),
+    ],
     fluid=True,
 )
 
@@ -100,13 +107,7 @@ def update_line_chart(indicator, continent, yrs):
     dff = dff[dff.continent.isin(continent)]
     data = dff.to_dict("records")
 
-    fig = px.line(
-        dff,
-        x="year",
-        y=indicator,
-        color="continent",
-        line_group="country",
-    )
+    fig = px.line(dff, x="year", y=indicator, color="continent", line_group="country",)
     fig.update_layout(margin=dict(l=75, r=20, t=10, b=20))
 
     return fig, data

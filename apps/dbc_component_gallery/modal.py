@@ -25,7 +25,6 @@ modal = html.Div(
 )
 
 
-
 @callback(
     Output("modal", "is_open"),
     [Input("button", "n_clicks")],

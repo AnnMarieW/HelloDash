@@ -12,7 +12,9 @@ continents = df.continent.unique()
 code = util.get_code_file("theme_explorer_app.py")
 code_card = util.make_code_card(code, id="copy_theme_explorer_app_code")
 
-header = html.H3("Theme Explorer Sample Dash App", className="bg-primary text-white p-2 my-2")
+header = html.H3(
+    "Bootstrap-Themed Dash App", className="bg-primary text-white p-2 my-2"
+)
 
 
 table = dash_table.DataTable(
@@ -80,9 +82,11 @@ tab2 = dbc.Tab([table], label="Table", className="p-4")
 tab3 = dbc.Tab(code_card, label="Source Code")
 tabs = dbc.Tabs([tab1, tab2, tab3])
 
-layout = dbc.Container(
-    [header, dbc.Row([dbc.Col([controls], width=12, lg=4), dbc.Col(tabs, width=12, lg=8)])],
-    fluid=True,
+layout = html.Div(
+    [
+        header,
+        dbc.Row([dbc.Col([controls], width=12, lg=4), dbc.Col(tabs, width=12, lg=8)]),
+    ],
     className="dbc",
 )
 

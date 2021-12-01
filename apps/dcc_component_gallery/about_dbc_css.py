@@ -1,20 +1,5 @@
-from dash import dcc, html
+from dash import dcc
 import dash_bootstrap_components as dbc
-import apps.dcc_component_gallery as dcc_gallery
-
-
-heading_about_dbc_css = html.H2(
-    "About dbc.css Stylesheet",
-    className="text-white bg-primary p-2 mt-4",
-)
-
-
-heading_examples = html.H2(
-    "Examples",
-    className="text-white bg-primary p-2 mt-4",
-)
-
-
 
 about_dbc_css_md = dcc.Markdown(
     """
@@ -76,70 +61,3 @@ themes and the dates are highlighted in the primary color.
 )
 
 about_examples_md = dbc.Alert(about_examples_text, color="primary", className="p-2")
-
-
-def make_dcc_card():
-    """ This makes a comparison between with className=dbc and default"""
-    content = html.Div(
-        [
-            dcc_gallery.datatable,
-            dcc_gallery.dcc_date_picker_single,
-            dcc_gallery.dcc_date_picker_range,
-            dcc_gallery.dcc_dropdowns,
-            dcc_gallery.dcc_slider,
-            dcc_gallery.dcc_range_slider,
-            dcc_gallery.dcc_tabs,
-        ]
-    )
-    return dbc.Row(
-        [
-            dbc.Col(
-                dbc.Card(
-                    [
-                        dbc.CardHeader(
-                            ' with ClassName="dbc"',
-                            className="card-title h3 overflow-auto text-nowrap",
-                        ),
-                        dbc.CardBody(content),
-                    ],
-                ),
-                className="dbc",
-                width=6
-            ),
-            dbc.Col(
-                dbc.Card(
-                    [
-                        dbc.CardHeader(
-                            "Default style",
-                            className="card-title h3 overflow-auto text-nowrap",
-                        ),
-                        dbc.CardBody(content),
-                    ]
-                ),
-                width=6,
-            ),
-        ]
-    )
-
-
-about_dbc_css = dbc.Row(
-        [
-            dbc.Col(
-                dbc.Card([heading_about_dbc_css, about_dbc_css_md], body=True),
-                className="dbc",
-            ),
-        ]
-    )
-
-
-layout = html.Div(
-    [
-        heading_about_dbc_css,
-        about_dbc_css_md,
-        heading_examples,
-        about_examples_md,
-        make_dcc_card()
-    ],
-    className="mb-4"
-
-)
