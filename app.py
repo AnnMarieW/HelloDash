@@ -58,7 +58,7 @@ def display_page(pathname):
             "The app gallery is being updated - please check back later"
         )
     else:
-        return app_dcc_gallery.layout
+        return app_dbc_gallery.layout
 
 
 if __name__ == "__main__":
