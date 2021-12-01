@@ -1,7 +1,7 @@
 #
 """
 This is a minimal example of changing themes with the ThemeChangerAIO component
-Note - this requires dash-bootstrap-components>=1.0.0 and dash>=2.0 dash-bootstrap-templates>=1.0.2
+Note - this requires dash-bootstrap-components>=1.0.0 and dash>=2.0 dash-bootstrap-templates>=1.0.4
 """
 
 from dash import Dash, dcc, html, Input, Output

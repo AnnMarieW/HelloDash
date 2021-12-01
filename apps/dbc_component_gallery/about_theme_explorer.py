@@ -13,7 +13,7 @@ about_explorer = dcc.Markdown(
   Dash apps in the "Bootstrap-themed Dash Core Components" section of the Component Gallery.
  
 #### Theme Change Components
-  - The Theme Explorer uses the `ThemeChangerAIO` to select from multiple themes. There is also a Use the `ThemeSwitchAIO` 
+  - The Theme Explorer uses the `ThemeChangerAIO` to select from multiple themes. There is also a `ThemeSwitchAIO` 
   component to toggle between two themes. Find these components in the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library.
   
 #### Figure Templates

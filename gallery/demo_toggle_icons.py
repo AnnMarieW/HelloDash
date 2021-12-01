@@ -2,7 +2,7 @@
 """
 
 This is a minimal example of changing themes with the ThemeSwitchAIO component
-Note - this requires dash-bootstrap-components>=1.0.0  dash>=2.0 dash-bootstrap-templates>=1.0.2.
+Note - this requires dash-bootstrap-components>=1.0.0  dash>=2.0 dash-bootstrap-templates>=1.0.4.
 
 """
 
