@@ -1,6 +1,7 @@
-from dash import dcc
+from dash import dcc, html
+import dash_bootstrap_components as dbc
 
-about_explorer = dcc.Markdown(
+about_explorer_md = dcc.Markdown(
     """
 #### Dash Bootstrap Components Gallery
  - The [`dash-bootstrap-components`](https://dash-bootstrap-components.opensource.faculty.ai/) library offers 26 different themes.
@@ -29,4 +30,8 @@ and figures are automatically updated with your selected theme.  See the code in
 
 Requires `dash>=2.0.0`, `dash-bootstrap-components>=1.0.0`, `dash-boostrap-templates>=1.0.4`    
     """
+)
+
+about_explorer = dbc.Accordion(
+    dbc.AccordionItem(about_explorer_md, title="Hide/Show intro" ),
 )

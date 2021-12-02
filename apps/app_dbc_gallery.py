@@ -47,6 +47,7 @@ layout = html.Div(
                 dbc.Col(
                     [
                         util.make_header("About Theme Explorer", spacing=""),
+
                         dbc_gallery.about_explorer,
                         dcc_gallery.sample_layout,
                         util.make_header("Dash Bootstrap Component Gallery"),
