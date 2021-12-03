@@ -28,7 +28,7 @@ about_explorer_md = dcc.Markdown(
 The sample app below is a live demo of all these features.  Click the "Change Theme" button and see how the components
 and figures are automatically updated with your selected theme.  See the code in the "source code" tab.
 
-Requires `dash>=2.0.0`, `dash-bootstrap-components>=1.0.0`, `dash-boostrap-templates>=1.0.4`    
+Requires `dash>=2.0.0`, `dash-bootstrap-components>=1.0.0`, `dash-bootstrap-templates>=1.0.4`    
     """
 )
 
