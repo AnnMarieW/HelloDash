@@ -9,11 +9,11 @@ an easy way to make your Dash components look better with a Bootstrap theme is t
 
 You can add the dbc class as an external stylesheet like this:
 ```
-dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.2/dbc.min.css"
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.4/dbc.min.css"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 ```
-You can also add the stylesheet to your assets folder. If you would like to modify it, you can find a more human readable stylesheet here:  "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.2/dbc.css"
+You can also add the stylesheet to your assets folder. If you would like to modify it, you can find a more human readable stylesheet here:  "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.4/dbc.css"
 
 This stylesheet is from version V1.0.4. Check the dash-bootstrap-templates library for the latest updates.
 

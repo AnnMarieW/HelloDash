@@ -5,7 +5,7 @@ about_explorer_md = dcc.Markdown(
     """
 #### Select Your Bootstrap Theme 
  - The [`dash-bootstrap-components`](https://dash-bootstrap-components.opensource.faculty.ai/) library offers 26 free Bootstrap and Bootswatch themes.
-  Use the "Change Theme" button to select a theme then see what it looks like in the Bootstrap-themed Dash app and the Dash Bootstrap Component gallery below.  
+  Use the "Change Theme" button to select a theme then see how it looks the Bootstrap-themed Dash app and the Dash Bootstrap Components gallery below.  
 #### Apply Bootstrap theme to Dash DataTable and Core Components
 - The Theme Explorer styles the Dash `DataTable` and the `dash-core-components`  with your
  selected Bootstrap theme.  It does this by using the `dbc.css` stylesheet from the 
@@ -19,7 +19,7 @@ about_explorer_md = dcc.Markdown(
   
 #### How to apply a Bootstrap Theme to Figures
  -  The Theme Explorer applies Bootstrap themes to figures by using one of the 26 Bootstrap-themed Plotly figure templates available in the 
- [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library. See examples in the Figure Templates section
+ [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library. See examples of how to add these to your app in the Figure Templates section.
 
 #### Bootstrap Cheatsheet
   - See all the Bootstrap classes available with examples of how to use them with Dash.
