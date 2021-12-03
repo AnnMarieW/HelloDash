@@ -50,8 +50,11 @@ def display_page(pathname):
     #     Note - the cheatsheet is an external site and is
     #     controlled in the button and the link directly
     if pathname == "/dash_labs":
-        return html.H2(
-            "Dash Labs Explorer is being moved to a new site.  Please check back later"
+        return html.Div("""
+        The Dash Labs Explorer was originally created as a live demo of the templates being developed in version 0.4.0.
+          Based on community feedback, these templates are not longer being developed. 
+          This page is a placeholder for now -- it will be used to showcase other Dash Labs features in the future. 
+        """
         )
     if pathname == "/gallery":
         return html.H2(
