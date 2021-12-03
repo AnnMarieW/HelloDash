@@ -7,7 +7,7 @@ from .util import dcc_make_subheading
 markdown = dcc.Markdown(
     """
 The dcc.Markdown component works well for regular markdown text in both light and
-dark themes.  Adding `className="dbc"` will make code snippets styled in the 
+dark themes.  For code highlighting, adding `className="dbc"` will make code snippets styled in the 
 "GitHub Dark Dimmed" theme which looks better in both light and dark Boostrap themes. 
 Here's a sample:
 

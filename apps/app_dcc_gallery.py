@@ -29,6 +29,7 @@ def make_dcc_card():
             dcc_gallery.dcc_date_picker_single,
             dcc_gallery.dcc_date_picker_range,
             dcc_gallery.dcc_dropdowns,
+            dcc_gallery.dcc_markdown,
             dcc_gallery.dcc_slider,
             dcc_gallery.dcc_range_slider,
             dcc_gallery.dcc_tabs,
@@ -69,12 +70,13 @@ layout = html.Div(
     [
         #  dcc_gallery.about_dbc_css_md,
         util.make_header("Bootstrap-themed Dash Component Gallery", spacing=""),
-        make_dcc_gallery(),
-        util.make_header("About dbc.css Stylesheet"),
-        dcc_gallery.about_dbc_css_md,
-        util.make_header("Side-by-Side comparison"),
+
+     #   make_dcc_gallery(),
         dcc_gallery.about_examples_md,
+        util.make_header("Side-by-Side comparison"),
         make_dcc_card(),
+        util.make_header("How to use dbc.css Stylesheet in your App"),
+        dcc_gallery.about_dbc_css_md,
     ],
     className="mb-4",
 )

@@ -3,8 +3,8 @@ import dash_bootstrap_components as dbc
 
 about_dbc_css_md = dcc.Markdown(
     """
-The `dash-core-components`, the Dash `DataTable` and Plotly figures are not automatically styled with a Bootstrap theme.
-An easy way to make your Dash components look better with a Bootstrap theme is to use the stylesheet from
+Since the `dash-core-components`, the Dash `DataTable` and Plotly figures are not automatically styled with a Bootstrap theme,
+an easy way to make your Dash components look better with a Bootstrap theme is to use the stylesheet from
  the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library. This stylesheet defines the "dbc" class.
 
 Adding `className="dbc"` minimally styles Dash components with your selected Bootstrap theme:
@@ -50,6 +50,11 @@ If you have suggestion for improvements or if you find a bug, please let us know
 
 about_examples_text = dcc.Markdown(
     """
+    
+Bootstrap themes are not automatically applied to Dash Core Components and the Dash DataTable.  The 
+`dbc` class is designed to minimally style Dash components with your selected theme.  See 
+below for more information on how to add the stylesheet with the `dbc` class to your app.    
+
 The column on the left has `className="dbc" added.  Try changing the themes - you will see the 
 biggest difference in dark themes.  
 

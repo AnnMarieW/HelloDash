@@ -154,8 +154,8 @@ side_nav = html.Div(
                 dbc.NavLink(
                     "Dash Bootstrap Components", href="/theme_explorer#dbc", external_link=True
                 ),
-                dbc.NavLink("Bootstrap-themed Dash Core Components", href="/about_dbc_css", external_link=True),
-                dbc.NavLink("Bootstrap-themed DataTable", href="/about_dbc_css", external_link=True),
+                dbc.NavLink("Bootstrap-themed Dash Core Components and DataTable", href="/about_dbc_css", external_link=True),
+
 
               #  html.Div("Theme Change:", className="mt-4"),
                 dbc.NavLink("Theme Change Components", href="/theme_change_components", external_link=True),
