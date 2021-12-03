@@ -9,7 +9,7 @@ An easy way to make your Dash components look better with a Bootstrap theme is t
 
 Adding `className="dbc"` minimally styles Dash components with your selected Bootstrap theme:
 - Makes the text readable in both light and dark themes.
-- Uses the font from the Bootstrap theme's font-family.
+- Uses theme's font-family.
 - Changes the accent color to the theme's primary color
 
 
