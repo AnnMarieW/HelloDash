@@ -16,6 +16,23 @@ app_description = """
 A guide for styling Plotly Dash apps with a Bootstrap theme.  Shows how to include Bootstrap-themed Plotly figure templates,
 apply Bootstrap themes to Plotly Dash components and switch themes with a theme change component.
 """
+app_title = "Dash Bootstrap Theme Explorer"
+
+metas = [
+    {"property":"twitter:card", "content":app_description},
+    {"property":"twitter:url", "content":"https://metatags.io/"},
+    {"property":"twitter:title", "content":app_title},
+    {"property":"twitter:description", "content":app_description},
+    {"property":"twitter:image", "content":"/assets/home.jpeg"},
+
+    {"property":"og:title", "content":app_title},
+    {"property":"og:type", "content":"website"},
+    {"property":"og:description", "content":app_description},
+    {"property":"og:image", "content":"/assets/home.jpeg"}
+]
+
+
+
 
 app = Dash(
     __name__,
@@ -28,7 +45,7 @@ app = Dash(
     meta_tags=[
         {"name": "viewport", "content": "width=device-width, initial-scale=1"},
         {"name": "description", "content": app_description},
-    ],
+    ] + metas,
     title="Dash Bootstrap Theme Explorer",
 )
 
