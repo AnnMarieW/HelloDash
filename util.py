@@ -62,7 +62,7 @@ theme_explorer_header = html.Div(
         [
             html.H1("Dash Bootstrap Theme Explorer", className="display-3 text-dark",),
             html.P(
-                "A guide for styling Dash components and figures with a Bootstrap theme",
+                "A guide for styling Plotly Dash apps with a Bootstrap theme",
                 className="fst-italic lead",
             ),
             html.Div(
