@@ -11,6 +11,7 @@ import plotly.express as px
 df = px.data.tips()
 days = df.day.unique()
 
+
 def make_figure(day="Sun", template="darkly"):
     mask = df["day"] == day
     return px.bar(
@@ -21,6 +22,7 @@ def make_figure(day="Sun", template="darkly"):
         barmode="group",
         template=template,
     )
+
 
 layout = html.Div(
     [

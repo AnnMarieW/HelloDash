@@ -15,7 +15,6 @@ from dash_bootstrap_templates import ThemeChangerAIO, load_figure_template
 load_figure_template(["sandstone", "darkly", "pulse"])
 
 
-
 # This stylesheet defines the `dbc` class.  Add `className="dbc"` to style `dash-core-components`
 # and the `DataTable` with a Bootstrap theme.
 dbc_css = (
@@ -52,7 +51,9 @@ navbar = dbc.NavbarSimple(
     className="mb-2",
 )
 
-theme_changer = ThemeChangerAIO(aio_id="theme", radio_props={"value": dbc.themes.FLATLY})
+theme_changer = ThemeChangerAIO(
+    aio_id="theme", radio_props={"value": dbc.themes.SANDSTONE}
+)
 
 
 app.layout = dbc.Container(

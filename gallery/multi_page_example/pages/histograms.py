@@ -33,7 +33,7 @@ layout = html.Div(
     Output("histograms-graph", "figure"),
     Input("histograms-mean", "value"),
     Input("histograms-std", "value"),
-    Input(ThemeChangerAIO.ids.radio("theme"), "value")
+    Input(ThemeChangerAIO.ids.radio("theme"), "value"),
 )
 def display_color(mean, std, theme):
     return make_figure(mean, std, template_from_url(theme))
