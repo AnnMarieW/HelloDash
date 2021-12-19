@@ -1,5 +1,5 @@
 import dash
-from dash_bootstrap_templates import ThemeChangerAIO
+from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
 import dash_bootstrap_components as dbc
 
 # specify the theme for the page with the `theme` prop
@@ -11,6 +11,17 @@ import plotly.express as px
 df = px.data.tips()
 days = df.day.unique()
 
+def make_figure(day="Sun", template="darkly"):
+    mask = df["day"] == day
+    return px.bar(
+        df[mask],
+        x="sex",
+        y="total_bill",
+        color="smoker",
+        barmode="group",
+        template=template,
+    )
+
 layout = html.Div(
     [
         dcc.Dropdown(
@@ -19,7 +30,7 @@ layout = html.Div(
             value=days[0],
             clearable=False,
         ),
-        dcc.Graph(id="bar-chart"),
+        dcc.Graph(id="bar-chart", figure=make_figure()),
     ]
 )
 
@@ -30,13 +41,4 @@ layout = html.Div(
     Input(ThemeChangerAIO.ids.radio("theme"), "value"),
 )
 def update_bar_chart(day, theme):
-    mask = df["day"] == day
-    fig = px.bar(
-        df[mask],
-        x="sex",
-        y="total_bill",
-        color="smoker",
-        barmode="group",
-        template="darkly",
-    )
-    return fig
+    return make_figure(day, template_from_url(theme))

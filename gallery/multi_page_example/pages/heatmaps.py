@@ -1,5 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
+from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
 
 dash.register_page(__name__, path="/", theme=dbc.themes.SANDSTONE)
 
@@ -16,12 +17,12 @@ layout = html.Div(
             options=[{"label": x, "value": x} for x in df.columns],
             value=df.columns.tolist(),
         ),
-        dcc.Graph(id="heatmaps-graph"),
+        dcc.Graph(id="heatmaps-graph", figure= px.imshow(df)),
     ]
 )
 
 
-@callback(Output("heatmaps-graph", "figure"), Input("heatmaps-medals", "value"))
-def filter_heatmap(cols):
-    fig = px.imshow(df[cols], template="sandstone")
+@callback(Output("heatmaps-graph", "figure"), Input("heatmaps-medals", "value"), Input(ThemeChangerAIO.ids.radio("theme"), "value"))
+def filter_heatmap(cols, theme):
+    fig = px.imshow(df[cols], template=template_from_url(theme))
     return fig

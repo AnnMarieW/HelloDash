@@ -10,7 +10,11 @@ import dash
 from dash import html, dcc, Input, Output
 import dash_labs as dl
 import dash_bootstrap_components as dbc
-from dash_bootstrap_templates import ThemeChangerAIO
+from dash_bootstrap_templates import ThemeChangerAIO, load_figure_template
+
+load_figure_template(["sandstone", "darkly", "pulse"])
+
+
 
 # This stylesheet defines the `dbc` class.  Add `className="dbc"` to style `dash-core-components`
 # and the `DataTable` with a Bootstrap theme.
@@ -21,13 +25,14 @@ dbc_css = (
 app = dash.Dash(
     __name__,
     plugins=[dl.plugins.pages],
-    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css],
+    external_stylesheets=[dbc.themes.SANDSTONE, dbc_css],
 )
 
 # The theme is specified for each page in `dash.register_page()`
-# If no theme is specified, it defaults to dbc.themes.BOOTSTRAP
+# If no theme is specified, it defaults to dbc.themes.SANDSTONE,
+# which is the start-up default theme.
 path_to_theme = {
-    page["path"]: page.get("theme", dbc.themes.BOOTSTRAP)
+    page["path"]: page.get("theme", dbc.themes.SANDSTONE)
     for page in dash.page_registry.values()
 }
 
@@ -47,12 +52,7 @@ navbar = dbc.NavbarSimple(
     className="mb-2",
 )
 
-# Note the theme change button is added to the layout, but it's hidden with `className="d-none".
-# Rather than the user selecting the theme, it's updated in the callback below.
-theme_changer = html.Div(
-    ThemeChangerAIO(aio_id="theme", radio_props={"value": dbc.themes.FLATLY}),
-    className="d-none",
-)
+theme_changer = ThemeChangerAIO(aio_id="theme", radio_props={"value": dbc.themes.FLATLY})
 
 
 app.layout = dbc.Container(
