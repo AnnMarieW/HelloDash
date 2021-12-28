@@ -11,7 +11,7 @@ from apps import (
 
 # specify version or latest version
 # dbc_css = ("https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.1/dbc.min.css")
-dbc_css1 = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+dbc_css1 = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css"
 app_description = """
 A guide for styling Plotly Dash apps with a Bootstrap theme.  Shows how to include Bootstrap-themed Plotly figure templates,
 apply Bootstrap themes to Plotly Dash components and switch themes with a theme change component.
