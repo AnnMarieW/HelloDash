@@ -1,9 +1,16 @@
 from dash import html, dcc, register_page
 
 from lib.code_and_show import example_app, make_app_first
+from lib.utils import app_description
 
 
-register_page(__name__, order=4, description="", name="Figure templates")
+register_page(
+    __name__,
+    order=4,
+    description=app_description,
+    title="Adding Themes/Figure Templates",
+    name="Figure templates",
+)
 
 notes_first = """
 --------

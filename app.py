@@ -25,6 +25,7 @@ app = Dash(
         dbc.icons.BOOTSTRAP,
         dbc.icons.FONT_AWESOME,
         dbc_css,
+        dark_hljs,
     ],
     suppress_callback_exceptions=True,
 )

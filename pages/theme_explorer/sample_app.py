@@ -3,11 +3,17 @@ from dash import html
 import dash_bootstrap_components as dbc
 
 from lib.code_and_show import example_app, make_app_first
+from lib.utils import app_description
 
-
-dash.register_page(__name__, path="/", order=1, name="Sample App", description="")
-
-filename = "theme_explorer_sample_app"
+dash.register_page(
+    __name__,
+    path="/",
+    order=1,
+    name="Sample App",
+    description=app_description,
+    title="Theme Explorer",
+    redirect_from=["/theme_explorer"],
+)
 
 notes = """
 
@@ -30,7 +36,7 @@ layout = html.Div(
                 icon_text, is_open=True, dismissable=True, style={"maxWidth": 350}
             ),
         ),
-        example_app(filename, notes_first=notes, make_layout=make_app_first),
+        example_app("sample_app", notes_first=notes, make_layout=make_app_first),
     ],
     className="dbc",
 )

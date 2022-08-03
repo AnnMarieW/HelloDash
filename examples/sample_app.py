@@ -33,7 +33,7 @@ header = html.H4(
 )
 
 table = dash_table.DataTable(
-    id="theme-explorer-sample-app-x-table",
+    id="sample_app-x-table",
     columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
     data=df.to_dict("records"),
     page_size=10,
@@ -50,7 +50,7 @@ dropdown = html.Div(
         dcc.Dropdown(
             ["gdpPercap", "lifeExp", "pop"],
             "pop",
-            id="theme-explorer-sample-app-x-indicator",
+            id="sample_app-x-indicator",
             clearable=False,
         ),
     ],
@@ -61,7 +61,7 @@ checklist = html.Div(
     [
         dbc.Label("Select Continents"),
         dbc.Checklist(
-            id="theme-explorer-sample-app-x-continents",
+            id="sample_app-x-continents",
             options=[{"label": i, "value": i} for i in continents],
             value=continents,
             inline=True,
@@ -77,7 +77,7 @@ slider = html.Div(
             years[0],
             years[-1],
             5,
-            id="theme-explorer-sample-app-x-years",
+            id="sample_app-x-years",
             marks=None,
             tooltip={"placement": "bottom", "always_visible": True},
             value=[years[2], years[-2]],
@@ -107,12 +107,8 @@ controls = dbc.Card(
     body=True,
 )
 
-tab1 = dbc.Tab(
-    [dcc.Graph(id="theme-explorer-sample-app-x-line-chart")], label="Line Chart"
-)
-tab2 = dbc.Tab(
-    [dcc.Graph(id="theme-explorer-sample-app-x-scatter-chart")], label="Scatter Chart"
-)
+tab1 = dbc.Tab([dcc.Graph(id="sample_app-x-line-chart")], label="Line Chart")
+tab2 = dbc.Tab([dcc.Graph(id="sample_app-x-scatter-chart")], label="Scatter Chart")
 tab3 = dbc.Tab([table], label="Table", className="p-4")
 tabs = dbc.Tabs([tab1, tab2, tab3])
 
@@ -139,12 +135,12 @@ app.layout = dbc.Container(
 
 
 @callback(
-    Output("theme-explorer-sample-app-x-line-chart", "figure"),
-    Output("theme-explorer-sample-app-x-scatter-chart", "figure"),
-    Output("theme-explorer-sample-app-x-table", "data"),
-    Input("theme-explorer-sample-app-x-indicator", "value"),
-    Input("theme-explorer-sample-app-x-continents", "value"),
-    Input("theme-explorer-sample-app-x-years", "value"),
+    Output("sample_app-x-line-chart", "figure"),
+    Output("sample_app-x-scatter-chart", "figure"),
+    Output("sample_app-x-table", "data"),
+    Input("sample_app-x-indicator", "value"),
+    Input("sample_app-x-continents", "value"),
+    Input("sample_app-x-years", "value"),
     Input(ThemeChangerAIO.ids.radio("theme"), "value"),
 )
 def update_line_chart(indicator, continent, yrs, theme):

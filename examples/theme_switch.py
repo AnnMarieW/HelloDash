@@ -53,7 +53,7 @@ buttons = html.Div(
 )
 colors = html.Div(["Theme Colors:", buttons], className="mt-2")
 
-graph = html.Div(dcc.Graph(id="graph"), className="m-4")
+graph = html.Div(dcc.Graph(id="theme_switch-x-graph"), className="m-4")
 
 
 app.layout = dbc.Container(
@@ -64,7 +64,7 @@ app.layout = dbc.Container(
 
 
 @app.callback(
-    Output("graph", "figure"),
+    Output("theme_switch-x-graph", "figure"),
     Input(ThemeSwitchAIO.ids.switch("theme"), "value"),
 )
 def update_graph_theme(toggle):

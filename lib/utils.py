@@ -13,6 +13,10 @@ EXAMPLE_APPS_DIR_NAME = "examples"
 ROOT_DIR = Path(__file__).parent.parent
 EXAMPLE_APPS_DIR = os.path.join(ROOT_DIR, EXAMPLE_APPS_DIR_NAME)
 APP_ASSETS_DIR = os.path.join(ROOT_DIR, "assets")
+app_description = """
+A guide for styling Plotly Dash apps with a Bootstrap theme.  Shows how to include Bootstrap-themed Plotly figure templates,
+apply Bootstrap themes to Plotly Dash components and switch themes with a theme change component.
+"""
 
 
 def file_names():
@@ -163,3 +167,31 @@ discrete_colors = {
     "Vivid": px.colors.qualitative.Vivid,
     "Prism": px.colors.qualitative.Prism,
 }
+
+
+templates = [
+    "bootstrap",
+    "crulean",
+    "cosmo",
+    "darkly",
+    "flatly",
+    "journal",
+    "litera",
+    "lumen",
+    "lux",
+    "materia",
+    "minty",
+    "morph",
+    "pulse",
+    "quartz",
+    "sandstone",
+    "simplex",
+    "sketchy",
+    "slate",
+    "solar",
+    "spacelab",
+    "superhero",
+    "vapor",
+    "yeti",
+    "zephyr",
+]

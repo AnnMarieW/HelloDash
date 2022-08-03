@@ -10,7 +10,7 @@ markdown = dcc.Markdown(
     """
 The dcc.Markdown component works well for regular markdown text in both light and
 dark themes.  For code highlighting, adding `className="dbc"` will make code snippets styled in the 
-"GitHub Dark Dimmed" theme which (I think) looks better in both light and dark Boostrap themes. 
+"GitHub Dark Dimmed" theme which (I think) looks better in both light and dark Bootstrap themes. 
 
 See this forum post to learn more about [changing the theme of code highlights](https://community.plotly.com/t/how-to-change-the-theme-of-code-highlights-in-dcc-markdown/58004)
 
@@ -21,7 +21,7 @@ Here's a sample:
 from datetime import date
 
 datepicker_single = html.Div(
-    [dcc.DatePickerSingle(date=date(2021, 5, 10))]
+    [dcc.DatePickerSingle(date=date(2021, 5, 10))], className="dbc"
 )
 
 ```
@@ -34,10 +34,7 @@ with_theme = html.Div(
     [dbc.Label("dcc.Markdown with Bootstrap theme"), markdown], className="dbc"
 )
 
-
-without_theme = html.Div([dbc.Label("No theme", className="mt-4"), markdown])
-
-app.layout = dbc.Container([with_theme, without_theme])
+app.layout = dbc.Container([with_theme])
 
 if __name__ == "__main__":
     app.run_server(debug=True)

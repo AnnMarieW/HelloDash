@@ -1,9 +1,15 @@
 from dash import html, register_page
-
 from lib.code_and_show import example_app, make_app_first
+from lib.utils import app_description
 
-
-register_page(__name__, order=5, description="", name="Theme change components")
+register_page(
+    __name__,
+    order=5,
+    description=app_description,
+    title="Adding Themes/Theme Change Components",
+    name="Theme change components",
+    redirect_from=["/theme_change_components"],
+)
 
 filename = "theme_switch"
 
@@ -16,7 +22,7 @@ The [dash-bootstrap-templates]() library has **Two  [All-in-One](https://dash.pl
 
 This example shows how to use the `ThemeSwitchAIO`  
 
-To see how to add `ThemeChangerAIO`, like in this app,  see [TODO]()
+👈 To add `ThemeChangerAIO`, like in this Theme Explorer app, see the <dccLink href="/" children="Sample App" />
 
 ----------
 
