@@ -6,40 +6,29 @@ dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.mi
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
-
-with_theme = html.Div(
+sliders = html.Div(
     [
-        dbc.Label("dcc.Slider and dcc.RangeSlider with Bootstrap theme"),
         dcc.RangeSlider(0, 20, value=[5, 15], className="mb-2"),
         dcc.Slider(min=0, max=20, step=5, value=10, className="mb-2"),
         dcc.Slider(
-            0,
-            10,
-            1,
-            value=5,
-            marks=None,
-            tooltip={"placement": "bottom", "always_visible": True},
-        ),
-    ],
-    className="dbc",
-)
-
-
-without_theme = html.Div(
-    [
-        dbc.Label("No theme", className="mt-4"),
-        dcc.RangeSlider(0, 20, value=[5, 15], className="mb-2"),
-        dcc.Slider(min=0, max=20, step=5, value=10, className="mb-2"),
-        dcc.Slider(
-            0,
-            10,
-            1,
+            min=0,
+            max=10,
+            step=1,
             value=5,
             marks=None,
             tooltip={"placement": "bottom", "always_visible": True},
         ),
     ]
 )
+
+
+with_theme = html.Div(
+    [dbc.Label("dcc.Slider and dcc.RangeSlider with Bootstrap theme"), sliders],
+    className="dbc",
+)
+
+
+without_theme = html.Div([dbc.Label("No theme", className="mt-4"), sliders])
 
 app.layout = dbc.Container([with_theme, without_theme])
 

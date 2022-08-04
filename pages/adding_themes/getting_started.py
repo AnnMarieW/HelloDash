@@ -48,7 +48,7 @@ Adding `className="dbc"` minimally styles Dash components with your selected Boo
 
 You can add the dbc class as an external stylesheet like this:
 ```
-dbc_css = ("https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css")
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 ```

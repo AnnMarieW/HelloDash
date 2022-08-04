@@ -39,9 +39,12 @@ the radio buttons are formatted properly in the table and have the Bootstrap the
 """
 layout = html.Div(
     [
-        dcc.Markdown(intro, className="p4", dangerously_allow_html=True),
+        dcc.Markdown(
+            intro,
+            className="p4 dbc",
+            dangerously_allow_html=True,
+        ),
         change_theme_alert(auto_dismiss=False),
         example_app("datatable", make_layout=make_tabs, notes=notes),
     ],
-    className="dbc",
 )

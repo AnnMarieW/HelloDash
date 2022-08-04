@@ -23,6 +23,8 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 ```
 
 Then add `className="dbc"`.  See the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> section for more information.
+
+You will see the biggest difference in dark themes
 """
 
 docs_datepicker = """

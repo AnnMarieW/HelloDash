@@ -47,7 +47,12 @@ df = px.data.gapminder()
 heading = html.H2("Figure Template Demo", className="bg-primary text-white p-2 mb-3")
 
 app.layout = dbc.Container(
-    [heading, html.Label("Select a figure template"), dropdown, output_container],
+    [
+        heading,
+        html.Label("Select a figure template"),
+        dropdown,
+        dcc.Loading(output_container),
+    ],
     fluid=True,
 )
 

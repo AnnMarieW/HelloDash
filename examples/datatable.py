@@ -18,7 +18,6 @@ df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar
 
 table = html.Div(
     dash_table.DataTable(
-        id="table",
         columns=[{"name": i, "id": i} for i in df.columns],
         data=df.to_dict("records"),
         row_selectable="single",
@@ -28,10 +27,22 @@ table = html.Div(
         sort_action="native",
         style_table={"overflowX": "auto"},
     ),
-    className="dbc-row-selectable",
 )
 
-app.layout = dbc.Container(table, className="m-4 dbc")
+
+with_theme = html.Div(
+    [
+        html.H5("DataTable with Bootstrap theme"),
+        table,
+    ],
+    className="dbc dbc-row-selectable",
+)
+
+
+without_theme = html.Div([html.H5("No theme", className="mt-4"), table])
+
+app.layout = dbc.Container([with_theme, without_theme])
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
