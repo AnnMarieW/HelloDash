@@ -23,6 +23,17 @@ theme_explorer_url = "https://hellodash.pythonanywhere.com/theme_explorer"
 examples_index_url = "https://dash-example-index.herokuapp.com/"
 dash_docs_url = "https://dash.plotly.com/"
 dbt_url = "https://github.com/AnnMarieW/dash-bootstrap-templates"
+dash_forum_url = "https://community.plotly.com/"
+
+# other:
+dmc_docs_url = "https://www.dash-mantine-components.com/"
+dash_extensions_docs = "https://www.dash-extensions.com/"
+dash_tools_url = "https://github.com/andrew-hossack/dash-tools"
+multi_page_app_demos = "https://github.com/AnnMarieW/dash-multi-page-app-demos"
+
+# tutorials
+formattable_url = "https://formattable.pythonanywhere.com/"
+legend_and_annotations = "https://plotly-annotations.herokuapp.com/"
 
 
 theme_changer = ThemeChangerAIO(
@@ -139,6 +150,22 @@ def make_sidebar_category(category="/", title=""):
     )
 
 
+other_dropdown = dbc.DropdownMenu(
+    [
+        dbc.DropdownMenuItem("Dash Mantine Components docs", href=dmc_docs_url),
+        dbc.DropdownMenuItem("Dash Extensions docs", href=dash_extensions_docs),
+        dbc.DropdownMenuItem("Multi-Page App examples", href=multi_page_app_demos),
+        dbc.DropdownMenuItem(
+            "Deploy to Heroku",
+            href=dash_tools_url,
+        ),
+    ],
+    label="more",
+    toggle_class_name="m-3",
+    color="light",
+)
+
+
 def make_side_nav():
     return html.Div(
         [
@@ -177,6 +204,9 @@ def make_side_nav():
                                     "Dash Docs", href=dash_docs_url, target="_blank"
                                 ),
                                 dbc.NavLink(
+                                    "Dash Forum", href=dash_forum_url, target="_blank"
+                                ),
+                                dbc.NavLink(
                                     "Dash Bootstrap Components Docs",
                                     href=dbc_home_url,
                                     target="_blank",
@@ -189,6 +219,7 @@ def make_side_nav():
                                     href=dbt_url,
                                     target="_blank",
                                 ),
+                                other_dropdown,
                             ],
                             vertical=True,
                         ),

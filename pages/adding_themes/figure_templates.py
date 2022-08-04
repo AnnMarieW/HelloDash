@@ -1,6 +1,6 @@
 from dash import html, dcc, register_page
 
-from lib.code_and_show import example_app, make_app_first
+from lib.code_and_show import example_app, make_app_first, make_tabs
 from lib.utils import app_description
 
 
@@ -16,18 +16,27 @@ notes_first = """
 --------
 ## Plotly Figure Templates with a Bootstrap theme
 
-Example of the "minty" theme applied to the figure. See all 26 themes below
-
 """
 
 
 layout = html.Div(
     [
-        example_app("adding_theme_figure_template", notes_first=notes_first),
-        html.Hr(),
-        html.H2("All Themes"),
+        html.Div(
+            example_app(
+                "all_figure_templates",
+                notes_first=notes_first,
+                show_code=False,
+                make_layout=make_app_first,
+            ),
+            className="p-4",
+        ),
         example_app(
-            "all_figure_templates", show_code=False, make_layout=make_app_first
+            "adding_theme_figure_template",
+            notes_first="### Example of the 'minty' theme applied to the figure.",
+        ),
+        html.Div(
+            example_app("figure_templates_4graphs", make_layout=make_tabs),
+            className="dbc",
         ),
     ],
     className="dbc",

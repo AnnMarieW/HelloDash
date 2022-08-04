@@ -89,6 +89,17 @@ notes3 = """
 
 """
 
+notes4 = """
+
+----------
+
+#### More figure template examples:
+
+![image](https://user-images.githubusercontent.com/72614349/143956545-769a00f8-92a3-44aa-8718-bdbb32b2464e.png#fluid600)
+![image](https://user-images.githubusercontent.com/72614349/143956649-32b620c7-231a-4de6-ad3a-8fb0863da2a4.png#fluid600)
+
+"""
+
 
 layout = html.Div(
     [
@@ -98,7 +109,7 @@ layout = html.Div(
             notes_first=notes1,
         ),
         dcc.Markdown(notes2, className="p-4", dangerously_allow_html=True),
-        example_app("adding_theme_figure_template", notes_first=notes3),
+        example_app("adding_theme_figure_template", notes_first=notes3, notes=notes4),
     ],
     className="dbc",
 )

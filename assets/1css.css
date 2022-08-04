@@ -5,9 +5,14 @@ blockquote {
     margin-bottom: 2rem;
     margin-left: 0rem;
 }
-
 img[src*="#fluid"] {
    width:100%;
+   height:auto;
+}
+
+
+img[src*="#fluid600"] {
+   max-width: 600px;
    height:auto;
 }
 
