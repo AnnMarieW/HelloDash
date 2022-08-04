@@ -1,95 +1,65 @@
-from dash import Dash, dcc, html, Input, Output
+import dash
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-import util
-from apps import (
-    app_dcc_gallery,
-    app_figure_templates,
-    app_dbc_gallery,
-    app_theme_change_components,
+
+from lib.utils import example_apps
+
+from lib.nav import theme_explorer_header, make_side_nav
+
+
+# syntax highlighting light or dark
+light_hljs = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/stackoverflow-light.min.css"
+dark_hljs = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/stackoverflow-dark.min.css"
+
+
+# stylesheet with the .dbc class
+dbc_css = (
+    "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 )
-
-
-# specify version or latest version
-# dbc_css = ("https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.0.1/dbc.min.css")
-dbc_css1 = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css"
-app_description = """
-A guide for styling Plotly Dash apps with a Bootstrap theme.  Shows how to include Bootstrap-themed Plotly figure templates,
-apply Bootstrap themes to Plotly Dash components and switch themes with a theme change component.
-"""
-app_title = "Dash Bootstrap Theme Explorer"
-
-metas = [
-    {"property":"twitter:card", "content":app_description},
-    {"property":"twitter:url", "content":"https://metatags.io/"},
-    {"property":"twitter:title", "content":app_title},
-    {"property":"twitter:description", "content":app_description},
-    {"property":"twitter:image", "content":"/assets/home.jpeg"},
-
-    {"property":"og:title", "content":app_title},
-    {"property":"og:type", "content":"website"},
-    {"property":"og:description", "content":app_description},
-    {"property":"og:image", "content":"/assets/home.jpeg"}
-]
-
-
-
 
 app = Dash(
     __name__,
+    use_pages=True,
     external_stylesheets=[
         dbc.themes.SPACELAB,
         dbc.icons.BOOTSTRAP,
-        dbc_css1,
+        dbc.icons.FONT_AWESOME,
+        dbc_css,
+        dark_hljs,
     ],
     suppress_callback_exceptions=True,
-    meta_tags=[
-        {"name": "viewport", "content": "width=device-width, initial-scale=1"},
-        {"name": "description", "content": app_description},
-    ] + metas,
-    title="Dash Bootstrap Theme Explorer",
 )
+server = app.server
+
+
+for k in example_apps:
+    new_callback_map = example_apps[k].callback_map
+    new_callback_list = example_apps[k]._callback_list
+
+    app.callback_map.update(new_callback_map)
+    app._callback_list.extend(new_callback_list)
+
 
 app.layout = dbc.Container(
     [
-        dcc.Location(id="url", refresh=False),
-        util.theme_explorer_header,
+        theme_explorer_header,
+        dcc.Location(id="url", refresh=True),
         dbc.Row(
             [
-                dbc.Col(util.side_nav, width=4, lg=2),
-                dbc.Col(id="page-content", width=8, lg=10),
+                dbc.Col(make_side_nav(), xs=4, md=3, xl=2),
+                dbc.Col(
+                    html.Div(
+                        dash.page_container, className="p-2", style={"minWidth": 600}
+                    ),
+                    xs=6,
+                    md=9,
+                    xl=10,
+                ),
             ]
         ),
     ],
     fluid=True,
 )
-
-
-@app.callback(Output("page-content", "children"), Input("url", "pathname"))
-def display_page(pathname):
-    if pathname.startswith("/theme_explorer"):
-        return app_dbc_gallery.layout
-    if pathname == "/figure_templates":
-        return app_figure_templates.layout
-    if pathname == "/about_dbc_css":
-        return app_dcc_gallery.layout
-    if pathname == "/theme_change_components":
-        return app_theme_change_components.layout
-    # elif pathname == "/cheatsheet":
-    #     return cheatsheet.layout
-    #     Note - the cheatsheet is an external site and is
-    #     controlled in the button and the link directly
-    if pathname == "/dash_labs":
-        return html.Div(
-            """
-        The Dash Labs Explorer was originally created as a live demo of the templates being developed in version 0.4.0.
-          Based on community feedback, these templates are not longer being developed. 
-          This page is a placeholder for now -- it will be used to showcase other Dash Labs features in the future. 
-        """
-        )
-    if pathname == "/gallery":
-        return html.H2("The app gallery is being updated - please check back later")
-    else:
-        return app_dbc_gallery.layout
 
 
 if __name__ == "__main__":

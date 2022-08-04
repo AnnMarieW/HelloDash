@@ -1,8 +1,0 @@
-dash>=2.0.0
-pandas
-pandas_datareader
-xlrd
-dash-bootstrap-components>=1.0.0
-dash_bootstrap_templates>=1.0.4
-openpyxl
-
