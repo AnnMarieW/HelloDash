@@ -154,14 +154,14 @@ def make_app_first(code, show_app, show_code, notes, notes_first):
             else None,
             dcc.Markdown(
                 notes,
-                className="m-4",
+                className="mt-4",
                 link_target="_blank",
                 dangerously_allow_html=True,
             )
             if notes
             else None,
         ],
-        className="p-2",
+        className="p-4",
     )
 
 

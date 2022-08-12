@@ -11,7 +11,7 @@ register_page(
     redirect_from=["/theme_change_components"],
 )
 
-filename = "theme_switch"
+
 
 notes_first = """
 ## Adding a Theme Switch component
@@ -31,7 +31,52 @@ This example shows how to use the `ThemeSwitchAIO`
 ----------
 """
 
-notes = """
+
+customize = """
+## Customizing a theme change component
+
+You can customize the `ThemeSwitchAIO` and the `ThemeChangerAIO` by passing props in a dict to the underlying components.
+See the reference section below for more details and see the `dash-bootstraps-components` docs for information on the props 
+available for each component.
+
+For example, you can set `persistence=True` in the underlying `dbc.RadiioItems` component in the `ThemeChangerAIO`:
+
+```python
+ThemeChangerAIO(aio_id="theme", radio_props={"persistence": True})
+```
+Here isn an example of how to customize the "theme change" button:
+
+```
+ThemeChangerAIO(
+    aio_id="theme",
+    button_props={
+        "color": "danger",
+        "children": "select theme",
+    },
+)
+```
+
+This ThemeChangerAIO will open the `Offcanvas` component on the bottom of the screen:
+
+```
+ThemeChangerAIO(aio_id="theme", offcanvas_props={"placement":"bottom"})
+```
+
+Change the icons in the theme switch component to Bootstrap icons instead of the default FontAwesome icons like this:
+
+```
+ ThemeSwitchAIO(
+    aio_id="theme",
+    icons={"left": "bi bi-moon", "right": "bi bi-sun"},
+),
+```
+
+
+
+"""
+
+
+reference = """
 ## ThemeChangerAIO Reference
 **ThemeChangerAIO** is an All-in-One component  composed  of a parent `html.Div` with
 the following components as children:
@@ -76,18 +121,15 @@ by changing the theme urls in the "`store`" component.
 The All-in-One component dictionary IDs are available as
 - ThemeSwitchAIO.ids.switch(aio_id)
 - ThemeSwitchAIO.ids.store(aio_id)
-
-
-
 """
 
 
 layout = html.Div(
     example_app(
-        filename,
+        "theme_switch",
         make_layout=make_app_first,
         notes_first=notes_first,
-        notes=notes,
+        notes=customize + reference,
         run=False,
     ),
     className="dbc",

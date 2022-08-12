@@ -21,6 +21,7 @@ plotly_logo = "https://user-images.githubusercontent.com/72614349/182969599-5ae4
 plotly_logo_dark = "https://user-images.githubusercontent.com/72614349/182967824-c73218d8-acbf-4aab-b1ad-7eb35669b781.png"
 plotly_ddk_url = "https://plotly.com/dash/design-kit/"
 dbc_home_url = "https://dash-bootstrap-components.opensource.faculty.ai/"
+dbc_components_url = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
 cheatsheet_url = "https://dashcheatsheet.pythonanywhere.com/"
 theme_explorer_url = "https://hellodash.pythonanywhere.com/theme_explorer"
 examples_index_url = "https://dash-example-index.herokuapp.com/"
@@ -232,7 +233,7 @@ def make_side_nav():
                                 ),
                                 dbc.NavLink(
                                     "Dash Bootstrap Components Docs",
-                                    href=dbc_home_url,
+                                    href=dbc_components_url,
                                     target="_blank",
                                 ),
                                 dbc.NavLink(
