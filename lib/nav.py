@@ -253,5 +253,5 @@ def make_side_nav():
                 ],
             ),
         ],
-        className="sticky-top",
+        className="sticky-top vh-100 overflow-scroll",
     )
