@@ -181,10 +181,17 @@ other_dropdown = dbc.DropdownMenu(
             target="_blank",
         ),
         dbc.DropdownMenuItem(
-            "Deploy to Heroku",
-            href=dash_tools_url,
+            "DataTable Number Formatting",
+            href=formattable_url,
             target="_blank",
         ),
+        dbc.DropdownMenuItem(
+            "James Webb Telescope App",
+            href="/jwt",
+            target="_blank",
+            external_link=True
+        ),
+
     ],
     label="more",
     toggle_class_name="m-3",

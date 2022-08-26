@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-from examples.cheatsheets import callbacks, components, figures, layouts, hello_world, share
+from examples.cheatsheets import callbacks, components, figures, layouts, hello_world
 
 app=Dash(__name__)
 
@@ -25,7 +25,6 @@ cards = [
     make_card("Callbacks - Randomly Generated IDs", callbacks.generated_id),
     make_card("Callbacks - Multiple Outputs/Inputs", callbacks.multiple),
     make_card("Callbacks - Which input triggered", callbacks.ctx),
-    make_card("Share the App", share.deploy),
     make_card("Basic Figures", figures.basic),
     make_card("Statistical Figures", figures.statistical),
     make_card("Scientific Figures", figures.scientific),
