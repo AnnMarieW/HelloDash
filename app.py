@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 from lib.utils import example_apps
@@ -29,7 +29,6 @@ app = Dash(
     ],
     suppress_callback_exceptions=True,
 )
-server = app.server
 
 
 for k in example_apps:
@@ -46,20 +45,40 @@ app.layout = dbc.Container(
         dcc.Location(id="url", refresh=True),
         dbc.Row(
             [
-                dbc.Col(make_side_nav(), xs=4, md=3, xl=2),
+                dbc.Col(make_side_nav(), xs=4, md=3, xl=2, id="sidebar"),
                 dbc.Col(
                     html.Div(
-                        dash.page_container, className="p-2", style={"minWidth": 600}
+                        dash.page_container, className="p-2", style={"minWidth": 600},
                     ),
                     xs=6,
                     md=9,
                     xl=10,
+                    id="content"
                 ),
-            ]
+            ],
+
         ),
     ],
     fluid=True,
 )
+
+
+@app.callback(
+    Output("header", "style"),
+    Output("sidebar", "style"),
+    Output("content", "xs"),
+    Output("content", "md"),
+    Output("content", "xl"),
+    Output("content", "children"),
+    Input("url", "pathname")
+)
+def hide_nav(path):
+    # Hide header and sidebar if james webb telescope page
+    print(path)
+    if path.startswith("/webb") or path.startswith("/james"):
+        print("y")
+        return {"display":"none"}, {"display":"none"}, 12, 12, 12, dash.page_container
+    return {"minHeight": 375}, {}, 6, 9, 10, dash.no_update
 
 
 if __name__ == "__main__":

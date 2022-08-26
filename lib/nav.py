@@ -3,7 +3,7 @@ This is a collection of nav components and headers
 
 """
 import dash
-from dash import dcc, html
+from dash import dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import ThemeChangerAIO
 import pathlib
@@ -134,6 +134,7 @@ theme_explorer_header = html.Div(
     ),
     className="p-3 bg-light text-dark rounded-3 mb-4  position-relative",
     style={"minHeight": 375},
+    id="header"
 )
 
 
@@ -255,3 +256,14 @@ def make_side_nav():
         ],
         className="sticky-top vh-100 overflow-scroll",
     )
+
+
+@callback(
+    Output(ThemeChangerAIO.ids.radio("theme"), "value"),
+    Input("url", "pathname")
+)
+def update_theme(path):
+    # Update theme for james webb telescope
+    if path.startswith("/webb") or path.startswith("/james"):
+        return dbc.themes.CYBORG
+    return dash.no_update
