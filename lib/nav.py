@@ -55,7 +55,7 @@ def make_header(text, spacing="mt-4"):
 
 
 theme_explorer_header = html.Div(
-    dbc.Container(
+    html.Div(
         [
             html.H1(
                 "Dash Bootstrap Theme Explorer",
@@ -129,10 +129,8 @@ theme_explorer_header = html.Div(
                 className="mt-4",
             ),
         ],
-        fluid=True,
-        className="py-2",
     ),
-    className="p-3 bg-light text-dark rounded-3 mb-4  position-relative",
+    className="p-3 bg-light text-dark rounded-3 mb-4 position-relative",
     style={"minHeight": 375},
     id="header"
 )

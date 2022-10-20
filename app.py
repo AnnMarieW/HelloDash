@@ -45,12 +45,12 @@ app.layout = dbc.Container(
         dcc.Location(id="url", refresh=True),
         dbc.Row(
             [
-                dbc.Col(make_side_nav(), xs=4, md=3, xl=2, id="sidebar"),
+                dbc.Col(make_side_nav(), xs=5, md=3, xl=2, id="sidebar"),
                 dbc.Col(
                     html.Div(
                         dash.page_container, className="p-2", style={"minWidth": 600},
                     ),
-                    xs=6,
+                    xs=7,
                     md=9,
                     xl=10,
                     id="content"
