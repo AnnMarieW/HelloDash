@@ -131,7 +131,7 @@ theme_explorer_header = html.Div(
         ],
     ),
     className="p-3 bg-light text-dark rounded-3 mb-4 position-relative",
-    style={"minHeight": 375},
+    style={"minHeight": 375, "minWidth": 800},
     id="header"
 )
 

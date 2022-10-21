@@ -41,8 +41,8 @@ alerts = html.Div(
 
 examples =dcc.Markdown("""
 ## Examples
-Here are just a few examples to get you started.  See all the utility classes in the Dash Boostrap Cheatsheet!
-""")
+Here are just a few examples to get you started.  See all the utility classes in the [Dash Boostrap Cheatsheet!](https://dashcheatsheet.pythonanywhere.com/)
+""",  link_target="_blank")
 
 
 layout = html.Div(

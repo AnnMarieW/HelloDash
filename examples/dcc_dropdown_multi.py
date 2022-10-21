@@ -9,6 +9,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 with_theme = html.Div(
     [
+        html.H3("Dropdowns - Multi"),
         dbc.Label("dcc.Dropdown multi with Bootstrap theme"),
         dcc.Dropdown(
             ["Apple", "Carrots", "Chips", "Cookies"], ["Cookies", "Carrots"], multi=True

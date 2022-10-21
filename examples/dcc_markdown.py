@@ -31,7 +31,11 @@ datepicker_single = html.Div(
 )
 
 with_theme = html.Div(
-    [dbc.Label("dcc.Markdown with Bootstrap theme"), markdown], className="dbc"
+    [
+        html.H3("Markdown"),
+        dbc.Label("dcc.Markdown with Bootstrap theme"),
+        markdown
+    ], className="dbc"
 )
 
 app.layout = dbc.Container([with_theme])

@@ -40,23 +40,31 @@ The `dash-core-components`, the Dash `DataTable` and Plotly figures are not auto
 An easy way to make your Dash components look better with a Bootstrap theme is to use the stylesheet from
  the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library. This stylesheet defines the "dbc" class.
 
-Adding `className="dbc"` minimally styles Dash components with your selected Bootstrap theme:
+This stylesheet defines the `dbc` class.  It's designed to minimally style Dash components with your selected Bootstrap theme:
 - Makes the text readable in both light and dark themes.
 - Uses theme's font-family.
 - Changes the accent color to the theme's primary color
 
 
-You can add the dbc class as an external stylesheet like this:
+You can add the stylesheet to your app by downloading it and including it as a .css file in the `assets` folder.  Or add it like this:
 ```
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 ```
+>  
+>
+> _Pro Tip_  
+> See a [human readable stylesheet](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) by changing the the url above to `/dbc.css` instead of `/dbc.min.css`. 
+>
 
-> See a human readable stylesheet by changing the  the the url above to `/dbc.css` instead of `/dbc.min.css`.
 
 
-Add  `className="dbc"` to the outer container of the app or a component like this:
+
+
+
+Apply the `dbc` class by adding it to the `className` prop of a component.  If you add it to the outer container of the app
+ then it will apply to the entire app.  For example:
 ```
 app.layout = dbc.Container(
     [
@@ -108,7 +116,7 @@ layout = html.Div(
             make_layout=make_app_first,
             notes_first=notes1,
         ),
-        dcc.Markdown(notes2, className="p-4", dangerously_allow_html=True),
+        dcc.Markdown(notes2, className="p-4", dangerously_allow_html=True, link_target="_blank"),
         example_app("adding_theme_figure_template", notes_first=notes3, notes=notes4),
     ],
     className="dbc",

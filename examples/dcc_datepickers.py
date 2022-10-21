@@ -18,6 +18,8 @@ datepicker_range = html.Div(
 
 with_theme = html.Div(
     [
+        html.H3("Datepickers"),
+        html.H5("Select a date to see the theme applied to the calendar"),
         dbc.Label("dcc.DatePickerSingle and dcc.DatePickerRange with Bootstrap theme"),
         datepicker_single,
         datepicker_range,
@@ -29,8 +31,8 @@ with_theme = html.Div(
 without_theme = html.Div(
     [dbc.Label("No theme", className="mt-4"), datepicker_single, datepicker_range]
 )
-note = html.H4("Be sure to select a date to see the theme applied to the calendar!")
-app.layout = dbc.Container([note, with_theme, without_theme])
+
+app.layout = dbc.Container([with_theme, without_theme])
 
 if __name__ == "__main__":
     app.run_server(debug=True)
