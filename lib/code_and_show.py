@@ -190,12 +190,12 @@ def make_tabs(code, show_app, show_code, notes, notes_first):
                     [
                         dbc.Tab(
                             show_app,
-                            label="App",
+                            label="Run App",
                             className="p-4",
                         ),
                         dbc.Tab(
                             make_code_div(code),
-                            label="Code",
+                            label="View Code",
                             className="p-4",
                         ),
                     ],
@@ -212,5 +212,5 @@ def make_tabs(code, show_app, show_code, notes, notes_first):
             ],
             className="p-4",
         ),
-        className="border shadow-sm m-4",
+        className="border shadow m-4",
     )

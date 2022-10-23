@@ -22,9 +22,15 @@ dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.mi
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 ```
 
-Then add `className="dbc"`.  See the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> section for more information.
+Then add `className="dbc"`. 
+ 
+For more information, see the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> 
+section. To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
+change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
 
-You will see the biggest difference in dark themes
+
+Note: In the examples below, you will see the biggest style difference if you change to a dark theme.
+
 """
 
 docs_datepicker = """
@@ -45,8 +51,8 @@ Dash docs:  [dcc.Dropdown](https://dash.plotly.com/dash-core-components/dropdown
 docs_tabs = """
 See also [dbc.Tabs](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/) which are automatically styled with a Bootstrap theme.    
 
-Note that the dcc.Tabs are easy to customizable with inline styles or css.  
-See the Dash documentation [dcc.Tab](https://dash.plotly.com/dash-core-components/tab).
+Note that the dcc.Tabs can also be styled using Bootstrap utility classes in the `className` prop
+or CSS in the `style` prop.  See the Dash documentation [dcc.Tab](https://dash.plotly.com/dash-core-components/tab).
     """
 
 

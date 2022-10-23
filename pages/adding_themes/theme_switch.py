@@ -16,7 +16,7 @@ register_page(
 notes_first = """
 ## Adding a Theme Switch component
 
-The [dash-bootstrap-templates]() library has **Two  [All-in-One](https://dash.plotly.com/all-in-one-components) components** to change themes in a Dash app.
+The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library has **Two  [All-in-One](https://dash.plotly.com/all-in-one-components) components** to change themes in a Dash app.
   - `ThemeSwitchAIO` toggles between two themes. 
   - `ThemeChangerAIO` select from multiple themes.
 
