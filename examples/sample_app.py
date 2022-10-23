@@ -110,7 +110,7 @@ controls = dbc.Card(
 tab1 = dbc.Tab([dcc.Graph(id="sample_app-x-line-chart")], label="Line Chart")
 tab2 = dbc.Tab([dcc.Graph(id="sample_app-x-scatter-chart")], label="Scatter Chart")
 tab3 = dbc.Tab([table], label="Table", className="p-4")
-tabs = dbc.Tabs([tab1, tab2, tab3])
+tabs = dbc.Card(dbc.Tabs([tab1, tab2, tab3]))
 
 app.layout = dbc.Container(
     [

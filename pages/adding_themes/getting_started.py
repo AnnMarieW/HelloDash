@@ -1,6 +1,7 @@
 from dash import register_page, html, dcc
+import dash_bootstrap_components as dbc
 from lib.code_and_show import example_app, make_app_first
-from lib.utils import app_description
+from lib.utils import app_description, theme_dark_md, themes_light_md
 
 register_page(
     __name__,
@@ -32,29 +33,33 @@ Find more info about themes at [Bootswatch.com](https://bootswatch.com/)
 ----------
 """
 
+theme_accordiion = dbc.Accordion(
+    [
+        dbc.AccordionItem(dcc.Markdown(theme_dark_md, className="px-4"), title="See dark themes"),
+        dbc.AccordionItem(dcc.Markdown(themes_light_md, className="px-4"), title="See light themes"),
+    ],
+    start_collapsed=True
+)
+
+
 notes2 = """
 ----------
 ## Apply Bootstrap Theme to Dash Core Components and DataTable
 
-The `dash-core-components`, the Dash `DataTable` and Plotly figures are not automatically styled with a Bootstrap theme.
-An easy way to make your Dash components look better with a Bootstrap theme is to use the stylesheet from
- the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library. This stylesheet defines the "dbc" class.
+The `dash-core-components`, the Dash `DataTable` and Plotly figures are not automatically styled with a Bootstrap theme.  
 
+An easy way to make your Dash components look better with a Bootstrap theme is to use the stylesheet from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library.
 This stylesheet defines the `dbc` class.  It's designed to minimally style Dash components with your selected Bootstrap theme:
 - Makes the text readable in both light and dark themes.
 - Uses theme's font-family.
 - Changes the accent color to the theme's primary color
 
-
 You can add the stylesheet to your app by downloading it and including it as a .css file in the `assets` folder.  Or add it like this:
 ```
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
-
 ```
->  
->
-> _Pro Tip_  
+
 > See a [human readable stylesheet](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) by changing the the url above to `/dbc.css` instead of `/dbc.min.css`. 
 >
 
@@ -111,11 +116,9 @@ notes4 = """
 
 layout = html.Div(
     [
-        example_app(
-            "adding_theme",
-            make_layout=make_app_first,
-            notes_first=notes1,
-        ),
+        dcc.Markdown([notes1], dangerously_allow_html=True),
+        theme_accordiion,
+
         dcc.Markdown(notes2, className="p-4", dangerously_allow_html=True, link_target="_blank"),
         example_app("adding_theme_figure_template", notes_first=notes3, notes=notes4),
     ],

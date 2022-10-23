@@ -12,8 +12,7 @@ register_page(
     name="Figure templates",
 )
 
-notes_first = """
---------
+intro = """
 ## Plotly Figure Templates with a Bootstrap theme
 
 """
@@ -21,19 +20,17 @@ notes_first = """
 
 layout = html.Div(
     [
+        dcc.Markdown(intro),
         html.Div(
             example_app(
                 "all_figure_templates",
-                notes_first=notes_first,
                 show_code=False,
                 make_layout=make_app_first,
             ),
             className="p-4",
         ),
-        example_app(
-            "adding_theme_figure_template",
-            notes_first="### Example of the 'minty' theme applied to the figure.",
-        ),
+        dcc.Markdown("### Example of the 'minty' theme applied to the figure."),
+        example_app("adding_theme_figure_template",make_layout=make_tabs),
         html.Div(
             example_app("figure_templates_4graphs", make_layout=make_tabs),
             className="dbc",

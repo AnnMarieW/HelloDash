@@ -62,22 +62,6 @@ app.layout = dbc.Container(
     fluid=True,
 )
 
-#
-# @app.callback(
-#     Output("header", "style"),
-#     Output("sidebar", "style"),
-#     Output("content", "xs"),
-#     Output("content", "md"),
-#     Output("content", "xl"),
-#     Output("content", "children"),
-#     Input("url", "pathname")
-# )
-# def hide_nav(path):
-#     # Hide header and sidebar if james webb telescope page
-#     if path.startswith("/webb") or path.startswith("/james"):
-#         return {"display":"none"}, {"display":"none"}, 12, 12, 12, dash.page_container
-#     return {"minHeight": 375}, {}, 6, 9, 10, dash.no_update
-
 
 if __name__ == "__main__":
     app.run_server(debug=True)

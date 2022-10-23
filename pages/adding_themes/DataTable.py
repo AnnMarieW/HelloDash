@@ -17,9 +17,21 @@ Add this stylesheet to your app:
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 ```
-Then add `className="dbc"`.  See the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> section for more information.  
+To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
+change the the url above to `/dbc.css` instead of `/dbc.min.css`.
+
+Add `className="dbc"`  
  
-Here's a demo with 2 themes.  See a live example below where you can see this table with any theme.
+Or if you have selectable rows the DataTable, this will style the radio buttons with a Bootstrap theme:
+
+`className="dbc dbc-row-selectable"` 
+
+For an example, see the "view code" tab below or  <dccLink href="/adding-themes/getting-started" children="Getting Started" /> 
+section.  
+  
+------------
+
+Here's a gif to demo two themes.  Use the app below and the "Change Themes" button to see this table with any of the 26 themes.
 
 
 ### Vapor theme:
@@ -34,8 +46,6 @@ notes = """
 
 Dash docs: [DataTable](https://dash.plotly.com/datatable)
 
-If you are using `row_selectable` prop in the datatable, be sure to add  `className="dbc-row-selectable"` so that
-the radio buttons are formatted properly in the table and have the Bootstrap theme applied.
 """
 layout = html.Div(
     [
