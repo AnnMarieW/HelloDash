@@ -1,4 +1,4 @@
-from dash import Dash, dcc, html, callback, Input, Output
+from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
@@ -7,8 +7,9 @@ from dash_bootstrap_templates import load_figure_template
 
 templates = [
     "bootstrap",
-    "crulean",
+    "cerulean",
     "cosmo",
+    "cyborg",
     "darkly",
     "flatly",
     "journal",
@@ -27,6 +28,7 @@ templates = [
     "solar",
     "spacelab",
     "superhero",
+    "united",
     "vapor",
     "yeti",
     "zephyr",

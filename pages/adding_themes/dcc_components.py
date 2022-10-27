@@ -23,14 +23,28 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 ```
 
 Then add `className="dbc"`. 
- 
-For more information, see the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> 
-section. To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
-change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
+
+That's it!  
+
+So how does this work?  To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
+change the the url above to `/dbc.css` instead of `/dbc.min.css`. The style sheet uses CSS selectors for the components
+and updates the style using a Bootstrap variable name.  That way, when you change the theme, the components will automatically
+update to the theme's colors and fonts.  Here's an example:
+
+```css
+.dbc .Select input {
+  color: var(--bs-body-color);
+}
+```
 
 
-Note: In the examples below, you will see the biggest style difference if you change to a dark theme.
+#### Tips
+- If you add `className="dbc"` to the outer container of your app, you do not need to add it to every component.  See an
+example in the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> section.
+- In the examples below, use the Theme Change button to see the components with different themes. You will see the biggest style difference in a dark theme.
 
+
+### Examples
 """
 
 docs_datepicker = """

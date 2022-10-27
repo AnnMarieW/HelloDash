@@ -171,8 +171,9 @@ discrete_colors = {
 
 templates = [
     "bootstrap",
-    "crulean",
+    "cerulean",
     "cosmo",
+    "cyborg",
     "darkly",
     "flatly",
     "journal",
@@ -191,6 +192,7 @@ templates = [
     "solar",
     "spacelab",
     "superhero",
+    "united",
     "vapor",
     "yeti",
     "zephyr",

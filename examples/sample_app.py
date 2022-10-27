@@ -1,17 +1,6 @@
 """
-This app applies Bootstrap themes to Dash components and Plotly figures by
-using the stylesheet, figure templates and theme change component
-from the dash-bootstrap-templates library: https://github.com/AnnMarieW/dash-bootstrap-templates
-
-`className="dbc"`  Use this with Dash Core Components and the DataTable to:
-- make the text readable in both light and dark themes.
-- use the font from the Bootstrap theme's font-family.
-- change the accent color to the theme's primary color
-
-The figure templates applies Bootstrap themes to Plotly figures.  These figure
-templates are included in the theme change component.
-
-If you run this app locally, add the theme change component to the layout
+****** Important! *******
+If you run this app locally, un-comment line 113 to add the ThemeChangerAIO component to the layout
 """
 
 from dash import Dash, dcc, html, dash_table, Input, Output, callback
@@ -25,7 +14,6 @@ continents = df.continent.unique()
 
 # stylesheet with the .dbc class
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
-
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 header = html.H4(
@@ -42,6 +30,7 @@ table = dash_table.DataTable(
     filter_action="native",
     sort_action="native",
     style_table={"overflowX": "auto"},
+    row_selectable="multi",
 )
 
 dropdown = html.Div(
@@ -130,7 +119,7 @@ app.layout = dbc.Container(
         ),
     ],
     fluid=True,
-    className="dbc",
+    className="dbc dbc-row-selectable",
 )
 
 
