@@ -15,8 +15,8 @@ register_page(
 intro = """
 ## Plotly Figure Templates with a Bootstrap theme
 
-Plotly has several built-in [figure templates](https://plotly.com/python/templates/) to quickly change the look of your figure.
-We sill show you how to add figure templates with a Bootstrap theme from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)
+Plotly has built-in [figure templates](https://plotly.com/python/templates/) to quickly change the look of figures.
+We'll show you how to add Bootstrap themed figure templates from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)
  library and use them in your Dash app.
 
 
@@ -44,13 +44,12 @@ if __name__ == "__main__":
 
 ------------
 
-### Bootstrap Figure Template
+### Bootstrap Figure Templates
 
 
-Here is the same figure, but it now uses the "sketchy" themed figure template.  We make this template available in our app by using
-the `load_figure_template` function from the  `dash_bootstrap_templates` library.  This function will add the "sketchy"
- template and make it the default, so you don't need to specify the template when you define your figure. All of the figures in the app will now
-have the "sketchy" theme.  
+Here is the same figure, with the "sketchy" themed figure template.  Use the `load_figure_template` function from the
+  `dash_bootstrap_templates` library to make a template available in the app.  This example adds the "sketchy"
+ template. This is now the default template, so all the figures will have the "sketchy" theme.  
 
 ```
 from dash import Dash, html, dcc
@@ -78,7 +77,7 @@ if __name__ == "__main__":
 
 ### Changing the Figure Template
 
-In the app above, you can change back to the default ("plotly") figure template by using the `template` prop in the figure:
+To change the template back to the default ("plotly") figure template, use the `template` prop:
 
 ```
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", template="plotly")
@@ -89,15 +88,14 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 
 ### Loading multiple Figure Templates
 
-You can make other Bootstrap themed figure templates available in your app by using a list instead of a string in the
-`load_figure_template` function:
+To add more Bootstrap themed figure templates, use a list instead of a string in the `load_figure_template` function:
 
 ```
 load_figure_template(["sketchy", "cyborg", "minty"])
 ```
 
-The "sketchy" theme will still be the default (because it's the first template in the list). However, the other templates
- are now available and can be used in a figure by setting the `template` prop:
+The "sketchy" theme is the default (because it's the first template in the list). However, the other templates
+ can now be used in the app by setting the `template` prop:
 ```
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", template="cyborg")
 ```
@@ -108,9 +106,9 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 
 ### Using Figure Templates with a theme change component
 
-When you change the app theme with the `ThemeChangerAIO` or the `ThemeSwitchAIO` components, the figure template is not
-automatically changed.  You will need to update the figure in a callback to update the figure template.  See examples in the
-[Theme change components](https://hellodash.pythonanywhere.com/adding-themes/theme-switch) section. 
+When using the `ThemeChangerAIO` or the `ThemeSwitchAIO` components, the figure template is not
+automatically changed when the app theme changes.  You will need to update the figure in a callback to update the figure
+ template.  See examples in the [Theme change components](https://hellodash.pythonanywhere.com/adding-themes/theme-switch) section. 
 
 -------------
 
