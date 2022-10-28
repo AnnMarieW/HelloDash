@@ -15,7 +15,7 @@ register_page(
 intro = """
 ## Plotly Figure Templates with a Bootstrap theme
 
-Plotly has built-in [figure templates](https://plotly.com/python/templates/) to quickly change the look of figures.
+Plotly has built-in [figure templates](https://plotly.com/python/templates/) to make it easy to change the look of figures.
 We'll show you how to add Bootstrap themed figure templates from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)
  library and use them in your Dash app.
 
@@ -47,9 +47,9 @@ if __name__ == "__main__":
 ### Bootstrap Figure Templates
 
 
-Here is the same figure, with the "sketchy" themed figure template.  Use the `load_figure_template` function from the
-  `dash_bootstrap_templates` library to make a template available in the app.  This example adds the "sketchy"
- template. This is now the default template, so all the figures will have the "sketchy" theme.  
+Here is the same figure, with the "sketchy" themed figure template.  We use the `load_figure_template` function from the
+  `dash_bootstrap_templates` library to make this template available in the app.  This example adds the "sketchy"
+ template. This is now the default template, so all figures in the app will have the "sketchy" theme.  
 
 ```
 from dash import Dash, html, dcc

@@ -20,17 +20,20 @@ header = html.H4(
     "Theme Explorer Sample App", className="bg-primary text-white p-2 mb-2 text-center"
 )
 
-table = dash_table.DataTable(
-    id="sample_app-x-table",
-    columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
-    data=df.to_dict("records"),
-    page_size=10,
-    editable=True,
-    cell_selectable=True,
-    filter_action="native",
-    sort_action="native",
-    style_table={"overflowX": "auto"},
-    row_selectable="multi",
+table = html.Div(
+    dash_table.DataTable(
+        id="sample_app-x-table",
+        columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
+        data=df.to_dict("records"),
+        page_size=10,
+        editable=True,
+        cell_selectable=True,
+        filter_action="native",
+        sort_action="native",
+        style_table={"overflowX": "auto"},
+        row_selectable="multi",
+    ),
+    className="dbc-row-selectable",
 )
 
 dropdown = html.Div(
@@ -119,7 +122,7 @@ app.layout = dbc.Container(
         ),
     ],
     fluid=True,
-    className="dbc dbc-row-selectable",
+    className="dbc",
 )
 
 

@@ -26,10 +26,10 @@ Then add `className="dbc"`.
 
 That's it!  
 
-So how does this work?  To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
-change the the url above to `/dbc.css` instead of `/dbc.min.css`. The style sheet uses CSS selectors for the components
-and updates the style using a Bootstrap variable name.  That way, when you change the theme, the components will automatically
-update to the theme's colors and fonts.  Here's an example:
+So how does it work?  The style sheet uses component's CSS selectors and updates the style using Bootstrap
+ variable names.  When the theme changes, the components are automatically updated based on the theme's named theme colors. 
+  
+Here's an example:
 
 ```css
 .dbc .Select input {
@@ -39,6 +39,8 @@ update to the theme's colors and fonts.  Here's an example:
 
 
 #### Tips
+- To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
+change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
 - If you add `className="dbc"` to the outer container of your app, you do not need to add it to every component.  See an
 example in the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> section.
 - In the examples below, use the Theme Change button to see the components with different themes. You will see the biggest style difference in a dark theme.
