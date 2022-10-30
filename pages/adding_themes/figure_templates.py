@@ -1,7 +1,8 @@
 from dash import html, dcc, register_page
+import dash_bootstrap_components as dbc
 
 from lib.code_and_show import example_app, make_app_first, make_tabs
-from lib.utils import app_description
+from lib.utils import app_description, theme_dark_md, themes_light_md
 
 
 register_page(
@@ -21,10 +22,13 @@ We'll show you how to add Bootstrap themed figure templates from the [dash-boots
 
 
 ---------------
+` `  
+` `  
+
 
 ### Plotly Default Figure Template
 
-Here is a plotly figure with the default "plotly" figure template.
+Before showing the Bootstrap templates, let's take a look at a plotly figure with the default "plotly" figure template.
 
 ```
 from dash import Dash, html, dcc
@@ -40,16 +44,17 @@ app.layout= html.Div(dcc.Graph(figure=fig))
 if __name__ == "__main__":
     app.run(debug=True)
 ```
-![plotly default](https://user-images.githubusercontent.com/72614349/198302294-64d9bbd2-1c52-4b42-be2b-bdf000aaf3c4.png)
+![plotly default](https://user-images.githubusercontent.com/72614349/198302294-64d9bbd2-1c52-4b42-be2b-bdf000aaf3c4.png#fluid)
 
 ------------
-
+` `  
+` `  
 ### Bootstrap Figure Templates
 
 
-Here is the same figure, with the "sketchy" themed figure template.  We use the `load_figure_template` function from the
-  `dash_bootstrap_templates` library to make this template available in the app.  This example adds the "sketchy"
- template. This is now the default template, so all figures in the app will have the "sketchy" theme.  
+Here is the same figure, with the Bootstrap "sketchy" themed figure template.  We use the `load_figure_template` function from the
+  `dash_bootstrap_templates` library to load the template and set it as the default.  Now unless you specify a different template,
+  all the figures will have the "sketchy" theme.  
 
 ```
 from dash import Dash, html, dcc
@@ -71,13 +76,15 @@ if __name__ == "__main__":
 ```
 
 
-![image](https://user-images.githubusercontent.com/72614349/198308642-d13c4a21-5b5a-4402-8e64-4efcf716c9ef.png)
+![image](https://user-images.githubusercontent.com/72614349/198308642-d13c4a21-5b5a-4402-8e64-4efcf716c9ef.png#fluid)
 
 -----------------
-
+` `  
+` `  
 ### Changing the Figure Template
 
-To change the template back to the default ("plotly") figure template, use the `template` prop:
+To change the template, use the `template` prop in the figure.  Here's how to change it back to the default ("plotly") figure
+ template:
 
 ```
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", template="plotly")
@@ -85,7 +92,8 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 
 
 --------------
-
+` `  
+` `  
 ### Loading multiple Figure Templates
 
 To add more Bootstrap themed figure templates, use a list instead of a string in the `load_figure_template` function:
@@ -100,15 +108,17 @@ The "sketchy" theme is the default (because it's the first template in the list)
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", template="cyborg")
 ```
 
-![cyborg template](https://user-images.githubusercontent.com/72614349/198323822-2d3ae46f-ba08-4401-93e3-56f91921cb47.png)
+![cyborg template](https://user-images.githubusercontent.com/72614349/198323822-2d3ae46f-ba08-4401-93e3-56f91921cb47.png#fluid)
 
 -------------
+` `  
+` `  
 
 ### Using Figure Templates with a theme change component
 
 When using the `ThemeChangerAIO` or the `ThemeSwitchAIO` components, the figure template is not
 automatically changed when the app theme changes.  You will need to update the figure in a callback to update the figure
- template.  See examples in the [Theme change components](https://hellodash.pythonanywhere.com/adding-themes/theme-switch) section. 
+ template.  See examples in the <dccLink href="/adding-themes/theme-switch" children="Theme change" /> section. 
 
 -------------
 
@@ -117,22 +127,37 @@ automatically changed when the app theme changes.  You will need to update the f
 """
 
 
+
+theme_accordion = dbc.Accordion(
+    [
+        dbc.AccordionItem(dcc.Markdown(theme_dark_md, className="px-4"), title="See dark theme colors"),
+        dbc.AccordionItem(dcc.Markdown(themes_light_md, className="px-4"), title="See light theme colors"),
+    ],
+    start_collapsed=True,
+    className="mx-5 px-3",
+)
+
+
+
 layout = html.Div(
     [
-        dcc.Markdown(intro),
+        dcc.Markdown(intro, dangerously_allow_html=True, className="mx-5 px-3"),
+        theme_accordion,
+        html.Div(
+            example_app("figure_templates_4graphs", make_layout=make_tabs),
+            className="dbc",
+        ),
+        dcc.Markdown("### Example of the 'minty' theme applied to the figure.", dangerously_allow_html=True,className="mx-5 px-3" ),
+
+        example_app("adding_theme_figure_template", make_layout=make_tabs),
+        dcc.Markdown("### Check out all the themes:", dangerously_allow_html=True, className="mx-5 px-3"),
         html.Div(
             example_app(
                 "figure_templates_all",
                 show_code=False,
                 make_layout=make_app_first,
             ),
-            className="p-4",
-        ),
-        dcc.Markdown("### Example of the 'minty' theme applied to the figure."),
-        example_app("adding_theme_figure_template",make_layout=make_tabs),
-        html.Div(
-            example_app("figure_templates_4graphs", make_layout=make_tabs),
-            className="dbc",
+           # className="p-4",
         ),
     ],
     className="dbc",

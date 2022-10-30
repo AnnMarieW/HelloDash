@@ -38,7 +38,12 @@ You can use  Bootstrap utilities in the `className` prop:
 ```
 className="bg-primary p-1 mt-2 text-center h2",
 ```
-""")
+""", className="mx-5 px-3")
+
+
+
+
+
 
 alerts = html.Div(
     [
@@ -50,11 +55,11 @@ alerts = html.Div(
 examples =dcc.Markdown("""
 ### Bootstrap Utility Classes Examples
 Here are just a few to get you started.  See all the utility classes in the [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
-""",  link_target="_blank")
+""",  link_target="_blank", className="mx-5 px-3")
 
 footer = dcc.Markdown("""
 #### See all the utility classes in the [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
-""",  link_target="_blank", className="mb-4")
+""",  link_target="_blank", className="m-5 px-3")
 
 layout = html.Div(
     [

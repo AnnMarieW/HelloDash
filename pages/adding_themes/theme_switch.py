@@ -1,4 +1,7 @@
-from dash import html, register_page
+
+
+
+from dash import html, dcc, register_page
 from lib.code_and_show import example_app, make_app_first
 from lib.utils import app_description
 
@@ -11,40 +14,127 @@ register_page(
     redirect_from=["/theme_change_components"],
 )
 
-
-
-notes_first = """
-## Adding a Theme Switch component
+intro = """
+## Theme Change Components 
 
 The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library has **Two  [All-in-One](https://dash.plotly.com/all-in-one-components) components** to change themes in a Dash app.
   - `ThemeSwitchAIO` toggles between two themes. 
   - `ThemeChangerAIO` select from multiple themes.
+  
+---------------
+` `  
+` `  
+### ThemeSwitchAIO  Example 1
 
-This example shows how to use the `ThemeSwitchAIO`  
+Here is a minimal example of switching between two themes, Cosmo and Cyborg:
+```
+ThemeSwitchAIO(aio_id="theme", themes=[dbc.themes.COSMO, dbc.themes.CYBORG])
+```
+When the switch is `True` it will use the first theme, `dbc.themes.COSMO`. 
 
-👈 To add `ThemeChangerAIO`, like in this Theme Explorer app, see the <dccLink href="/" children="Sample App" />
+The dash-boostrap-components, dash-core-components, and the DataTable will automatically be updated with the new theme.
+The figures need to be updated in a callback. Use the value of the ThemeSwitchAIO component  as an `Input` in the 
+callback, then update the figure template.  See more information in the  
 
-----------
+Tips
+- Make the first theme in the `ThemeSwitchAIO` the same as the one defined in the `external_stylesheets` 
+- The figure template names are the theme names in all lower case.
+- In larger app, it's helpful to use global variables to define the themes and the templates.  This makes updating the
+app for different themes much easier.  You will see that used in Example 2.
 
+-----------------------
+` `  
+` `  
 
-![theme_toggle](https://user-images.githubusercontent.com/72614349/141466191-13709102-a2fb-45b5-a984-383d3e6ab373.gif)
-----------
+![simple_theme_switch](https://user-images.githubusercontent.com/72614349/198901305-7d4a7c87-4917-4200-8b7a-08cc8955464e.gif#fluid600)
 """
 
 
+
+
+
+theme_switch_example2 = """
+
+### ThemeSwitchAIO Example 2
+
+Here is a another minimal example of the ThemeSwitchAIO component
+
+This example demos:
+ - using variable names for the figure templates and themes
+ - updates the figure for the new theme in a callback
+ - adding the stylesheet from dash-bootstrap-templates to style `dash-core-components` and the `DataTable` with a Bootstrap Theme
+ 
+----------
+` `  
+` `  
+
+![theme_toggle](https://user-images.githubusercontent.com/72614349/141466191-13709102-a2fb-45b5-a984-383d3e6ab373.gif#fluid600)
+
+----------
+` `  
+` `  
+
+"""
+
+
+
+
+
+
+theme_change1 = """
+### ThemeChangerAIO Example 1
+
+Here is a simple example to show how to use the `ThemeChangerAIO` component.  It's the same app as the first theme switch
+example, but instead of toggling two themes, you can select any theme.
+
+We start by importing the `ThemeChangerAIO` component and the `template_from_url` function from the `dash-bootstrap-templates` library.
+ The `template_from_url` function returns the name of the template based on the current theme.  We use this in the callback to update the figure template.
+
+```
+from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
+```
+
+The theme change component is simply defined as: 
+```
+ThemeChangerAIO(aio_id="theme")
+```
+![changer-simple](https://user-images.githubusercontent.com/72614349/198904509-62b65af4-3eca-473b-a8e6-656ed8fa0431.gif#fluid600)
+
+-----------
+"""
+
+
+theme_change2 = """
+
+### ThemeChangerAIO Example 2
+👈 See the <dccLink href="/" children="Sample App" /> section for another example for the `ThemeChangerAIO` component.
+This one shows how to update the `dash-core-components` and the `DataTable` with a Bootstrap theme as well.
+"""
+
+
+
+
+
+
 customize = """
-## Customizing a theme change component
+` `  
+` `  
+
+## Customizing theme change components
 
 You can customize the `ThemeSwitchAIO` and the `ThemeChangerAIO` by passing props in a dict to the underlying components.
 See the reference section below for more details and see the `dash-bootstraps-components` docs for information on the props 
-available for each component.
+available for each component.  Here are just a few examples:
 
-For example, you can set `persistence=True` in the underlying `dbc.RadiioItems` component in the `ThemeChangerAIO`:
+#### Persistence
+You can set `persistence=True` in the underlying `dbc.RadiioItems` component in the `ThemeChangerAIO`:
 
 ```python
 ThemeChangerAIO(aio_id="theme", radio_props={"persistence": True})
 ```
-Here isn an example of how to customize the "theme change" button:
+
+#### Styling the button
+Here's an example of customizing the "Change Theme" button:
 
 ```
 ThemeChangerAIO(
@@ -55,13 +145,15 @@ ThemeChangerAIO(
     },
 )
 ```
-
+  
+#### ThemeChangerAIO menu position
 This ThemeChangerAIO will open the `Offcanvas` component on the bottom of the screen:
 
 ```
 ThemeChangerAIO(aio_id="theme", offcanvas_props={"placement":"bottom"})
 ```
-
+  
+#### Changing ThemeSwitchAIO Icons
 Change the icons in the theme switch component to Bootstrap icons instead of the default FontAwesome icons like this:
 
 ```
@@ -71,8 +163,16 @@ Change the icons in the theme switch component to Bootstrap icons instead of the
 ),
 ```
 
+If you are starting with a dark theme, swap the position of the icons:
 
-
+```
+ ThemeSwitchAIO(
+    aio_id="theme",
+    icons={"left": "bi bi-sun", "right": "bi bi-moon"},
+),
+```
+` `  
+` `  
 """
 
 
@@ -125,12 +225,30 @@ The All-in-One component dictionary IDs are available as
 
 
 layout = html.Div(
-    example_app(
-        "theme_switch",
-        make_layout=make_app_first,
-        notes_first=notes_first,
-        notes=customize + reference,
-        run=False,
-    ),
-    className="dbc",
+    [
+       # dcc.Markdown(intro, dangerously_allow_html=True, className="mx-5 px-3 img-fluid"),
+        html.Div(example_app(
+            "theme_switch1",
+            make_layout=make_app_first,
+            notes_first=intro,
+            run=False,
+        ), className="mx-4"),
+        html.Div(example_app(
+            "theme_switch2",
+            make_layout=make_app_first,
+            notes_first=theme_switch_example2,
+            run=False,
+        ), className="mx-4"),
+        html.Div(example_app(
+            "theme_change1",
+            make_layout=make_app_first,
+            notes_first=theme_change1,
+            run=False,
+        ), className="mx-4"),
+        dcc.Markdown(theme_change2, dangerously_allow_html=True, className="m-5 p-3"),
+        dcc.Markdown(customize + reference, dangerously_allow_html=True, className="mx-5 px-3"),
+
+
+    ],
+    className="dbc my-4",
 )

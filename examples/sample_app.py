@@ -73,6 +73,7 @@ slider = html.Div(
             marks=None,
             tooltip={"placement": "bottom", "always_visible": True},
             value=[years[2], years[-2]],
+            className="p-0"
         ),
     ],
     className="mb-4",
@@ -112,6 +113,7 @@ app.layout = dbc.Container(
                 dbc.Col(
                     [
                         controls,
+                        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         # When running this app locally, un-comment this line:
                         # ThemeChangerAIO(aio_id="theme")
                     ],

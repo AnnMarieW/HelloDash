@@ -13,40 +13,74 @@ register_page(
     name="dash-core-components",
 )
 
-heading = """
+intro = """
 ## Dash Core Components with a Bootstrap Theme
 
-Add this stylesheet to your app:
+To style Dash Core Components with a Bootstrap theme, simply add this stylesheet to your app:
 ```
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 ```
 
-Then add `className="dbc"`. 
+Then add `className="dbc"` to the component, or outer container of the app. 
 
 That's it!  
 
-So how does it work?  The style sheet uses component's CSS selectors and updates the style using Bootstrap
- variable names.  When the theme changes, the components are automatically updated based on the theme's named theme colors. 
-  
-Here's an example:
+So how does it work?  The stylesheet defines the "dbc" class.  It uses Bootstrap variable names --  so when the theme
+ changes, the components are automatically updated based on the named theme colors. For example, this makes the dropdown
+  options readable in both light and dark themes:
 
 ```css
-.dbc .Select input {
+/* dropdown menu options */
+.dbc .VirtualizedSelectOption {
+  background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
 }
 ```
 
+--------------
+
+` `  
+` `  
 
 #### Tips
 - To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
 change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
-- If you add `className="dbc"` to the outer container of your app, you do not need to add it to every component.  See an
-example in the <dccLink href="/adding-themes/getting-started" children="Getting Started" /> section.
-- In the examples below, use the Theme Change button to see the components with different themes. You will see the biggest style difference in a dark theme.
+- If you want to customize this stylesheet, download it and place it in a .css file in the `assets` folder.  If you find
+a better way that works for all themes, please [open an issue](https://github.com/AnnMarieW/dash-bootstrap-templates/issues). Pull requests are welcome!
+
+` `  
+` `  
 
 
 ### Examples
+` `  
+
+### Using the `"dbc"` class
+
+You can add the `className="dbc"` to a component:
+```
+dcc.RangeSlider(0, 20, value=[5, 15], className="dbc")
+```
+
+If you add `className="dbc"` to the outer container of the app then it will apply to the entire app so you don't have to add it
+to every component.  For example:
+```
+app.layout = dbc.Container(
+    [
+        ...
+    ],
+    fluid=True,
+    className="dbc"
+)
+```
+` `  
+` `  
+
+### Example Apps: Components 
+
+These app show dash-core-components both with and without a Bootstrap theme.  Try changing the theme --
+ you'll see the biggest difference in dark themes.  See the code in the "view code" tab.
 """
 
 docs_datepicker = """
@@ -79,10 +113,11 @@ Dash docs:  [dcc.Markdown](https://dash.plotly.com/dash-core-components/markdown
 
 layout = html.Div(
     [
-        change_theme_alert(auto_dismiss=False),
+
         dcc.Markdown(
-            heading, link_target="_blank", dangerously_allow_html=True, className="p-4"
+            intro, link_target="_blank", dangerously_allow_html=True, className="mx-5 px-3"
         ),
+        change_theme_alert(auto_dismiss=False),
         example_app("dcc_slider", make_layout=make_tabs, notes=docs_sliders),
         example_app("dcc_dropdown_multi", make_layout=make_tabs, notes=docs_dropdown),
         example_app(

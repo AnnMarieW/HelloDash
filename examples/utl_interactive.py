@@ -21,7 +21,7 @@ input_class_name = dbc.FormFloating(
 
 demo_intro = """
 ### Live Demo
-Try styling this "Hello Dash" div with Bootstrap classes.  Enter them here:
+Try styling this "Hello Dash" div.  Enter Bootstrap classes here:
 """
 
 

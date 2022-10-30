@@ -100,15 +100,15 @@ def update(template):
         [
             dbc.Row(
                 [
-                    dbc.Col(dcc.Graph(figure=line_fig), lg=6),
-                    dbc.Col(dcc.Graph(figure=scatter_fig), lg=6),
+                    dbc.Col(dcc.Graph(figure=line_fig, className="border"), lg=6),
+                    dbc.Col(dcc.Graph(figure=scatter_fig, className="border"), lg=6),
                 ],
                 className="mt-4",
             ),
             dbc.Row(
                 [
-                    dbc.Col(dcc.Graph(figure=hist_fig), lg=6),
-                    dbc.Col(dcc.Graph(figure=map_fig), lg=6),
+                    dbc.Col(dcc.Graph(figure=hist_fig, className="border"), lg=6),
+                    dbc.Col(dcc.Graph(figure=map_fig, className="border"), lg=6),
                 ],
                 className="mt-4",
             ),

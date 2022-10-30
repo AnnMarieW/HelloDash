@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 
 from lib.utils import example_apps
 
-from lib.nav import theme_explorer_header, make_side_nav
+from lib.nav import theme_explorer_header, make_side_nav, theme_changer
 
 
 # syntax highlighting light or dark
