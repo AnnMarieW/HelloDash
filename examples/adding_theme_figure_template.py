@@ -20,7 +20,7 @@ fig = px.scatter(
     title="Gapminder 2007: Minty Theme",
 )
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[dbc.themes.MINTY])
 
 app.layout = dbc.Container(dcc.Graph(figure=fig, className="m-4"))
 

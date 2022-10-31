@@ -31,15 +31,14 @@ We'll show you how to add Bootstrap themed figure templates from the [dash-boots
 Before showing the Bootstrap templates, let's take a look at a plotly figure with the default "plotly" figure template.
 
 ```
-from dash import Dash, html, dcc
+from dash import Dash, dcc, html
 import plotly.express as px
-import dash_bootstrap_components as dbc
 
 df = px.data.tips()
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group")
 
-app=Dash(__name__, external_stylesheets=[dbc.themes.SKETCHY])
-app.layout= html.Div(dcc.Graph(figure=fig))
+app=Dash(__name__)
+app.layout = html.Div(dcc.Graph(figure=fig))
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -57,7 +56,7 @@ Here is the same figure, with the Bootstrap "sketchy" themed figure template.  W
   all the figures will have the "sketchy" theme.  
 
 ```
-from dash import Dash, html, dcc
+from dash import Dash, dcc
 import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
@@ -69,7 +68,7 @@ df = px.data.tips()
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group")
 
 app=Dash(__name__, external_stylesheets=[dbc.themes.SKETCHY])
-app.layout= html.Div(dcc.Graph(figure=fig))
+app.layout = dbc.Container(dcc.Graph(figure=fig))
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -150,7 +149,7 @@ layout = html.Div(
         dcc.Markdown("### Example of the 'minty' theme applied to the figure.", dangerously_allow_html=True,className="mx-5 px-3" ),
 
         example_app("adding_theme_figure_template", make_layout=make_tabs),
-        dcc.Markdown("### Check out all the themes:", dangerously_allow_html=True, className="mx-5 px-3"),
+        dcc.Markdown("### Now see this figure with all themes:", dangerously_allow_html=True, className="mx-5 px-3"),
         html.Div(
             example_app(
                 "figure_templates_all",
