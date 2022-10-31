@@ -32,9 +32,9 @@ ThemeSwitchAIO(aio_id="theme", themes=[dbc.themes.COSMO, dbc.themes.CYBORG])
 ```
 When the switch is `True` it will use the first theme, `dbc.themes.COSMO`. 
 
-The dash-boostrap-components, dash-core-components, and the DataTable will automatically be updated with the new theme.
+The `dash-boostrap-components`, `dash-core-components`, and the `DataTable` will automatically be updated with the new theme.
 The figures need to be updated in a callback. Use the value of the ThemeSwitchAIO component  as an `Input` in the 
-callback, then update the figure template.  See more information in the  
+callback, then update the figure template.  See more information in the  <dccLink href="/adding-themes/figure-templates" children="Figure templates" /> section. 
 
 Tips
 - Make the first theme in the `ThemeSwitchAIO` the same as the one defined in the `external_stylesheets` 
@@ -127,10 +127,15 @@ See the reference section below for more details and see the `dash-bootstraps-co
 available for each component.  Here are just a few examples:
 
 #### Persistence
-You can set `persistence=True` in the underlying `dbc.RadiioItems` component in the `ThemeChangerAIO`:
+You can set `persistence=True` in the underlying `dbc.RadioItems` component in the `ThemeChangerAIO`:
 
 ```python
 ThemeChangerAIO(aio_id="theme", radio_props={"persistence": True})
+```
+
+Set the `persistence=True` in the underlying `dbc.Switch` component in the `ThemeSwitchAIO`:
+```
+ThemeSwitchAIO(aio_id="theme", themes=[dbc.themes.COSMO, dbc.themes.CYBORG], switch_props={"persistence":True})
 ```
 
 #### Styling the button
@@ -213,7 +218,8 @@ The ThemeSwitchAIO component updates the stylesheet when triggered by changes to
 the themes are updated in the "`store`" component.  The themes in the switch may be updated in a callback
 by changing the theme urls in the "`store`" component.
 
-- param: `themes` A list of two urls for the external stylesheets. The default is `[dbc.themes.CYBORG, dbc.themes.BOOTSTRAP]`.
+- param: `switch_props` A dictionary of properties passed into the dbc.Switch component.
+- param: `themes` A list of two urls for the external stylesheets. 
 - param: `icons`  A dict of the icons to the left and right of the switch. The default is  
   `{"left" :"fa fa-moon", "right" :"fa fa-sun"}`.
 - param: `aio_id` The All-in-One component ID used to generate component's dictionary IDs.
