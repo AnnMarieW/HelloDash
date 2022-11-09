@@ -23,19 +23,17 @@ about_explorer_md = dcc.Markdown(
 This is a guide for styling your Plotly Dash app with a Bootstrap theme.  If you're new to Dash, see the
  [Dash Tutorial](https://dash.plotly.com/) and the [Dash Boostrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) documentation.
 
-Use the sample app above to help select a theme, then I'll show you how to apply the theme to the following components in your app:
+Use the sample app above to help select a theme, then I'll show you how to apply the theme to:
 - Dash Bootstrap Components
 - Dash Core Components
 - Dash HTML Components
 - Dash DataTable
 - Plotly figures
 
-When you apply the theme, you'll see that:
-  - The text is readable in both light and dark themes
-  - All the components and figures use the font-family and colors from the selected theme
-  
-This is easy when you use the stylesheet, Bootstrap themed figure templates and theme change components from the [dash-bootstrap-templates]([dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates))
-library.
+You'll learn how to:
+  - Make the text readable in both light and dark themes
+  - Make the components and figures use the font-family and colors from the selected theme
+  - Use the theme change components from the [dash-bootstrap-templates]([dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)) library.
 
 ` `  
 ` `  

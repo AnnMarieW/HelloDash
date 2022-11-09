@@ -92,7 +92,7 @@ about_me1 = dcc.Markdown(about_me1,
 about_me2 = html.Div(
     [
         html.Div(["Questions?  Ask me on the ", make_link("Dash Community Forum", "", forum)]),
-        html.Div(["Was this site helpful?, Star", make_link("dash-bootstrap-templates", github, dbt_github)]),
+        html.Div(["Was this site helpful? Star", make_link("dash-bootstrap-templates", github, dbt_github)]),
     ],
     className="text-center small"
 )
