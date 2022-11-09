@@ -27,15 +27,32 @@ Try styling this "Hello Dash" div.  Enter Bootstrap classes here:
 
 gif = "https://user-images.githubusercontent.com/72614349/197416744-9b57ce8d-f300-4497-a532-78e02aa6e5a1.gif"
 gif = html.Img(src=gif, className="mt-4 img-fluid")
-gif_accordion = dbc.Accordion(dbc.AccordionItem(gif, title="See Demo"),start_collapsed=True)
+modal_demo = html.Div(
+    [
+        dbc.Button(
+            "See Demo",
+            id="utility-demo-btn",
+            n_clicks=0,
+        ),
+        dbc.Modal(
+            [
+                dbc.ModalHeader("Demo"),
+                dbc.ModalBody(gif),
+            ],
+            is_open=False,
+            size="lg",
+            id="utility-demo-modal",
+        ),
+    ]
+)
 
 app.layout = dbc.Container(
     [
         dcc.Markdown(demo_intro),
         input_class_name,
         dbc.Row(dbc.Col(sandbox)),
-        html.Div(id="utl-code", className="mt-2"),
-        gif_accordion,
+        html.Div(id="utl-code", className="my-2"),
+        modal_demo
     ],
     fluid=True,
     className="dbc",
@@ -57,6 +74,16 @@ def update_sandbox(class_name):
 
     code = dcc.Markdown(f"```python\n{code} \n")
     return class_name, code
+
+
+@app.callback(
+    Output("utility-demo-modal", "is_open"),
+    Input("utility-demo-btn", "n_clicks"),
+)
+def open_modal(n):
+    if n:
+        return True
+
 
 
 if __name__ == "__main__":

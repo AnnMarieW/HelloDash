@@ -10,7 +10,7 @@ register_page(
 )
 
 intro = """
-## Dash DataTable with a Bootstrap Theme
+## Styling Dash DataTable with a Bootstrap Theme
 
 To style the Dash DataTable with a Bootstrap theme, simply add this stylesheet to your app:
 ```
@@ -46,8 +46,8 @@ So how does it work?  The stylesheet defines the "dbc" class.  It uses Bootstrap
 #### Tips
 - To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
 change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
-- If you want to customize this stylesheet, download it and place it in a .css file in the `assets` folder.  If you find
-a better way that works for all themes, please [open an issue](https://github.com/AnnMarieW/dash-bootstrap-templates/issues). Pull requests are welcome!
+- To customize this stylesheet, download it and place it in a .css file in the `assets` folder.  More info in the [dash-docs](https://dash.plotly.com/external-resources)
+- If you find a better way that works for all themes, please [open an issue](https://github.com/AnnMarieW/dash-bootstrap-templates/issues). Pull requests are welcome!
 - If you add `className="dbc"` to the outer container of your app, you do not need to add it to every component.  See an
 example in the <dccLink href="/adding-themes/dcc-components" children="dash-core-components" /> section.
 
@@ -60,10 +60,10 @@ Here's a gif to demo two themes.  Use the app below and the "Change Theme" butto
 
 
 ##### Vapor theme:
-![Vapor Theme](https://user-images.githubusercontent.com/72614349/182483204-c91811e4-8068-4b53-bed2-db0fca74efba.gif#fluid)
+![Vapor Theme](https://user-images.githubusercontent.com/72614349/182483204-c91811e4-8068-4b53-bed2-db0fca74efba.gif#fluid600)
 
 ##### Minty theme:
-"![Minty Theme](https://user-images.githubusercontent.com/72614349/182483205-49174237-c303-4186-8daa-ec251003fc47.gif#fluid)"
+"![Minty Theme](https://user-images.githubusercontent.com/72614349/182483205-49174237-c303-4186-8daa-ec251003fc47.gif#fluid600)"
 """
 
 
@@ -72,6 +72,22 @@ notes = """
 Dash docs: [DataTable](https://dash.plotly.com/datatable)
 
 """
+
+
+
+
+next = """
+-----------------  
+
+### Next:  
+Using Bootstrap themed Plotly <dccLink href="/adding-themes/figure-templates" children="figure templates" />
+
+"""
+
+
+
+
+
 layout = html.Div(
     [
         dcc.Markdown(
@@ -81,5 +97,10 @@ layout = html.Div(
         ),
         change_theme_alert(auto_dismiss=False),
         example_app("datatable", make_layout=make_tabs, notes=notes),
+        dcc.Markdown(
+            next,
+            className="m-5 px-3 dbc",
+            dangerously_allow_html=True,
+        ),
     ],
 )

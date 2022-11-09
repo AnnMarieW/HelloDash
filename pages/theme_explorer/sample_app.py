@@ -1,9 +1,7 @@
 import dash
 from dash import html, dcc
-import dash_bootstrap_components as dbc
-
+from lib.other_components import change_theme_alert
 from lib.code_and_show import example_app, make_tabs
-
 from lib.utils import app_description
 
 dash.register_page(
@@ -22,13 +20,19 @@ about_explorer_md = dcc.Markdown(
 
 ### Welcome to Dash Bootstrap Theme Explorer 🤗
 
-This is a guide for styling your Plotly Dash app with a Bootstrap theme.  Use the sample app above to help
-select a theme, then I'll show you how to create an app with a Bootstrap theme applied not only to the components
-in the `dash-bootstrap-components` library but also to `dash-core-components`, the `DataTable` and Plotly figures as well.
+This is a guide for styling your Plotly Dash app with a Bootstrap theme.  If you're new to Dash, see the
+ [Dash Tutorial](https://dash.plotly.com/) and the [Dash Boostrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) documentation.
 
-When you change the theme, you'll see that:
-  - the text is readable in both light and dark themes
-  - all the components and figures use the font-family and colors from the selected theme
+Use the sample app above to help select a theme, then I'll show you how to create an app with that theme. The theme will
+apply to:
+- Dash Bootstrap Components
+- Dash Core Components
+- Dash DataTable
+- Plotly figures
+
+When you apply the theme, you'll see that:
+  - The text is readable in both light and dark themes
+  - All the components and figures use the font-family and colors from the selected theme
   
 This is easy when you use the stylesheet, Bootstrap themed figure templates and theme change components from the `dash-bootstrap-templates`
 library.
@@ -36,8 +40,7 @@ library.
 ` `  
 ` `  
 
-### Installation
- - If you're new to Dash, see the [Dash Tutorial](https://dash.plotly.com/) and the [Dash Boostrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) documentation.
+### Installation 
  - The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library requires `dash>=2.0.0`, `dash-bootstrap-components>=1.0.0`
 
  ```
@@ -67,6 +70,15 @@ Learn more in the <dccLink href="/adding-themes/dcc-components" children="dash-c
    Bootstrap classes in the [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/) 
   - See a live demo and more examples in the <dccLink href="/adding-themes/bootstrap-utility-classes" children="Bootstrap Utility Classes" /> section.
 
+` `  
+` `  
+
+
+-----------------  
+
+### Next:  
+Apply Bootstrap theme to <dccLink href="/adding-themes/dcc-components" children="dash-core-components" />
+
 
     """,
     dangerously_allow_html=True,
@@ -74,21 +86,9 @@ Learn more in the <dccLink href="/adding-themes/dcc-components" children="dash-c
     className="m-5 p-3"
 )
 
-icon = html.I(className="fa-solid fa-hand-point-left fs-5 me-2")
-icon_text = html.Span(
-    [
-        icon,
-        "Use 'Change Theme' button to see this app with all 26 themes! ",
-    ]
-)
-
 layout = html.Div(
     [
-        html.Div(
-            dbc.Alert(
-                icon_text, is_open=True, dismissable=True, style={"maxWidth": 350}
-            ),
-        ),
+        change_theme_alert(auto_dismiss=False),
         example_app("sample_app", make_layout=make_tabs),
         about_explorer_md,
     ],

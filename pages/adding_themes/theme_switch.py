@@ -39,7 +39,7 @@ callback, then update the figure template.  See more information in the  <dccLin
 Tips
 - Make the first theme in the `ThemeSwitchAIO` the same as the one defined in the `external_stylesheets` 
 - The figure template names are the theme names in all lower case.
-- In larger app, it's helpful to use global variables to define the themes and the templates.  This makes updating the
+- It's helpful in larger apps to use global variables to define the themes and the templates.  This makes updating the
 app for different themes much easier.  You will see that used in Example 2.
 
 -----------------------
@@ -186,24 +186,24 @@ reference = """
 **ThemeChangerAIO** is an All-in-One component  composed  of a parent `html.Div` with
 the following components as children:
 
-- `dbc.Button` ("`switch`") Opens the Offcanvas component for user to select a theme.
+- `dbc.Button` ("`switch`") Opens the Offcanvas component for user to select a theme
 - `dbc.Offcanvas` ("`offcanvas`")
-- `dbc.RadioItems` ("`radio`").  The themes are displayed as RadioItems inside the `dbc.Offcanvas` component.
+- `dbc.RadioItems` ("`radio`").  The themes are displayed as RadioItems inside the `dbc.Offcanvas` component
   The `value` is a url for the theme
-- `html.Div` is used as the `Output` of the clientside callbacks.
+- `html.Div` is used as the `Output` of the clientside callbacks
 
-The ThemeChangerAIO component updates the stylesheet  when the `value` of radio changes. (ie the user selects a new theme)
+The `ThemeChangerAIO` component updates the stylesheet  when the `value` of radio changes. (i.e. the user selects a new theme)
 
 - param: `radio_props` A dictionary of properties passed into the dbc.RadioItems component. The default `value` is `dbc.themes.BOOTSTRAP`
-- param: `button_props`  A dictionary of properties passed into the dbc.Button component.
+- param: `button_props`  A dictionary of properties passed into the dbc.Button component
 - param: `offcanvas_props`. A dictionary of properties passed into the dbc.Offcanvas component
-- param: `aio_id` The All-in-One component ID used to generate components' dictionary IDs.
+- param: `aio_id` The All-in-One component ID used to generate components' dictionary IDs
 
 The All-in-One component dictionary IDs are available as:
 
-- ThemeChangerAIO.ids.radio(aio_id)
-- ThemeChangerAIO.ids.offcanvas(aio_id)
-- ThemeChangerAIO.ids.button(aio_id)
+- `ThemeChangerAIO.ids.radio(aio_id)`
+- `ThemeChangerAIO.ids.offcanvas(aio_id)`
+- `ThemeChangerAIO.ids.button(aio_id)`
     
 
 ## ThemeSwitchAIO Reference
@@ -230,6 +230,16 @@ The All-in-One component dictionary IDs are available as
 """
 
 
+
+next = """
+-----------------  
+
+### Next:  
+Using  <dccLink href="/adding-themes/bootstrap-utility-classes" children="Bootstrap Utility Classes" />
+
+"""
+
+
 layout = html.Div(
     [
        # dcc.Markdown(intro, dangerously_allow_html=True, className="mx-5 px-3 img-fluid"),
@@ -253,6 +263,11 @@ layout = html.Div(
         ), className="mx-4"),
         dcc.Markdown(theme_change2, dangerously_allow_html=True, className="m-5 p-3"),
         dcc.Markdown(customize + reference, dangerously_allow_html=True, className="mx-5 px-3"),
+        dcc.Markdown(
+            next,
+            className="m-5 px-3 dbc",
+            dangerously_allow_html=True,
+        ),
 
 
     ],

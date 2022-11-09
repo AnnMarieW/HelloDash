@@ -183,12 +183,6 @@ other_dropdown = dbc.DropdownMenu(
             href=formattable_url,
             target="_blank",
         ),
-        dbc.DropdownMenuItem(
-            "James Webb Telescope App",
-            href="/jwt",
-            target="_blank",
-            external_link=True
-        ),
 
     ],
     label="more",
@@ -212,7 +206,7 @@ def make_side_nav():
             dbc.Accordion(
                 [
                     make_sidebar_category(
-                        category="/adding-themes", title="Adding Themes"
+                        category="/adding-themes", title="Applying Themes"
                     )
                 ],
             ),
@@ -254,7 +248,7 @@ def make_side_nav():
                             ],
                             vertical=True,
                         ),
-                        title="Other Sites",
+                        title="Other Helpful Sites",
                     )
                 ],
             ),
@@ -262,13 +256,3 @@ def make_side_nav():
         className="sticky-top vh-100 overflow-scroll",
     )
 
-
-@callback(
-    Output(ThemeChangerAIO.ids.radio("theme"), "value"),
-    Input("url", "pathname")
-)
-def update_theme(path):
-    # Update theme for james webb telescope
-    if path.startswith("/webb") or path.startswith("/james"):
-        return dbc.themes.CYBORG
-    return dash.no_update

@@ -32,7 +32,7 @@ with_theme = html.Div(
 )
 
 
-without_theme = html.Div([dbc.Label("No theme", className="mt-4"), sliders])
+without_theme = html.Div([dbc.Label("Without theme", className="mt-4"), sliders])
 
 app.layout = dbc.Container([with_theme, without_theme])
 

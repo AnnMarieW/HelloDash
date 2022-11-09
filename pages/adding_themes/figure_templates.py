@@ -14,7 +14,7 @@ register_page(
 )
 
 intro = """
-## Plotly Figure Templates with a Bootstrap theme
+## Styling Plotly Figures with a Bootstrap theme
 
 Plotly has built-in [figure templates](https://plotly.com/python/templates/) to make it easy to change the look of figures.
 We'll show you how to add Bootstrap themed figure templates from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 ` `  
 ### Changing the Figure Template
 
-To change the template, use the `template` prop in the figure.  Here's how to change it back to the default ("plotly") figure
+Use the `template` prop in the figure to change the theme.  Here's how to change it back to the default ("plotly") figure
  template:
 
 ```
@@ -101,7 +101,7 @@ To add more Bootstrap themed figure templates, use a list instead of a string in
 load_figure_template(["sketchy", "cyborg", "minty"])
 ```
 
-The "sketchy" theme is the default (because it's the first template in the list). However, the other templates
+The "sketchy" theme is the default because it's the first template in the list. However, the other templates
  can now be used in the app by setting the `template` prop:
 ```
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", template="cyborg")
@@ -137,6 +137,14 @@ theme_accordion = dbc.Accordion(
 )
 
 
+next = """
+-----------------  
+
+### Next:  
+Adding a  <dccLink href="/adding-themes/theme-switch" children="Theme change component" />
+
+"""
+
 
 layout = html.Div(
     [
@@ -157,6 +165,11 @@ layout = html.Div(
                 make_layout=make_app_first,
             ),
            # className="p-4",
+        ),
+        dcc.Markdown(
+            next,
+            className="m-5 px-3 dbc",
+            dangerously_allow_html=True,
         ),
     ],
     className="dbc",

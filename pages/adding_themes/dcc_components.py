@@ -14,7 +14,7 @@ register_page(
 )
 
 intro = """
-## Dash Core Components with a Bootstrap Theme
+## Styling Dash Core Components with a Bootstrap Theme
 
 To style Dash Core Components with a Bootstrap theme, simply add this stylesheet to your app:
 ```
@@ -46,14 +46,10 @@ So how does it work?  The stylesheet defines the "dbc" class.  It uses Bootstrap
 #### Tips
 - To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
 change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
-- If you want to customize this stylesheet, download it and place it in a .css file in the `assets` folder.  If you find
-a better way that works for all themes, please [open an issue](https://github.com/AnnMarieW/dash-bootstrap-templates/issues). Pull requests are welcome!
+- To customize this stylesheet, download it and place it in a .css file in the `assets` folder.  More info in the [dash-docs](https://dash.plotly.com/external-resources)
+- If you find a better way that works for all themes, please [open an issue](https://github.com/AnnMarieW/dash-bootstrap-templates/issues). Pull requests are welcome!
 
 ` `  
-` `  
-
-
-### Examples
 ` `  
 
 ### Using the `"dbc"` class
@@ -77,9 +73,9 @@ app.layout = dbc.Container(
 ` `  
 ` `  
 
-### Example Apps: Components 
+### Examples  
 
-These app show dash-core-components both with and without a Bootstrap theme.  Try changing the theme --
+These apps show Dash Core Components both with and without a Bootstrap theme.  Try changing the theme --
  you'll see the biggest difference in dark themes.  See the code in the "view code" tab.
 """
 
@@ -110,6 +106,18 @@ docs_markdown = """
 Dash docs:  [dcc.Markdown](https://dash.plotly.com/dash-core-components/markdown) 
 """
 
+next = """
+
+` `  
+` `  
+
+
+-----------------  
+
+### Next:  
+Apply Bootstrap theme to the Dash <dccLink href="/adding-themes/datatable" children="DataTable" />
+
+"""
 
 layout = html.Div(
     [
@@ -129,6 +137,9 @@ layout = html.Div(
         example_app("dcc_tabs", make_layout=make_tabs, notes=docs_tabs),
         example_app(
             "dcc_markdown", make_layout=make_tabs, notes=docs_markdown, show_code=False
+        ),
+        dcc.Markdown(
+            next, dangerously_allow_html=True, className="mx-5 px-3"
         ),
     ]
 )

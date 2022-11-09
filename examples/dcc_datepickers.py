@@ -29,7 +29,7 @@ with_theme = html.Div(
 
 
 without_theme = html.Div(
-    [dbc.Label("No theme", className="mt-4"), datepicker_single, datepicker_range]
+    [dbc.Label("Without theme", className="mt-4"), datepicker_single, datepicker_range]
 )
 
 app.layout = dbc.Container([with_theme, without_theme])

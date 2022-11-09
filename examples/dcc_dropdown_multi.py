@@ -21,7 +21,7 @@ with_theme = html.Div(
 
 without_theme = html.Div(
     [
-        dbc.Label("No theme", className="mt-4"),
+        dbc.Label("Without theme", className="mt-4"),
         dcc.Dropdown(
             ["Apple", "Carrots", "Chips", "Cookies"], ["Cookies", "Carrots"], multi=True
         ),

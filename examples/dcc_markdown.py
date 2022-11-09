@@ -12,7 +12,7 @@ The dcc.Markdown component works well for regular markdown text in both light an
 dark themes.  For code highlighting, adding `className="dbc"` will make code snippets styled in the 
 "GitHub Dark Dimmed" theme which (I think) looks better in both light and dark Bootstrap themes. 
 
-See this forum post to learn more about [changing the theme of code highlights](https://community.plotly.com/t/how-to-change-the-theme-of-code-highlights-in-dcc-markdown/58004)
+See this forum post to learn more about [changing the theme of code highlights.](https://community.plotly.com/t/how-to-change-the-theme-of-code-highlights-in-dcc-markdown/58004)
 
 Here's a sample:
 

@@ -1,13 +1,5 @@
 
-
-
-
-# bg-secondary text-primary  fs-1 fw-bold p-4 text-center
-# m-4 w-50 rounded-pill border border-primary border-4
-
 from dash import html, dcc, register_page
-import dash_bootstrap_components as dbc
-
 from lib.code_and_show import example_app, make_tabs, make_app_first
 from lib.other_components import change_theme_alert, bootstrap_utils_alert
 from lib.utils import app_description
@@ -54,7 +46,7 @@ alerts = html.Div(
 
 examples =dcc.Markdown("""
 ### Bootstrap Utility Classes Examples
-Here are just a few to get you started.  See all the utility classes in the [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
+Here are a few utility classes to get you started.  See all the utility classes in the [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
 """,  link_target="_blank", className="mx-5 px-3")
 
 footer = dcc.Markdown("""
