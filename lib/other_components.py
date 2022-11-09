@@ -27,8 +27,8 @@ dbt_github = "https://github.com/AnnMarieW/dash-bootstrap-templates"
 
 def change_theme_alert(text=None, auto_dismiss=True):
     if text is None:
-        intro_text = "Use the Change Theme button to see examples with all 26 themes."
-        text = html.Span([icon_left, intro_text])
+        text = "Use the Change Theme button to see examples with all 26 themes."
+    text = html.Span([icon_left, text])
 
     if auto_dismiss:
         return dbc.Alert(
@@ -65,7 +65,7 @@ cover_img = html.A(
 )
 
 text = dcc.Markdown(
-    "From basic components to advanced layouts, learn how to display data in effective, usable, and elegent ways.",
+    "From basic components to advanced layouts, learn how to display data in effective, usable, and elegant ways.",
     className="ps-2",
 )
 
