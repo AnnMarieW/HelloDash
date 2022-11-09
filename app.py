@@ -3,8 +3,8 @@ from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 from lib.utils import example_apps
-
-from lib.nav import theme_explorer_header, make_side_nav, theme_changer
+from lib.nav import theme_explorer_header, make_side_nav
+from lib.other_components import book_card, about_me
 
 
 # syntax highlighting light or dark
@@ -56,8 +56,9 @@ app.layout = dbc.Container(
                     id="content"
                 ),
             ],
-
         ),
+        html.Hr(),
+        dbc.Row(dbc.Col([about_me, book_card], width="auto"), justify="center")
     ],
     fluid=True,
 )
