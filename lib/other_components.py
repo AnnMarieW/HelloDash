@@ -13,7 +13,7 @@ info = "fa-solid fa-circle-info"
 cart = "fa-solid fa-cart-shopping"
 plotly = "https://plotly.com/python/"
 dash_url = "https://dash.plotly.com/"
-forum = "https://community.plotly.com/u/AnnMarieW/summary"
+forum = "https://community.plotly.com/"
 plotly_logo = "https://user-images.githubusercontent.com/72614349/182969599-5ae4f531-ea01-4504-ac88-ee1c962c366d.png"
 plotly_logo_dark = "https://user-images.githubusercontent.com/72614349/182967824-c73218d8-acbf-4aab-b1ad-7eb35669b781.png"
 book_github = "https://github.com/DashBookProject/Plotly-Dash"
@@ -83,7 +83,7 @@ authors = html.P(
 
 
 about_me1 = f"""
-__This site maintained by Ann Marie Ward__  
+__This site is maintained by Ann Marie Ward,__  
 co-author of ["The Book of Dash"]({nostarch})
 """
 about_me1 = dcc.Markdown(about_me1,
@@ -93,8 +93,8 @@ about_me1 = dcc.Markdown(about_me1,
 
 about_me2 = html.Div(
     [
-        html.Div(["Questions?  Ask me on the", make_link("Dash Community Forum", "", forum)]),
-        html.Div(["If this was helpful, please star", make_link("dash-bootstrap-templates", github, dbt_github)]),
+        html.Div(["Questions?  Ask on the", make_link("Dash Community Forum", "", forum)]),
+        html.Div(["Was this site helpful? Please star", make_link("dash-bootstrap-templates", github, dbt_github)]),
     ],
     className="text-center small"
 )
