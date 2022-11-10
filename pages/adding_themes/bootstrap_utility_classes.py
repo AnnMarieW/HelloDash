@@ -53,6 +53,15 @@ footer = dcc.Markdown("""
 #### See all the utility classes in the [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
 """,  link_target="_blank", className="m-5 px-3")
 
+
+next = """
+-----------------  
+
+### Next:  
+Back to <dccLink href="/" children="Theme Explorer Home Page" />
+
+"""
+
 layout = html.Div(
     [
         alerts,
@@ -66,7 +75,12 @@ layout = html.Div(
         example_app("utl_border", make_layout=make_tabs),
         example_app("utl_text_align", make_layout=make_tabs),
         example_app("utl_text", make_layout=make_tabs),
-        footer
+        footer,
+        dcc.Markdown(
+            next,
+            className="m-5 px-3 dbc",
+            dangerously_allow_html=True,
+        ),
 
     ],
 )

@@ -62,6 +62,7 @@ cover_img = html.A(
         className="img-fluid rounded-start",
     ),
     href=nostarch,
+
 )
 
 text = dcc.Markdown(
@@ -82,7 +83,8 @@ authors = html.P(
 
 
 about_me1 = f"""
-__by Ann Marie Ward co-author of ["The Book of Dash"]({nostarch})__
+__This site maintained by Ann Marie Ward__  
+co-author of ["The Book of Dash"]({nostarch})
 """
 about_me1 = dcc.Markdown(about_me1,
     className="mt-5 text-center small",
@@ -91,8 +93,8 @@ about_me1 = dcc.Markdown(about_me1,
 
 about_me2 = html.Div(
     [
-        html.Div(["Questions?  Ask me on the ", make_link("Dash Community Forum", "", forum)]),
-        html.Div(["Was this site helpful? Star", make_link("dash-bootstrap-templates", github, dbt_github)]),
+        html.Div(["Questions?  Ask me on the", make_link("Dash Community Forum", "", forum)]),
+        html.Div(["If this was helpful, please star", make_link("dash-bootstrap-templates", github, dbt_github)]),
     ],
     className="text-center small"
 )
@@ -104,16 +106,16 @@ book_card = dbc.Card(
     [
         dbc.Row(
             [
-                dbc.Col(cover_img, width=2),
+                dbc.Col(cover_img, width=3, className="p-1"),
                 dbc.Col(
                     [text, button],
-                    width=10,
+                    width=9,
                 ),
             ],
             className="g-0 d-flex align-items-center",
         ),
         dbc.Row(dbc.Col(authors)),
     ],
-    className="mt-4 mb-5 small shadow",
+    className="mt-4 mb-5 small shadow p-2",
     style={"maxWidth": "32rem"},
 )
