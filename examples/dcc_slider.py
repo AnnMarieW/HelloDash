@@ -26,7 +26,7 @@ with_theme = html.Div(
     [
         html.H3("Sliders"),
         dbc.Label("dcc.Slider and dcc.RangeSlider with Bootstrap theme"),
-        sliders
+        sliders,
     ],
     className="dbc",
 )

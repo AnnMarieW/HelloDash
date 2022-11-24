@@ -3,10 +3,12 @@ import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-title = dcc.Markdown("""
-### Text Color  
+title = dcc.Markdown(
+    """
+### Color - Text  
 ------------
-""")
+"""
+)
 
 color_text = html.Div(
     [

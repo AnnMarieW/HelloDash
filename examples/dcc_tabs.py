@@ -29,11 +29,7 @@ tabs = html.Div(
 
 
 with_theme = html.Div(
-    [
-        html.H3("Tabs"),
-        dbc.Label("dcc.Tabs with Bootstrap theme"),
-        tabs
-    ], className="dbc"
+    [html.H3("Tabs"), dbc.Label("dcc.Tabs with Bootstrap theme"), tabs], className="dbc"
 )
 
 

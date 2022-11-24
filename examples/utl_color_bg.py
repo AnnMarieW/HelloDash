@@ -4,14 +4,15 @@ import dash_bootstrap_components as dbc
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
-title = dcc.Markdown("""
-### Background Color  
+title = dcc.Markdown(
+    """
+### Color - Background
 ------------
-""")
+"""
+)
 
 color_bg = html.Div(
     [
-
         html.P("bg-primary", className="bg-primary"),
         html.P("bg-secondary", className="bg-secondary"),
         html.P("bg-success", className="bg-success"),
@@ -27,7 +28,10 @@ color_bg = html.Div(
 color_bg_gradient = html.Div(
     [
         html.P("bg-primary text-white py-4", className="bg-primary text-white py-4"),
-        html.P("bg-primary  bg-gradient text-white py-4", className="bg-primary bg-gradient text-white py-4")
+        html.P(
+            "bg-primary  bg-gradient text-white py-4",
+            className="bg-primary bg-gradient text-white py-4",
+        ),
     ],
 )
 

@@ -4,10 +4,12 @@ import dash_bootstrap_components as dbc
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
-title = dcc.Markdown("""
-### Background Color Opacity 
+title = dcc.Markdown(
+    """
+### Opacity - Background
 ------------
-""")
+"""
+)
 
 color_bg_opacity = html.Div(
     [
@@ -20,7 +22,12 @@ color_bg_opacity = html.Div(
 )
 
 
-app.layout = html.Div([title, color_bg_opacity, ])
+app.layout = html.Div(
+    [
+        title,
+        color_bg_opacity,
+    ]
+)
 
 if __name__ == "__main__":
     app.run(debug=True)

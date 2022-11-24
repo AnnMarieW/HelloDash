@@ -14,7 +14,12 @@ sandbox = dbc.Card(
 
 input_class_name = dbc.FormFloating(
     [
-        dbc.Input(type="text", value="bg-primary text-white", autocomplete="off" ,id="utl-class-name"),
+        dbc.Input(
+            type="text",
+            value="bg-primary text-white",
+            autocomplete="off",
+            id="utl-class-name",
+        ),
         dbc.Label("className="),
     ]
 )
@@ -52,7 +57,7 @@ app.layout = dbc.Container(
         input_class_name,
         dbc.Row(dbc.Col(sandbox)),
         html.Div(id="utl-code", className="my-2"),
-        modal_demo
+        modal_demo,
     ],
     fluid=True,
     className="dbc",
@@ -83,7 +88,6 @@ def update_sandbox(class_name):
 def open_modal(n):
     if n:
         return True
-
 
 
 if __name__ == "__main__":

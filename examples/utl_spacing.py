@@ -3,12 +3,15 @@ import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-title = dcc.Markdown("""
+title = dcc.Markdown(
+    """
 ### Spacing - Padding and Margin 
 ------------
-""")
+"""
+)
 
-intro = dcc.Markdown("""
+intro = dcc.Markdown(
+    """
 The classes are named using the format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, xl, and xxl.
 
 Where property is one of:
@@ -37,26 +40,50 @@ Where size is one of:
 - auto - sets the margin to auto
 
 ### Example App
-""")
-
+"""
+)
 
 
 spacing = html.Div(
     [
-        html.Div("bg-light text-dark border", className="p-1 bg-light text-dark border"),
-        html.Div("p-1 bg-light text-dark border", className="p-1 bg-light text-dark border"),
-        html.Div("p-2 bg-light text-dark border", className="p-2 bg-light text-dark border"),
-        html.Div("p-3 bg-light text-dark border", className="p-3 bg-light text-dark border"),
-        html.Div("p-4 bg-light text-dark border", className="p-5 bg-light text-dark border"),
-        html.Div("p-5 bg-light text-dark border", className="p-5 bg-light text-dark border"),
-        html.Div("m-1 bg-light text-dark border", className="m-1 bg-light text-dark border"),
-        html.Div("m-2 bg-light text-dark border", className="m-2 bg-light text-dark border"),
-        html.Div("m-3 bg-light text-dark border", className="m-3 bg-light text-dark border"),
-        html.Div("m-4 bg-light text-dark border", className="m-5 bg-light text-dark border"),
-        html.Div("m-5 bg-light text-dark border", className="m-5 bg-light text-dark border"),
-        html.Div("m-5 p-5 bg-light text-dark border", className="m-5 p-5 bg-light text-dark border"),
-        html.H4("See more spacing examples in the Cheatsheet")
-
+        html.Div(
+            "bg-light text-dark border", className="p-1 bg-light text-dark border"
+        ),
+        html.Div(
+            "p-1 bg-light text-dark border", className="p-1 bg-light text-dark border"
+        ),
+        html.Div(
+            "p-2 bg-light text-dark border", className="p-2 bg-light text-dark border"
+        ),
+        html.Div(
+            "p-3 bg-light text-dark border", className="p-3 bg-light text-dark border"
+        ),
+        html.Div(
+            "p-4 bg-light text-dark border", className="p-5 bg-light text-dark border"
+        ),
+        html.Div(
+            "p-5 bg-light text-dark border", className="p-5 bg-light text-dark border"
+        ),
+        html.Div(
+            "m-1 bg-light text-dark border", className="m-1 bg-light text-dark border"
+        ),
+        html.Div(
+            "m-2 bg-light text-dark border", className="m-2 bg-light text-dark border"
+        ),
+        html.Div(
+            "m-3 bg-light text-dark border", className="m-3 bg-light text-dark border"
+        ),
+        html.Div(
+            "m-4 bg-light text-dark border", className="m-5 bg-light text-dark border"
+        ),
+        html.Div(
+            "m-5 bg-light text-dark border", className="m-5 bg-light text-dark border"
+        ),
+        html.Div(
+            "m-5 p-5 bg-light text-dark border",
+            className="m-5 p-5 bg-light text-dark border",
+        ),
+        html.H4("See more spacing examples in the Cheatsheet"),
     ]
 )
 

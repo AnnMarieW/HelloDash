@@ -73,7 +73,7 @@ slider = html.Div(
             marks=None,
             tooltip={"placement": "bottom", "always_visible": True},
             value=[years[2], years[-2]],
-            className="p-0"
+            className="p-0",
         ),
     ],
     className="mb-4",

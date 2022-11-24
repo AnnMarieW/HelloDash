@@ -2,7 +2,7 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 from examples.cheatsheets import callbacks, components, figures, layouts, hello_world
 
-app=Dash(__name__)
+app = Dash(__name__)
 
 
 def make_card(header, content):
@@ -12,9 +12,7 @@ def make_card(header, content):
             dcc.Markdown(content, style={"maxHeight": 450}, className="overflow-auto"),
         ],
         className="m-4 shadow text-white bg-black",
-        style={
-            "minWidth": "25rem"
-        },
+        style={"minWidth": "25rem"},
     )
 
 
