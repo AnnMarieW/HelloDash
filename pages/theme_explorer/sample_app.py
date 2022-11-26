@@ -34,6 +34,7 @@ You'll learn how to:
   - Make the text readable in both light and dark themes
   - Make the components and figures use the font-family and colors from the selected theme
   - Use the theme change components from the [dash-bootstrap-templates]([dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)) library.
+  - Use Boostrap utility classes for showing, hiding, aligning, spacing and styling content.
 
 ` `  
 ` `  

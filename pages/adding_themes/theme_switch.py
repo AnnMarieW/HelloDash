@@ -26,22 +26,18 @@ The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templ
 ` `  
 ### ThemeSwitchAIO  Example 1
 
-Here is a minimal example of switching between two themes, Cosmo and Cyborg:
+Below is a minimal example of switching between two themes, Cosmo and Cyborg. When the switch is `True` it will use the
+ first theme, `dbc.themes.COSMO`. Here is how the theme switch component is defined:
 ```
 ThemeSwitchAIO(aio_id="theme", themes=[dbc.themes.COSMO, dbc.themes.CYBORG])
 ```
-When the switch is `True` it will use the first theme, `dbc.themes.COSMO`. 
 
-The `dash-boostrap-components`, `dash-core-components`, and the `DataTable` will automatically be updated with the new theme.
-The figures need to be updated in a callback. Use the value of the ThemeSwitchAIO component  as an `Input` in the 
-callback, then update the figure template.  See more information in the  <dccLink href="/adding-themes/figure-templates" children="Figure templates" /> section. 
-
-Tips
-- Make the first theme in the `ThemeSwitchAIO` the same as the one defined in the `external_stylesheets` 
-- The figure template names are the theme names in all lower case.
-- It's helpful in larger apps to use global variables to define the themes and the templates.  This makes updating the
-app for different themes much easier.  You will see that used in Example 2.
-
+This example demos:
+ - switching between two themes
+ - updating the figure for the new theme in a callback.  Note that the figure template names are the theme names in all lower
+  case. See more information in the  <dccLink href="/adding-themes/figure-templates" children="Figure templates" /> section
+ - making the first theme the same as the theme in the `external_stylesheets`
+   
 -----------------------
 ` `  
 ` `  
@@ -61,7 +57,7 @@ Here is a another minimal example of the ThemeSwitchAIO component
 
 This example demos:
  - using variable names for the figure templates and themes
- - updates the figure for the new theme in a callback
+ - updating the figure for the new theme in a callback
  - adding the stylesheet from dash-bootstrap-templates to style `dash-core-components` and the `DataTable` with a Bootstrap Theme
  
 ----------

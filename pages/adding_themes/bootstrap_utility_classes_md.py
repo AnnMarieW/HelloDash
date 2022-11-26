@@ -64,14 +64,6 @@ This class applies the transformations translateX(-50%) and translateY(-50%) to 
 
 This is often used to create components with indicators.  See examples below.
 
-For example, to position the square in the top right corner, use:  
-
-`
-html.Div(square, className="position-absolute translate-middle top-0 start-100"),
-`   
-
-See the "view code" tab to see a complete example app. 
-
 """
 
 
