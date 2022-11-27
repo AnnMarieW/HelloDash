@@ -115,9 +115,12 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 
 ### Using Figure Templates with a theme change component
 
-When using the `ThemeChangerAIO` or the `ThemeSwitchAIO` components, the figure template is not
-automatically changed when the app theme changes.  You will need to update the figure in a callback to update the figure
- template.  See examples in the <dccLink href="/adding-themes/theme-switch" children="Theme change" /> section. 
+When using the `ThemeChangerAIO` or the `ThemeSwitchAIO` components: 
+- The figure template is not automatically changed when the app theme changes.  You will need to update the figure in a callback to update the figure
+ template.  
+- It is not necessary to use the `load_figure_template()` function  -  the theme change component does that step for you.
+
+See examples in the <dccLink href="/adding-themes/theme-switch" children="Theme change" /> section. 
 
 -------------
 
