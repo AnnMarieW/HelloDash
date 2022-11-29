@@ -231,7 +231,7 @@ next = """
 -----------------  
 
 ### Next:  
-Using  <dccLink href="/adding-themes/bootstrap-utility-classes" children="Bootstrap Utility Classes" />
+Using  <dccLink href="/bootstrap-utility-classes/bootstrap-utility-classes" children="Bootstrap Utility Classes" />
 
 """
 

@@ -161,6 +161,45 @@ def make_sidebar_category(category="/", title=""):
     )
 
 
+def make_sidebar_category_hash(page, title):
+    """
+    Use this to create an accordion item with links containing hashtags to scroll to a positions on the page.
+    when registering the page include a list of ids to scroll to in a `hashtags` prop
+
+
+    Args:
+        page: A page in the dash.page_registry
+        title: The title to show as the Accordion label
+
+    Returns: navlinks with hashtags.
+
+    """
+   # dbc.Nav(dbc.NavLink("position", href="/adding-themes/bootstrap-utility-classes#position", external_link=True)),
+
+    return dbc.AccordionItem(
+        dbc.Nav(
+            [
+                dbc.NavLink(
+                    [
+                        tag,
+                    ],
+                    href=f"{page['path']}#{tag}",
+                    external_link=True, # must be true for scroll to work
+                    active="exact",
+                    className="py-2",
+                )
+                for tag in page.get("hashtags")
+
+            ],
+            vertical=True,
+            pills=True,
+
+        ),
+        title=title,
+    )
+
+
+
 other_dropdown = dbc.DropdownMenu(
     [
         dbc.DropdownMenuItem(
@@ -210,6 +249,18 @@ def make_side_nav():
                     )
                 ],
             ),
+            dbc.Accordion(
+                [
+                    make_sidebar_category_hash(
+                        page=dash.page_registry["pages.bootstrap_utility_classes.bootstrap_utility_classes"],
+                        title="Bootstrap Utility Classes"
+                    )
+                ],
+
+            ),
+
+
+
             dbc.Accordion(
                 [
                     dbc.AccordionItem(
