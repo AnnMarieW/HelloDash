@@ -3,12 +3,13 @@ from dash import html, dcc, register_page
 from lib.code_and_show import example_app, make_tabs, make_app_first
 from lib.other_components import change_theme_alert, bootstrap_utils_alert
 from lib.utils import app_description
-import pages.adding_themes.bootstrap_utility_classes_md as md_text
+import pages.bootstrap_utility_classes.bootstrap_utility_classes_md as md_text
 
 
 register_page(
-    __name__, order=6, description=app_description, title="Adding Themes/Dash Bootstrap Utility Classes",
-    name="Bootstrap Utility Classes"
+    __name__, order=6, description=app_description, title="Dash Bootstrap Utility Classes",
+    name="Bootstrap Utility Classes", hashtags=["intro","background", "border", "color", "spacing", "text", "position"],
+    redirect_from=["/adding-themes/bootstrap-utility-classes"]
 )
 
 def make_md(text):
@@ -40,17 +41,30 @@ up_next = dcc.Markdown(
 
 layout = html.Div(
     [
+        html.Div(id="intro"),
         alerts,
         make_md(md_text.intro),
         example_app("utl_interactive", make_layout=make_app_first, show_code=False ),
         examples,
-        example_app("utl_color_text", make_layout=make_tabs),
+
+        html.Div(id="background"),
         example_app("utl_color_bg", make_layout=make_tabs),
-        example_app("utl_color_bg_opacity", make_layout=make_tabs),
-        example_app("utl_spacing", make_layout=make_tabs),
+
+        html.Div(id="border"),
         example_app("utl_border", make_layout=make_tabs),
+        example_app("utl_color_bg_opacity", make_layout=make_tabs),
+
+        html.Div(id="color"),
+        example_app("utl_color_text", make_layout=make_tabs),
+
+        html.Div(id="spacing"),
+        example_app("utl_spacing", make_layout=make_tabs),
+
+        html.Div(id="text"),
         example_app("utl_text_align", make_layout=make_tabs),
         example_app("utl_text", make_layout=make_tabs),
+
+        html.Div(id="position"),
         make_md(md_text.arrange_elements_intro),
         example_app("utl_position"),
         make_md(md_text.translate_middle_intro),
