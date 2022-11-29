@@ -139,6 +139,15 @@ theme_accordion = dbc.Accordion(
     className="mx-5 px-3",
 )
 
+all_templates = """
+### All Templates
+
+This example shows the Bootstrap themed figure templates, plus all the built-in Plotly figure templates.  Use the
+Change Theme button to see different figure templates when the dropdown selection is "bootstrap_theme".
+
+Thank you [Tuomas Poukkula](https://github.com/tuopouk)for this example!
+
+"""
 
 next = """
 -----------------  
@@ -169,11 +178,16 @@ layout = html.Div(
             ),
            # className="p-4",
         ),
+
+        dcc.Markdown(all_templates,  className="mx-5 px-3", link_target="_blank"),
+        example_app("figure_template_change", make_layout=make_tabs),
+
         dcc.Markdown(
             next,
             className="m-5 px-3 dbc",
             dangerously_allow_html=True,
         ),
+
     ],
     className="dbc",
 )

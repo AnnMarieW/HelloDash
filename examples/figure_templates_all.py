@@ -58,20 +58,20 @@ figures = [
     for template in templates
 ]
 
-button = dbc.Button("Show all 26 Themes!", id="all-figure-templates-x-btn", n_clicks=0)
+button = dbc.Button("Show all 26 Themes!", id="figure_templates_x-btn", n_clicks=0)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dcc.Loading(
     dbc.Container(
-        [button, html.Div(id="all-figure-templates-content", className="my-2")]
+        [button, html.Div(id="figure_templates_all-x-content", className="my-2")]
     )
 )
 
 
 @callback(
-    Output("all-figure-templates-content", "children"),
-    Input("all-figure-templates-x-btn", "n_clicks"),
+    Output("figure_templates_all-x-content", "children"),
+    Input("figure_templates_all-x-btn", "n_clicks"),
     prevent_initial_call=True,
 )
 def update(n):
