@@ -34,6 +34,7 @@ dmc_docs_url = "https://www.dash-mantine-components.com/"
 dash_extensions_docs = "https://www.dash-extensions.com/"
 dash_tools_url = "https://github.com/andrew-hossack/dash-tools"
 multi_page_app_demos = "https://github.com/AnnMarieW/dash-multi-page-app-demos"
+dash_aggrid_docs = "https://dashaggrid.pythonanywhere.com/"
 
 # tutorials
 formattable_url = "https://formattable.pythonanywhere.com/"
@@ -210,6 +211,11 @@ other_dropdown = dbc.DropdownMenu(
         dbc.DropdownMenuItem(
             "Dash Extensions docs",
             href=dash_extensions_docs,
+            target="_blank",
+        ),
+        dbc.DropdownMenuItem(
+            "Dash AG Grid docs",
+            href=dash_aggrid_docs,
             target="_blank",
         ),
         dbc.DropdownMenuItem(

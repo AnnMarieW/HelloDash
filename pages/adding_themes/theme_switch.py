@@ -46,12 +46,35 @@ This example demos:
 """
 
 
-
-
-
-theme_switch_example2 = """
-
+theme_switch2 = """
 ### ThemeSwitchAIO Example 2
+
+As of dash-bootstrap-templates V1.0.8, it's possible to use local stylesheets from the assets folder.  This is great for
+ working off-line or if you have a custom stylesheet.    It's also possible to use any URL for hosted stylesheet rather than
+  being limited to the themes available in the `dash-bootstrap-components` library. 
+  
+Here is an example of a ThemeSwitchAIO using stylesheet files from the assets folder: 
+
+```
+ThemeSwitchAIO(aio_id="theme", themes=["/assets/theme1.css", "/assets/theme2.css" ])
+```
+
+Find a full [example](https://github.com/AnnMarieW/dash-bootstrap-templates/tree/main/examples/demo_local_stylesheets) in the dash-bootstrap-templates libarary
+
+> Tip  - If you are using external stylesheets like this:  `app = dash.Dash(external_stylesheets=[dbc.themes.CYBORG])`  here's how to get the link: 
+```
+import dash_bootstrap_components as dbc
+print(dbc.themes.CYBORG)
+```
+result:
+https://cdn.jsdelivr.net/npm/bootswatch@5.2.3/dist/cyborg/bootstrap.min.css
+
+"""
+
+
+theme_switch_example3 = """
+
+### ThemeSwitchAIO Example 3
 
 Here is a another minimal example of the ThemeSwitchAIO component
 
@@ -245,10 +268,11 @@ layout = html.Div(
             notes_first=intro,
             run=False,
         ), className="mx-4"),
+        dcc.Markdown(theme_switch2, dangerously_allow_html=True, className="m-5 p-3"),
         html.Div(example_app(
             "theme_switch2",
             make_layout=make_app_first,
-            notes_first=theme_switch_example2,
+            notes_first=theme_switch_example3,
             run=False,
         ), className="mx-4"),
         html.Div(example_app(
