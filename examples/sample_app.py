@@ -1,12 +1,13 @@
 """
 ****** Important! *******
-If you run this app locally, un-comment line 113 to add the ThemeChangerAIO component to the layout
+If you run this app locally, un-comment line 111 to add the ThemeChangerAIO component to the layout
 """
 
-from dash import Dash, dcc, html, dash_table, Input, Output, callback
+from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
+import dash_ag_grid as dag
 
 df = px.data.gapminder()
 years = df.year.unique()
@@ -20,20 +21,12 @@ header = html.H4(
     "Theme Explorer Sample App", className="bg-primary text-white p-2 mb-2 text-center"
 )
 
-table = html.Div(
-    dash_table.DataTable(
-        id="sample_app-x-table",
-        columns=[{"name": i, "id": i, "deletable": True} for i in df.columns],
-        data=df.to_dict("records"),
-        page_size=10,
-        editable=True,
-        cell_selectable=True,
-        filter_action="native",
-        sort_action="native",
-        style_table={"overflowX": "auto"},
-        row_selectable="multi",
-    ),
-    className="dbc-row-selectable",
+grid = dag.AgGrid(
+    id="sample_app-x-grid",
+    columnDefs=[{"field": i} for i in df.columns],
+    rowData=df.to_dict("records"),
+    defaultColDef={"flex": 1, "minWidth": 120, "sortable": True, "resizable": True, "filter": True},
+    dashGridOptions={"rowSelection":"multiple"},
 )
 
 dropdown = html.Div(
@@ -54,7 +47,7 @@ checklist = html.Div(
         dbc.Label("Select Continents"),
         dbc.Checklist(
             id="sample_app-x-continents",
-            options=[{"label": i, "value": i} for i in continents],
+            options=continents,
             value=continents,
             inline=True,
         ),
@@ -102,7 +95,7 @@ controls = dbc.Card(
 
 tab1 = dbc.Tab([dcc.Graph(id="sample_app-x-line-chart")], label="Line Chart")
 tab2 = dbc.Tab([dcc.Graph(id="sample_app-x-scatter-chart")], label="Scatter Chart")
-tab3 = dbc.Tab([table], label="Table", className="p-4")
+tab3 = dbc.Tab([grid], label="Grid", className="p-4")
 tabs = dbc.Card(dbc.Tabs([tab1, tab2, tab3]))
 
 app.layout = dbc.Container(
@@ -124,14 +117,14 @@ app.layout = dbc.Container(
         ),
     ],
     fluid=True,
-    className="dbc",
+    className="dbc dbc-ag-grid",
 )
 
 
 @callback(
     Output("sample_app-x-line-chart", "figure"),
     Output("sample_app-x-scatter-chart", "figure"),
-    Output("sample_app-x-table", "data"),
+    Output("sample_app-x-grid", "rowData"),
     Input("sample_app-x-indicator", "value"),
     Input("sample_app-x-continents", "value"),
     Input("sample_app-x-years", "value"),
@@ -143,7 +136,6 @@ def update_line_chart(indicator, continent, yrs, theme):
 
     dff = df[df.year.between(yrs[0], yrs[1])]
     dff = dff[dff.continent.isin(continent)]
-    data = dff.to_dict("records")
 
     fig = px.line(
         dff,
@@ -166,7 +158,7 @@ def update_line_chart(indicator, continent, yrs, theme):
         title="Gapminder %s: %s theme" % (yrs[1], template_from_url(theme)),
     )
 
-    return fig, fig_scatter, data
+    return fig, fig_scatter, dff.to_dict("records")
 
 
 if __name__ == "__main__":

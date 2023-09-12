@@ -58,7 +58,7 @@ figures = [
     for template in templates
 ]
 
-button = dbc.Button("Show all 26 Themes!", id="figure_templates_x-btn", n_clicks=0)
+button = dbc.Button("Show all 26 Themes!", id="figure_templates_all-x-btn", n_clicks=0)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
