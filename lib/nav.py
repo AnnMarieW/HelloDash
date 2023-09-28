@@ -48,6 +48,21 @@ theme_changer = ThemeChangerAIO(
 )
 
 
+color_mode_switch =  html.Span(
+    [
+        dbc.Label(className="fa fa-moon", html_for="switch"),
+        dbc.Switch( id="switch", value=True, className="d-inline-block ms-1", persistence=True),
+        dbc.Label(className="fa fa-sun", html_for="switch"),
+    ]
+)
+
+# The ThemeChangerAIO loads all 52  Bootstrap themed figure templates to plotly.io
+theme_controls = html.Div(
+    [theme_changer, color_mode_switch],
+    className="hstack gap-3"
+)
+
+
 def make_header(text, spacing="mt-4"):
     return html.H2(
         text,
@@ -239,7 +254,7 @@ other_dropdown = dbc.DropdownMenu(
 def make_side_nav():
     return html.Div(
         [
-            theme_changer,
+            theme_controls,
             html.Hr(),
             dbc.Accordion(
                 [
@@ -311,5 +326,6 @@ def make_side_nav():
             ),
         ],
         className="sticky-top vh-100 overflow-scroll",
+
     )
 

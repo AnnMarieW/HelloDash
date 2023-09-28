@@ -88,7 +88,7 @@ Apply Bootstrap theme to <dccLink href="/adding-themes/dcc-components" children=
 layout = html.Div(
     [
         change_theme_alert(
-            text="Use the Change Theme button to see the Sample App with all 26 themes.",
+            text="See the Sample App with all 26 themes in light or dark mode",
             auto_dismiss=False
         ),
         example_app("sample_app", make_layout=make_tabs),

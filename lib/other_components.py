@@ -27,16 +27,16 @@ dbt_github = "https://github.com/AnnMarieW/dash-bootstrap-templates"
 
 def change_theme_alert(text=None, auto_dismiss=True):
     if text is None:
-        text = "Use the Change Theme button to see examples with all 26 themes."
+        text = "See all 26 themes in light and dark mode."
     text = html.Span([icon_left, text])
 
     if auto_dismiss:
         return dbc.Alert(
-            text, is_open=True, duration=4000, style={"maxWidth": 300}, className="py-2"
+            text, is_open=True, duration=4000, style={"maxWidth": 350}, className="py-2"
         )
 
     return dbc.Alert(
-        text, is_open=True, dismissable=True, style={"maxWidth": 300}, className="py-2"
+        text, is_open=True, dismissable=True, style={"maxWidth": 350}, className="py-2"
     )
 
 bootstrap_utils_alert = dbc.Alert(

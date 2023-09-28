@@ -10,15 +10,21 @@ register_page(
     order=4,
     description=app_description,
     title="Adding Themes/Figure Templates",
-    name="Figure templates",
+    name="Figure Templates",
 )
 
 intro = """
 ## Styling Plotly Figures with a Bootstrap theme
 
-Plotly has built-in [figure templates](https://plotly.com/python/templates/) to make it easy to change the look of figures.
-We'll show you how to add Bootstrap themed figure templates from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates)
- library and use them in your Dash app.
+---------------
+  
+`  `
+
+Plotly has built-in [figure templates](https://plotly.com/python/templates/) to make it easy to change the style of Plotly figures.
+We'll show you how to use Bootstrap themed figure templates from the
+ [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library to make Plotly figures look
+  fantastic with your selected Bootstrap theme!
+ 
 
 
 ---------------
@@ -90,6 +96,11 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 ```
 
 
+Pro tip: If you are updating the figure template in a callback, you can use the [Patch()](https://dash.plotly.com/partial-properties)
+ to update the figure template more efficiently. If you use `Patch()` in a callback to update a template, you need to use
+  to supply the entire figure dictionary rather than just the string as shown above.  See examples in the 
+   <dccLink href="/adding-themes/color-modes" children="Light Dark Color Modes" /> section.
+
 --------------
 ` `  
 ` `  
@@ -100,12 +111,27 @@ To add more Bootstrap themed figure templates, use a list instead of a string in
 ```
 load_figure_template(["sketchy", "cyborg", "minty"])
 ```
+This loads the named figure templates into `plotly.io.templates` and sets the first item in the list as the default.
+  
+If you would like to make all 52 figure templates available in your app use:
 
-The "sketchy" theme is the default because it's the first template in the list. However, the other templates
- can now be used in the app by setting the `template` prop:
+```
+load_figure_template(["all"])
+```
+
+--------------
+` `  
+` `  
+
+### Multiple Figure Templates Example
+
+In this example, the "sketchy" theme is the default because it's the first template in the list. However, the other
+ templates  can now be used in the app by setting the `template` prop:
 ```
 fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", template="cyborg")
 ```
+
+
 
 ![cyborg template](https://user-images.githubusercontent.com/72614349/198323822-2d3ae46f-ba08-4401-93e3-56f91921cb47.png#fluid)
 
@@ -115,10 +141,10 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 
 ### Using Figure Templates with a theme change component
 
-When using the `ThemeChangerAIO` or the `ThemeSwitchAIO` components: 
+When using the `ThemeChangerAIO`, the `ThemeSwitchAIO` or color mode components: 
 - The figure template is not automatically changed when the app theme changes.  You will need to update the figure in a callback to update the figure
  template.  
-- It is not necessary to use the `load_figure_template()` function  -  the theme change component does that step for you.
+- It is not necessary to use the `load_figure_template()` function with `ThemeChangerAIO` or `ThemeSwitchAIO` as these component do that step for you.
 
 See examples in the <dccLink href="/adding-themes/theme-switch" children="Theme change" /> section. 
 
