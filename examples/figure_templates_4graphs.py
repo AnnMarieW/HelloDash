@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 
 
-templates = [
+themes = [
     "bootstrap",
     "cerulean",
     "cosmo",
@@ -34,12 +34,17 @@ templates = [
     "zephyr",
 ]
 
-dropdown = dcc.Dropdown(templates, "spacelab", clearable=False, className="m-3")
+
+dark_themes = [t+"_dark" for t in themes]
+all_templates = themes + dark_themes
+all_templates.sort()
+
+dropdown = dcc.Dropdown(all_templates, "spacelab", clearable=False, className="m-3")
 output_container = html.Div()
 
 # This loads all the figure template from dash-bootstrap-templates library,
 # adds the templates to plotly.io and makes the first item the default figure template.
-load_figure_template(templates)
+load_figure_template("all")
 
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])

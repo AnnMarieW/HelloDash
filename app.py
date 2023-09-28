@@ -14,7 +14,7 @@ dark_hljs = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/s
 
 # stylesheet with the .dbc class
 dbc_css = (
-    "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+    "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.1.0/dbc.min.css"
 )
 
 app = Dash(
@@ -45,14 +45,14 @@ app.layout = dbc.Container(
         dcc.Location(id="url", refresh=True),
         dbc.Row(
             [
-                dbc.Col(make_side_nav(), xs=5, md=3, xl=2, id="sidebar"),
+                dbc.Col(make_side_nav(), xs=6, md=4, xl=3, id="sidebar"),
                 dbc.Col(
                     html.Div(
                         dash.page_container, className="p-2", style={"minWidth": 600},
                     ),
-                    xs=7,
-                    md=9,
-                    xl=10,
+                    xs=6,
+                    md=8,
+                    xl=9,
                     id="content"
                 ),
             ],

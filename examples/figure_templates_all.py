@@ -12,7 +12,7 @@ import plotly.express as px
 
 df = px.data.gapminder()
 
-templates = [
+themes = [
     "bootstrap",
     "cerulean",
     "cosmo",
@@ -41,7 +41,12 @@ templates = [
     "zephyr",
 ]
 
-load_figure_template(templates)
+dark_themes = [t+"_dark" for t in themes]
+all_templates = themes + dark_themes
+all_templates.sort()
+
+
+load_figure_template("all")
 
 figures = [
     px.scatter(
@@ -55,18 +60,17 @@ figures = [
         template=template,
         title="Gapminder 2007: '%s' theme" % template,
     )
-    for template in templates
+    for template in all_templates
 ]
 
-button = dbc.Button("Show all 26 Themes!", id="figure_templates_all-x-btn", n_clicks=0)
+button = dbc.Button("Show all 52 Themes!", id="figure_templates_all-x-btn", n_clicks=0)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = dcc.Loading(
-    dbc.Container(
-        [button, html.Div(id="figure_templates_all-x-content", className="my-2")]
-    )
+app.layout = dbc.Container(
+        [button, dcc.Loading(html.Div(id="figure_templates_all-x-content", className="my-2"))]
 )
+
 
 
 @callback(

@@ -93,12 +93,12 @@ Using Bootstrap themed Plotly <dccLink href="/adding-themes/figure-templates" ch
 
 layout = html.Div(
     [
+    change_theme_alert(auto_dismiss=False),
         dcc.Markdown(
             intro,
             className="mx-5 px-3 dbc",
             dangerously_allow_html=True,
         ),
-        change_theme_alert(auto_dismiss=False),
         example_app("ag_grid", make_layout=make_tabs, notes=notes),
         dcc.Markdown(
             text2,

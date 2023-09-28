@@ -10,7 +10,7 @@ register_page(
     order=5,
     description=app_description,
     title="Adding Themes/Theme Change Components",
-    name="Theme change components",
+    name="Theme Change Components",
     redirect_from=["/theme_change_components"],
 )
 
@@ -21,10 +21,20 @@ The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templ
   - `ThemeSwitchAIO` toggles between two themes. 
   - `ThemeChangerAIO` select from multiple themes.
   
+> 
+>  If you would like to switch between a light and dark mode, please see <dccLink href="/adding-themes/color-modes" children="Light Dark Color Modes" /> 
+>    
+
+  
 ---------------
 ` `  
 ` `  
 ### ThemeSwitchAIO  Example 1
+
+
+>Note that as of Dash Bootstrap Components V1.5.0, we recommend using the Bootstrap <dccLink href="/adding-themes/color-modes" children="Light Dark Color Modes" />  feature
+ to switch between light and dark versions of a single theme rather than using the `ThemeSwitchAIO` component.
+  
 
 Below is a minimal example of switching between two themes, Cosmo and Cyborg. When the switch is `True` it will use the
  first theme, `dbc.themes.COSMO`. Here is how the theme switch component is defined:
@@ -81,7 +91,7 @@ Here is a another minimal example of the ThemeSwitchAIO component
 This example demos:
  - using variable names for the figure templates and themes
  - updating the figure for the new theme in a callback
- - adding the stylesheet from dash-bootstrap-templates to style `dash-core-components` and the `DataTable` with a Bootstrap Theme
+ - adding the stylesheet from dash-bootstrap-templates to style `dash-core-components`, Dash AG Grid or  the `DataTable` with a Bootstrap Theme
  
 ----------
 ` `  
@@ -254,7 +264,7 @@ next = """
 -----------------  
 
 ### Next:  
-Using  <dccLink href="/bootstrap-utility-classes/bootstrap-utility-classes" children="Bootstrap Utility Classes" />
+Using  <dccLink href="/adding-themes/color-modes" children="Light Dark Color Modes" /> 
 
 """
 
