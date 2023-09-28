@@ -139,14 +139,14 @@ fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", templ
 ` `  
 ` `  
 
-### Using Figure Templates with a theme change component
+### Using Figure Templates with  theme change components
 
 When using the `ThemeChangerAIO`, the `ThemeSwitchAIO` or color mode components: 
 - The figure template is not automatically changed when the app theme changes.  You will need to update the figure in a callback to update the figure
  template.  
 - It is not necessary to use the `load_figure_template()` function with `ThemeChangerAIO` or `ThemeSwitchAIO` as these component do that step for you.
 
-See examples in the <dccLink href="/adding-themes/theme-switch" children="Theme change" /> section. 
+See examples in the <dccLink href="/adding-themes/theme-switch" children="Theme change" /> and the  <dccLink href="/adding-themes/color-modes" children="Light Dark Color Mode" /> sections. 
 
 -------------
 
@@ -204,9 +204,9 @@ layout = html.Div(
             ),
            # className="p-4",
         ),
-
-        dcc.Markdown(all_templates,  className="mx-5 px-3", link_target="_blank"),
-        example_app("figure_template_change", make_layout=make_tabs),
+        #
+        # dcc.Markdown(all_templates,  className="mx-5 px-3", link_target="_blank"),
+        # example_app("figure_template_change", make_layout=make_tabs),
 
         dcc.Markdown(
             next,
