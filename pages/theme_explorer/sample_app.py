@@ -40,7 +40,7 @@ You'll learn how to:
 ` `  
 
 ### Installation 
- - The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library requires `dash>=2.0.0`, `dash-bootstrap-components>=1.0.0`
+ - The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library requires a minimum of `dash>=2.0.0`, `dash-bootstrap-components>=1.0.0`
 
  ```
  pip install dash-bootstrap-templates -U
@@ -49,6 +49,8 @@ You'll learn how to:
 ##### Select Your Bootstrap Theme 
  - The [`dash-bootstrap-components`](https://dash-bootstrap-components.opensource.faculty.ai/) library includes links to 26 free Bootstrap and [Bootswatch](https://bootswatch.com/) themes.
   Use the "Change Theme" button to select a theme then see how it looks in the sample app above and the  <dccLink href="/theme-explorer/gallery" children="dbc Gallery" /> sections.  
+  
+ - Add a color mode switch to toggle between a light and dark mode of any theme.  (Requires `dash-bootstrap-components>=1.5.0`)
 
 ##### Add Bootstrap Stylesheets
 - Adding a stylesheet from the dash-bootstrap-components library will apply the theme to Bootstrap components in 
@@ -56,13 +58,12 @@ your app. To apply the Bootstrap theme to the Dash DataTable or Dash Core Compon
 Learn more in the <dccLink href="/adding-themes/dcc-components" children="dash-core-components" /> and <dccLink href="/adding-themes/datatable" children="DataTable" /> sections. 
 
 ##### Apply a Bootstrap Theme to Figures
- -  The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library has 26 Bootstrap themed
+ -  The [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library has 52 Bootstrap themed
  figure templates.  Learn how to use them in your app in the  <dccLink href="/adding-themes/figure-templates" children="Figure templates" /> section.
 
 ##### Add a Theme Change Component
-  - The Theme Explorer uses the `ThemeChangerAIO` to select from multiple themes. There is also a `ThemeSwitchAIO` 
-  component to toggle between two themes. Find these components in the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library.
-  Learn more in the  <dccLink href="/adding-themes/theme-switch" children="Theme change components" /> section.
+  - The Theme Explorer uses the `ThemeChangerAIO` to select from multiple themes. To toggle between light and dark mode of
+   your selected theme, see the   <dccLink href="/adding-themes/color-modes" children="Light Dark Color Mode" /> section.
 
 ##### Use Bootstrap Utility Classes
   - Bootstrap includes dozens of utility classes for showing, hiding, aligning, spacing and styling content. See all the
