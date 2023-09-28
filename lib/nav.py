@@ -16,7 +16,7 @@ GALLERY_PATH = PATH.joinpath("./gallery").resolve()
 # Links
 dbc_logo = "https://user-images.githubusercontent.com/72614349/133677816-5ea52424-bfd3-4405-9ccf-8ad0dbd18020.png"
 bootstrap_logo = "https://user-images.githubusercontent.com/72614349/133683669-eef08b42-2eff-49df-b0a5-33a7754a2b86.png"
-bootstrap_url = "https://getbotstrap.com/docs/5.1/getting-started/introduction/"
+bootstrap_url = "https://getbootstrap.com/"
 plotly_logo = "https://user-images.githubusercontent.com/72614349/182969599-5ae4f531-ea01-4504-ac88-ee1c962c366d.png"
 plotly_logo_dark = "https://user-images.githubusercontent.com/72614349/182967824-c73218d8-acbf-4aab-b1ad-7eb35669b781.png"
 plotly_ddk_url = "https://plotly.com/dash/design-kit/"
@@ -85,7 +85,7 @@ theme_explorer_header = html.Div(
                 [
                     html.A(
                         html.Img(src=plotly_logo, height=80, className="m-2"),
-                        href=plotly_ddk_url,
+                        href=dash_docs_url,
                         target="blank",
                         title="Plotly",
                     ),
