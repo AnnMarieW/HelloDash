@@ -75,7 +75,7 @@ theme_explorer_header = html.Div(
         [
             html.H1(
                 "Dash Bootstrap Theme Explorer",
-                className="display-3 text-dark",
+                className="display-3",
             ),
             html.P(
                 "A guide for styling Plotly Dash apps with a Bootstrap theme",
@@ -146,8 +146,8 @@ theme_explorer_header = html.Div(
             ),
         ],
     ),
-    className="p-3 bg-light text-dark rounded-3 mb-4 position-relative",
-    style={"minHeight": 375, "minWidth": 800},
+    className="p-3 rounded-3 mb-4 position-relative",
+    style={"minHeight": 375, "minWidth": 800, "backgroundColor":  "rgba(var(--bs-tertiary-color-rgb), .2"},
     id="header"
 )
 

@@ -23,11 +23,6 @@ Now it's  easier than ever to switch between light and dark modes in your Dash a
  [Bootstrap Color Modes](https://getbootstrap.com/docs/5.3/customize/color-modes/).  You can set the color mode
   globally or on specific components and elements, by using the `data-bs-theme` attribute.
 
-If you would like to toggle between a light and a dark theme in your app, use this method instead of the `ThemeSwitchAIO`.
-  The color modes sets a different version of your selected Bootstrap theme.  For example if you are using the "minty"
-   theme, you can set a "minty dark" version.  The `ThemeSwitchAIO` component switches between two completely different
-    themes, for example, "spacelab" and "cyborg". 
-    
     
 ---------------
 ` `  
@@ -175,6 +170,18 @@ When you change the color mode, the figures are not updated automatically.  One 
 The dash-bootstrap-templates >= V1.1.0  has a dark and light version of each of the 26 Bootstrap themes in the dbc
  library.
  
+ 
+ 
+---------------
+` `  
+` `  
+## Theme Change Components
+ 
+If you would like to toggle between a light and a dark mode of your selected Bootstrap theme, then using the color
+ modes as described above is the best method. However, if you would like to switch between two or more completely
+  different themes (for example switch between "cyborg" and "minty" themes) then you can use the components as
+   described in the <dccLink href="/adding-themes/theme-switch" children="Theme change component" /> section.
+     
 
 """
 
