@@ -8,11 +8,11 @@ dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.mi
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
 
 datepicker_single = html.Div(
-    dcc.DatePickerSingle(date=date(2022, 8, 5), className="mb-2")
+    dcc.DatePickerSingle(date=date(2022, 8, 5), className="mb-4")
 )
 datepicker_range = html.Div(
     dcc.DatePickerRange(
-        start_date=date(2022, 8, 5), end_date=date(2022, 8, 25), className="mb-2"
+        start_date=date(2022, 8, 5), end_date=date(2022, 8, 25), className="my-2"
     )
 )
 
