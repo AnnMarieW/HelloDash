@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
 from lib.utils import example_apps
@@ -11,11 +11,11 @@ from lib.other_components import book_card, about_me
 light_hljs = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/stackoverflow-light.min.css"
 dark_hljs = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/stackoverflow-dark.min.css"
 
-
-# stylesheet with the .dbc class
-dbc_css = (
-    "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.1.0/dbc.min.css"
-)
+#
+# # stylesheet with the .dbc class
+# dbc_css = (
+#     "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.1.0/dbc.min.css"
+# )
 
 app = Dash(
     __name__,
@@ -24,7 +24,7 @@ app = Dash(
         dbc.themes.SPACELAB,
         dbc.icons.BOOTSTRAP,
         dbc.icons.FONT_AWESOME,
-        dbc_css,
+  #      dbc_css,
         dark_hljs,
     ],
     suppress_callback_exceptions=True,
