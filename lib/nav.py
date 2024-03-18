@@ -21,7 +21,8 @@ plotly_logo = "https://user-images.githubusercontent.com/72614349/182969599-5ae4
 plotly_logo_dark = "https://user-images.githubusercontent.com/72614349/182967824-c73218d8-acbf-4aab-b1ad-7eb35669b781.png"
 plotly_ddk_url = "https://plotly.com/dash/design-kit/"
 dbc_home_url = "https://dash-bootstrap-components.opensource.faculty.ai/"
-dbc_components_url = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
+dbc_components_url = "https://dashaggridexamples.pythonanywhere.com/"
+dash_aggrid_examples_url = ""
 cheatsheet_url = "https://dashcheatsheet.pythonanywhere.com/"
 theme_explorer_url = "https://hellodash.pythonanywhere.com/theme_explorer"
 examples_index_url = "https://dash-example-index.herokuapp.com/"
@@ -34,7 +35,7 @@ dmc_docs_url = "https://www.dash-mantine-components.com/"
 dash_extensions_docs = "https://www.dash-extensions.com/"
 dash_tools_url = "https://github.com/andrew-hossack/dash-tools"
 multi_page_app_demos = "https://github.com/AnnMarieW/dash-multi-page-app-demos"
-dash_aggrid_docs = "https://dashaggrid.pythonanywhere.com/"
+
 
 # tutorials
 formattable_url = "https://formattable.pythonanywhere.com/"
@@ -228,11 +229,7 @@ other_dropdown = dbc.DropdownMenu(
             href=dash_extensions_docs,
             target="_blank",
         ),
-        dbc.DropdownMenuItem(
-            "Dash AG Grid docs",
-            href=dash_aggrid_docs,
-            target="_blank",
-        ),
+
         dbc.DropdownMenuItem(
             "Multi-Page App examples",
             href=multi_page_app_demos,
@@ -306,6 +303,11 @@ def make_side_nav():
                                 dbc.NavLink(
                                     "Dash Bootstrap Components Docs",
                                     href=dbc_components_url,
+                                    target="_blank",
+                                ),
+                                dbc.NavLink(
+                                    "Dash AG Grid Examples",
+                                    href=dash_aggrid_examples_url,
                                     target="_blank",
                                 ),
                                 dbc.NavLink(

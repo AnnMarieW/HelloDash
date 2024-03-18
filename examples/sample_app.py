@@ -3,7 +3,7 @@
 If you run this app locally, un-comment line 127 to add the theme change components to the layout
 """
 
-from dash import Dash, dcc, html, Input, Output, callback, Patch, clientside_callback
+from dash import Dash, dcc, html, Input, Output, State, callback, Patch, clientside_callback
 import plotly.express as px
 import plotly.io as pio
 import dash_bootstrap_components as dbc
@@ -138,17 +138,17 @@ app.layout = dbc.Container(
 @callback(
     Output("line-chart", "figure" ),
     Output("scatter-chart", "figure"),
-    Output("grid", "rowData"),
+    Output("grid", "dashGridOptions"),
     Input("indicator", "value"),
     Input("continents", "value"),
     Input("years", "value"),
-    Input(ThemeChangerAIO.ids.radio("theme"), "value"),
-    Input("switch", "value"),
+    State(ThemeChangerAIO.ids.radio("theme"), "value"),
+    State("switch", "value"),
 )
 def update(indicator, continent, yrs, theme, color_mode_switch_on):
 
     if continent == [] or indicator is None:
-        return {}, {}, []
+        return {}, {}, {}
 
     theme_name = template_from_url(theme)
     template_name = theme_name if color_mode_switch_on else theme_name + "_dark"
@@ -177,7 +177,14 @@ def update(indicator, continent, yrs, theme, color_mode_switch_on):
         title="Gapminder %s: %s theme" % (yrs[1], template_name),
     )
 
-    return fig, fig_scatter, dff.to_dict("records")
+
+    grid_filter = f"{continent}.includes(params.data.continent) && params.data.year >= {yrs[0]} && params.data.year <= {yrs[1]}"
+    dashGridOptions = {
+        "isExternalFilterPresent": {"function": "true"},
+        "doesExternalFilterPass": {"function": grid_filter},
+    }
+
+    return fig, fig_scatter, dashGridOptions
 
 
 # updates the Bootstrap global light/dark color mode
@@ -193,7 +200,7 @@ clientside_callback(
 )
 
 
-# This callback isn't necessary, but it makes updating figures with the new theme much faster
+# This callback makes updating figures with the new theme much faster
 @callback(
     Output("line-chart", "figure", allow_duplicate=True ),
     Output("scatter-chart", "figure", allow_duplicate=True),
@@ -210,7 +217,6 @@ def update_template(theme, color_mode_switch_on):
     # from plotly.io  and not just the template name
     patched_figure["layout"]["template"] = pio.templates[template_name]
     return patched_figure, patched_figure
-
 
 
 if __name__ == "__main__":
