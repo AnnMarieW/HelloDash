@@ -44,10 +44,19 @@ So how does it work?  The stylesheet defines the "dbc" class.  It uses Bootstrap
 ` `  
 
 #### Tips
-- To see a [human readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
+- To see a [more readable stylesheet,](https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css) 
 change the the url above to `/dbc.css` instead of `/dbc.min.css`. 
 - To customize this stylesheet, download it and place it in a .css file in the `assets` folder.  More info in the [dash-docs](https://dash.plotly.com/external-resources)
 - If you find a better way that works for all themes, please [open an issue](https://github.com/AnnMarieW/dash-bootstrap-templates/issues). Pull requests are welcome!
+- You can pin the version by including the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) release number.  For example:
+
+```
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@V1.2.4/dbc.min.css"
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
+```
+
+
+
 
 ` `  
 ` `  
