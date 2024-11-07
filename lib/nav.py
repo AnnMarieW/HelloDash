@@ -45,7 +45,7 @@ legend_and_annotations = "https://plotly-annotations.herokuapp.com/"
 theme_changer = ThemeChangerAIO(
     aio_id="theme",
     button_props={"color": "primary", "outline": True},
-    radio_props={"value": dbc.themes.SPACELAB},
+    radio_props={"value": dbc.themes.SPACELAB, "persistence": True},
 )
 
 
