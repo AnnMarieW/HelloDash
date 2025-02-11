@@ -27,10 +27,10 @@ color_bg = html.Div(
 
 color_bg_gradient = html.Div(
     [
-        html.P("bg-primary text-white py-4", className="bg-primary text-white py-4"),
+        html.P("bg-primary py-4", className="bg-primary  py-4"),
         html.P(
-            "bg-primary  bg-gradient text-white py-4",
-            className="bg-primary bg-gradient text-white py-4",
+            "bg-primary  bg-gradient py-4",
+            className="bg-primary bg-gradient  py-4",
         ),
     ],
 )

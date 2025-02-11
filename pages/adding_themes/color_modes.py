@@ -161,12 +161,12 @@ The Bootstrap theme is automatically applied __only__ to `dbc` components.  If y
 ## Applying Bootstrap themes to figures
 When you change the color mode, the figures are not updated automatically.  One option is to update the figure template in
  a callback.  The built-in "plotly_white" and "plotly_dark" figure templates look nice with most Bootstrap themes.  If
-  you would like your figures to have a closer match to your Bootstrap theme, you can use one of the 52 Bootstrap themed
+  you would like your figures to have a closer match to your Bootstrap theme, you can use one of the 54 Bootstrap themed
    figure templates from the [dash-bootstrap-templates](https://github.com/AnnMarieW/dash-bootstrap-templates) library.
   For more information see the <dccLink href="/adding-themes/figure-templates" children="Figure Templates" /> section.
 
 The dash-bootstrap-templates >= V1.1.0  has a dark and light version of each of the 26 Bootstrap themes in the dbc
- library.
+ library.  V2.1.0 uses Plolty 6.0.0 and includes the Vizro light and dark themes.
  
  
  

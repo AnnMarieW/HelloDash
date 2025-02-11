@@ -16,7 +16,7 @@ input_class_name = dbc.FormFloating(
     [
         dbc.Input(
             type="text",
-            value="bg-primary text-white",
+            value="bg-primary",
             autocomplete="off",
             id="utl-class-name",
         ),

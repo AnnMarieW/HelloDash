@@ -39,6 +39,7 @@ themes = [
     "quartz",
     "vapor",
     "zephyr",
+    "vizro"
 ]
 
 dark_themes = [t+"_dark" for t in themes]
@@ -63,7 +64,7 @@ figures = [
     for template in all_templates
 ]
 
-button = dbc.Button("Show all 52 Themes!", id="figure_templates_all-x-btn", n_clicks=0)
+button = dbc.Button("Show all 54 Themes!", id="figure_templates_all-x-btn", n_clicks=0)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 

@@ -23,7 +23,7 @@ df = pd.DataFrame(
         "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"],
     }
 )
-header = html.H4("ThemeSwitchAIO Demo", className="bg-primary text-white p-4 mb-2")
+header = html.H4("ThemeSwitchAIO Demo", className="bg-primary p-4 mb-2")
 
 theme_switch = ThemeSwitchAIO(aio_id="theme", themes=[url_theme1, url_theme2])
 

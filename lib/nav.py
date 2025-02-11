@@ -41,11 +41,13 @@ multi_page_app_demos = "https://github.com/AnnMarieW/dash-multi-page-app-demos"
 formattable_url = "https://formattable.pythonanywhere.com/"
 legend_and_annotations = "https://plotly-annotations.herokuapp.com/"
 
+vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 
 theme_changer = ThemeChangerAIO(
     aio_id="theme",
     button_props={"color": "primary", "outline": True},
-    radio_props={"value": dbc.themes.SPACELAB, "persistence": True},
+    radio_props={"persistence": True},
+    custom_themes={'Vizro': vizro_boostrap},
 )
 
 
@@ -57,7 +59,7 @@ color_mode_switch =  html.Span(
     ]
 )
 
-# The ThemeChangerAIO loads all 52  Bootstrap themed figure templates to plotly.io
+# The ThemeChangerAIO loads all 54  Bootstrap themed figure templates to plotly.io
 theme_controls = html.Div(
     [theme_changer, color_mode_switch],
     className="hstack gap-3"
@@ -67,7 +69,7 @@ theme_controls = html.Div(
 def make_header(text, spacing="mt-4"):
     return html.H2(
         text,
-        className="text-white bg-primary p-2 " + spacing,
+        className="bg-primary p-2 " + spacing,
     )
 
 

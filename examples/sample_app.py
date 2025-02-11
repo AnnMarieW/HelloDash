@@ -16,6 +16,8 @@ continents = df.continent.unique()
 
 # stylesheet with the .dbc class to style  dcc, DataTable and AG Grid components with a Bootstrap theme
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+# if using the vizro theme
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME, dbc_css])
 
@@ -30,12 +32,12 @@ color_mode_switch =  html.Span(
 
 # The ThemeChangerAIO loads all 52  Bootstrap themed figure templates to plotly.io
 theme_controls = html.Div(
-    [ThemeChangerAIO(aio_id="theme"), color_mode_switch],
+    [ThemeChangerAIO(aio_id="theme", custom_themes={'vizro': vizro_bootstrap}), color_mode_switch],
     className="hstack gap-3 mt-2"
 )
 
 header = html.H4(
-    "Theme Explorer Sample App", className="bg-primary text-white p-2 mb-2 text-center"
+    "Theme Explorer Sample App", className="bg-primary p-2 mb-2 text-center"
 )
 
 grid = dag.AgGrid(
@@ -142,15 +144,16 @@ app.layout = dbc.Container(
     Input("indicator", "value"),
     Input("continents", "value"),
     Input("years", "value"),
-    State(ThemeChangerAIO.ids.radio("theme"), "value"),
-    State("switch", "value"),
+    Input(ThemeChangerAIO.ids.radio("theme"), "value"),
+    Input("switch", "value"),
 )
 def update(indicator, continent, yrs, theme, color_mode_switch_on):
-
     if continent == [] or indicator is None:
         return {}, {}, {}
 
     theme_name = template_from_url(theme)
+    if theme == vizro_bootstrap:
+        theme_name = "vizro"
     template_name = theme_name if color_mode_switch_on else theme_name + "_dark"
 
     dff = df[df.year.between(yrs[0], yrs[1])]
@@ -198,26 +201,6 @@ clientside_callback(
     Output("switch", "id"),
     Input("switch", "value"),
 )
-
-
-# This callback makes updating figures with the new theme much faster
-@callback(
-    Output("line-chart", "figure", allow_duplicate=True ),
-    Output("scatter-chart", "figure", allow_duplicate=True),
-    Input(ThemeChangerAIO.ids.radio("theme"), "value"),
-    Input("switch", "value"),
-    prevent_initial_call=True
-)
-def update_template(theme, color_mode_switch_on):
-    theme_name = template_from_url(theme)
-    template_name = theme_name if color_mode_switch_on else theme_name + "_dark"
-
-    patched_figure = Patch()
-    # When using Patch() to update the figure template, you must use the figure template dict
-    # from plotly.io  and not just the template name
-    patched_figure["layout"]["template"] = pio.templates[template_name]
-    return patched_figure, patched_figure
-
 
 if __name__ == "__main__":
     app.run_server(debug=True)
