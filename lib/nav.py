@@ -46,7 +46,7 @@ vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/s
 theme_changer = ThemeChangerAIO(
     aio_id="theme",
     button_props={"color": "primary", "outline": True},
-    radio_props={"persistence": True},
+    radio_props={"persistence": True, "value": dbc.themes.SPACELAB},
     custom_themes={'Vizro': vizro_boostrap},
 )
 

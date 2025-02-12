@@ -16,7 +16,7 @@ register_page(
 intro = """
 
 ## Vizro Bootstrap Theme
-Along with the 26 themes available in the dash-bootstrap-components library, you can now also style your dash app with a Vizro theme!
+In addition to the 26 themes available in the dash-bootstrap-components library, you can now style your Dash app with a Vizro theme as well!
 
 Learn more at [Vizro](), and the [Visual Vocabulary](https://vizro-demo-visual-vocabulary.hf.space/) site.
 
@@ -44,25 +44,27 @@ Even if you're not creating a Vizro app, you can still use its styling and desig
 
 ### Vizro Features Available for Dash Apps  
 
-- Vizro Bootstrap-themed figure templates are available in the dash-bootstrap-templates library starting from version 2.1.0. Both dark and light-themed templates are included.  
+- **Vizro Bootstrap-themed figure templates** are available in the dash-bootstrap-templates library starting from version 2.1.0. Both dark and light-themed templates are included.  
 
-- Vizro Bootstrap theme provides styling for Bootstrap components, allowing them to match the Vizro light or dark theme.  
+- **Vizro Bootstrap theme** provides styling for Bootstrap components, allowing them to match the Vizro light or dark theme.  
 
-- Vizro theme for other Dash components extends styling beyond Bootstrap. Vizro includes custom CSS to theme additional Dash components that are not part of Bootstrap. You can explore all the custom CSS files in their [GitHub repository](https://github.com/mckinsey/vizro/tree/main/vizro-core/src/vizro/static/css).  
+- **Vizro theme for other Dash components** extends styling beyond Bootstrap. Vizro includes custom CSS to theme additional Dash components that are not part of Bootstrap. You can explore all the custom CSS files in their [GitHub repository](https://github.com/mckinsey/vizro/tree/main/vizro-core/src/vizro/static/css).  
 
-- Vizro KPI cards can be added to a regular Dash app, bringing a visually consistent way to display key performance indicators. For more details, see this [Plotly forum post](https://community.plotly.com/t/introducing-new-kpi-cards-in-vizro-based-on-dbc/86711).  
+- **Vizro KPI cards** like the ones shown in the image above can be added to a regular Dash app, bringing a visually consistent way to display key performance indicators. For more details, see this [Plotly forum post](https://community.plotly.com/t/introducing-new-kpi-cards-in-vizro-based-on-dbc/86711).  
 
 
 ### Vizro Bootstrap Figure Templates
 
-Learn more about [figure templates](https://hellodash.pythonanywhere.com/adding-themes/figure-templates)
+Apply Vizro-themed styling to all Plotly figures in your Dash app. Learn more in the <dccLink href="/adding-themes/figure-templates" children="Figure templates section" /> 
+
+Available in `dash-bootstrap-templates>=V2.1.0`
 
 Make Vizro templates available in your app:
-
 ```
 from dash_bootstrap_templates import load_figure_template
 load_figure_template(["vizro", "vizro_dark"])
 ```
+
 
 The default theme for all Plotly figures in the app will be "vizro" which is the light theme.  To change it to the "vizro_dark" theme:
 
@@ -101,10 +103,26 @@ vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/sr
 app = Dash(__name__, external_stylesheets=[vizro_bootstrap])
 
 ```
+### Example: Vizro light dark color mode
+"""
 
+theme_change = """
+### Adding Vizro theme to ThemeChangerAIO
 
+If you would like to switch between multiple themes, use the <dccLink href="/adding-themes/theme-switch" children="ThemeChangerAIO component" />
 
+By default this component includes the 26 themes available from the dash-bootstrap-components library.  If you would like
+to add custom themes, like Vizo, you can use the `custom_themes` prop:
 
+```
+
+vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+
+theme_changer = ThemeChangerAIO(
+    aio_id="theme",   
+    custom_themes={'Vizro': vizro_boostrap},
+)
+```
 
 """
 
@@ -125,6 +143,8 @@ layout = html.Div(
 
         dcc.Markdown(theme_switch, dangerously_allow_html=True, className="mx-5 px-3"),
         example_app("vizro_theme_switch", make_layout=make_tabs),
+
+        dcc.Markdown(theme_change, dangerously_allow_html=True, className="mx-5 px-3"),
 
 
         dcc.Markdown(
