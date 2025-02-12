@@ -333,3 +333,13 @@ def make_side_nav():
 
     )
 
+@callback(
+    Output(ThemeChangerAIO.ids.radio("theme"), "value"),
+    Input("url", "pathname")
+)
+def update_vizro_theme_on_vizro_page(url):
+    print(url)
+    if url =="/adding-themes/vizro-bootstrap":
+        return vizro_boostrap
+    return dash.no_update
+
