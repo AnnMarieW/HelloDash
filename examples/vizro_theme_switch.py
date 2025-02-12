@@ -17,7 +17,7 @@ load_figure_template(["vizro", "vizro_dark"])
 #app = Dash(__name__, external_stylesheets=[vizro.bootstrap])
 
 vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
-app = Dash(__name__, external_stylesheets=[vizro_bootstrap])
+app = Dash(__name__, external_stylesheets=[vizro_bootstrap, dbc.icons.FONT_AWESOME])
 
 # Create components for the dashboard
 color_mode_switch = html.Span(
