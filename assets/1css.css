@@ -17,6 +17,11 @@ img[src*="#fluid600"] {
 }
 
 
+img[src*="#fluid400"] {
+   max-width: 400px;
+   height:auto;
+}
+
 .accordion-body{
     padding: 0 !important
 }
