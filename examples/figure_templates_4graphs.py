@@ -32,6 +32,7 @@ themes = [
     "vapor",
     "yeti",
     "zephyr",
+    "vizro"
 ]
 
 

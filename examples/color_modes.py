@@ -40,7 +40,7 @@ fig = px.scatter(
 
 app.layout = dbc.Container(
     [
-        html.Div(["Bootstrap Light Dark Color Modes Demo"], className="bg-primary text-white h3 p-2"),
+        html.H3(["Bootstrap Light Dark Color Modes Demo"], className="bg-primary  p-2"),
         color_mode_switch,
         dcc.Graph(id="graph", figure= fig, className="border"),
     ]

@@ -113,7 +113,7 @@ load_figure_template(["sketchy", "cyborg", "minty"])
 ```
 This loads the named figure templates into `plotly.io.templates` and sets the first item in the list as the default.
   
-If you would like to make all 52 figure templates available in your app use:
+If you would like to make all 54 figure templates available in your app use:
 
 ```
 load_figure_template(["all"])

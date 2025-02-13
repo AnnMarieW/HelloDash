@@ -179,7 +179,61 @@ ThemeChangerAIO(
     },
 )
 ```
-  
+
+#### ThemeChangerAIO with custom themes
+
+By default this component includes the 26 themes available from the dash-bootstrap-components library.  Use the `custom_themes`
+prop to add themes.   This example adds the Vizro theme:
+
+```
+vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+
+theme_changer = ThemeChangerAIO(
+    aio_id="theme",   
+    custom_themes={'Vizro': vizro_boostrap},
+)
+```
+
+Available in `dash-bootstrap-templates>=V1.0.8`
+
+
+### ThemeChangerAIO with local stylesheets 
+
+This is how to use local stylesheets stored in the assets folder with ThemeChangerAIO. Each theme should have its own separate file.
+
+```python
+
+theme_changer = ThemeChangerAIO(
+    aio_id="theme",   
+    custom_themes={
+        'vizro': "vizro.css",
+        'custom": "my-custom-theme.css"
+    },
+)
+```
+
+To override the default themes in the Radio components set the `options` in the `radio_props`:
+
+```
+ThemeChangerAIO(
+    radio_props={
+        "options": [
+            {"label": "Cyborg", "value": dbc.themes.CYBORG},
+            {"label": "My Theme", "value": "custom_light_theme.css"},
+            {"label": "My Dark Theme", "value": "custom_dark_theme.css"},
+            {"label": "Spacelab", "value": dbc.themes.SPACELAB},       
+        ],
+        "value": dbc.themes.CYBORG,
+    },
+    # other props....
+)
+```
+
+Available in `dash-bootstrap-templates>=V1.0.8`
+
+
+
+
 #### ThemeChangerAIO menu position
 This ThemeChangerAIO will open the `Offcanvas` component on the bottom of the screen:
 
@@ -211,29 +265,31 @@ If you are starting with a dark theme, swap the position of the icons:
 
 
 reference = """
-## ThemeChangerAIO Reference
-**ThemeChangerAIO** is an All-in-One component  composed  of a parent `html.Div` with
-the following components as children:
 
-- `dbc.Button` ("`switch`") Opens the Offcanvas component for user to select a theme
+## ThemeChangerAIO Reference 
+**ThemeChangerAIO** is an All-in-One component  composed  of a parent `html.Div` with the following components as children:
+
+- `dbc.Button` ("`switch`") Opens the Offcanvas component for user to select a theme.
 - `dbc.Offcanvas` ("`offcanvas`")
-- `dbc.RadioItems` ("`radio`").  The themes are displayed as RadioItems inside the `dbc.Offcanvas` component
-  The `value` is a url for the theme
-- `html.Div` is used as the `Output` of the clientside callbacks
+- `dbc.RadioItems` ("`radio`").  The themes are displayed as RadioItems inside the `dbc.Offcanvas` component.
+  The `value` is a url for the theme or the file name of a .css file in the /assets folder.
+- Two `dcc.Store` used as `Input` of the clientside callbacks to provide the theme list and the assets path.
 
-The `ThemeChangerAIO` component updates the stylesheet  when the `value` of radio changes. (i.e. the user selects a new theme)
+The ThemeChangerAIO component updates the stylesheet  when the `value` of radio changes. (ie the user selects a new theme)
 
 - param: `radio_props` A dictionary of properties passed into the dbc.RadioItems component. The default `value` is `dbc.themes.BOOTSTRAP`
-- param: `button_props`  A dictionary of properties passed into the dbc.Button component
+- param: `button_props`  A dictionary of properties passed into the dbc.Button component.
 - param: `offcanvas_props`. A dictionary of properties passed into the dbc.Offcanvas component
-- param: `aio_id` The All-in-One component ID used to generate components' dictionary IDs
+- param: `aio_id` The All-in-One component ID used to generate components' dictionary IDs.
+- param: `custom_themes` A dictionary of local .css files or external url
+    with the keys being the theme name and the value being the theme path (file name in assets folder or url).
+- param: `custom_dark_themes` List of custom dark theme name, so that they appear with a black background in the offcanvas list.
 
 The All-in-One component dictionary IDs are available as:
 
-- `ThemeChangerAIO.ids.radio(aio_id)`
-- `ThemeChangerAIO.ids.offcanvas(aio_id)`
-- `ThemeChangerAIO.ids.button(aio_id)`
-    
+- ThemeChangerAIO.ids.radio(aio_id)
+- ThemeChangerAIO.ids.offcanvas(aio_id)
+- ThemeChangerAIO.ids.button(aio_id)
 
 ## ThemeSwitchAIO Reference
 
