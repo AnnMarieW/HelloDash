@@ -149,7 +149,6 @@ layout = html.Div(
             make_layout=make_app_first,
             run=False,
         ), className="mx-4"),
-        # example_app("vizro_theme_switch", make_layout=make_tabs),
 
         dcc.Markdown(theme_change, dangerously_allow_html=True, className="mx-5 px-3"),
 
