@@ -41,7 +41,7 @@ multi_page_app_demos = "https://github.com/AnnMarieW/dash-multi-page-app-demos"
 formattable_url = "https://formattable.pythonanywhere.com/"
 legend_and_annotations = "https://plotly-annotations.herokuapp.com/"
 
-vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 
 theme_changer = ThemeChangerAIO(
     aio_id="theme",

@@ -99,11 +99,13 @@ print(vizro.bootstrap)
 You can then use it in your app like this:
 
 ```
-vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 app = Dash(__name__, external_stylesheets=[vizro_bootstrap])
 
 ```
 ### Example: Vizro light dark color mode
+
+![Vizro Theme switch](https://github.com/user-attachments/assets/ec8d3994-5619-4ad5-b5a8-c47574720677#fluid600)
 """
 
 theme_change = """
@@ -116,7 +118,7 @@ to add custom themes, like Vizo, you can use the `custom_themes` prop:
 
 ```
 
-vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 
 theme_changer = ThemeChangerAIO(
     aio_id="theme",   
@@ -142,7 +144,12 @@ layout = html.Div(
         example_app("vizro_figure_templates", make_layout=make_tabs),
 
         dcc.Markdown(theme_switch, dangerously_allow_html=True, className="mx-5 px-3"),
-        example_app("vizro_theme_switch", make_layout=make_tabs),
+        html.Div(example_app(
+            "vizro_theme_switch",
+            make_layout=make_app_first,
+            run=False,
+        ), className="mx-4"),
+        # example_app("vizro_theme_switch", make_layout=make_tabs),
 
         dcc.Markdown(theme_change, dangerously_allow_html=True, className="mx-5 px-3"),
 

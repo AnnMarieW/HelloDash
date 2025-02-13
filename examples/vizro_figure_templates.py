@@ -1,7 +1,6 @@
 
-from dash import Dash, html, dcc, Input, Output, Patch, clientside_callback, callback
+from dash import Dash, html, dcc
 import plotly.express as px
-import plotly.io as pio
 import dash_bootstrap_components as dbc
 
 from dash_bootstrap_templates import load_figure_template
@@ -10,7 +9,7 @@ from dash_bootstrap_templates import load_figure_template
 gapminder = px.data.gapminder().query("year==2007")
 load_figure_template(["vizro", "vizro_dark"])
 
-vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 app = Dash(__name__, external_stylesheets=[vizro_bootstrap])
 
 light = dcc.Graph(

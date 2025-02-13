@@ -186,7 +186,7 @@ By default this component includes the 26 themes available from the dash-bootstr
 prop to add themes.   This example adds the Vizro theme:
 
 ```
-vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.33/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
 
 theme_changer = ThemeChangerAIO(
     aio_id="theme",   
