@@ -18,7 +18,7 @@ intro = """
 ## Vizro Bootstrap Theme
 In addition to the 26 themes available in the dash-bootstrap-components library, you can now style your Dash app with a Vizro theme as well!
 
-Learn more at [Vizro](), and the [Visual Vocabulary](https://vizro-demo-visual-vocabulary.hf.space/) site.
+Here’s a quick example, and you can explore more in the [Vizro examples gallery](http://vizro.mckinsey.com/).
 
 ` `
 ` `
@@ -37,12 +37,14 @@ Learn more at [Vizro](), and the [Visual Vocabulary](https://vizro-demo-visual-v
 
 ### What is Vizro?  
 
-[Vizro](https://github.com/plotly/Vizro) is an open-source dashboarding framework developed by McKinsey. Built with Plotly and Dash, Vizro provides a high-level API for creating interactive, production-ready dashboards with minimal code. It includes pre-configured layouts, themes, and components, making it easier to build data-driven applications.  
+[Vizro]( https://github.com/mckinsey/vizro) is an open-source dashboarding framework developed by McKinsey. Built with Plotly and Dash, Vizro provides a high-level API for creating interactive, production-ready dashboards with minimal code. It includes pre-configured layouts, themes, and components, making it easier to build data-driven applications.  
 
 
 Even if you're not creating a Vizro app, you can still use its styling and design system in your Dash applications.  
 
 ### Vizro Features Available for Dash Apps  
+
+Refer to the [Vizro documentation](https://vizro.readthedocs.io/en/stable/pages/user-guides/themes/#vizro-bootstrap-in-a-pure-dash-app) for more details, but here are some key highlights:
 
 - **Vizro Bootstrap-themed figure templates** are available in the dash-bootstrap-templates library starting from version 2.1.0. Both dark and light-themed templates are included.  
 
@@ -50,28 +52,30 @@ Even if you're not creating a Vizro app, you can still use its styling and desig
 
 - **Vizro theme for other Dash components** extends styling beyond Bootstrap. Vizro includes custom CSS to theme additional Dash components that are not part of Bootstrap. You can explore all the custom CSS files in their [GitHub repository](https://github.com/mckinsey/vizro/tree/main/vizro-core/src/vizro/static/css).  
 
-- **Vizro KPI cards** like the ones shown in the image above can be added to a regular Dash app, bringing a visually consistent way to display key performance indicators. For more details, see this [Plotly forum post](https://community.plotly.com/t/introducing-new-kpi-cards-in-vizro-based-on-dbc/86711).  
+- **Vizro KPI cards** like the ones shown in the image above can be added to a regular Dash app, bringing a visually consistent way to display key performance indicators.  
 
 
 ### Vizro Bootstrap Figure Templates
 
 Apply Vizro-themed styling to all Plotly figures in your Dash app. Learn more in the <dccLink href="/adding-themes/figure-templates" children="Figure templates section" /> 
 
-Available in `dash-bootstrap-templates>=V2.1.0`
+Available in `dash-bootstrap-templates>=2.1.0`
 
 Make Vizro templates available in your app:
-```
-from dash_bootstrap_templates import load_figure_template
-load_figure_template(["vizro", "vizro_dark"])
-```
 
+The preferred method of using [Vizro themes in plotly charts](https://vizro.readthedocs.io/en/stable/pages/user-guides/themes/#vizro-themes-in-plotly-charts)
+is to simply:
 
-The default theme for all Plotly figures in the app will be "vizro" which is the light theme.  To change it to the "vizro_dark" theme:
+```
+import vizro
+```
+This will import the Vizro figure templates and set the "vizro_light" as the default theme.  To change it to the "vizro_dark" theme:
 
 ```
 fig=px.scatter(gapminder, x="gdpPercap", y="lifeExp", size="pop", size_max=60, color="continent", template="vizro_dark")
-
 ```
+
+
 """
 
 theme_switch = """
@@ -90,7 +94,7 @@ from dash import Dash
 app = Dash(__name__, external_stylesheets=[vizro.bootstrap])
 
 ```
-You can also use the Vizro Bootstrap theme without importing vizro in your app.  The `vizro.bootstrap` is a is a predefined URL that links to the Vizro Bootstrap CSS stylesheet.  To find the link you can use
+You can also use the Vizro Bootstrap theme without importing vizro in your app.  The `vizro.bootstrap` is a predefined URL that links to the Vizro Bootstrap CSS stylesheet.  To find the link you can use
 
 ```
 print(vizro.bootstrap)
@@ -99,7 +103,7 @@ print(vizro.bootstrap)
 You can then use it in your app like this:
 
 ```
-vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css?v=2"
 app = Dash(__name__, external_stylesheets=[vizro_bootstrap])
 
 ```
@@ -118,11 +122,11 @@ to add custom themes, like Vizo, you can use the `custom_themes` prop:
 
 ```
 
-vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css?v=2"
 
 theme_changer = ThemeChangerAIO(
     aio_id="theme",   
-    custom_themes={'Vizro': vizro_boostrap},
+    custom_themes={'Vizro': vizro_bootstrap},
 )
 ```
 

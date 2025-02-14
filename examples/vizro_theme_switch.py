@@ -4,19 +4,16 @@ import plotly.express as px
 import plotly.io as pio
 import dash_bootstrap_components as dbc
 
-from dash_bootstrap_templates import load_figure_template
-
-# Load data and figure templates
-gapminder = px.data.gapminder().query("year==2007")
-load_figure_template(["vizro", "vizro_dark"])
 
 
-# Alternatively, you could do:
-# You need to install vizro>=0.1.34
+# preferred method - loads "vizro_light" and "vizro_dark" templates automatically.
+# install vizro>=0.1.34
 #import vizro
 #app = Dash(__name__, external_stylesheets=[vizro.bootstrap])
 
-vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+from dash_bootstrap_templates import load_figure_template
+load_figure_template(["vizro", "vizro_dark"])
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css?v=2"
 app = Dash(__name__, external_stylesheets=[vizro_bootstrap, dbc.icons.FONT_AWESOME])
 
 # Create components for the dashboard
@@ -27,6 +24,8 @@ color_mode_switch = html.Span(
         dbc.Label(className="fa fa-sun", html_for="vizro-switch"),
     ]
 )
+
+gapminder = px.data.gapminder().query("year==2007")
 scatter = dcc.Graph(
     id="vizro-scatter", figure=px.scatter(gapminder, x="gdpPercap", y="lifeExp", size="pop", size_max=60, color="continent")
 )
