@@ -41,13 +41,13 @@ multi_page_app_demos = "https://github.com/AnnMarieW/dash-multi-page-app-demos"
 formattable_url = "https://formattable.pythonanywhere.com/"
 legend_and_annotations = "https://plotly-annotations.herokuapp.com/"
 
-vizro_boostrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@0.1.34/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css"
+vizro_bootstrap = "https://cdn.jsdelivr.net/gh/mckinsey/vizro@main/vizro-core/src/vizro/static/css/vizro-bootstrap.min.css?v=2"
 
 theme_changer = ThemeChangerAIO(
     aio_id="theme",
     button_props={"color": "primary", "outline": True},
     radio_props={"persistence": True, "value": dbc.themes.SPACELAB},
-    custom_themes={'Vizro': vizro_boostrap},
+    custom_themes={'Vizro': vizro_bootstrap},
 )
 
 
@@ -339,6 +339,6 @@ def make_side_nav():
 )
 def update_vizro_theme_on_vizro_page(url):
     if url =="/adding-themes/vizro-bootstrap":
-        return vizro_boostrap
+        return vizro_bootstrap
     return dash.no_update
 
