@@ -5,7 +5,7 @@ from lib.other_components import change_theme_alert
 
 # ------ Make Subheading
 
-DBC_DOCS = "https://dash-bootstrap-components.opensource.faculty.ai/docs/components/"
+DBC_DOCS = "https://dash-bootstrap-components.com/docs/components/"
 
 
 def make_subheading(label, link):
@@ -594,7 +594,7 @@ def toggle_modal(n, is_open):
 
 # ------ navbar
 
-DBC_HOME = "https://dash-bootstrap-components.opensource.faculty.ai/"
+DBC_HOME = "https://dash-bootstrap-components.com/"
 DBC_GITHUB = "https://github.com/facultyai/dash-bootstrap-components"
 
 navbar_children = [

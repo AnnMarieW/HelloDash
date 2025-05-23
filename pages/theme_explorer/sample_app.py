@@ -21,7 +21,7 @@ about_explorer_md = dcc.Markdown(
 ### Welcome to Dash Bootstrap Theme Explorer 🤗
 
 This is a guide for styling your Plotly Dash app with a Bootstrap theme.  If you're new to Dash, see the
- [Dash Tutorial](https://dash.plotly.com/) and the [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) documentation.
+ [Dash Tutorial](https://dash.plotly.com/) and the [Dash Bootstrap Components](https://dash-bootstrap-components.com/) documentation.
 
 Use the sample app above to help select a theme, then I'll show you how to apply the theme to:
 - Dash Bootstrap Components
@@ -47,7 +47,7 @@ You'll learn how to:
  ``` 
 
 ##### Select Your Bootstrap Theme 
- - The [`dash-bootstrap-components`](https://dash-bootstrap-components.opensource.faculty.ai/) library includes links to 26 free Bootstrap and [Bootswatch](https://bootswatch.com/) themes.
+ - The [`dash-bootstrap-components`](https://dash-bootstrap-components.com/) library includes links to 26 free Bootstrap and [Bootswatch](https://bootswatch.com/) themes.
   Use the "Change Theme" button to select a theme then see how it looks in the sample app above and the  <dccLink href="/theme-explorer/gallery" children="dbc Gallery" /> sections.  
   
  - Add a color mode switch to toggle between a light and dark mode of any theme.  (Requires `dash-bootstrap-components>=1.5.0`)

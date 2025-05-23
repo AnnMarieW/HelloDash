@@ -104,7 +104,7 @@ Dash docs:  [dcc.Dropdown](https://dash.plotly.com/dash-core-components/dropdown
 
 
 docs_tabs = """
-See also [dbc.Tabs](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tabs/) which are automatically styled with a Bootstrap theme.    
+See also [dbc.Tabs](https://dash-bootstrap-components.com/docs/components/tabs/) which are automatically styled with a Bootstrap theme.    
 
 Note that the dcc.Tabs can also be styled using Bootstrap utility classes in the `className` prop
 or CSS in the `style` prop.  See the Dash documentation [dcc.Tab](https://dash.plotly.com/dash-core-components/tab).
