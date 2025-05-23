@@ -14,7 +14,7 @@ GALLERY_PATH = PATH.joinpath("./gallery").resolve()
 
 
 # Links
-dbc_logo = "https://user-images.githubusercontent.com/72614349/133677816-5ea52424-bfd3-4405-9ccf-8ad0dbd18020.png"
+dbc_logo = "https://raw.githubusercontent.com/dbc-team/dash-bootstrap-components/refs/heads/main/logo/logo_sm.svg"
 bootstrap_logo = "https://user-images.githubusercontent.com/72614349/133683669-eef08b42-2eff-49df-b0a5-33a7754a2b86.png"
 bootstrap_url = "https://getbootstrap.com/"
 plotly_logo = "https://user-images.githubusercontent.com/72614349/182969599-5ae4f531-ea01-4504-ac88-ee1c962c366d.png"
