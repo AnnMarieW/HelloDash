@@ -51,8 +51,7 @@ Defines the .dbc class
 }
 
 .dbc .Select-placeholder {
-  color: var(--bs-secondary-color) !important;
-  background-color: var(--bs-body-bg) !important;
+  color: var(--bs-secondary-color)
 }
 
 /* dropdown menu options */
